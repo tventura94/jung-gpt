@@ -1,3 +1,5 @@
+// V1.0 WORKING MODEL 7/8 4:40PM
+
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
 const bodyParser = require("body-parser");
