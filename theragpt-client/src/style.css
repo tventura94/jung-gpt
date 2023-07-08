@@ -325,7 +325,7 @@ textarea::placeholder {
     margin-top: 0rem;
     font-family: arial;
     letter-spacing: 0.6px;
-    font-size: 15px;
+    font-size: 12px;
     width: 40%;
     line-height: 2rem;
   }
