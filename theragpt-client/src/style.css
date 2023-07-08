@@ -327,7 +327,7 @@ textarea::placeholder {
     letter-spacing: 0.6px;
     font-size: 12px;
     width: 40%;
-    line-height: 2rem;
+    line-height: 1rem;
   }
 
   .header p {
