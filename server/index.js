@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: "https://incredible-torte-364240.netlify.app/",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
