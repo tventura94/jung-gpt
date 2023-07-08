@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173/",
+    origin:
+      "https://64a995c66a675c1be0c4cafd--incredible-torte-364240.netlify.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -34,16 +35,6 @@ app.post("/", async (req, res) => {
   const { conversation } = req.body;
 
   app.use(express.static(path.join(__dirname, "dist")));
-
-  app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
-    );
-    next();
-  });
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
