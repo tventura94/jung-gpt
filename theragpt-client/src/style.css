@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Strait&display=swap");
+* {
+  box-sizing: border-box;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: rgb(77, 76, 80);
+  width: 100vw;
+  border-bottom: 8px rgb(203, 203, 221) solid;
+  box-shadow: 3px -5px 0px 13px rgba(209, 166, 166, 0.75);
+  -webkit-box-shadow: 3px -5px 0px 13px rgba(208, 184, 184, 0.75);
+  -moz-box-shadow: 3px -5px 0px 13px rgba(157, 131, 131, 0.75);
+}
+
+.nav-logo {
+  align-self: flex-end;
+  width: 100px;
+  opacity: 0.6;
+  margin-left: 10px;
+}
+/*********** REGISTER FORM *********/
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 50vw;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.register-form-container input {
+  margin-top: 1.5rem;
+  height: 3rem;
+}
+
+.register-form-container button {
+  margin-top: 3rem;
+  height: 3rem;
+  border: none;
+  font-family: "Roboto";
+}
+.register-form-container h2 {
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+.alreadyHaveAnAccount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Dashboard */
+
+.main {
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(38, 38, 38);
+  font-family: "Strait";
+  color: rgb(196, 194, 194);
+}
+.logout-button {
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3;
+}
+
+.logout-button:hover {
+  opacity: 0.5;
+}
+
+.header {
+  margin: 0 auto;
+  display: flex;
+  font-family: "Strait";
+  color: rgb(199, 199, 204);
+  background-color: rgb(55, 61, 74);
+  margin: 0 auto;
+  width: 100vw;
+  min-height: 95vh;
+  overflow-y: scroll;
+}
+
+.sidemenu {
+  display: flex;
+  width: 300px;
+  padding: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.305);
+  border-top: 1px solid rgba(255, 255, 255, 0.361);
+  justify-content: center;
+  align-items: flex-start;
+
+  background-color: rgb(38, 38, 38);
+}
+.side-menu-button {
+  display: flex;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.218);
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  font-family: arial;
+  font-size: 15px;
+  background-color: rgba(200, 197, 197, 0);
+  transition: ease 0.25s all;
+}
+.side-menu-button:hover {
+  background-color: rgba(63, 63, 63, 0.526);
+}
+.fas,
+.fa-plus {
+  padding-right: 1rem;
+}
+.chatbox {
+  margin: 0 auto;
+  width: 100%;
+  border-top: 1px rgba(255, 255, 255, 0.204) solid;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.chat-input-holder {
+  padding: 12px;
+  width: 45%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+.chat-disclaimer {
+  font-size: 11px;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.chat-input-textarea {
+  background-color: rgba(58, 65, 79, 0.667);
+  width: 100%;
+  border: 5px;
+  padding: 18px;
+  border-radius: 10px;
+  font-family: "Arial";
+  color: whitesmoke;
+  font-size: 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+  resize: none;
+}
+textarea::placeholder {
+  color: #757d8a; /* Replace with your desired color */
+}
+.chat-log {
+  padding: 0px;
+  text-align: left;
+  display: flex;
+  margin-left: 0%;
+  flex-direction: column;
+}
+
+.chat-message {
+  padding: 20px;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 20%;
+}
+.chat-message.chatgpt {
+  background-color: rgba(61, 68, 83, 0.783);
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: 20%;
+  width: 100%;
+}
+.avatar {
+  background-color: rgb(49, 162, 168);
+  border-radius: 10%;
+  width: 30px;
+  height: 30px;
+}
+.avatar.chatgpt {
+  background-color: rgb(105, 55, 152);
+}
+.message {
+  margin-left: 2rem;
+  margin-top: 0rem;
+  font-family: arial;
+  letter-spacing: 0.6px;
+  font-size: 15px;
+  width: 40%;
+  line-height: 2rem;
+}
+@media (min-width: 710px) {
+  .header {
+    flex-direction: row;
+    font-size: smaller;
+  }
+}
+
+@media (min-width: 1135px) {
+  .header {
+    flex-direction: row;
+    font-size: initial;
+  }
+}
+
+.header p {
+  align-items: center;
+  font-family: "Strait";
+  color: "whitesmoke";
+  background-color: rgb(38, 38, 38);
+}
+
+.header button {
+  margin-right: 1rem;
+}
+
+.spanclass {
+  color: white;
+}
+
+#flat-earth {
+  align-self: flex-end;
+  font-size: 15px;
+  margin-right: 1.4rem;
+}
