@@ -30,35 +30,25 @@ export default function Dashboard({ setUser, setAuthState, user }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      let chatLogNew = [...chatLog, { role: "user", message: `${input}` }];
-      setInput("");
-      setChatLog(chatLogNew);
+    let chatLogNew = [...chatLog, { role: "user", message: `${input}` }];
+    setInput("");
+    setChatLog(chatLogNew);
 
-      const response = await fetch("https://jung-gpt.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          conversation: chatLogNew,
-        }),
-      });
-
-      if (!response.ok) throw new Error("Network response was not ok");
-
-      const data = await response.json();
-      setChatLog([
-        ...chatLogNew,
-        { role: "assistant", message: `${data.message}` },
-      ]);
-      console.log(data);
-    } catch (error) {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
-    }
+    const response = await fetch("https://jung-gpt.onrender.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        conversation: chatLogNew,
+      }),
+    });
+    const data = await response.json();
+    setChatLog([
+      ...chatLogNew,
+      { role: "assistant", message: `${data.message}` },
+    ]);
+    console.log(data);
   }
 
   function clearChat() {

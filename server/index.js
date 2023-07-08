@@ -86,25 +86,4 @@ app.post("/", async (req, res) => {
   res.json({
     message: "JungGPT: " + response.data.choices[0].text.trim(),
   });
-  try {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: message,
-      temperature: 1.3,
-      max_tokens: 1131,
-      top_p: 1,
-      best_of: 3,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    });
-    res.json({
-      message: "JungGPT: " + response.data.choices[0].text.trim(),
-    });
-  } catch (error) {
-    console.error(
-      "There has been a problem with your openai operation:",
-      error
-    );
-    res.status(500).send("Something broke!");
-  }
 });
