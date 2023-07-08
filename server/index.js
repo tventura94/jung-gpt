@@ -18,7 +18,8 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin:
+      "https://64a995c66a675c1be0c4cafd--incredible-torte-364240.netlify.app/",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
