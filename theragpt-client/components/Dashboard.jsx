@@ -34,7 +34,7 @@ export default function Dashboard({ setUser, setAuthState, user }) {
     setInput("");
     setChatLog(chatLogNew);
 
-    const response = await fetch("https://jung-gpt.onrender.com/", {
+    const response = await fetch("https://jung-gpt.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

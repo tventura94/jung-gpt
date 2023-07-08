@@ -15,14 +15,14 @@ const openai = new OpenAIApi(configuration);
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: "https://incredible-torte-364240.netlify.app/",
-//     credentials: true,
-//     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-//   })
-// );
+
+app.use(
+  cors({
+    origin: "http://https://incredible-torte-364240.netlify.app/:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 const port = process.env.PORT || 3080;
 
