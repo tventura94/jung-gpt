@@ -28,7 +28,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://github.com/tventura94/">
-        Sendr
+        JungGpt
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
