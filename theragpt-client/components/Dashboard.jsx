@@ -39,6 +39,7 @@ export default function Dashboard({ setUser, setAuthState, user }) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         conversation: chatLogNew,
       }),
