@@ -80,7 +80,7 @@ app.post("/", async (req, res) => {
     model: "text-davinci-003",
     prompt: message,
     temperature: 1.3,
-    max_tokens: 1131,
+    max_tokens: 700,
     top_p: 1,
     best_of: 3,
     frequency_penalty: 0,
