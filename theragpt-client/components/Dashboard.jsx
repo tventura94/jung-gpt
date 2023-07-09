@@ -105,10 +105,14 @@ export default function Dashboard({ setUser, setAuthState, user }) {
 
 const ChatMessage = ({ message }) => {
   return (
-    <div className={`chat-message ${message.user === "gpt" ? "chatgpt" : ""}`}>
-      <div className={`avatar ${message.user === "gpt" ? "chatgpt" : ""}`}>
-        {message.user === "gpt"}
-      </div>
+    <div
+      className={`chat-message ${
+        message.role === "assistant" ? "chatgpt" : ""
+      }`}
+    >
+      <div
+        className={`avatar ${message.role === "assistant" ? "chatgpt" : ""}`}
+      ></div>
       <div className="message">{message.message}</div>
     </div>
   );

@@ -180,6 +180,7 @@ textarea::placeholder {
   padding: 20px;
   padding-left: 20%;
   width: 100%;
+  border-radius: 0%;
 }
 .avatar {
   background-color: rgb(49, 162, 168);
@@ -189,6 +190,10 @@ textarea::placeholder {
 }
 .avatar.chatgpt {
   background-color: rgb(105, 55, 152);
+  background-image: url(/jung-gpt-logo.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .message {
   margin-left: 2rem;
