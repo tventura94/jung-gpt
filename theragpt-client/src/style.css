@@ -189,8 +189,8 @@ textarea::placeholder {
   height: 30px;
 }
 .avatar.chatgpt {
-  background-color: rgb(105, 55, 152);
-  background-image: url(/jung-gpt-logo.webp);
+  background-color: rgb(120, 86, 151);
+  background-image: url(/logos/jung-gpt-logo.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -203,6 +203,36 @@ textarea::placeholder {
   font-size: 15px;
   width: 40%;
   line-height: 2rem;
+}
+.form-container {
+  position: relative;
+}
+
+.chat-input-textarea {
+  padding-right: 80px; /* adjust this value based on your send button size */
+}
+
+.send-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-55.5%);
+  background-color: #427a6a;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition-duration: 0.25s;
+  border-radius: 10%;
+}
+
+.send-button:hover {
+  background-color: #8e9cba84;
+  color: white;
 }
 
 .header p {
@@ -269,9 +299,9 @@ textarea::placeholder {
 
   .chat-input-holder {
     padding: 0px;
-    width: 45%;
+    width: 90%;
     margin: 0 auto;
-    margin-bottom: 2rem;
+    margin-bottom: 8rem;
   }
   .chat-disclaimer {
     font-size: 9px;
@@ -280,16 +310,18 @@ textarea::placeholder {
   }
 
   .chat-input-textarea {
+    overflow: hidden;
     background-color: rgba(58, 65, 79, 0.667);
-    width: 100%;
+    width: 140%;
     border: 0px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     font-family: "Arial";
     color: whitesmoke;
-    font-size: 13px;
+    font-size: 16px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-    resize: none;
+
+    margin-left: 1rem;
   }
   textarea::placeholder {
     color: #757d8a; /* Replace with your desired color */
@@ -301,7 +333,10 @@ textarea::placeholder {
     margin-left: 0%;
     flex-direction: column;
   }
-
+  .form-container {
+    width: 35vw;
+    margin-bottom: 1rem;
+  }
   .chat-message {
     padding: 20px;
     display: flex;
@@ -355,4 +390,30 @@ textarea::placeholder {
     font-size: 15px;
     margin-right: 1.4rem;
   }
+  .send-button {
+    position: absolute;
+    top: 50%;
+    left: 115%;
+    transform: translateY(-50%);
+    background-color: #427a6a;
+    border: none;
+    color: white;
+    padding: 2px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    border-radius: 10%;
+  }
+}
+.sidemenu {
+  width: 0;
+  transition: width 0.3s ease;
+  cursor: pointer; /* Optional: Changes the mouse cursor when you hover over the side menu */
+}
+
+.sidemenu.open {
+  width: 250px;
 }

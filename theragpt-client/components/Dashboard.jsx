@@ -7,6 +7,11 @@ import "@fortawesome/fontawesome-free/css/all.css";
 export default function Dashboard({ setUser, setAuthState, user }) {
   const [pageLoaded, setPageLoaded] = useState(false);
 
+  function autosize(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  }
+
   useEffect(() => {
     getUserData(user);
   }, []);
@@ -51,8 +56,16 @@ export default function Dashboard({ setUser, setAuthState, user }) {
     console.log(data);
   }
 
-  function clearChat() {
+  function clearChat(e) {
+    e.stopPropagation();
     setChatLog([]);
+  }
+
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  // Add a function to handle menu toggle
+  function handleMenuToggle() {
+    setIsMenuOpen(!isMenuOpen);
   }
   return (
     <div className="dashboard">
@@ -67,10 +80,16 @@ export default function Dashboard({ setUser, setAuthState, user }) {
       <div>
         {user ? (
           <div className="header">
-            <aside className="sidemenu">
-              <div className="side-menu-button" onClick={clearChat}>
-                <i className="fas fa-plus"></i>New Chat
-              </div>
+            <aside
+              className={`sidemenu ${isMenuOpen ? "open" : ""}`}
+              onClick={handleMenuToggle}
+            >
+              {/* Conditionally render the "New Chat" button */}
+              {isMenuOpen && (
+                <div className="side-menu-button" onClick={clearChat}>
+                  <i className="fas fa-plus"></i>New Chat
+                </div>
+              )}
             </aside>
             <section className="chatbox">
               <div className="chat-log">
@@ -79,15 +98,32 @@ export default function Dashboard({ setUser, setAuthState, user }) {
                 ))}
               </div>
               <div className="chat-input-holder">
-                <form onSubmit={handleSubmit}>
-                  <input
-                    className="chat-input-textarea"
-                    placeholder="Send a message..."
-                    rows="1"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                  ></input>
-                </form>
+                <div
+                  style={{ width: isMenuOpen ? "35vw" : "54vw" }}
+                  className="form-container"
+                >
+                  <form onSubmit={handleSubmit}>
+                    <textarea
+                      className="chat-input-textarea"
+                      placeholder="Send a message..."
+                      rows="1"
+                      value={input}
+                      onChange={(e) => {
+                        setInput(e.target.value);
+                        autosize(e.target);
+                      }}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          handleSubmit(e);
+                        }
+                      }}
+                    ></textarea>
+                    <button type="submit" className="send-button">
+                      &#10148;
+                    </button>
+                  </form>
+                </div>
                 <div className="chat-disclaimer">
                   JungGPT may produce inaccurate information about people,
                   places, or facts.
