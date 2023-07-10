@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "https://jung-gpt.netlify.app",
+    origin: "https://jung-gpt.com",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
