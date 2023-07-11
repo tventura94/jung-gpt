@@ -97,7 +97,7 @@ app.post("/", async (req, res) => {
     presence_penalty: 0,
   });
   res.json({
-    message: "JungGPT: " + response.data.choices[0].content,
+    message: "JungGPT: " + response.data.choices[0].text.trim(),
   });
   console.log(message);
 });
