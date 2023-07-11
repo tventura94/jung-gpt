@@ -22,12 +22,8 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="https://github.com/tventura94/">
-        Sendr
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      {""}
+      <Link color="inherit" href="#"></Link> {"."}
     </Typography>
   );
 }
@@ -59,19 +55,19 @@ export default function Register({ setUser, setAuthState }) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 27.5,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#9e7a7a" }}>
+          <Avatar sx={{ m: 1, bgcolor: "#1E4B66" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Create jungGPT Account
+          <Typography component="h1" variant="h5" sx={{ mt: 0 }}>
+            Create New Account
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 0 }}>
             <TextField
               margin="normal"
               required
@@ -110,7 +106,7 @@ export default function Register({ setUser, setAuthState }) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               style={{
-                backgroundColor: "#9e7a7a",
+                backgroundColor: "#1E4B66",
                 marginTop: "30px",
                 marginBottom: "60px",
               }}
@@ -123,7 +119,7 @@ export default function Register({ setUser, setAuthState }) {
                 halfWidth
                 variant="contained"
                 style={{
-                  backgroundColor: "#9e7a7a",
+                  backgroundColor: "#1E4B66",
                   marginTop: "0px",
                 }}
                 onClick={() => setAuthState("signin")}

@@ -26,12 +26,8 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="https://ventura-ux.com">
-        Ventura UX
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      {""}
+      <Link color="inherit" href="#"></Link> {"."}
     </Typography>
   );
 }
@@ -74,21 +70,61 @@ export default function SignIn({ setUser, setAuthState }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md">
+      <Container
+        className
+        component="main"
+        maxWidth="md"
+        sx={{
+          marginTop: 15,
+        }}
+      >
         <CssBaseline />
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "#9e7a7a" }}>
-                <LockOutlinedIcon />
-              </Avatar>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            marginTop: 6,
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              marginTop: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyItems: "center",
+              textAlign: "center",
+              backgroundColor: "#e8e1dc",
+              padding: "15px",
+              borderRadius: "3%",
+            }}
+          >
+            <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  bgcolor: "#e8e1dc",
+                  color: "#1E4B66",
+                  paddingTop: "2rem",
+                }}
+              >
+                <Avatar
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    bgcolor: "#e8e1dc",
+                    color: "#1E4B66",
+                  }}
+                >
+                  <LockOutlinedIcon sx={{ fontSize: 35 }} />
+                </Avatar>
+              </Box>
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
@@ -126,15 +162,14 @@ export default function SignIn({ setUser, setAuthState }) {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, width: "80%", padding: "15px" }}
                   style={{
-                    backgroundColor: "#9e7a7a",
-                    marginTop: "30px",
+                    backgroundColor: "#1E4B66",
                   }}
                 >
                   Sign In
                 </Button>
-                <Grid container>
+                <Grid container paddingBottom={"2rem"}>
                   <Grid item xs>
                     <Link
                       href="#"
@@ -157,31 +192,38 @@ export default function SignIn({ setUser, setAuthState }) {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={7} md={6}>
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                height: "100%",
+                height: "95%",
                 width: "100%",
-                ml: "8rem",
-                mt: "5rem",
+                ml: "2rem",
+                mt: "3rem",
               }}
             >
-              <Typography variant="h6" align="left">
+              <Typography
+                variant="h6"
+                align="left"
+                sx={{
+                  fontSize: "18px",
+                  lineHeight: "2rem;",
+                }}
+              >
                 <b>
                   Welcome to JungGPT, a groundbreaking, first of its kind,
                   Emotional Reflection Feedback (ERF) Tool.
                 </b>{" "}
                 <br />
                 <br />
-                Conceived by a team of psychologists and AI experts, we provide
-                an innovative approach to self-reflection and emotional
-                understanding. With the aim of fostering self-awareness, we
-                blend fields of psychology, medicine, psychiatry, and philosophy
-                to encourage introspection and insight. Remember, we are not a
-                replacement for professional therapy. Let's start your journey
-                towards greater emotional clarity today.
+                Conceived by a team of AI researchers, we provide an innovative
+                approach to self-reflection and emotional understanding. With
+                the aim of fostering self-awareness, we blend fields of
+                psychology, medicine, psychiatry, and philosophy to encourage
+                introspection and insight. Remember, we are not a replacement
+                for professional therapy. Let's start your journey towards
+                greater emotional clarity today.
               </Typography>
             </Box>
           </Grid>

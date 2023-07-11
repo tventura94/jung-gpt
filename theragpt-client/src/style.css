@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  background-color: rgb(77, 76, 80);
+  background-color: #1e4b66;
   width: 100vw;
   border-bottom: 8px rgb(203, 203, 221) solid;
   box-shadow: 3px -5px 0px 13px rgba(209, 166, 166, 0.75);
@@ -19,7 +19,7 @@
 
 .nav-logo {
   align-self: flex-end;
-  width: 100px;
+  width: 4%;
   opacity: 0.6;
   margin-left: 10px;
 }
@@ -92,7 +92,6 @@
   min-height: 95vh;
   overflow-y: scroll;
 }
-
 .sidemenu {
   display: flex;
   width: 300px;
@@ -416,4 +415,35 @@ textarea::placeholder {
 
 .sidemenu.open {
   width: 250px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #1e4b66;
+  height: 6vh;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.footer h3 {
+  text-align: center;
+  color: #ffffff;
+}
+
+body {
+  background-image: url(../logos/jung-background.svg);
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.link {
+  color: white;
 }
