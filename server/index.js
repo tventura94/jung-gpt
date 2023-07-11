@@ -85,6 +85,10 @@ app.post("/", async (req, res) => {
         role: "assistant",
         content: message,
       },
+      {
+        role: "user",
+        content: message,
+      },
     ],
     temperature: 1,
     max_tokens: 256,
