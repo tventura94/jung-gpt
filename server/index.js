@@ -99,6 +99,4 @@ app.post("/", async (req, res) => {
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
   });
-  console.log(response);
-  console.log(message);
 });
