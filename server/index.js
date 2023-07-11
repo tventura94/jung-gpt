@@ -79,7 +79,7 @@ app.post("/", async (req, res) => {
     }
   });
   const response = await openai.createCompletion({
-    model: "text-davinci-003",
+    model: "gpt-3.5-turbo",
     prompt: message,
     temperature: 1.3,
     max_tokens: 700,
