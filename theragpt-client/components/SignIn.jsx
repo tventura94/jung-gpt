@@ -91,7 +91,7 @@ export default function SignIn({ setUser, setAuthState }) {
             xs={12}
             md={5}
             sx={{
-              marginTop: 10,
+              marginTop: 0,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -100,6 +100,7 @@ export default function SignIn({ setUser, setAuthState }) {
               backgroundColor: "#e8e1dc",
               padding: "15px",
               borderRadius: "3%",
+              marginLeft: "14px",
             }}
           >
             <Box>
@@ -122,11 +123,16 @@ export default function SignIn({ setUser, setAuthState }) {
                     color: "#1E4B66",
                   }}
                 >
-                  <LockOutlinedIcon sx={{ fontSize: 35 }} />
+                  <LockOutlinedIcon sx={{ fontSize: 40, paddingBottom: 0 }} />
                 </Avatar>
               </Box>
-              <Typography component="h1" variant="h5">
-                Sign in
+              <Typography
+                marginTop=".5rem"
+                fontSize="22px"
+                component="h1"
+                variant="h5"
+              >
+                Sign In
               </Typography>
               <Box component="form" noValidate sx={{ mt: 1 }}>
                 <TextField
@@ -192,7 +198,7 @@ export default function SignIn({ setUser, setAuthState }) {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={7} md={6}>
+          <Grid item xs={11} md={6}>
             <Box
               sx={{
                 display: "flex",
@@ -200,7 +206,7 @@ export default function SignIn({ setUser, setAuthState }) {
                 height: "95%",
                 width: "100%",
                 ml: "2rem",
-                mt: "3rem",
+                mt: "0rem",
               }}
             >
               <Typography

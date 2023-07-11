@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Box } from "@mui/system"; // import Box
 import Nav from "../components/Nav";
 import SignIn from "../components/SignIn";
 import Register from "../components/Register";
@@ -28,33 +29,64 @@ function App() {
   }, [user]);
 
   if (authState === null) return <h2>Loading...</h2>;
+
   if (authState === "register")
     return (
-      <div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
         <Register setAuthState={setAuthState} setUser={setUser} />
         <Footer />
-      </div>
+      </Box>
     );
 
   if (authState === "signin")
     return (
-      <div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
         <SignIn setAuthState={setAuthState} setUser={setUser} />
         <Footer />
-      </div>
+      </Box>
     );
 
   if (user)
     return (
-      <div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
         <Dashboard setAuthState={setAuthState} setUser={setUser} user={user} />
-      </div>
+        <Footer />
+      </Box>
     );
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        justifyContent: "space-between",
+      }}
+    >
       <Register />
-    </div>
+      <Footer />
+    </Box>
   );
 }
 

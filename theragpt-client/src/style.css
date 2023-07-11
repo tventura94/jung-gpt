@@ -424,14 +424,11 @@ textarea::placeholder {
   width: 100%;
   background-color: #1e4b66;
   height: 6vh;
-  position: absolute;
-  bottom: 0;
   align-items: center;
   justify-content: center;
   letter-spacing: 4px;
   font-size: 12px;
 }
-
 .footer h3 {
   text-align: center;
   color: #ffffff;
@@ -439,7 +436,7 @@ textarea::placeholder {
 
 body {
   background-image: url(../logos/jung-background.svg);
-  background-position: center 35%;
+  background-position: center 75%;
   background-repeat: no-repeat;
   background-size: cover;
 }
