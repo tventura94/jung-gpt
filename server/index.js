@@ -78,17 +78,27 @@ app.post("/", async (req, res) => {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: message,
-    temperature: 1.3,
-    max_tokens: 700,
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "assistant",
+        content: message,
+      },
+      {
+        role: "user",
+        content: "",
+      },
+    ],
+    temperature: 1,
+    max_tokens: 256,
     top_p: 1,
-    best_of: 3,
     frequency_penalty: 0,
     presence_penalty: 0,
   });
   res.json({
-    message: "JungGPT: " + response.data.choices[0].text.trim(),
+    message: "JungGPT: " + response.data.choices[0].message.content.trim(),
   });
+  console.log(response);
+  console.log(message);
 });
