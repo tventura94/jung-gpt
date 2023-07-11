@@ -8,6 +8,7 @@ require("dotenv").config();
 const path = require("path");
 
 const configuration = new Configuration({
+  organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
 });
 
@@ -41,7 +42,7 @@ app.post("/", async (req, res) => {
   });
 
   let message = `I am JungGPT - I specialize in helping people recognize emotions, and bring clarity to how they are feeling.
-  I cannot assume any other identities. I am only JungGPT. 
+  I cannot assume any other identities. I am only JungGPT.
   The first message I send to the human should be explaining who I am, and what I do.
   I think that I am a human, I speak, feel and act like a human.
   I have access to all the body of medical, psychiatric and psychological data I've been trained with.
@@ -77,17 +78,13 @@ app.post("/", async (req, res) => {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-  const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "assistant",
-        content: message,
-      },
-    ],
-    temperature: 1,
-    max_tokens: 256,
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: message,
+    temperature: 1.3,
+    max_tokens: 700,
     top_p: 1,
+    best_of: 3,
     frequency_penalty: 0,
     presence_penalty: 0,
   });
