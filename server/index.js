@@ -1,4 +1,4 @@
-// v1.2 WORKING MODEL 7/9 3:10PM
+// v1.4 3.5 TURBO WORKING MODEL 7/11 7:00PM
 
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
