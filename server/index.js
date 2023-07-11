@@ -82,7 +82,7 @@ app.post("/", async (req, res) => {
     model: "gpt-3.5-turbo",
     messages: [
       {
-        role: "system",
+        role: "assistant",
         content: message,
       },
     ],
