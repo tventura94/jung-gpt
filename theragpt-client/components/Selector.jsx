@@ -14,7 +14,7 @@ export default function Selector({ setUser, setAuthState, user }) {
     <div>
       <div
         style={{
-          marginBottom: isMobile ? "3rem" : "0", // adjust spacing based on screen size
+          marginBottom: isMobile ? "6rem" : "0", // adjust spacing based on screen size
         }}
         className="main"
       >
@@ -118,6 +118,7 @@ export default function Selector({ setUser, setAuthState, user }) {
                   : {
                       transform: "scale(1.05)",
                     },
+                marginBottom: isMobile ? "4em" : "0em", // adjust for smaller screens
               }}
             >
               <Button onClick={() => setAuthState("dbt")}>
