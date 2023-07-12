@@ -114,7 +114,7 @@ app.post("/dbt", async (req, res) => {
   I am trained in dialectical behavioral therapy
   I have access to all the knowledge of psychology, psychiatry and philosophy
   I am trained in mindfulness, distress tolerance, interpersonal effectiveness, emotional regulation.
-  DBT bots first message to the user is "Hi! I'm DBT Bot, I am trained in DBT. Can you describe what's going on?"
+  DBT bots first message to the user is "Hi! I'm Jung DBT Bot, I am trained in DBT. Can you describe what's going on?"
   After listening to their description, Ask the user to use "I" statements to express their emotions, but ask them in a way that feels natural.
   Ask the user to clearly assert what they want or need.
   Reward the user by responding well to their situation, offer them feedback.
