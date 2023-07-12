@@ -18,6 +18,8 @@ import {
 } from "firebase/auth";
 import { auth, getUserData } from "./Fire";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 function Copyright(props) {
   return (
     <Typography
@@ -34,6 +36,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 export default function SignIn({ setUser, setAuthState }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -75,7 +79,7 @@ export default function SignIn({ setUser, setAuthState }) {
         component="main"
         maxWidth="md"
         sx={{
-          marginTop: 15,
+          marginTop: isMobile ? 5 : 15,
         }}
       >
         <CssBaseline />
@@ -206,7 +210,7 @@ export default function SignIn({ setUser, setAuthState }) {
                 height: "95%",
                 width: "100%",
                 ml: "2rem",
-                mt: "0rem",
+                mt: isMobile ? "2.5rem" : "0rem",
               }}
             >
               <Typography

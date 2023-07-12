@@ -254,8 +254,20 @@ textarea::placeholder {
   font-size: 15px;
   margin-right: 1.4rem;
 }
+body {
+  background-image: url(../logos/jung-background.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-@media (max-width: 650px) {
+@media screen and (max-width: 650px) {
+  body {
+    background-image: url(../logos/jung-mobile.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .sidemenu {
     display: flex;
     width: 200px;
@@ -432,13 +444,6 @@ textarea::placeholder {
 .footer h3 {
   text-align: center;
   color: #ffffff;
-}
-
-body {
-  background-image: url(../logos/jung-background.svg);
-  background-position: center 75%;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .link {

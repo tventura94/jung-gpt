@@ -12,7 +12,12 @@ export default function Selector({ setUser, setAuthState, user }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div>
-      <div className="main">
+      <div
+        style={{
+          marginBottom: isMobile ? "3rem" : "0", // adjust spacing based on screen size
+        }}
+        className="main"
+      >
         <MenuPopupState
           setUser={setUser}
           setAuthState={setAuthState}
@@ -34,6 +39,8 @@ export default function Selector({ setUser, setAuthState, user }) {
             alignItems: "center",
             justifyContent: "space-evenly",
             width: "97%",
+
+            marginBottom: isMobile ? "3rem" : "0", // adjust spacing based on screen size
           }}
         >
           <motion.div
@@ -57,10 +64,12 @@ export default function Selector({ setUser, setAuthState, user }) {
                 borderRadius: "1em",
                 margin: isMobile ? "1em 0" : "0em", // adjust for smaller screens
                 padding: "1em",
-                transition: "transform 0.15s ease-in-out",
-                ":hover": {
-                  transform: "scale(1.05)",
-                },
+                transition: isMobile ? "" : "transform 0.15s ease-in-out",
+                ":hover": isMobile
+                  ? ""
+                  : {
+                      transform: "scale(1.05)",
+                    },
               }}
             >
               <Button onClick={() => setAuthState("dashboard")}>
@@ -103,10 +112,12 @@ export default function Selector({ setUser, setAuthState, user }) {
                 borderRadius: "1em",
                 margin: isMobile ? "1em 0" : "0em", // adjust for smaller screens
                 padding: "1em",
-                transition: "transform 0.15s ease-in-out",
-                ":hover": {
-                  transform: "scale(1.05)",
-                },
+                transition: isMobile ? "" : "transform 0.15s ease-in-out",
+                ":hover": isMobile
+                  ? ""
+                  : {
+                      transform: "scale(1.05)",
+                    },
               }}
             >
               <Button onClick={() => setAuthState("dbt")}>
