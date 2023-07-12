@@ -50,7 +50,7 @@ export default function Selector({ setUser, setAuthState, user }) {
                 justifyContent: "center",
                 height: "40vh",
                 width: "40vw",
-                backgroundColor: "#ddd",
+                backgroundColor: "#E8E1DC",
                 borderRadius: "1em",
                 margin: "0em",
                 transition: "transform 0.15s ease-in-out", // add this line
@@ -89,7 +89,7 @@ export default function Selector({ setUser, setAuthState, user }) {
                 justifyContent: "center",
                 height: "40vh",
                 width: "40vw",
-                backgroundColor: "#ddd",
+                backgroundColor: "#E8E1DC",
                 borderRadius: "1em",
                 margin: "0em",
                 transition: "transform 0.15s ease-in-out", // add this line
