@@ -4,8 +4,12 @@ import Dashboard from "./Dashboard";
 import MenuPopup from "./MenuPopup";
 import MenuPopupState from "./MenuPopup";
 import { motion } from "framer-motion";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Selector({ setUser, setAuthState, user }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div>
       <div className="main">
@@ -26,7 +30,7 @@ export default function Selector({ setUser, setAuthState, user }) {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
             justifyContent: "space-evenly",
             width: "97%",
@@ -48,14 +52,14 @@ export default function Selector({ setUser, setAuthState, user }) {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "40vh",
-                width: "40vw",
+                width: isMobile ? "90vw" : "40vw", // adjust for smaller screens
                 backgroundColor: "#E8E1DC",
                 borderRadius: "1em",
-                margin: "0em",
-                transition: "transform 0.15s ease-in-out", // add this line
+                margin: isMobile ? "1em 0" : "0em", // adjust for smaller screens
+                padding: "1em",
+                transition: "transform 0.15s ease-in-out",
                 ":hover": {
-                  transform: "scale(1.05)", // add this line
+                  transform: "scale(1.05)",
                 },
               }}
             >
@@ -73,7 +77,7 @@ export default function Selector({ setUser, setAuthState, user }) {
                   <br />
                   Jung GPT is NOT a replacement for therapy. Please consult a
                   professional if you are having any thoughts of self harm or
-                  suicidal ideation .
+                  suicidal ideation.
                 </b>
               </Typography>
             </Box>
@@ -94,14 +98,14 @@ export default function Selector({ setUser, setAuthState, user }) {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "40vh",
-                width: "40vw",
+                width: isMobile ? "90vw" : "40vw", // adjust for smaller screens
                 backgroundColor: "#E8E1DC",
                 borderRadius: "1em",
-                margin: "0em",
-                transition: "transform 0.15s ease-in-out", // add this line
+                margin: isMobile ? "1em 0" : "0em", // adjust for smaller screens
+                padding: "1em",
+                transition: "transform 0.15s ease-in-out",
                 ":hover": {
-                  transform: "scale(1.05)", // add this line
+                  transform: "scale(1.05)",
                 },
               }}
             >
