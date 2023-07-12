@@ -62,7 +62,7 @@ export default function Selector({ setUser, setAuthState, user }) {
             }}
           >
             <Button onClick={() => setAuthState("dbt")}>
-              <Typography variant="h4">DBT BOT</Typography>
+              <Typography variant="h4">Jung DBT</Typography>
             </Button>
           </Box>
         </Box>

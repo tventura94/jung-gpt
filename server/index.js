@@ -75,7 +75,7 @@ app.post("/jung", async (req, res) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("Jung DBT: ", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.createChatCompletion({
@@ -124,7 +124,7 @@ app.post("/dbt", async (req, res) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("DBT Bot: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("Jung DBT: ", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.createChatCompletion({
@@ -146,6 +146,6 @@ app.post("/dbt", async (req, res) => {
     presence_penalty: 0,
   });
   res.json({
-    message: "DBT Bot: " + response.data.choices[0].message.content.trim(),
+    message: "Jung DBT: " + response.data.choices[0].message.content.trim(),
   });
 });
