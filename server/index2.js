@@ -8,6 +8,7 @@ require("dotenv").config();
 const path = require("path");
 
 const configuration = new Configuration({
+  organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.API_KEY,
 });
 
