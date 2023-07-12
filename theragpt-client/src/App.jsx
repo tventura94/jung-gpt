@@ -87,7 +87,7 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Selector setAuthState={setAuthState} setUser={setUser} />
+        <Selector setAuthState={setAuthState} setUser={setUser} user={user} />
         <Footer />
       </Box>
     );

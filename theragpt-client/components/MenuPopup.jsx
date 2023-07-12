@@ -21,6 +21,10 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
       });
   }
 
+  function backButton(e) {
+    e.preventDefault;
+    setAuthState("selector");
+  }
   return (
     <React.Fragment>
       <Button
@@ -51,6 +55,8 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
             Logged in as {user}
           </Typography>
         </MenuItem>
+
+        <MenuItem onClick={backButton}>Change Selection</MenuItem>
         <MenuItem onClick={handleSignOut}>Logout</MenuItem>
       </Drawer>
     </React.Fragment>
