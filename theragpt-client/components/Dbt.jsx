@@ -35,9 +35,9 @@ export default function Dbt({ setUser, setAuthState, user }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let chatLogNew = [...chatLog, { role: "user", message: `${input}` }];
+    let chatLogDbt = [...chatLog, { role: "user", message: `${input}` }];
     setInput("");
-    setChatLog(chatLogNew);
+    setChatLog(chatLogDbt);
 
     const response = await fetch("https://jung-gpt.onrender.com/dbt", {
       method: "POST",
@@ -45,12 +45,12 @@ export default function Dbt({ setUser, setAuthState, user }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        conversation: chatLogNew,
+        conversation: chatLogDbt,
       }),
     });
     const data = await response.json();
     setChatLog([
-      ...chatLogNew,
+      ...chatLogDbt,
       { role: "assistant", message: `${data.message}` },
     ]);
     console.log(data);
