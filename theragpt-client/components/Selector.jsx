@@ -68,6 +68,13 @@ export default function Selector({ setUser, setAuthState, user }) {
                 is used to help users gain clarity into how they might be
                 feeling, and discover ways in which they might be able to help
                 solve or deal with their day to day problems.
+                <b>
+                  <br />
+                  <br />
+                  Jung GPT is NOT a replacement for therapy. Please consult a
+                  professional if you are having any thoughts of self harm or
+                  suicidal ideation .
+                </b>
               </Typography>
             </Box>
           </motion.div>
