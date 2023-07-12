@@ -110,7 +110,7 @@ app.post("/dbt", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `I am DBT bot
+  let message = `I am Jung DBT bot
   I am trained in dialectical behavioral therapy
   I have access to all the knowledge of psychology, psychiatry and philosophy
   I am trained in mindfulness, distress tolerance, interpersonal effectiveness, emotional regulation.
