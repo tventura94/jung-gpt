@@ -7,6 +7,8 @@ import Dashboard from "../components/Dashboard";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../components/Fire";
 import Footer from "../components/Footer";
+import Selector from "../components/Selector";
+import Dbt from "../components/Dbt";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -18,7 +20,7 @@ function App() {
       async (authenticatedUser) => {
         if (authenticatedUser) {
           setUser(authenticatedUser.email);
-          setAuthState("dashboard");
+          setAuthState("selector");
         } else {
           setUser(null);
           setAuthState("signin");
@@ -29,6 +31,21 @@ function App() {
   }, [user]);
 
   if (authState === null) return <h2>Loading...</h2>;
+
+  if (authState === "dashboard")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Dashboard setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Footer />
+      </Box>
+    );
 
   if (authState === "register")
     return (
@@ -60,7 +77,7 @@ function App() {
       </Box>
     );
 
-  if (user)
+  if (authState === "selector")
     return (
       <Box
         sx={{
@@ -70,7 +87,22 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Dashboard setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Selector setAuthState={setAuthState} setUser={setUser} />
+        <Footer />
+      </Box>
+    );
+
+  if (authState === "dbt")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Dbt setAuthState={setAuthState} setUser={setUser} user={user} />
         <Footer />
       </Box>
     );
