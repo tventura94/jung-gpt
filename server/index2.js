@@ -32,7 +32,7 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app.post("/", async (req, res) => {
+app.post("/dbt", async (req, res) => {
   const { conversation } = req.body;
 
   app.use(express.static(path.join(__dirname, "dist")));
