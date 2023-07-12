@@ -101,7 +101,7 @@ export default function SignIn({ setUser, setAuthState }) {
               alignItems: "center",
               justifyItems: "center",
               textAlign: "center",
-              backgroundColor: "#e8e1dc",
+              backgroundColor: isMobile ? "none" : "#e8e1dc",
               padding: "15px",
               borderRadius: "3%",
               marginLeft: "14px",
@@ -113,7 +113,7 @@ export default function SignIn({ setUser, setAuthState }) {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  bgcolor: "#e8e1dc",
+                  bgcolor: isMobile ? "none" : "#e8e1dc",
                   color: "#1E4B66",
                   paddingTop: "2rem",
                 }}
@@ -123,7 +123,7 @@ export default function SignIn({ setUser, setAuthState }) {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    bgcolor: "#e8e1dc",
+                    bgcolor: isMobile ? "#FFFFFF" : "#e8e1dc",
                     color: "#1E4B66",
                   }}
                 >
