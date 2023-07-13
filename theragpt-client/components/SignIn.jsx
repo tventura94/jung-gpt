@@ -78,7 +78,7 @@ export default function SignIn({ setUser, setAuthState }) {
       <img
         style={{
           position: "absolute",
-          width: isMobile ? "11rem" : "16rem",
+          width: isMobile ? "10rem" : "16rem",
           marginLeft: isMobile ? "1rem" : "3rem",
         }}
         src={MainLogo}
@@ -188,7 +188,14 @@ export default function SignIn({ setUser, setAuthState }) {
                 >
                   Sign In
                 </Button>
-                <Grid container paddingBottom={"2rem"}>
+                <Grid
+                  container
+                  style={{
+                    paddingRight: isMobile ? "1.5rem" : "0rem",
+                  }}
+                  marginTop={"1rem"}
+                  paddingBottom={"0rem"}
+                >
                   <Grid item xs>
                     <Link
                       href="#"
