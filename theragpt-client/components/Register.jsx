@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./Fire";
+import MainLogo from "/will.png";
 function Copyright(props) {
   return (
     <Typography
@@ -51,6 +52,14 @@ export default function Register({ setUser, setAuthState }) {
   };
   return (
     <ThemeProvider theme={theme}>
+      <img
+        style={{
+          position: "absolute",
+          width: "10rem",
+          marginLeft: "1rem",
+        }}
+        src={MainLogo}
+      ></img>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

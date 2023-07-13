@@ -17,6 +17,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, getUserData } from "./Fire";
+import MainLogo from "/will.png";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -77,10 +78,10 @@ export default function SignIn({ setUser, setAuthState }) {
       <img
         style={{
           position: "absolute",
-          width: "10rem",
-          marginLeft: "1rem",
+          width: isMobile ? "11rem" : "16rem",
+          marginLeft: isMobile ? "1rem" : "3rem",
         }}
-        src="../logos/1.png"
+        src={MainLogo}
       ></img>
       <Container
         className
