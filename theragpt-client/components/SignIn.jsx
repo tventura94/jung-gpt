@@ -74,6 +74,14 @@ export default function SignIn({ setUser, setAuthState }) {
 
   return (
     <ThemeProvider theme={theme}>
+      <img
+        style={{
+          position: "absolute",
+          width: "10rem",
+          marginLeft: "1rem",
+        }}
+        src="../logos/1.png"
+      ></img>
       <Container
         className
         component="main"
