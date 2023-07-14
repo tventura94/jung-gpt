@@ -9,6 +9,8 @@ import { auth } from "../components/Fire";
 import Footer from "../components/Footer";
 import Selector from "../components/Selector";
 import Dbt from "../components/Dbt";
+import AccountSettings from "../components/AccountSettings";
+import Terms from "../components/Terms";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -103,6 +105,39 @@ function App() {
         }}
       >
         <Dbt setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Footer />
+      </Box>
+    );
+
+  if (authState === "accountsettings")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <AccountSettings
+          setAuthState={setAuthState}
+          setUser={setUser}
+          user={user}
+        />
+        <Footer />
+      </Box>
+    );
+  if (authState === "terms")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Terms setAuthState={setAuthState} setUser={setUser} user={user} />
         <Footer />
       </Box>
     );

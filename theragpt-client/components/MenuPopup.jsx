@@ -20,6 +20,10 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
         alert(err);
       });
   }
+  function accountSettings(e) {
+    e.preventDefault;
+    setAuthState("accountsettings");
+  }
 
   function backButton(e) {
     e.preventDefault;
@@ -57,6 +61,7 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
         </MenuItem>
 
         <MenuItem onClick={backButton}>Change Selection</MenuItem>
+        <MenuItem onClick={accountSettings}>Account Settings</MenuItem>
         <MenuItem onClick={handleSignOut}>Logout</MenuItem>
       </Drawer>
     </React.Fragment>
