@@ -76,11 +76,13 @@ export default function Selector({ setUser, setAuthState, user }) {
                 <Typography variant="h4">Jung GPT</Typography>
               </Button>
               <Typography m={5}>
-                Our very first Emotional Reflection Feedback tool. This tool is
-                trained in psychology, psychiatry, philosophy, and medicine. It
-                is used to help users gain clarity into how they might be
-                feeling, and discover ways in which they might be able to help
-                solve or deal with their day to day problems.
+                Our very first Emotional Reflection Feedback tool, JungGPT, is
+                an advanced language model that facilitates emotional
+                understanding. It processes user input, deciphers the inherent
+                emotional context, and reflects it back to the user for enhanced
+                clarity. Leveraging this understanding, JungGPT provides
+                personalized, strategic suggestions for emotional navigation and
+                progression.
                 <b>
                   <br />
                   <br />
