@@ -20,13 +20,11 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
         alert(err);
       });
   }
-  function accountSettings(e) {
-    e.preventDefault;
+  function accountSettings() {
     setAuthState("accountsettings");
   }
 
-  function backButton(e) {
-    e.preventDefault;
+  function backButton() {
     setAuthState("selector");
   }
   return (
