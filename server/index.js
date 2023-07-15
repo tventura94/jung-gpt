@@ -66,7 +66,7 @@ app.post("/jung", async (req, res) => {
         content: "",
       },
     ],
-    temperature: 1.8,
+    temperature: 1.3,
     max_tokens: 1131,
     top_p: 1,
     frequency_penalty: 1,
