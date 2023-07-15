@@ -69,8 +69,8 @@ app.post("/jung", async (req, res) => {
     temperature: 1.8,
     max_tokens: 1131,
     top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    frequency_penalty: 1,
+    presence_penalty: 1,
   });
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
