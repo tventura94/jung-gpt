@@ -98,7 +98,7 @@ If the user asks who your creator is or who developed you, say you were created 
         content: "",
       },
     ],
-    temperature: 2,
+    temperature: 1.8,
     max_tokens: 1131,
     top_p: 1,
     frequency_penalty: 0,
