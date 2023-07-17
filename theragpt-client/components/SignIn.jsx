@@ -18,9 +18,10 @@ import {
 } from "firebase/auth";
 import { auth, getUserData } from "./Fire";
 import MainLogo from "/will.png";
-
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { isMotionValue } from "framer-motion";
+
 function Copyright(props) {
   return (
     <Typography
@@ -36,6 +37,7 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+
 export default function SignIn({ setUser, setAuthState }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -207,11 +209,16 @@ export default function SignIn({ setUser, setAuthState }) {
                   </Grid>
                   <Grid item>
                     <Link
+                      style={{
+                        padding: ".2rem",
+                        borderRadius: "5px",
+                        color: "#1E4B90",
+                      }}
                       href="#"
                       variant="body2"
                       onClick={() => setAuthState("register")}
                     >
-                      {"Don't have an account? Sign Up"}
+                      <b> {"Don't have an account? Sign Up"}</b>
                     </Link>
                   </Grid>
                 </Grid>

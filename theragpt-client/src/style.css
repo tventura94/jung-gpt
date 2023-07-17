@@ -255,7 +255,7 @@ textarea::placeholder {
   margin-right: 1.4rem;
 }
 body {
-  background-image: url(../logos/jung-background.svg);
+  background-image: url(../logos/jung-background4.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -434,12 +434,12 @@ body {
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  background-color: #1e4b66;
-  height: 6vh;
+  background-color: #526d7d;
+  height: 4vh;
   align-items: center;
   justify-content: center;
   letter-spacing: 4px;
-  font-size: 12px;
+  font-size: 9px;
 }
 .footer h3 {
   text-align: center;

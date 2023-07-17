@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import MenuPopupState from "./MenuPopup";
 import Link from "@mui/material/Link";
+import MainLogo from "/will.png";
 
 function AccountSettings({ setUser, setAuthState, user }) {
   const [currentTab, setCurrentTab] = useState(0);

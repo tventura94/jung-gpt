@@ -15,6 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./Fire";
 import MainLogo from "/will.png";
+import useMediaQuery from "@mui/material/useMediaQuery"; // Add this line
+
+import { useTheme } from "@mui/material/styles";
 function Copyright(props) {
   return (
     <Typography
@@ -32,6 +35,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register({ setUser, setAuthState }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -55,8 +60,8 @@ export default function Register({ setUser, setAuthState }) {
       <img
         style={{
           position: "absolute",
-          width: "10rem",
-          marginLeft: "1rem",
+          width: isMobile ? "10rem" : "16rem",
+          marginLeft: isMobile ? "1rem" : "3rem",
         }}
         src={MainLogo}
       ></img>
