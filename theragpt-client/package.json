@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "@react-oauth/google": "^0.6.1",
+    "@stripe/stripe-js": "^1.54.1",
     "babel": "^6.23.0",
     "body-parser": "^1.20.2",
     "cesium": "^1.102.0",

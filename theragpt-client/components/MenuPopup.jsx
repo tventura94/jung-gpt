@@ -7,19 +7,24 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Typography } from "@mui/material";
 import { Drawer } from "@mui/material";
 
-export default function MenuPopupState({ setUser, setAuthState, user }) {
+export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   function handleSignOut() {
     signOut(auth)
       .then(() => {
-        setUser(null);
+        setUserEmail(null);
         setAuthState("login");
       })
       .catch((err) => {
         alert(err);
       });
   }
+
+  function handleUpgrade() {
+    setAuthState("upgrade");
+  }
+
   function accountSettings() {
     setAuthState("accountsettings");
   }
@@ -27,6 +32,7 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
   function backButton() {
     setAuthState("selector");
   }
+
   return (
     <React.Fragment>
       <Button
@@ -54,12 +60,13 @@ export default function MenuPopupState({ setUser, setAuthState, user }) {
       >
         <MenuItem onClick={() => setIsDrawerOpen(false)}>
           <Typography color="textSecondary" variant="body1">
-            Logged in as {user}
+            Logged in as {user.email}
           </Typography>
         </MenuItem>
 
         <MenuItem onClick={backButton}>Change Selection</MenuItem>
         <MenuItem onClick={accountSettings}>Account Settings</MenuItem>
+        <MenuItem onClick={handleUpgrade}>Upgrade</MenuItem>
         <MenuItem onClick={handleSignOut}>Logout</MenuItem>
       </Drawer>
     </React.Fragment>

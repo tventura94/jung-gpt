@@ -11,9 +11,11 @@ import Selector from "../components/Selector";
 import Dbt from "../components/Dbt";
 import AccountSettings from "../components/AccountSettings";
 import Terms from "../components/Terms";
+import Upgrade from "../components/Upgrade";
 
 function App() {
   const [user, setUser] = React.useState(null);
+  const [userEmail, setUserEmail] = React.useState(null);
   const [authState, setAuthState] = React.useState(null);
 
   React.useEffect(() => {
@@ -21,16 +23,18 @@ function App() {
       auth,
       async (authenticatedUser) => {
         if (authenticatedUser) {
-          setUser(authenticatedUser.email);
+          setUser(authenticatedUser);
+          setUserEmail(authenticatedUser);
           setAuthState("selector");
         } else {
           setUser(null);
+          setUserEmail(null);
           setAuthState("signin");
         }
       }
     );
     return unSubscribeAuth;
-  }, [user]);
+  }, [user, userEmail]);
 
   if (authState === null) return <h2>Loading...</h2>;
 
@@ -44,7 +48,11 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Dashboard setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Dashboard
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+        />
         <Footer />
       </Box>
     );
@@ -59,7 +67,7 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Register setAuthState={setAuthState} setUser={setUser} />
+        <Register setAuthState={setAuthState} setUserEmail={setUserEmail} />
         <Footer />
       </Box>
     );
@@ -74,7 +82,7 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <SignIn setAuthState={setAuthState} setUser={setUser} />
+        <SignIn setAuthState={setAuthState} setUserEmail={setUserEmail} />
         <Footer />
       </Box>
     );
@@ -89,7 +97,11 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Selector setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Selector
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+        />
         <Footer />
       </Box>
     );
@@ -104,7 +116,11 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Dbt setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Dbt
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+        />
         <Footer />
       </Box>
     );
@@ -121,12 +137,13 @@ function App() {
       >
         <AccountSettings
           setAuthState={setAuthState}
-          setUser={setUser}
+          setUserEmail={setUserEmail}
           user={user}
         />
         <Footer />
       </Box>
     );
+
   if (authState === "terms")
     return (
       <Box
@@ -137,7 +154,30 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <Terms setAuthState={setAuthState} setUser={setUser} user={user} />
+        <Terms
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+        />
+        <Footer />
+      </Box>
+    );
+
+  if (authState === "upgrade")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Upgrade
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+        />
         <Footer />
       </Box>
     );
@@ -151,7 +191,7 @@ function App() {
         justifyContent: "space-between",
       }}
     >
-      <Register />
+      <Register setUserEmail={setUserEmail} />
       <Footer />
     </Box>
   );

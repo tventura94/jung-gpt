@@ -15,18 +15,35 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuPopupState from "./MenuPopup";
 import MainLogo from "/will.png";
-import Terms from "./Terms";
+import { useEffect } from "react";
 
-export default function Selector({ setUser, setAuthState, user }) {
+import { getUserData, db } from "./Fire";
+
+export default function Selector({ setUserEmail, setAuthState, user }) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await getUserData(user.email);
+      } catch (error) {
+        // Handle any potential errors
+        console.log("Error retrieving user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [user.email]);
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [open, setOpen] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
-  function Terms(e) {
-    e.preventDefault;
+
+  const handleTermsClick = (e) => {
+    e.preventDefault();
     setAuthState("terms");
-  }
+  };
+
   React.useEffect(() => {
     const hasOpened = sessionStorage.getItem("hasOpened");
 
@@ -65,7 +82,7 @@ export default function Selector({ setUser, setAuthState, user }) {
     <div style={{ boxSizing: "border-box" }}>
       <div className="main">
         <MenuPopupState
-          setUser={setUser}
+          setUserEmail={setUserEmail}
           setAuthState={setAuthState}
           user={user}
         />
@@ -107,24 +124,7 @@ export default function Selector({ setUser, setAuthState, user }) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0, ease: [0, 0.71, 0.2, 1.01] }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#E8E1DC",
-                borderRadius: "3em",
-                padding: isMobile ? "1em" : "0em",
-                width: "100%",
-                maxWidth: isMobile ? "90vw" : "30vw",
-                margin: isMobile ? "1em 0" : "0",
-                transition: isMobile ? "" : "transform 0.15s ease-in-out",
-                ":hover": isMobile ? "" : { transform: "scale(1.05)" },
-                fontFamily: "'Roboto Slab', serif",
-                lineHeight: "1.6rem",
-              }}
-            >
+            <Box sx={boxStyles}>
               <Button
                 style={{
                   width: "18rem",
@@ -146,7 +146,6 @@ export default function Selector({ setUser, setAuthState, user }) {
                   lineHeight: "2rem",
                 }}
               >
-                {" "}
                 <b>Our very first Emotional Reflection Feedback tool.</b> <br />
                 An advanced language model that facilitates emotional
                 understanding. It processes user input, deciphers the inherent

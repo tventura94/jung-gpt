@@ -34,7 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Register({ setUser, setAuthState }) {
+export default function Register({ setUserEmail, setAuthState }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [email, setEmail] = React.useState("");
@@ -45,7 +45,7 @@ export default function Register({ setUser, setAuthState }) {
     if (email !== null && password !== null) {
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          setUser(email);
+          setUserEmail(email);
           setAuthState("dashboard");
           alert("Account Successfully created!");
         })

@@ -38,7 +38,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({ setUser, setAuthState }) {
+export default function SignIn({ setUserEmail, setAuthState }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [email, setEmail] = React.useState("");
@@ -48,9 +48,11 @@ export default function SignIn({ setUser, setAuthState }) {
     e.preventDefault();
     if (email !== null && password !== null) {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          setUser(email);
-          setAuthState("dashboard");
+        .then((userCredential) => {
+          const { email } = userCredential.user;
+          getUserData(email); // Pass the UID and email to getUserData
+          setUserEmail(email);
+          setAuthState("selector");
         })
         .catch((err) => {
           if (!email || !password)

@@ -12,7 +12,7 @@ import MenuPopupState from "./MenuPopup";
 import Link from "@mui/material/Link";
 import MainLogo from "/will.png";
 
-function AccountSettings({ setUser, setAuthState, user }) {
+function AccountSettings({ setUserEmail, setAuthState, user }) {
   const [currentTab, setCurrentTab] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -27,7 +27,7 @@ function AccountSettings({ setUser, setAuthState, user }) {
     <div maxWidth="100%">
       <div className="main">
         <MenuPopupState
-          setUser={setUser}
+          setUserEmail={setUserEmail}
           setAuthState={setAuthState}
           user={user}
         />
@@ -56,9 +56,9 @@ function AccountSettings({ setUser, setAuthState, user }) {
           <Box marginBottom={2}>
             <Button
               variant="outlined"
-              onClick={() => console.log("Renew or Cancel")}
+              href="https://billing.stripe.com/p/login/test_eVaeWAbl9gXXgKYfYY"
             >
-              Renew / Cancel
+              Manage Subscription
             </Button>
           </Box>
         </TabPanel>
@@ -68,7 +68,7 @@ function AccountSettings({ setUser, setAuthState, user }) {
             <Typography variant="h6">Email</Typography>
           </Box>
           <Box marginBottom={5}>
-            <TextField variant="outlined" value={user} disabled />
+            <TextField variant="outlined" value={user.email} disabled />
           </Box>
           <Box marginBottom={4}>
             <Typography variant="body1">

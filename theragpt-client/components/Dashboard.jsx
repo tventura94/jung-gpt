@@ -4,7 +4,7 @@ import Fire from "./Fire";
 import { getUserData } from "./Fire";
 import "@fortawesome/fontawesome-free/css/all.css";
 
-export default function Dashboard({ setUser, setAuthState, user }) {
+export default function Dashboard({ setUserEmail, setAuthState, user }) {
   const [pageLoaded, setPageLoaded] = useState(false);
 
   function autosize(textarea) {
@@ -13,8 +13,17 @@ export default function Dashboard({ setUser, setAuthState, user }) {
   }
 
   useEffect(() => {
-    getUserData(user);
-  }, []);
+    const fetchData = async () => {
+      try {
+        await getUserData(user.email);
+      } catch (error) {
+        // Handle any potential errors
+        console.log("Error retrieving user data:", error);
+      }
+    };
+
+    fetchData();
+  }, [user.email]);
 
   useEffect(() => {
     if (document.readyState === "complete") {
@@ -71,7 +80,7 @@ export default function Dashboard({ setUser, setAuthState, user }) {
     <div className="dashboard">
       <div className="main">
         <MenuPopupState
-          setUser={setUser}
+          setUserEmail={setUserEmail}
           setAuthState={setAuthState}
           user={user}
         />

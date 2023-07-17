@@ -4,7 +4,7 @@ import { initializeAppCheck } from "firebase/app-check";
 import { ReCaptchaV3Provider } from "firebase/app-check";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { collection, doc, setDoc, getDocs, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDoc, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDTj2O54OA5PLUGeTlj_cJfnnir5vBcXj0",
@@ -27,13 +27,21 @@ export const db = getFirestore();
 
 // Get User Data
 
-export function getUserData(email) {
+export async function getUserData(email) {
   if (!email) {
     return;
   }
-  return setDoc(doc(db, "users", email), {
-    email: email,
-  });
+
+  const docRef = doc(db, "users", email);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    return null;
+  }
 }
 
 // Collection Reference
