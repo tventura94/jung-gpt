@@ -36,12 +36,23 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   }, []);
 
   const handleUpgrade = async (productId) => {
+    // Find the selected product by its ID
+    const selectedProduct = products.find(
+      (product) => product.id === productId
+    );
+
+    // Check if the product and its stripe_price_id are found
+    if (!selectedProduct || !selectedProduct.stripe_price_id) {
+      alert("Product or price ID not found!");
+      return;
+    }
+
     const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: "price_1NUhCEGx3uwFHp1121H0DCas",
+        price: selectedProduct.stripe_price_id, // Use the selected product's Stripe price ID
         success_url: window.location.href,
         cancel_url: window.location.href,
       }
