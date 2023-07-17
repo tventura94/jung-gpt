@@ -16,6 +16,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuPopupState from "./MenuPopup";
 import MainLogo from "/will.png";
 import { useEffect } from "react";
+import DbtLogo from "/jung-dbt.png";
+import JungFace from "/gpt-text-1.png";
 
 import { getUserData, db } from "./Fire";
 
@@ -81,21 +83,24 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
   return (
     <div style={{ boxSizing: "border-box" }}>
       <div className="main">
+        <img
+          style={{
+            color: "white",
+            right: "5%",
+            bottom: "94.2%",
+            width: isMobile ? "3rem" : "3rem",
+            marginLeft: isMobile ? "0rem" : "0rem",
+            marginRight: isMobile ? "1rem" : "1rem",
+          }}
+          src={JungFace}
+        />
         <MenuPopupState
           setUserEmail={setUserEmail}
           setAuthState={setAuthState}
           user={user}
         />
       </div>
-      <img
-        style={{
-          display: isMobile ? "none" : "",
-          position: "absolute",
-          width: isMobile ? "10rem" : "16rem",
-          marginLeft: isMobile ? "1rem" : "3rem",
-        }}
-        src={MainLogo}
-      />
+
       <div
         style={{
           display: "flex",
@@ -167,10 +172,35 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             }}
           >
             <Box sx={boxStyles}>
-              <Button onClick={() => setAuthState("dbt")}>
-                <Typography variant="h4">Jung DBT</Typography>
+              <Button
+                style={{
+                  width: "18rem",
+                  height: "8rem",
+                }}
+                onClick={() => setAuthState("dbt")}
+              >
+                <img
+                  style={{
+                    width: "18rem",
+                  }}
+                  src={DbtLogo}
+                />
               </Button>
-              {/* Description for Jung DBT */}
+              <p
+                style={{
+                  width: "80%",
+                  marginBottom: "3rem",
+                  lineHeight: "2rem",
+                }}
+              >
+                <b>Our groundbreaking DBT Tool, JungDBT</b> <br />
+                An advanced language model that supports Dialectical Behavior
+                Therapy (DBT) principles. It analyzes user input, discerns
+                emotional nuances, and offers reflections to promote better
+                clarity and understanding. Drawing on this insight, JungDBT
+                provides personalized guidance and strategies for effective
+                emotional navigation and growth.
+              </p>
             </Box>
           </motion.div>
         </Box>

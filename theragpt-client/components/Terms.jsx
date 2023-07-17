@@ -11,6 +11,7 @@ import {
 import MenuPopupState from "./MenuPopup";
 import Link from "@mui/material/Link";
 import MenuPopup from "../components/MenuPopup";
+import JungFace from "/gpt-text-1.png";
 
 function Terms({ setUser, setAuthState, user }) {
   return (
