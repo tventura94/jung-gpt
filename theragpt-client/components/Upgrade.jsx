@@ -13,9 +13,13 @@ import {
 import { db } from "./Fire";
 import MenuPopupState from "./MenuPopup";
 
-export default function Upgrade({ setUserEmail, setAuthState, user }) {
+export default function Upgrade({
+  setUserEmail,
+  setAuthState,
+  setSubscriptionStatus,
+  user,
+}) {
   const [products, setProducts] = useState([]);
-  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -37,25 +41,20 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   }, []);
 
   useEffect(() => {
-    // Log the subscription status
-    console.log("Subscription status in Upgrade: ", subscriptionStatus);
-  }, [subscriptionStatus]);
-
-  useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
       (snapshot) => {
-        // Filter out the subscriptions with 'trialing' or 'active' status
         let activeSubs = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
           .filter((sub) => ["trialing", "active"].includes(sub.status));
 
-        // We assume there's only one active or trialing subscription, get the first one
         let newSub = activeSubs[0];
 
         if (newSub) {
-          // Set the subscription status
+          console.log(`Account is ${newSub.status}`);
           setSubscriptionStatus(newSub.status);
+        } else {
+          console.log("account not active");
         }
       }
     );
@@ -63,15 +62,13 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     return () => {
       unsubscribe();
     };
-  }, [user]);
+  }, [user, setSubscriptionStatus]);
 
   const handleUpgrade = async (productId) => {
-    // Find the selected product by its ID
     const selectedProduct = products.find(
       (product) => product.id === productId
     );
 
-    // Check if the product and its stripe_price_id are found
     if (!selectedProduct || !selectedProduct.stripe_price_id) {
       alert("Product or price ID not found!");
       return;
@@ -82,7 +79,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: selectedProduct.stripe_price_id, // Use the selected product's Stripe price ID
+        price: selectedProduct.stripe_price_id,
         success_url: window.location.href,
         cancel_url: window.location.href,
       }
@@ -104,7 +101,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     );
 
     return () => {
-      sessionListener(); // Cleanup the listener when the component unmounts
+      sessionListener();
     };
   };
 
@@ -115,7 +112,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           setUser={setUserEmail}
           setAuthState={setAuthState}
           user={user}
-          subscriptionStatus={subscriptionStatus} // pass subscription status as prop
         />
       </div>
 

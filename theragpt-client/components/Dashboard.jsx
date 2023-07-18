@@ -5,26 +5,21 @@ import { getUserData } from "./Fire";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
-
+import { db } from "../components/Fire";
+import { collection, onSnapshot } from "firebase/firestore";
 export default function Dashboard({
   setUserEmail,
   setAuthState,
   user,
   subscriptionStatus,
+  setSubscriptionStatus,
 }) {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [trialLimitReached, setTrialLimitReached] = useState(false);
+  const [chatLog, setChatLog] = useState([]);
+  const [input, setInput] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
-  function autosize(textarea) {
-    textarea.style.height = "auto";
-    textarea.style.height = textarea.scrollHeight + "px";
-  }
-  function handleUpgrade() {
-    setAuthState("upgrade");
-  }
-  function backButton() {
-    setAuthState("selector");
-  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,19 +42,55 @@ export default function Dashboard({
       };
       window.addEventListener("load", handleLoad);
 
-      // cleanup
+      // Cleanup
       return () => window.removeEventListener("load", handleLoad);
     }
-  }, []); // Run once on mount
-
-  const [input, setInput] = useState("");
-  const [chatLog, setChatLog] = useState([]);
+  }, []);
 
   useEffect(() => {
-    if (chatLog.length >= 9) {
+    if (subscriptionStatus !== "active" && chatLog.length >= 9) {
       setTrialLimitReached(true);
+    } else {
+      setTrialLimitReached(false);
     }
-  }, [chatLog]);
+  }, [chatLog, subscriptionStatus]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "users", user.uid, "subscriptions"), // Updated document reference
+      (snapshot) => {
+        let activeSubs = snapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((sub) => ["trialing", "active"].includes(sub.status));
+
+        let newSub = activeSubs[0];
+
+        if (newSub) {
+          console.log(`Account is ${newSub.status}`);
+          setSubscriptionStatus(newSub.status);
+        } else {
+          console.log("Account not active");
+        }
+      }
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user.uid, setSubscriptionStatus]);
+
+  function autosize(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  }
+
+  function handleUpgrade() {
+    setAuthState("upgrade");
+  }
+
+  function backButton() {
+    setAuthState("selector");
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -80,12 +111,12 @@ export default function Dashboard({
         conversation: chatLogNew,
       }),
     });
+
     const data = await response.json();
     setChatLog([
       ...chatLogNew,
       { role: "assistant", message: `${data.message}` },
     ]);
-    console.log(data);
   }
 
   function clearChat(e) {
@@ -93,8 +124,6 @@ export default function Dashboard({
     setChatLog([]);
     setTrialLimitReached(false);
   }
-
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   // Add a function to handle menu toggle
   function handleMenuToggle() {

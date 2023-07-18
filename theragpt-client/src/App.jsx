@@ -17,6 +17,8 @@ function App() {
   const [user, setUser] = React.useState(null);
   const [userEmail, setUserEmail] = React.useState(null);
   const [authState, setAuthState] = React.useState(null);
+  const [subscriptionStatus, setSubscriptionStatus] =
+    React.useState("inactive"); // add this line
 
   React.useEffect(() => {
     const unSubscribeAuth = onAuthStateChanged(
@@ -34,7 +36,7 @@ function App() {
       }
     );
     return unSubscribeAuth;
-  }, [user, userEmail]);
+  }, [user, userEmail, subscriptionStatus]);
 
   if (authState === null) return <h2>Loading...</h2>;
 
@@ -52,6 +54,8 @@ function App() {
           setAuthState={setAuthState}
           setUserEmail={setUserEmail}
           user={user}
+          subscriptionStatus={subscriptionStatus}
+          setSubscriptionStatus={setSubscriptionStatus}
         />
         <Footer />
       </Box>
@@ -101,6 +105,7 @@ function App() {
           setAuthState={setAuthState}
           setUserEmail={setUserEmail}
           user={user}
+          subscriptionStatus={subscriptionStatus}
         />
         <Footer />
       </Box>
@@ -120,6 +125,7 @@ function App() {
           setAuthState={setAuthState}
           setUserEmail={setUserEmail}
           user={user}
+          subscriptionStatus={subscriptionStatus}
         />
         <Footer />
       </Box>
@@ -139,6 +145,7 @@ function App() {
           setAuthState={setAuthState}
           setUserEmail={setUserEmail}
           user={user}
+          subscriptionStatus={subscriptionStatus}
         />
         <Footer />
       </Box>
@@ -177,6 +184,7 @@ function App() {
           setAuthState={setAuthState}
           setUserEmail={setUserEmail}
           user={user}
+          setSubscriptionStatus={setSubscriptionStatus}
         />
         <Footer />
       </Box>
