@@ -3,15 +3,23 @@ import MenuPopupState from "./MenuPopup";
 import Fire from "./Fire";
 import { getUserData } from "./Fire";
 import "@fortawesome/fontawesome-free/css/all.css";
+import { Button } from "@mui/material";
+import { Typography } from "@mui/material";
 
 export default function Dashboard({ setUserEmail, setAuthState, user }) {
   const [pageLoaded, setPageLoaded] = useState(false);
+  const [trialLimitReached, setTrialLimitReached] = useState(false);
 
   function autosize(textarea) {
     textarea.style.height = "auto";
     textarea.style.height = textarea.scrollHeight + "px";
   }
-
+  function handleUpgrade() {
+    setAuthState("upgrade");
+  }
+  function backButton() {
+    setAuthState("selector");
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,8 +50,18 @@ export default function Dashboard({ setUserEmail, setAuthState, user }) {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
 
+  useEffect(() => {
+    if (chatLog.length >= 9) {
+      setTrialLimitReached(true);
+    }
+  }, [chatLog]);
+
   async function handleSubmit(e) {
     e.preventDefault();
+    if (trialLimitReached) {
+      return;
+    }
+
     let chatLogNew = [...chatLog, { role: "user", message: `${input}` }];
     setInput("");
     setChatLog(chatLogNew);
@@ -68,6 +86,7 @@ export default function Dashboard({ setUserEmail, setAuthState, user }) {
   function clearChat(e) {
     e.stopPropagation();
     setChatLog([]);
+    setTrialLimitReached(false);
   }
 
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -76,6 +95,7 @@ export default function Dashboard({ setUserEmail, setAuthState, user }) {
   function handleMenuToggle() {
     setIsMenuOpen(!isMenuOpen);
   }
+
   return (
     <div className="dashboard">
       <div className="main">
@@ -127,8 +147,13 @@ export default function Dashboard({ setUserEmail, setAuthState, user }) {
                           handleSubmit(e);
                         }
                       }}
+                      disabled={trialLimitReached}
                     ></textarea>
-                    <button type="submit" className="send-button">
+                    <button
+                      type="submit"
+                      className="send-button"
+                      disabled={trialLimitReached}
+                    >
                       &#10148;
                     </button>
                   </form>
@@ -139,6 +164,44 @@ export default function Dashboard({ setUserEmail, setAuthState, user }) {
                 </div>
               </div>
             </section>
+            {trialLimitReached && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+                className="overlay"
+              >
+                <Typography
+                  style={{
+                    margin: "1rem",
+                  }}
+                  variant="h6"
+                >
+                  Sorry, you're on the free trial. Upgrade to continue chatting.
+                </Typography>
+
+                <Button
+                  style={{
+                    margin: "1rem",
+                  }}
+                  variant="contained"
+                  color="primary"
+                  onClick={handleUpgrade}
+                >
+                  Subscribe
+                </Button>
+                <Button
+                  style={{
+                    margin: "1rem",
+                  }}
+                  variant="outlined"
+                  onClick={backButton}
+                >
+                  Back to Selection
+                </Button>
+              </div>
+            )}
           </div>
         ) : (
           <p>Loading...</p>
