@@ -90,6 +90,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       <div>
         {products.map((product) => (
           <div key={product.id}>
+            <h1> TEST MODE - NOT A REAL CHECKOUT! </h1>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
 
