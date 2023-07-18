@@ -100,7 +100,7 @@ If the user asks who your creator is or who developed you, say you were created 
       },
     ],
     temperature: 1.3,
-    max_tokens: 300,
+    max_tokens: 600,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
