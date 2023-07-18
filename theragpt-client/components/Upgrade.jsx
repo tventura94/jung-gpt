@@ -15,6 +15,7 @@ import MenuPopupState from "./MenuPopup";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +35,35 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
 
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    // Log the subscription status
+    console.log("Subscription status in Upgrade: ", subscriptionStatus);
+  }, [subscriptionStatus]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "users", user.uid, "subscriptions"),
+      (snapshot) => {
+        // Filter out the subscriptions with 'trialing' or 'active' status
+        let activeSubs = snapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((sub) => ["trialing", "active"].includes(sub.status));
+
+        // We assume there's only one active or trialing subscription, get the first one
+        let newSub = activeSubs[0];
+
+        if (newSub) {
+          // Set the subscription status
+          setSubscriptionStatus(newSub.status);
+        }
+      }
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user]);
 
   const handleUpgrade = async (productId) => {
     // Find the selected product by its ID
@@ -85,8 +115,10 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           setUser={setUserEmail}
           setAuthState={setAuthState}
           user={user}
+          subscriptionStatus={subscriptionStatus} // pass subscription status as prop
         />
       </div>
+
       <div>
         {products.map((product) => (
           <div key={product.id}>

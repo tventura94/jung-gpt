@@ -6,7 +6,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 
-export default function Dashboard({ setUserEmail, setAuthState, user }) {
+export default function Dashboard({
+  setUserEmail,
+  setAuthState,
+  user,
+  subscriptionStatus,
+}) {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [trialLimitReached, setTrialLimitReached] = useState(false);
 
