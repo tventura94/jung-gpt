@@ -9,19 +9,59 @@ import {
   DialogActions,
   Checkbox,
   FormControlLabel,
+  Tooltip,
+  styled,
+  makeStyles,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuPopupState from "./MenuPopup";
 import MainLogo from "/will.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DbtLogo from "/jung-dbt.png";
 import JungFace from "/gpt-text-1.png";
-
+import {
+  collection,
+  where,
+  query,
+  getDocs,
+  doc,
+  addDoc,
+  onSnapshot,
+  getDoc,
+} from "firebase/firestore";
 import { getUserData, db } from "./Fire";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
+  const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "users", user.uid, "subscriptions"),
+      (snapshot) => {
+        let activeSubs = snapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((sub) => ["trialing", "active"].includes(sub.status));
+
+        let newSub = activeSubs[0];
+
+        if (newSub) {
+          console.log(`Account is ${newSub.status}`);
+          setSubscriptionStatus(
+            newSub.status === "active" ? "Premium" : newSub.status
+          );
+        } else {
+          console.log("Account not active");
+          setSubscriptionStatus("Free Plan");
+        }
+      }
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user.uid]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -172,20 +212,47 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             }}
           >
             <Box sx={boxStyles}>
-              <Button
+              <div
                 style={{
-                  width: "18rem",
-                  height: "8rem",
+                  position: "relative",
+                  cursor:
+                    subscriptionStatus === "Premium"
+                      ? "pointer"
+                      : "not-allowed",
                 }}
-                onClick={() => setAuthState("dbt")}
               >
-                <img
+                <Tooltip
                   style={{
-                    width: "18rem",
+                    fontSize: "40px",
                   }}
-                  src={DbtLogo}
-                />
-              </Button>
+                  title="Sorry, this is only for our Premium Members!"
+                  arrow
+                  disableHoverListener={subscriptionStatus === "Premium"}
+                  placement="top"
+                >
+                  <div>
+                    <Button
+                      style={{
+                        width: "18rem",
+                        height: "8rem",
+                      }}
+                      onClick={() => {
+                        if (subscriptionStatus === "Premium") {
+                          setAuthState("dbt");
+                        }
+                      }}
+                      disabled={subscriptionStatus !== "Premium"}
+                    >
+                      <img
+                        style={{
+                          width: "18rem",
+                        }}
+                        src={DbtLogo}
+                      />
+                    </Button>
+                  </div>
+                </Tooltip>
+              </div>
               <p
                 style={{
                   width: "80%",

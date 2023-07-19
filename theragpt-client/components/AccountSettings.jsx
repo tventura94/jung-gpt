@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -11,8 +11,39 @@ import {
 import MenuPopupState from "./MenuPopup";
 import Link from "@mui/material/Link";
 import MainLogo from "/will.png";
+import { onSnapshot, collection } from "firebase/firestore";
+import { db } from "../components/Fire"; // assuming you've configured firebase in a file named firebase.js
 
 function AccountSettings({ setUserEmail, setAuthState, user }) {
+  const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "users", user.uid, "subscriptions"),
+      (snapshot) => {
+        let activeSubs = snapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((sub) => ["trialing", "active"].includes(sub.status));
+
+        let newSub = activeSubs[0];
+
+        if (newSub) {
+          console.log(`Account is ${newSub.status}`);
+          if (newSub.status === "active") {
+            setSubscriptionStatus("Premium");
+          } else {
+            setSubscriptionStatus(newSub.status);
+          }
+        } else {
+          console.log("Account not active");
+          setSubscriptionStatus("Free Plan");
+        }
+      }
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [user.uid]);
   const [currentTab, setCurrentTab] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -51,7 +82,9 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
             <Typography variant="h6">Your Plan</Typography>
           </Box>
           <Box marginBottom={2}>
-            <Typography variant="body1">Free Plan</Typography>
+            <Box marginBottom={2}>
+              <Typography variant="body1">{subscriptionStatus}</Typography>
+            </Box>
           </Box>
           <Box marginBottom={2}>
             <Button
@@ -82,7 +115,9 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
           </Box>
           <Box marginBottom={2}>
             <Typography variant="body1">
-              50% of your monthly limit used
+              {subscriptionStatus === "Premium"
+                ? "Unlimited Messaging & Access to JungDBT"
+                : `Free Plan - Limited Messaging`}
             </Typography>
           </Box>
         </TabPanel>

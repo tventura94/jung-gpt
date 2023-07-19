@@ -53,8 +53,6 @@ export default function Upgrade({
         if (newSub) {
           console.log(`Account is ${newSub.status}`);
           setSubscriptionStatus(newSub.status);
-        } else {
-          console.log("account not active");
         }
       }
     );
