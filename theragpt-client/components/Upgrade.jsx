@@ -13,13 +13,9 @@ import {
 import { db } from "./Fire";
 import MenuPopupState from "./MenuPopup";
 
-export default function Upgrade({
-  setUserEmail,
-  setAuthState,
-  setSubscriptionStatus,
-  user,
-}) {
+export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -60,7 +56,7 @@ export default function Upgrade({
     return () => {
       unsubscribe();
     };
-  }, [user, setSubscriptionStatus]);
+  }, [user]);
 
   const handleUpgrade = async (productId) => {
     const selectedProduct = products.find(
@@ -120,7 +116,19 @@ export default function Upgrade({
             <h2>{product.name}</h2>
             <p>{product.description}</p>
 
-            <button onClick={() => handleUpgrade(product.id)}>Upgrade</button>
+            <button
+              onClick={() => handleUpgrade(product.id)}
+              disabled={subscriptionStatus === "active"}
+            >
+              Upgrade
+            </button>
+            <p>Instructions for test checkout</p>
+            <p>
+              Enter repeating 4242 throughout the whole card number, so like
+              '4242 4242 4242 4242' and then 424 for expiration and 424 for
+              security code. Enter whatever name and address and it should
+              process.
+            </p>
           </div>
         ))}
       </div>
