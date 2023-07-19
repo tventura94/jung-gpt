@@ -33,8 +33,8 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
     <React.Fragment>
       <Button
         style={{
-          backgroundColor: "#262626",
-          borderLeft: "1px solid #747474",
+          backgroundColor: "#5B6B7F",
+          borderLeft: "1px solid whitesmoke",
           height: "3rem",
           width: "3rem",
           boxShadow: "none",

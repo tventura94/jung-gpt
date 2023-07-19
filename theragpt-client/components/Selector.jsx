@@ -191,7 +191,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   lineHeight: "2rem",
                 }}
               >
-                <b>Our very first Emotional Reflection Feedback tool.</b> <br />
+                <b>Our very first Emotional Reflection Feedback tool</b> <br />
                 An advanced language model that facilitates emotional
                 understanding. It processes user input, deciphers the inherent
                 emotional context, and reflects it back to the user for enhanced

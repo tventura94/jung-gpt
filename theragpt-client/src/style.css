@@ -62,7 +62,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
-  background-color: rgb(38, 38, 38);
+  background-color: #5b6b7f;
   font-family: "Strait";
   color: rgb(196, 194, 194);
 }
@@ -102,7 +102,7 @@
   justify-content: center;
   align-items: flex-start;
 
-  background-color: rgb(38, 38, 38);
+  background-color: #3d4c5e;
 }
 .side-menu-button {
   display: flex;
@@ -117,7 +117,7 @@
   transition: ease 0.25s all;
 }
 .side-menu-button:hover {
-  background-color: rgba(63, 63, 63, 0.526);
+  background-color: #a88aa5b9;
 }
 .fas,
 .fa-plus {
@@ -173,6 +173,8 @@ textarea::placeholder {
   margin: 0 auto;
   width: 100%;
   padding-left: 20%;
+
+  background-color: rgba(61, 68, 83, 0.483);
 }
 .chat-message.chatgpt {
   background-color: rgba(61, 68, 83, 0.783);
@@ -435,7 +437,7 @@ body {
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  background-color: #526d7d;
+  background-color: #486170;
   height: 4vh;
   align-items: center;
   justify-content: center;

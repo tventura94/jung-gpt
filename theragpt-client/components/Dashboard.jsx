@@ -259,8 +259,7 @@ const ChatMessage = ({ message }) => {
       <div
         className="message"
         style={{
-          color: message.role === "user" ? "#2f2f2e" : "inherit",
-          fontSize: "17px",
+          color: message.role === "user" ? "#AEC7CC" : "inherit",
         }}
       >
         {message.message}
