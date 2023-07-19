@@ -12,6 +12,14 @@ import {
 } from "firebase/firestore";
 import { db } from "./Fire";
 import MenuPopupState from "./MenuPopup";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  Typography,
+  Box,
+} from "@mui/material";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
@@ -98,7 +106,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       sessionListener();
     };
   };
-
   return (
     <div>
       <div className="main">
@@ -108,29 +115,112 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           user={user}
         />
       </div>
-
-      <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h1> TEST MODE - NOT A REAL CHECKOUT! </h1>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-
-            <button
-              onClick={() => handleUpgrade(product.id)}
-              disabled={subscriptionStatus === "active"}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginTop: "8rem",
+          flexWrap: "wrap",
+        }}
+      >
+        <Card
+          sx={{
+            minWidth: 350,
+            minHeight: 400,
+            marginBottom: 2,
+            textAlign: "center",
+            backgroundColor: "#F8F8F8",
+            borderRadius: 20,
+          }}
+        >
+          <CardContent>
+            <Typography
+              style={{
+                marginTop: "4rem",
+              }}
+              variant="h5"
+              component="div"
             >
-              Upgrade
-            </button>
-            <p>Instructions for test checkout</p>
-            <p>
-              Enter repeating 4242 throughout the whole card number, so like
-              '4242 4242 4242 4242' and then 424 for expiration and 424 for
-              security code. Enter whatever name and address and it should
-              process.
-            </p>
-          </div>
+              Free Tier
+            </Typography>
+            <Typography
+              style={{
+                marginTop: "3rem",
+              }}
+              variant="body2"
+            >
+              Limited Messaging with JungGPT
+            </Typography>
+          </CardContent>
+        </Card>
+        {products.map((product) => (
+          <Card
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              minWidth: 350,
+              minHeight: 400,
+              marginBottom: 2,
+              textAlign: "center",
+              backgroundColor: "#F8F8F8",
+              borderRadius: 20,
+            }}
+            key={product.id}
+          >
+            <CardContent>
+              <Typography
+                style={{
+                  marginTop: "4rem",
+                }}
+                variant="h5"
+                component="div"
+              >
+                {product.name}
+              </Typography>
+              <Typography
+                style={{
+                  marginTop: "3rem",
+                }}
+                variant="body2"
+              >
+                {product.description}
+                <br />
+                Access to JungDBT
+                <br />
+                First Access to newer and updated models
+              </Typography>
+            </CardContent>
+            <Box sx={{ flexGrow: 1 }} />
+            <CardActions sx={{ justifyContent: "center" }}>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#5E7E91",
+                  color: "#FFF",
+                  "&:hover": { backgroundColor: "#4B697C" },
+                  marginBottom: "3rem",
+                }}
+                onClick={() => handleUpgrade(product.id)}
+                disabled={subscriptionStatus === "active"}
+              >
+                Upgrade
+              </Button>
+            </CardActions>
+          </Card>
         ))}
+      </Box>
+      <div style={{ textAlign: "center" }}>
+        <h1>TEST CHECKOUT - DO NOT USE REAL CARD</h1>
+        <p>Instructions:</p>
+        <p>
+          Click Upgrade. Wait a few moments. You will be redirected to stripe.
+          enter card number 4242 4242 4242 4242, exp date 424 security code 424
+        </p>
+        <p>
+          All of the card information should be repeating 4242 until you get to
+          name and address, put whichever name and address and hit submit, it
+          should process, text me if you're struggling
+        </p>
       </div>
     </div>
   );

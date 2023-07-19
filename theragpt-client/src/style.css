@@ -466,3 +466,8 @@ body {
   padding: 20px;
   text-align: center;
 }
+
+.card {
+  border: 1px solid red;
+  padding: 4rem;
+}
