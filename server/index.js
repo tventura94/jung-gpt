@@ -6,7 +6,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
+const rateLimit = require("express-rate-limit");
 
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after 15 minutes.",
+});
+app.use("/jung", apiLimiter);
+app.use("/dbt", apiLimiter);
 const configuration = new Configuration({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
