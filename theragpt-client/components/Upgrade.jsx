@@ -19,12 +19,13 @@ import {
   Button,
   Typography,
   Box,
+  CircularProgress,
 } from "@mui/material";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchProducts = async () => {
       const productsQuery = query(
@@ -67,6 +68,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   }, [user]);
 
   const handleUpgrade = async (productId) => {
+    setLoading(true);
     const selectedProduct = products.find(
       (product) => product.id === productId
     );
@@ -201,9 +203,13 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                   marginBottom: "3rem",
                 }}
                 onClick={() => handleUpgrade(product.id)}
-                disabled={subscriptionStatus === "active"}
+                disabled={subscriptionStatus === "active" || loading}
               >
-                Upgrade
+                {loading ? (
+                  <CircularProgress color="inherit" size={24} />
+                ) : (
+                  "Upgrade"
+                )}
               </Button>
             </CardActions>
           </Card>
