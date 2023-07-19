@@ -11,14 +11,10 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   function handleSignOut() {
-    signOut(auth)
-      .then(() => {
-        setUserEmail(null);
-        setAuthState("login");
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    signOut(auth).then(() => {
+      setUserEmail(null);
+      setAuthState("login");
+    });
   }
 
   function handleUpgrade() {
