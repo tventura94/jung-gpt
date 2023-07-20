@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuPopupState from "./MenuPopup";
-import GoldLogo from "/jung-gpt-logo.png"; // Import the GoldLogo image
+import GoldLogo from "/gpt-gold.png"; // Import the GoldLogo image
 import MainLogo from "/will.png";
 import { useEffect, useState } from "react";
 import DbtLogo from "/jung-dbt.png";
@@ -122,11 +122,16 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     padding: isMobile ? "1em" : "2em",
     width: "100%",
     maxWidth: isMobile ? "90vw" : "30vw",
+    minWidth: "500px",
     margin: isMobile ? "1em 0" : "0",
     transition: isMobile ? "" : "transform 0.15s ease-in-out",
     ":hover": isMobile ? "" : { transform: "scale(1.05)" },
     fontFamily: "'Roboto Slab', serif",
     lineHeight: "1.6rem",
+    maxHeight: "85vh",
+    "@media (max-width: 1096px)": {
+      minWidth: "400px",
+    },
   };
 
   return (
@@ -188,6 +193,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               >
                 <img
                   style={{
+                    // add this line
                     width: "18rem",
                   }}
                   src={logoSrc} // Use the logoSrc state variable here
@@ -195,7 +201,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               </Button>
               <p
                 style={{
+                  wordWrap: "break-word", // add this line
                   width: "80%",
+                  maxWidth: "100%", // add this line
                   marginBottom: "3rem",
                   lineHeight: "2rem",
                 }}
@@ -242,7 +250,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   <div>
                     <Button
                       style={{
-                        width: "18rem",
+                        width: "100%",
                         height: "8rem",
                       }}
                       onClick={() => {

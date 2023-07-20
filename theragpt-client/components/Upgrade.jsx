@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   collection,
@@ -21,10 +24,12 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import GoldLogo from "/jung-gpt-logo.png";
+import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [products, setProducts] = useState([]);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -125,11 +130,12 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           justifyContent: "space-evenly",
           marginTop: "3rem",
           flexWrap: "wrap",
+          margin: isMobile ? "1rem" : "",
         }}
       >
         <Card
           sx={{
-            minWidth: 350,
+            minWidth: { xs: "90vw", sm: 350 }, // 90% of the viewport width on extra small screens, and 350px on small screens and up
             minHeight: 400,
             marginBottom: 2,
             textAlign: "center",
@@ -148,34 +154,43 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               Free Tier
             </Typography>
 
-            <img src={JungLogo}></img>
-            <Typography
+            <img
               style={{
-                marginTop: "3rem",
+                width: "100%",
               }}
-              variant="body2"
-            >
-              Access to JungGPT
-              <br />
-              Limited Messaging with JungGPT
-              <br />
-              Delayed access to new or improved models
-            </Typography>
+              src={JungLogo}
+            ></img>
+            <ul style={{ marginTop: "2rem" }}>
+              <Typography variant="h6" component="li">
+                Access to JungGPT
+              </Typography>
+              <Typography
+                variant="h6"
+                component="li"
+                style={{ marginTop: "1rem" }}
+              >
+                Limited Messaging with JungGPT
+              </Typography>
+              <Typography
+                variant="h6"
+                component="li"
+                style={{ marginTop: "1rem" }}
+              >
+                Delayed access to new or improved models
+              </Typography>
+            </ul>
           </CardContent>
         </Card>
         {products.map((product) => (
           <Card
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              minWidth: 350,
-              minHeight: 400,
+              minWidth: isMobile ? 280 : 350,
+              minHeight: 300,
               marginBottom: 2,
               textAlign: "center",
               backgroundColor: "#F8F8F8",
               borderRadius: 20,
             }}
-            key={product.id}
           >
             <CardContent>
               <Typography
@@ -188,20 +203,33 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                 {product.name}
               </Typography>
 
-              <img src={GoldLogo}></img>
-              <Typography
+              <img
                 style={{
-                  marginTop: "3rem",
+                  width: "100%",
                 }}
-                variant="body2"
-              >
-                Access to JungGPT & JungDBT
-                <br />
-                {product.description} for all available models
-                <br />
-                First Access to newer and updated models
-              </Typography>
+                src={GoldLogo}
+              ></img>
+              <ul style={{ marginTop: "2rem" }}>
+                <Typography variant="h6" component="li">
+                  Access to JungGPT & JungDBT
+                </Typography>
+                <Typography
+                  variant="h6"
+                  component="li"
+                  style={{ marginTop: "1rem" }}
+                >
+                  {product.description} for all available models
+                </Typography>
+                <Typography
+                  variant="h6"
+                  component="li"
+                  style={{ marginTop: "1rem" }}
+                >
+                  First Access to newer and updated models
+                </Typography>
+              </ul>
             </CardContent>
+
             <Box sx={{ flexGrow: 1 }} />
             <CardActions sx={{ justifyContent: "center" }}>
               <Button
