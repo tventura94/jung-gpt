@@ -245,13 +245,12 @@ export default function Dashboard({
     </div>
   );
 }
-
 const ChatMessage = ({ message }) => {
   return (
     <div
       className={`chat-message ${
         message.role === "assistant" ? "chatgpt" : ""
-      }`}
+      } ${message.role === "assistant" ? "fade-in" : ""}`}
     >
       <div
         className={`avatar ${message.role === "assistant" ? "chatgpt" : ""}`}

@@ -153,12 +153,19 @@ const ChatMessage = ({ message }) => {
     <div
       className={`chat-message ${
         message.role === "assistant" ? "chatgpt" : ""
-      }`}
+      } ${message.role === "assistant" ? "fade-in" : ""}`}
     >
       <div
         className={`avatar ${message.role === "assistant" ? "chatgpt" : ""}`}
       ></div>
-      <div className="message">{message.message}</div>
+      <div
+        className="message"
+        style={{
+          color: message.role === "user" ? "#AEC7CC" : "inherit",
+        }}
+      >
+        {message.message}
+      </div>
     </div>
   );
 };
