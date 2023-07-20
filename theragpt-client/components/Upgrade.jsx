@@ -141,6 +141,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
             textAlign: "center",
             backgroundColor: "#F8F8F8",
             borderRadius: 20,
+            border: "2px gray solid",
           }}
         >
           <CardContent>
@@ -184,6 +185,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         {products.map((product) => (
           <Card
             sx={{
+              border: "2px #CB9800 solid",
               minWidth: isMobile ? 280 : 350,
               minHeight: 300,
               marginBottom: 2,
