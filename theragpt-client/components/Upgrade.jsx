@@ -21,6 +21,8 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
+import GoldLogo from "/jung-gpt-logo.png";
+import JungLogo from "/will.png";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
@@ -121,7 +123,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          marginTop: "8rem",
+          marginTop: "3rem",
           flexWrap: "wrap",
         }}
       >
@@ -145,13 +147,19 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
             >
               Free Tier
             </Typography>
+
+            <img src={JungLogo}></img>
             <Typography
               style={{
                 marginTop: "3rem",
               }}
               variant="body2"
             >
+              Access to JungGPT
+              <br />
               Limited Messaging with JungGPT
+              <br />
+              Delayed access to new or improved models
             </Typography>
           </CardContent>
         </Card>
@@ -179,15 +187,17 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               >
                 {product.name}
               </Typography>
+
+              <img src={GoldLogo}></img>
               <Typography
                 style={{
                   marginTop: "3rem",
                 }}
                 variant="body2"
               >
-                {product.description}
+                Access to JungGPT & JungDBT
                 <br />
-                Access to JungDBT
+                {product.description} for all available models
                 <br />
                 First Access to newer and updated models
               </Typography>
