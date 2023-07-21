@@ -19,7 +19,7 @@ export default function Dashboard({
   const [trialLimitReached, setTrialLimitReached] = useState(false);
   const [chatLog, setChatLog] = useState([]);
   const [input, setInput] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -141,7 +141,7 @@ export default function Dashboard({
         />
       </div>
       <Fire user={user} />
-      <div>
+      <div className="junggpt">
         {user ? (
           <div className="header">
             <aside

@@ -315,7 +315,7 @@ body {
     padding: 0px;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
   }
   .chat-disclaimer {
     font-size: 9px;
@@ -406,13 +406,11 @@ body {
   }
   .send-button {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 115%;
-    transform: translateY(-50%);
     background-color: #427a6a;
     border: none;
     color: white;
-    padding: 2px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -420,6 +418,7 @@ body {
     cursor: pointer;
     transition-duration: 0.25s;
     border-radius: 10%;
+    padding: 6px 26px 6px 15px;
   }
 }
 .sidemenu {
