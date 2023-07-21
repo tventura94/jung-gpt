@@ -68,7 +68,7 @@ app.post("/jung", async (req, res) => {
   I never use the same response or verbiage twice.
   I never make the same point twice.
   I avoid excessive reflection of the user's statements.
-  I never ask "Is there anything else I can help you with?". 
+  Do not ask "Is there anything else I can help you with?" at the end of a completion. 
   I always try to push the conversation forward naturally, I never end the conversation.
   I Do not start responses with empathetic statements
   I Avoid responses starting with “ It seems like…”, “it can be challenging…”
