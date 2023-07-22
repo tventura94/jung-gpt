@@ -90,7 +90,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: selectedProduct.stripe_price_id,
+        price: "price_1NWlUrGx3uwFHp11NFEO6GHt",
         success_url: window.location.href,
         cancel_url: window.location.href,
       }
@@ -128,7 +128,8 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          marginTop: "3rem",
+          marginTop: "2rem",
+          marginBottom: "2rem",
           flexWrap: "wrap",
           margin: isMobile ? "1rem" : "",
         }}
@@ -255,7 +256,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           </Card>
         ))}
       </Box>
-      <div style={{ textAlign: "center" }}>
+      {/* <div style={{ textAlign: "center" }}>
         <h1>TEST CHECKOUT - DO NOT USE REAL CARD</h1>
         <p>Instructions:</p>
         <p>
@@ -267,7 +268,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           name and address, put whichever name and address and hit submit, it
           should process, text me if you're struggling
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

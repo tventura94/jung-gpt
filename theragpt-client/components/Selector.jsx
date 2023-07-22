@@ -28,7 +28,7 @@ import MainLogo from "/will.png";
 import { useEffect, useState } from "react";
 import DbtLogo from "/jung-dbt.png";
 import JungFace from "/gpt-text-1.png";
-import JungAdmat from "/jung-admat-1.png";
+import JungAdmat from "/jung-rev.png";
 import {
   collection,
   where,
@@ -92,7 +92,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const isMed = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
 
@@ -163,13 +163,13 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       </div>
 
       <div
+        className="div"
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           padding: "1em",
-          height: isMobile ? "" : "90vh",
         }}
       >
         <Box
@@ -182,6 +182,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             maxWidth: "97%",
             marginBottom: isMobile ? "3rem" : "0",
             margin: isMobile ? "3rem" : "0",
+
+            marginTop: "3rem",
           }}
         >
           <motion.div
@@ -377,7 +379,11 @@ Last updated on 7/12/23 `}
           </Button>
         </DialogActions>
       </Dialog>
-      <div>
+      <div
+        style={{
+          marginTop: isMobile ? "" : "3rem",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -411,25 +417,21 @@ Last updated on 7/12/23 `}
               variant="body1"
               style={{
                 marginTop: isMobile ? "2rem" : "",
-                textAlign: "left",
-                marginLeft: "4rem",
-                marginRight: "2rem",
+                textAlign: "center",
+                marginLeft: isMobile ? "" : "4rem",
+                marginRight: isMobile ? "" : "2rem",
+                lineHeight: "29px",
               }}
             >
               <b>
-                Ventura UX is committed to transparency, let us answer some
-                questions for you!
+                Get real relief now chatting with our highly customized
+                Emotional Reflection Feedback Tool! The first AI of its kind!
               </b>{" "}
               <br /> <br />
-              JungGPT was created by Tom Ventura after having an moment with
+              JungGPT was created by Ventura UX after having an moment with
               OpenAI's ChatGPT and realized the potentiallity of a tool that
               could be used to help people work through their emotional states,
               conflicting thoughts and feelings, and negative self-talk.
-              <br /> <br />
-              We are a SMALL team that is committed to delivering a quality tool
-              to the public that can benefit the lives of its daily users. We
-              have trained a tool based on our OWN data and sophisticated prompt
-              engineering.
             </Typography>
           </div>
           <Typography

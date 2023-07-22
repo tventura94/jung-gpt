@@ -89,7 +89,7 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
           <Box marginBottom={2}>
             <Button
               variant="outlined"
-              href="https://billing.stripe.com/p/login/test_eVaeWAbl9gXXgKYfYY"
+              href="https://billing.stripe.com/p/login/fZe6qkftf9fg8dqdQQ"
             >
               Manage Subscription
             </Button>

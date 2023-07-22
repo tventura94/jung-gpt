@@ -425,6 +425,7 @@ body {
     padding: 6px 26px 6px 15px;
   }
 }
+
 .sidemenu {
   width: 0;
   transition: width 0.3s ease;

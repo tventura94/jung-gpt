@@ -37,7 +37,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
       <Button
         style={{
           backgroundColor: "#5B6B7F",
-          borderLeft: "1px solid whitesmoke",
+          borderLeft: "1px solid silver",
           height: "3rem",
           width: "3rem",
           boxShadow: "none",

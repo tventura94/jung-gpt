@@ -13,7 +13,7 @@ import AccountSettings from "../components/AccountSettings";
 import Terms from "../components/Terms";
 import Upgrade from "../components/Upgrade";
 import Faq from "../components/Faq";
-
+import { CircularProgress } from "@mui/material";
 function App() {
   const [user, setUser] = React.useState(null);
   const [userEmail, setUserEmail] = React.useState(null);
@@ -39,7 +39,24 @@ function App() {
     return unSubscribeAuth;
   }, [user, userEmail, subscriptionStatus]);
 
-  if (authState === null) return <h2>Loading...</h2>;
+  if (authState === null)
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress
+          style={{
+            color: "#5E7E91",
+          }}
+          size={100}
+        />
+      </div>
+    );
 
   if (authState === "dashboard")
     return (
