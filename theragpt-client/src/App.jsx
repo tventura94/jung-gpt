@@ -108,6 +108,7 @@ function App() {
           user={user}
           subscriptionStatus={subscriptionStatus}
         />
+
         <Footer />
       </Box>
     );

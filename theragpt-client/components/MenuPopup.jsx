@@ -63,7 +63,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
           </Typography>
         </MenuItem>
 
-        <MenuItem onClick={backButton}>Change Selection</MenuItem>
+        <MenuItem onClick={backButton}>Dashboard</MenuItem>
         <MenuItem onClick={Faq}>Learn More (FAQ)</MenuItem>
         <MenuItem onClick={accountSettings}>Account Settings</MenuItem>
         <MenuItem onClick={handleUpgrade}>Upgrade</MenuItem>

@@ -195,11 +195,11 @@ textarea::placeholder {
   height: 30px;
 }
 .avatar.chatgpt {
-  background-color: rgb(120, 86, 151);
-  background-image: url(/logos/jung-gpt-logo.webp);
+  background-color: #f9d7d6;
+  background-image: url(/jung-face.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 .message {
   margin-left: 2rem;

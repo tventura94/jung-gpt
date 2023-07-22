@@ -127,8 +127,7 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
           <Accordion style={{ marginTop: "16px" }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>
-                You guys think you're slick, you're trying to replace
-                therapists!!!!
+                Is this some sort of attempt to replace therapists with AI?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -172,10 +171,10 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
                 feel empathy itself, but understands it based on its training to
                 do so and through analyzing text in different context. It is our
                 belief at Ventura UX that based on its extensive training on all
-                types of text, it has gathered the ability to logically deduce
-                empathy and ask questions to prompt the user to gain clarity
-                about their situation and emotions, affectively becoming a truly
-                nonbiased ear to talk to.
+                types of text, it has gathered the ability to logically deduce a
+                simulacrum of empathy and ask questions to prompt the user to
+                gain clarity about their situation and emotions, affectively
+                becoming a truly nonbiased ear to talk to.
               </Typography>
             </AccordionDetails>
           </Accordion>
