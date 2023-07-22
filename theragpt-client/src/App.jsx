@@ -12,6 +12,7 @@ import Dbt from "../components/Dbt";
 import AccountSettings from "../components/AccountSettings";
 import Terms from "../components/Terms";
 import Upgrade from "../components/Upgrade";
+import Faq from "../components/Faq";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -189,7 +190,25 @@ function App() {
         <Footer />
       </Box>
     );
-
+  if (authState === "faq")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <Faq
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+          setSubscriptionStatus={setSubscriptionStatus}
+        />
+        <Footer />
+      </Box>
+    );
   return (
     <Box
       sx={{

@@ -49,7 +49,7 @@ export default function Dashboard({
   }, []);
 
   useEffect(() => {
-    if (subscriptionStatus !== "active" && chatLog.length >= 14) {
+    if (subscriptionStatus !== "active" && chatLog.length >= 30) {
       setTrialLimitReached(true);
     } else {
       setTrialLimitReached(false);

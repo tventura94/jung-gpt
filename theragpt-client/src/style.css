@@ -5,6 +5,10 @@
   margin: 0;
 }
 
+html {
+  background-color: #506072;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;

@@ -28,6 +28,9 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
   function backButton() {
     setAuthState("selector");
   }
+  function Faq() {
+    setAuthState("faq");
+  }
 
   return (
     <React.Fragment>
@@ -61,6 +64,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         </MenuItem>
 
         <MenuItem onClick={backButton}>Change Selection</MenuItem>
+        <MenuItem onClick={Faq}>Learn More (FAQ)</MenuItem>
         <MenuItem onClick={accountSettings}>Account Settings</MenuItem>
         <MenuItem onClick={handleUpgrade}>Upgrade</MenuItem>
         <MenuItem onClick={handleSignOut}>Logout</MenuItem>
