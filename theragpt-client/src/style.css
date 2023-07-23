@@ -495,3 +495,10 @@ body {
   -o-animation: fadeIn ease 1s;
   -ms-animation: fadeIn ease 1s;
 }
+
+.jung-background-2 {
+  background-image: url(../logos/jung-background4.svg);
+  background-size: 100%;
+  background-position-y: 110%;
+  background-repeat: no-repeat;
+}

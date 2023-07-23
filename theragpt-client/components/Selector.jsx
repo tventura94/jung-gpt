@@ -16,6 +16,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  TextField,
 } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -142,7 +143,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
   };
 
   return (
-    <div style={{ boxSizing: "border-box" }}>
+    <div className="jung-background-2" style={{ boxSizing: "border-box" }}>
       <div className="main">
         <img
           style={{
@@ -436,7 +437,11 @@ Last updated on 7/12/23 `}
           </div>
           <Typography
             variant="body1"
-            style={{ fontSize: "25px", marginTop: "1rem" }}
+            style={{
+              fontSize: "25px",
+              marginTop: "1rem",
+              marginBottom: "1rem",
+            }}
           >
             <b>Frequently Asked Questions</b>
           </Typography>
@@ -564,6 +569,90 @@ Last updated on 7/12/23 `}
           </div>
         </div>
       </div>
+      <Box
+        sx={{
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto",
+          padding: "2rem",
+          width: isMobile ? "90%" : "40%",
+        }}
+      >
+        {" "}
+        <Typography
+          variant="body1"
+          style={{
+            fontSize: "25px",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+            width: "100%",
+          }}
+        >
+          <b>Let us know how you feel!</b>
+        </Typography>
+        <Typography
+          variant="body1"
+          style={{
+            justifySelf: "center",
+            alignSelf: "center",
+            textAlign: "center",
+            marginBottom: "1rem",
+            width: "100%",
+            lineHeight: "35px",
+          }}
+        >
+          We value user feedback greatly.
+          <br /> Please feel free to contact us for more information or to
+          submit your meaningful interactions or buggy interactions so we can
+          further improve the software.
+        </Typography>
+        <Box
+          sx={{
+            justifySelf: "center",
+            alignSelf: "center",
+            textAlign: "left",
+            marginBottom: "1rem",
+            marginTop: "3rem",
+            width: "100%",
+            backgroundColor: "#5B6B7F",
+            borderRadius: "10px",
+            padding: ".5rem",
+            width: isMobile ? "100%" : "50%",
+          }}
+        >
+          <Typography
+            sx={{
+              margin: ".5rem",
+
+              color: "white",
+              fontSize: "1rem",
+            }}
+          >
+            {" "}
+            Contact:
+          </Typography>
+          <Typography
+            sx={{
+              margin: ".7rem",
+              color: "white",
+
+              fontSize: ".9rem",
+            }}
+          >
+            tom@ventura-ux.com
+          </Typography>
+          <Typography
+            sx={{
+              margin: ".7rem",
+
+              color: "white",
+              fontSize: ".8rem",
+            }}
+          >
+            We look forward to hearing from you!
+          </Typography>
+        </Box>
+      </Box>
     </div>
   );
 }
