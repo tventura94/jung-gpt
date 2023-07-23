@@ -252,13 +252,13 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 </b>{" "}
                 <br />
                 <br />
-                Conceived by a team of AI researchers, we provide an innovative
-                approach to self-reflection and emotional understanding. With
-                the aim of fostering self-awareness, we blend fields of
-                psychology, medicine, psychiatry, and philosophy to encourage
-                introspection and insight. Remember, we are not a replacement
-                for professional therapy. Let's start your journey towards
-                greater emotional clarity today.
+                Conceived by a team of psychologists and AI researchers, we
+                provide an innovative approach to self-reflection and emotional
+                understanding. With the aim of fostering self-awareness, we
+                blend fields of psychology, medicine, psychiatry, and philosophy
+                to encourage introspection and insight. Remember, we are not a
+                replacement for professional therapy. Let's start your journey
+                towards greater emotional clarity today.
               </Typography>
             </Box>
           </Grid>

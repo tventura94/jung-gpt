@@ -106,10 +106,10 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
               questions for you!
             </b>{" "}
             <br /> <br />
-            JungGPT was created by Tom Ventura after having an moment with
-            OpenAI's ChatGPT and realized the potentiallity of a tool that could
-            be used to help people work through their emotional states,
-            conflicting thoughts and feelings, and negative self-talk.
+            JungGPT was created by developers and psychologists working together
+            at Ventura UX to realize the potentiallity of a tool that could be
+            used to help people work through their emotional states, conflicting
+            thoughts and feelings, and negative self-talk.
             <br /> <br />
             We are a SMALL team that is committed to delivering a quality tool
             to the public that can benefit the lives of its daily users. We have

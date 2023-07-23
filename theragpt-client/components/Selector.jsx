@@ -429,8 +429,8 @@ Last updated on 7/12/23 `}
                 Emotional Reflection Feedback Tool! The first AI of its kind!
               </b>{" "}
               <br /> <br />
-              JungGPT was created by Ventura UX after having an moment with
-              OpenAI's ChatGPT and realized the potentiallity of a tool that
+              JungGPT was created by developers and psychologists working
+              together at Ventura UX to realize the potentiallity of a tool that
               could be used to help people work through their emotional states,
               conflicting thoughts and feelings, and negative self-talk.
             </Typography>
