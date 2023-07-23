@@ -610,14 +610,14 @@ Last updated on 7/12/23 `}
           sx={{
             justifySelf: "center",
             alignSelf: "center",
-            textAlign: "left",
+            textAlign: "center",
             marginBottom: "1rem",
             marginTop: "3rem",
             width: "100%",
             backgroundColor: "#5B6B7F",
             borderRadius: "10px",
             padding: ".5rem",
-            width: isMobile ? "100%" : "50%",
+            width: isMobile ? "100%" : "100%",
           }}
         >
           <Typography
@@ -641,6 +641,7 @@ Last updated on 7/12/23 `}
           >
             tom@ventura-ux.com
           </Typography>
+
           <Typography
             sx={{
               margin: ".7rem",
