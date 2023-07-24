@@ -120,7 +120,7 @@ I do not recommend books or movies.
       },
     ],
     temperature: 1.3,
-    max_tokens: 600,
+    max_tokens: 300,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,

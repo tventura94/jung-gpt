@@ -429,10 +429,11 @@ Last updated on 7/12/23 `}
                 Emotional Reflection Feedback Tool! The first AI of its kind!
               </b>{" "}
               <br /> <br />
-              JungGPT was created by developers and psychologists working
-              together at Ventura UX to realize the potentiallity of a tool that
-              could be used to help people work through their emotional states,
-              conflicting thoughts and feelings, and negative self-talk.
+              JungGPT was developed by the ingenuity of web developers and
+              psychologists working together at Ventura UX to realize the
+              potentiallity of a tool that could be used to help people work
+              through their emotional states, conflicting thoughts and feelings,
+              and negative self-talk.
             </Typography>
           </div>
           <Typography
