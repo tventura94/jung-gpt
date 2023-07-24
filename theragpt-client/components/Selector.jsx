@@ -287,13 +287,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   lineHeight: "2rem",
                 }}
               >
-                <b>Our groundbreaking DBT Tool, JungDBT</b> <br />
-                An advanced language model that supports Dialectical Behavior
-                Therapy (DBT) principles. It analyzes user input, discerns
-                emotional nuances, and offers reflections to promote better
-                clarity and understanding. Drawing on this insight, JungDBT
-                provides personalized guidance and strategies for effective
-                emotional navigation and growth.
+                <b>Our groundbreaking SMART Tool, JungSMART</b> <br />
+                SMART stands for Specific, Measurable, Achievable, Relevant, and
+                Time-bound, which are all critical aspects of effective goal
+                setting. This AI assistant helps users create SMART goals and
+                action plans.
               </p>
             </Box>
           </motion.div>

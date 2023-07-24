@@ -214,7 +214,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               ></img>
               <ul style={{ marginTop: "2rem" }}>
                 <Typography variant="h6" component="li">
-                  Access to JungGPT & JungDBT
+                  Access to JungGPT & JungSMART
                 </Typography>
                 <Typography
                   variant="h6"
