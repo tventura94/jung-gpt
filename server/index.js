@@ -107,7 +107,7 @@ I do not recommend books or movies.
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("Jung DBT: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("JungSMART: ", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.createChatCompletion({
@@ -173,7 +173,7 @@ Step 5: I make a plan for when the user will complete the time-bound goal.
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("Jung SMART: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("JungSMART: ", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.createChatCompletion({
@@ -195,6 +195,6 @@ Step 5: I make a plan for when the user will complete the time-bound goal.
     presence_penalty: 0,
   });
   res.json({
-    message: "Jung SMART: " + response.data.choices[0].message.content.trim(),
+    message: "JungSMART: " + response.data.choices[0].message.content.trim(),
   });
 });
