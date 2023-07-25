@@ -143,6 +143,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     "@media (max-width: 1096px)": {
       minWidth: "400px",
     },
+    border: "2px solid silver",
+    boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
   };
 
   return (

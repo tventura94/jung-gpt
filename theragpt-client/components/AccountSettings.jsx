@@ -116,7 +116,7 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
           <Box marginBottom={2}>
             <Typography variant="body1">
               {subscriptionStatus === "Premium"
-                ? "Unlimited Messaging, Access to JungDBT & First Access to new and improved models"
+                ? "Unlimited Messaging, Access to JungSMART & First Access to new and improved models"
                 : `Free Plan - Limited Messaging`}
             </Typography>
           </Box>
