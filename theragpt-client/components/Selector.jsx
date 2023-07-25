@@ -188,8 +188,10 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             maxWidth: "97%",
             marginBottom: isMobile ? "3rem" : "0",
             margin: isMobile ? "3rem" : "0",
-
-            marginTop: "3rem",
+            backgroundColor: isMobile ? "" : "whitesmoke",
+            borderRadius: "30px",
+            padding: isMobile ? "" : "2.5rem",
+            marginTop: isMobile ? "1rem" : "3rem",
           }}
         >
           <motion.div
@@ -407,6 +409,7 @@ Last updated on 7/12/23 `}
               flexDirection: isMobile ? "column" : "row",
               alignItems: "center",
               justifyContent: "space-between",
+              marginBottom: "1rem",
             }}
           >
             <img
@@ -589,7 +592,7 @@ Last updated on 7/12/23 `}
           variant="body1"
           style={{
             fontSize: "25px",
-            marginTop: "2rem",
+            marginTop: "0rem",
             marginBottom: "2rem",
             width: "100%",
           }}
