@@ -103,17 +103,20 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
   };
 
   React.useEffect(() => {
-    const hasOpened = sessionStorage.getItem("hasOpened");
+    const hasAcceptedTerms = localStorage.getItem("hasAcceptedTerms");
 
-    if (!hasOpened) {
+    if (!hasAcceptedTerms) {
       setOpen(true);
-      sessionStorage.setItem("hasOpened", "true");
     }
   }, []);
 
   const handleClose = () => {
-    setOpen(false);
+    if (bothChecked) {
+      localStorage.setItem("hasAcceptedTerms", "true");
+      setOpen(false);
+    }
   };
+
   const bothChecked = checked && checkedSecond;
 
   const handleCheckboxChange = (event, checkedSetter) => {
@@ -363,7 +366,9 @@ Last updated on 7/12/23 `}
                 onChange={(e) => handleCheckboxChange(e, setCheckedSecond)}
               />
             }
-            label="I understand that this platform provides chat-based support and is NOT a replacement for professional mental health services. This service does not constitute mental health therapy, counseling, or professional mental health advice. If I am in crisis, feel like I may harm myself or others, I understand it is essential to seek immediate professional help."
+            label="I understand that this platform provides AI chat-based support and is NOT a replacement for professional mental health services.
+             This service does not constitute mental health therapy, counseling, medical or psychological diagnosis, or professional mental health advice.
+              If I am in crisis, feel like I may harm myself or others, I understand it is essential to seek immediate professional help."
           />
         </DialogContent>
         <DialogActions>
