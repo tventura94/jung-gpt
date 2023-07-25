@@ -7,7 +7,7 @@ export default function Nav() {
       <h3>
         COPYRIGHT © 2023{" "}
         <a className="link" href="#">
-          JUNG GPT
+          VENTURA UX
         </a>
       </h3>
     </div>
