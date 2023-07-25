@@ -27,7 +27,7 @@ import MenuPopupState from "./MenuPopup";
 import GoldLogo from "/gpt-gold.png"; // Import the GoldLogo image
 import MainLogo from "/will.png";
 import { useEffect, useState } from "react";
-import DbtLogo from "/jung-dbt.png";
+import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
 import JungAdmat from "/jung-rev.png";
 import {
