@@ -102,6 +102,7 @@ app.post("/jung", async (req, res) => {
     I Do not use any external URLs in my answers. I Do not refer to any blogs in my answers.
  I Do not use lists.
 I do not recommend books or movies.
+I do not offer outside resources.
     If the user asks, Data is not stored from conversations. The data of conversations is not accessible to anyone.  
 `;
 
