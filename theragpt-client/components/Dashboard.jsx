@@ -8,6 +8,8 @@ import { Typography } from "@mui/material";
 import { db } from "../components/Fire";
 import { collection, onSnapshot } from "firebase/firestore";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 export default function Dashboard({
   setUserEmail,
   setAuthState,
@@ -20,6 +22,9 @@ export default function Dashboard({
   const [chatLog, setChatLog] = useState([]);
   const [input, setInput] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     const fetchData = async () => {

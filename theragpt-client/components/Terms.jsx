@@ -253,19 +253,69 @@ function Terms({ setUser, setAuthState, user }) {
           these TOS will be adjudicated in the courts of that jurisdiction.
           <br />
           <br />
-          13. **Amendments**: Ventura UX, LLC, reserves the right to modify or
+          13. **Arbitration**: Except for any disputes, claims, suits, actions,
+          causes of action, demands or proceedings (collectively, "Disputes") in
+          which either Party seeks to bring an individual action in small claims
+          court or seeks injunctive or other equitable relief for the alleged
+          unlawful use of intellectual property, including, without limitation,
+          copyrights, trademarks, trade names, logos, trade secrets or patents,
+          you and Ventura UX, LLC agree (a) to waive your and Ventura UX, LLC’s
+          respective rights to have any and all Disputes arising from or related
+          to these TOS, the Application, or the Services, resolved in a court,
+          and (b) to waive your and Ventura UX, LLC’s respective rights to a
+          jury trial. Instead, you and Ventura UX, LLC agree to arbitrate
+          Disputes through binding arbitration (which is the referral of a
+          Dispute to one or more persons charged with reviewing the Dispute and
+          making a final and binding determination to resolve it instead of
+          having the Dispute decided by a judge or jury in court).
+          <br />
+          <br />
+          14. **No Class Arbitrations, Class Actions or Representative
+          Actions**: You and Ventura UX, LLC agree that any Dispute arising out
+          of or related to these TOS, the Application or the Services is
+          personal to you and Ventura UX, LLC and that such Dispute will be
+          resolved solely through individual arbitration and will not be brought
+          as a class arbitration, class action or any other type of
+          representative proceeding. You and Ventura UX, LLC agree that there
+          will be no class arbitration or arbitration in which an individual
+          attempts to resolve a Dispute as a representative of another
+          individual or group of individuals. Further, you and Ventura UX, LLC
+          agree that a Dispute cannot be brought as a class or other type of
+          representative action, whether within or outside of arbitration, or on
+          behalf of any other individual or group of individuals.
+          <br />
+          <br />
+          15. **Delegation Clause** You and Ventura UX, LLC agree that any and
+          all disputes or claims related to the interpretation, enforceability,
+          or formation of this arbitration agreement, including but not limited
+          to any claim that all or any part of this arbitration agreement is
+          void or voidable, or whether a claim is subject to arbitration, shall
+          be resolved exclusively by the appointed arbitrator and not by any
+          court. This includes the scope, applicability, validity, and
+          enforceability of the arbitration agreement. This arbitration
+          agreement allows for the arbitrator, not any federal, state, or local
+          court or agency, to have exclusive authority to resolve any dispute
+          relating to the interpretation, applicability, enforceability or
+          formation of this arbitration agreement, including, but not limited
+          to, any claim that all or any part of this arbitration agreement is
+          void or voidable. The arbitrator will decide all issues of this nature
+          before addressing the merits of the dispute, claim or controversy that
+          is subject to arbitration as provided under these TOS.
+          <br />
+          <br />
+          16. **Amendments**: Ventura UX, LLC, reserves the right to modify or
           replace any of these TOS at any time by posting a notice on the
           Application. It is your responsibility to check these TOS periodically
           for changes.
           <br />
           <br />
-          14. **Entire Agreement**: These Terms of Service constitute the entire
+          17. **Entire Agreement**: These Terms of Service constitute the entire
           agreement between you and Ventura UX, LLC, regarding the use of the
           Application and Services, superseding any prior agreements or
           understandings.
           <br />
           <br />
-          Last updated on 7/12/23
+          Last updated on 7/26/23
         </Typography>
         {/* Add more sections as per the needs */}
       </Box>
