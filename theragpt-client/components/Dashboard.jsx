@@ -23,9 +23,6 @@ export default function Dashboard({
   const [input, setInput] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -251,6 +248,8 @@ export default function Dashboard({
   );
 }
 const ChatMessage = ({ message }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div
       className={`chat-message ${
@@ -263,7 +262,15 @@ const ChatMessage = ({ message }) => {
       <div
         className="message"
         style={{
-          color: message.role === "user" ? "#AEC7CC" : "inherit",
+          fontSize: isMobile ? "16px" : "14px",
+          paddingTop: isMobile ? ".2rem" : "0rem",
+          width: "80%",
+          color:
+            message.role === "user" || "assistant"
+              ? isMobile
+                ? "#2d302e"
+                : "#AEC7CC"
+              : "inherit",
         }}
       >
         {message.message}

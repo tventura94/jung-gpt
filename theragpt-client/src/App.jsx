@@ -75,7 +75,6 @@ function App() {
           subscriptionStatus={subscriptionStatus}
           setSubscriptionStatus={setSubscriptionStatus}
         />
-        <Footer />
       </Box>
     );
 
