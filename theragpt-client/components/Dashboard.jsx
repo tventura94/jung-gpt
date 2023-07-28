@@ -283,7 +283,7 @@ const ChatMessage = ({ message }) => {
         <div
           className="message"
           style={{
-            fontSize: isMobile ? "15px" : "14px",
+            fontSize: isMobile ? "14px" : "14px",
             paddingTop: isMobile ? "0rem" : "0rem",
             width: "80%",
             color:

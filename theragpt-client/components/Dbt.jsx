@@ -4,6 +4,9 @@ import Fire from "./Fire";
 import { getUserData } from "./Fire";
 import "@fortawesome/fontawesome-free/css/all.css";
 
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 export default function Dbt({ setUserEmail, setAuthState, user }) {
   const [pageLoaded, setPageLoaded] = useState(false);
 
@@ -149,6 +152,8 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
 }
 
 const ChatMessage = ({ message }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div
       className={`chat-message ${
@@ -161,7 +166,7 @@ const ChatMessage = ({ message }) => {
       <div
         className="message"
         style={{
-          color: message.role === "user" ? "#AEC7CC" : "inherit",
+          color: isMobile ? "brown" : "black",
         }}
       >
         {message.message}
