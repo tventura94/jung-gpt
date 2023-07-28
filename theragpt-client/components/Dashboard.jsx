@@ -283,13 +283,13 @@ const ChatMessage = ({ message }) => {
         <div
           className="message"
           style={{
-            fontSize: isMobile ? "16px" : "14px",
+            fontSize: isMobile ? "15px" : "14px",
             paddingTop: isMobile ? "0rem" : "0rem",
             width: "80%",
             color:
               message.role === "user" || "assistant"
                 ? isMobile
-                  ? "#2d302e"
+                  ? "#8B6041"
                   : "#AEC7CC"
                 : "inherit",
           }}

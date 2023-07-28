@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Strait&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   box-sizing: border-box;
   line-height: 1.3;
@@ -389,7 +390,7 @@ body {
   .message {
     margin-left: 2rem;
     margin-top: 0rem;
-    font-family: arial;
+    font-family: "Montserrat";
     letter-spacing: 0.6px;
     font-size: 14px;
     width: 80%;
