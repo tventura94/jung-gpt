@@ -252,28 +252,50 @@ const ChatMessage = ({ message }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <div
-      className={`chat-message ${
-        message.role === "assistant" ? "chatgpt" : ""
-      } ${message.role === "assistant" ? "fade-in" : ""}`}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        width: isMobile ? "90%" : "100%",
+        alignItems: "center",
+        marginLeft: isMobile ? "1rem" : "0rem",
+      }}
     >
       <div
+        style={{
+          display: isMobile ? "flex" : "none",
+          marginRight: isMobile ? "1rem" : "0rem",
+          width: isMobile ? "2.3rem" : "0rem",
+          height: isMobile ? "2.3rem" : "0rem",
+        }}
         className={`avatar ${message.role === "assistant" ? "chatgpt" : ""}`}
       ></div>
       <div
-        className="message"
-        style={{
-          fontSize: isMobile ? "16px" : "14px",
-          paddingTop: isMobile ? ".2rem" : "0rem",
-          width: "80%",
-          color:
-            message.role === "user" || "assistant"
-              ? isMobile
-                ? "#2d302e"
-                : "#AEC7CC"
-              : "inherit",
-        }}
+        className={`chat-message ${
+          message.role === "assistant" ? "chatgpt" : ""
+        } ${message.role === "assistant" ? "fade-in" : ""}`}
       >
-        {message.message}
+        <div
+          style={{
+            display: isMobile ? "none" : "flex",
+          }}
+          className={`avatar ${message.role === "assistant" ? "chatgpt" : ""}`}
+        ></div>
+        <div
+          className="message"
+          style={{
+            fontSize: isMobile ? "16px" : "14px",
+            paddingTop: isMobile ? "0rem" : "0rem",
+            width: "80%",
+            color:
+              message.role === "user" || "assistant"
+                ? isMobile
+                  ? "#2d302e"
+                  : "#AEC7CC"
+                : "inherit",
+          }}
+        >
+          {message.message}
+        </div>
       </div>
     </div>
   );
