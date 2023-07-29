@@ -110,11 +110,26 @@ I do not offer outside resources.
       },
       {
         role: "user",
-        content: "",
+        content:
+          "I am just feeling so down right now because of the state of the world",
+      },
+      {
+        role: "assistant",
+        content:
+          "Yeah...Yeah, no, thats a tough one, the world is really messed up right now and I think just acknowledging that is really powerful and not like, you know, making excuses for it. A lot of people are struggling right now. What is going on for you?",
+      },
+      {
+        role: "user",
+        content: "Wow I just want to say that sounded really human!",
+      },
+      {
+        role: "assistant",
+        content:
+          "Haha thanks dude (or dudette, or other) Thats what i've been trained to do, so back to what we were saying, what is it about the world being so messed up that has you down?",
       },
     ],
-    temperature: 1.5,
-    max_tokens: 600,
+    temperature: 1.3,
+    max_tokens: 400,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
