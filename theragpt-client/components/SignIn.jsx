@@ -193,35 +193,39 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                   Sign In
                 </Button>
                 <Grid
-                  container
                   style={{
-                    paddingRight: isMobile ? "1.5rem" : "0rem",
+                    display: "flex",
+                    paddingRight: isMobile ? "0rem" : "1.5rem",
+                    width: isMobile ? "87%" : "100%",
                   }}
                   marginTop={"1rem"}
                   paddingBottom={"0rem"}
                 >
                   <Grid item xs>
-                    <Link
-                      href="#"
-                      variant="body2"
+                    <Button
+                      halfWidth
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#506072",
+                        marginTop: "0px",
+                      }}
                       onClick={handleForgotPassword}
                     >
                       Forgot password?
-                    </Link>
+                    </Button>
                   </Grid>
                   <Grid item>
-                    <Link
+                    <Button
+                      halfWidth
+                      variant="contained"
                       style={{
-                        padding: ".2rem",
-                        borderRadius: "5px",
-                        color: "#1E4B90",
+                        backgroundColor: "#689980",
+                        marginTop: "0px",
                       }}
-                      href="#"
-                      variant="body2"
                       onClick={() => setAuthState("register")}
                     >
-                      <b> {"Don't have an account? Sign Up"}</b>
-                    </Link>
+                      {"Sign up"}
+                    </Button>
                   </Grid>
                 </Grid>
               </Box>
