@@ -121,9 +121,9 @@ I do not offer outside resources.
       },
     ],
     temperature: 1.5,
-    max_tokens: 370,
+    max_tokens: 380,
     top_p: 1,
-    frequency_penalty: 1.5,
+    frequency_penalty: 1,
     presence_penalty: 1.5,
   });
   res.json({
