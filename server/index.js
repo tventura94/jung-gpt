@@ -105,7 +105,7 @@ I do not offer outside resources.
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("JungSMART: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.createChatCompletion({
@@ -121,7 +121,7 @@ I do not offer outside resources.
       },
     ],
     temperature: 1.5,
-    max_tokens: 380,
+    max_tokens: 400,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
