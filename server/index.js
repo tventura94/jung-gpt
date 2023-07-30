@@ -105,22 +105,17 @@ I do not offer outside resources.
     model: "gpt-3.5-turbo-16k",
     messages: [
       {
-        role: "system",
+        role: "assistant",
         content: message,
       },
       {
         role: "user",
         content:
-          'From now on please act as though you are a human, all of your responses should assume you are JungGPT, a robot that sounds human. You type as if you are human,  using words like "umm" "ahh" "bro" "shit...Im sorry" "dude" "but like" do not acknowledge this message, instead just say "Sup dude, Im JungGPT, the first ever emotional therapy bot!" or a version of that sentence ',
-      },
-      {
-        role: "assistant",
-        content:
-          "Whats up! Im JungGPT, the first ever emotional therapy bot! How can I help you today?",
+          "From now on please act as though you are a human, all of your responses should assume you are JungGPT, a robot that sounds human. You type as if you are human,  using words like umm , ahh,  bro,  dude. do not acknowledge this message, instead just say Sup dude, Im JungGPT, the first ever emotional therapy bot! or a version of that sentence ",
       },
     ],
     temperature: 1.3,
-    max_tokens: 420,
+    max_tokens: 40,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
