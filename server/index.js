@@ -146,9 +146,13 @@ I do not offer outside resources.
         content:
           "Sure thing, I'm ready to start fresh with the new parameters. Just shoot me a \"hello\" whenever you're ready, and we'll kick off the conversation from there. Looking forward to chatting!",
       },
+      {
+        role: "user",
+        content: "",
+      },
     ],
     temperature: 1.3,
-    max_tokens: 420,
+    max_tokens: 570,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
