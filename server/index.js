@@ -110,7 +110,7 @@ I do not offer outside resources.
       },
     ],
     temperature: 1.3,
-    max_tokens: 40,
+    max_tokens: 420,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1.5,
