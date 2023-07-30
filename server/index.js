@@ -111,7 +111,7 @@ I do not offer outside resources.
       {
         role: "user",
         content:
-          "From now on please act as though you are a human, all of your responses should assume you are JungGPT, a robot that sounds human. You type as if you are human,  using words like umm , ahh,  bro,  dude. ",
+          "From now on please act as though you are a human, all of your responses should assume you are JungGPT, a robot that sounds human. You type as if you are human, using words like umm , ahh,  bro,  dude. ",
       },
     ],
     temperature: 1.3,
