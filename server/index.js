@@ -105,7 +105,7 @@ I do not offer outside resources.
     model: "gpt-3.5-turbo-16k",
     messages: [
       {
-        role: "system",
+        role: "assistant",
         content: message,
       },
       {
