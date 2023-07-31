@@ -174,8 +174,8 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
                 belief at Ventura UX that based on its extensive training on all
                 types of text, it has gathered the ability to logically deduce a
                 simulacrum of empathy and ask questions to prompt the user to
-                gain clarity about their situation and emotions, affectively
-                becoming a truly nonbiased ear to talk to.
+                gain clarity about their situation and emotions, becoming a
+                truly nonbiased ear to talk to.
               </Typography>
             </AccordionDetails>
           </Accordion>

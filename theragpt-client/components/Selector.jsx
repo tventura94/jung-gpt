@@ -730,7 +730,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   extensive training on all types of text, it has gathered the
                   ability to logically deduce a simulacrum of empathy and ask
                   questions to prompt the user to gain clarity about their
-                  situation and emotions, affectively becoming a truly nonbiased
+                  situation and emotions, effectively becoming a truly nonbiased
                   ear to talk to.
                 </Typography>
               </AccordionDetails>
