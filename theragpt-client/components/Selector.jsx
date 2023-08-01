@@ -226,11 +226,14 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
   };
   return (
-    <div className={isMobile ? "jung-background-3" : "jung-background-2"}
-    style={{ boxSizing: "border-box",   
-    backgroundPositionY: isMobile ?"66.68%" : "110%",
-    backgroundRepeat: "no-repeat",
-     }}>
+    <div
+      className={isMobile ? "jung-background-3" : "jung-background-2"}
+      style={{
+        boxSizing: "border-box",
+        backgroundPositionY: isMobile ? "66.68%" : "110%",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="main">
         <img
           style={{
@@ -258,8 +261,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           alignItems: "center",
           justifyContent: "center",
           padding: "1em",
-          backgroundColor: isMobile ? '#aec2b6' : '',
-          borderBottom: isMobile ? 'silver 3px solid' : ''
+          backgroundColor: isMobile ? "#aec2b6" : "",
+          borderBottom: isMobile ? "silver 3px solid" : "",
         }}
       >
         <Box
@@ -749,7 +752,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       <div
         style={{
           marginTop: isMobile ? "" : "3rem",
-          
         }}
       >
         <div
@@ -760,7 +762,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             width: isMobile ? "90%" : "50%",
             justifyContent: "space-evenly",
             textAlign: "center",
-            
           }}
         >
           <div
