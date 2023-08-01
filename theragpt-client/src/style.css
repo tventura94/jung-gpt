@@ -62,7 +62,11 @@ html {
 }
 
 /* Dashboard */
-
+.div {
+  background-image: url(/theragpt-client/logos/Jung-background.png);
+  background-size: cover;
+  background-position: 100%;
+}
 .main {
   margin: 0 auto;
   display: flex;
@@ -522,5 +526,12 @@ body {
   background-image: url(../logos/jung-background4.svg);
   background-size: 100%;
   background-position-y: 110%;
+  background-repeat: no-repeat;
+}
+
+.jung-background-3 {
+  background-image: url(../logos/jung-background5.svg);
+  background-size: auto;
+  background-position-y: 70%;
   background-repeat: no-repeat;
 }

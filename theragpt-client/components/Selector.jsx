@@ -204,7 +204,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     ":hover": isMobile ? "" : { transform: "scale(1.05)" },
     fontFamily: "'Roboto Slab', serif",
     lineHeight: "1.6rem",
-    maxHeight: "85vh",
     "@media (max-width: 1096px)": {
       minWidth: "400px",
     },
@@ -227,7 +226,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
   };
   return (
-    <div className="jung-background-2" style={{ boxSizing: "border-box" }}>
+    <div className={isMobile ? "jung-background-3" : "jung-background-2"}
+    style={{ boxSizing: "border-box",   
+    backgroundPositionY: isMobile ?"66.68%" : "110%",
+    backgroundRepeat: "no-repeat",
+     }}>
       <div className="main">
         <img
           style={{
@@ -255,6 +258,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           alignItems: "center",
           justifyContent: "center",
           padding: "1em",
+          backgroundColor: isMobile ? '#aec2b6' : '',
+          borderBottom: isMobile ? 'silver 3px solid' : ''
         }}
       >
         <Box
@@ -264,7 +269,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             justifyContent: "space-evenly",
             alignItems: "center",
             width: "100%",
-            maxWidth: "97%",
+            maxWidth: "80vw",
             marginBottom: isMobile ? "3rem" : "0",
             margin: isMobile ? "3rem" : "0",
             backgroundColor: isMobile ? "" : "whitesmoke",
@@ -744,6 +749,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       <div
         style={{
           marginTop: isMobile ? "" : "3rem",
+          
         }}
       >
         <div
@@ -754,6 +760,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             width: isMobile ? "90%" : "50%",
             justifyContent: "space-evenly",
             textAlign: "center",
+            
           }}
         >
           <div
@@ -771,8 +778,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 borderRadius: "16px",
                 marginBottom: "1rem",
                 marginTop: "2rem",
-                width: isMobile ? "100%" : "50%",
-                minWidth: "400px", // Set a minimum width to prevent the image from getting too small
+                width: isMobile ? "97%" : "50%",
               }}
               src={JungAdmat}
               alt="admat"
@@ -788,9 +794,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 lineHeight: isMobile ? "1.8125rem" : "2rem",
                 borderTop: isMobile ? "2px solid silver" : "",
                 marginTop: "2rem",
-                paddingTop: "2rem",
+                paddingTop: "4rem",
                 fontFamily: "'Roboto Slab', serif",
-                fontSize: isMobile ? "1.1875rem" : "1.1875rem",
+                fontSize: isMobile ? "1.05rem" : "1.1875rem",
               }}
             >
               <b>
@@ -875,6 +881,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         padding: isMobile ? "1em" : "2em",
                         width: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
                         margin: isMobile ? "1em 0" : "0",
+                        marginBottom: isMobile ? "2.5rem" : "",
+                        marginTop: isMobile ? "3rem" : "",
                         fontFamily: "'Roboto Slab', serif",
                         lineHeight: "1.6rem",
                         boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
@@ -1023,7 +1031,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               style={{
                 marginTop: "16px",
 
-                backgroundColor: "#95baa3",
+                backgroundColor: "#BABEA8",
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
