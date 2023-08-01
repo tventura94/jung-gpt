@@ -17,10 +17,12 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
+  Container,
 } from "@mui/material";
-
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { motion } from "framer-motion";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuPopupState from "./MenuPopup";
@@ -30,6 +32,7 @@ import { useEffect, useState } from "react";
 import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
 import JungAdmat from "/jung-rev.png";
+import Image from "/img-2-scaled.jpg";
 import {
   collection,
   where,
@@ -41,12 +44,74 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { getUserData, db } from "./Fire";
-import Faq from "./Faq";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
   const [logoSrc, setLogoSrc] = useState(MainLogo);
   const [checkedSecond, setCheckedSecond] = React.useState(false);
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah",
+      feedback:
+        "I've been using JungGPT for a few months now and it's been an absolute lifesaver. It has helped me to understand and navigate my emotions in a more constructive way. I use it regularly and have noticed a huge difference in my ability to process my feelings. This tool is truly remarkable.",
+    },
+    {
+      id: 2,
+      name: "Tom",
+      feedback:
+        "I've never come across an app like JungGPT. The Emotional Reflection tool is like having a therapist in my pocket! It's been an incredible support system for me. The insights it provides are truly enlightening and have helped me manage my emotional well-being.",
+    },
+    {
+      id: 3,
+      name: "Aisha",
+      feedback:
+        "JungGPT is a game changer. It's taught me so much about myself and my emotional responses. The personalized feedback has been invaluable to my self-discovery journey. I've been able to take control of my emotional health in a way I never thought possible before.",
+    },
+    {
+      id: 4,
+      name: "Josh",
+      feedback:
+        "Using JungGPT has had a profound impact on my mental health. It's given me clarity and helped me process my feelings in a meaningful way. The tool is user-friendly and incredibly intuitive. It's been a major asset in my mental wellness routine.",
+    },
+    {
+      id: 5,
+      name: "Emily",
+      feedback:
+        "I've been blown away by the personalized feedback from JungGPT. It's helped me understand my emotions on a much deeper level. This is the best self-help tool I've come across. I've recommended it to all my friends and family members.",
+    },
+    {
+      id: 6,
+      name: "Matthew",
+      feedback:
+        "JungGPT has been instrumental in my emotional self-improvement journey. The insights it provides are profound and easy to understand. I've learned so much about myself and how to manage my emotions effectively. I can't recommend it enough!",
+    },
+  ];
+  const handleNext = () => {
+    setCurrentTestimonial((prev) => {
+      const increment = isMobile ? 1 : 3;
+      if (prev + increment >= testimonials.length) {
+        return 0; // Wrap around to the start of the array
+      }
+      return prev + increment;
+    });
+  };
+
+  const handleBack = () => {
+    setCurrentTestimonial((prev) => {
+      const decrement = isMobile ? 1 : 3;
+      if (prev - decrement < 0) {
+        // Find the index of the last set of testimonials
+        let lastIndex = testimonials.length - decrement;
+        if (lastIndex < 0) lastIndex = 0; // Fallback to 0 if the array has less than decrement items
+        return lastIndex;
+      }
+      return (prev - decrement + testimonials.length) % testimonials.length;
+    });
+  };
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
@@ -130,7 +195,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     justifyContent: "center",
     backgroundColor: "#E8E1DC",
     borderRadius: "2em",
-    padding: isMobile ? "1em" : "2em",
+    padding: isMobile ? "1em" : "0em",
     width: "100%",
     maxWidth: isMobile ? "90vw" : "30vw",
     minWidth: "500px",
@@ -146,7 +211,21 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     border: "2px solid silver",
     boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
   };
+  const boxStylesUser = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F5F5F5",
+    color: "#607E92",
+    padding: isMobile ? "1em" : "2em",
+    width: "400px",
+    margin: isMobile ? "1em 0" : "0",
+    fontFamily: "'Roboto Slab', serif",
+    lineHeight: "1.6rem",
 
+    boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
+  };
   return (
     <div className="jung-background-2" style={{ boxSizing: "border-box" }}>
       <div className="main">
@@ -203,7 +282,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             <Box sx={boxStyles}>
               <Button
                 style={{
-                  width: "18rem",
+                  width: "100%",
                   height: "8rem",
                 }}
                 onClick={() => setAuthState("dashboard")}
@@ -221,11 +300,25 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   wordWrap: "break-word", // add this line
                   width: "80%",
                   maxWidth: "100%", // add this line
-                  marginBottom: "3rem",
+                  marginBottom: "1rem",
                   lineHeight: "2rem",
                 }}
               >
-                <b>Our very first Emotional Reflection Feedback tool</b> <br />
+                <p
+                  style={{
+                    marginBottom: "0rem",
+                  }}
+                >
+                  {" "}
+                  <b
+                    style={{
+                      fontSize: "26px",
+                    }}
+                  >
+                    Our very first Emotional Reflection Feedback tool
+                  </b>{" "}
+                </p>
+                <br />
                 An advanced language model that facilitates emotional
                 understanding. It processes user input, deciphers the inherent
                 emotional context, and reflects it back to the user for enhanced
@@ -233,6 +326,17 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 personalized, strategic suggestions for emotional navigation and
                 progression.
               </p>
+              <Button
+                style={{
+                  width: "30%",
+                  backgroundColor: "#607E92",
+                  color: "whitesmoke",
+                  margin: "2rem",
+                }}
+                onClick={() => setAuthState("dashboard")}
+              >
+                Chat Now
+              </Button>
             </Box>
           </motion.div>
           <motion.div
@@ -289,17 +393,41 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               </div>
               <p
                 style={{
+                  wordWrap: "break-word", // add this line
                   width: "80%",
-                  marginBottom: "3rem",
+                  maxWidth: "100%", // add this line
+                  marginBottom: "1rem",
                   lineHeight: "2rem",
                 }}
               >
-                <b>Our groundbreaking SMART Tool, JungSMART</b> <br />
+                <p style={{ marginBottom: "0rem" }}>
+                  {" "}
+                  <b
+                    style={{
+                      fontSize: "26px",
+                    }}
+                  >
+                    Our groundbreaking SMART Tool, JungSMART
+                  </b>
+                </p>{" "}
+                <br />
                 SMART stands for Specific, Measurable, Achievable, Relevant, and
                 Time-bound, which are all critical aspects of effective goal
                 setting. This AI assistant helps users create SMART goals and
                 action plans.
               </p>
+              <Button
+                style={{
+                  width: "30%",
+                  backgroundColor: "#607E92",
+                  color: "whitesmoke",
+
+                  margin: "2rem",
+                }}
+                onClick={() => setAuthState("dbt")}
+              >
+                Chat Now
+              </Button>
             </Box>
           </motion.div>
         </Box>
@@ -612,6 +740,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           </Button>
         </DialogActions>
       </Dialog>
+
       <div
         style={{
           marginTop: isMobile ? "" : "3rem",
@@ -642,7 +771,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 borderRadius: "16px",
                 marginBottom: "1rem",
                 marginTop: "2rem",
-                width: isMobile ? " 100%" : "50%",
+                width: isMobile ? "100%" : "50%",
+                minWidth: "400px", // Set a minimum width to prevent the image from getting too small
               }}
               src={JungAdmat}
               alt="admat"
@@ -650,16 +780,37 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             <Typography
               variant="body1"
               style={{
+                minWidth: "50%", // Add this line
                 marginTop: isMobile ? "2rem" : "",
                 textAlign: "center",
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
-                lineHeight: "29px",
+                lineHeight: isMobile ? "1.8125rem" : "2rem",
+                borderTop: isMobile ? "2px solid silver" : "",
+                marginTop: "2rem",
+                paddingTop: "2rem",
+                fontFamily: "'Roboto Slab', serif",
+                fontSize: isMobile ? "1.1875rem" : "1.1875rem",
               }}
             >
               <b>
-                Get real relief now chatting with our highly customized
-                Emotional Reflection Feedback Tool! The first AI of its kind!
+                <span
+                  style={{
+                    fontSize: isMobile ? "1.875rem" : "1.75rem",
+                    wordSpacing: ".3rem",
+                  }}
+                >
+                  Get real relief{" "}
+                </span>
+                chatting with our highly customized{" "}
+                <span
+                  style={{
+                    fontSize: "1.375rem",
+                    wordSpacing: ".3rem",
+                  }}
+                >
+                  Emotional Reflection Feedback Tool!{" "}
+                </span>
               </b>{" "}
               <br /> <br />
               JungGPT was developed by the ingenuity of web developers and
@@ -669,20 +820,151 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               and negative self-talk.
             </Typography>
           </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: isMobile ? "0em" : "2em",
+              width: "100%",
+
+              marginBottom: "4rem",
+            }}
+          >
+            <ArrowBackIcon
+              onClick={handleBack}
+              style={{
+                display: isMobile ? "none" : "",
+                cursor: "pointer",
+                marginRight: "1em",
+              }}
+            />
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "2em",
+                marginBottom: "1rem",
+                marginTop: "1rem",
+                margin: "0 auto",
+              }}
+            >
+              {testimonials
+                .slice(
+                  currentTestimonial,
+                  currentTestimonial + (isMobile ? 1 : 3)
+                )
+                .map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        backgroundColor: "#F5F5F5",
+                        color: "#607E92",
+                        padding: isMobile ? "1em" : "2em",
+                        width: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
+                        margin: isMobile ? "1em 0" : "0",
+                        fontFamily: "'Roboto Slab', serif",
+                        lineHeight: "1.6rem",
+                        boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
+                        "@media (min-width: 600px) and (max-width: 1224px)": {
+                          // This targets tablet devices
+                          width: "200px", // Set the width to 200px for tablet devices
+                        },
+                      }}
+                    >
+                      <p
+                        style={{
+                          color: "#868a72",
+                          fontSize: "18px",
+                          textAlign: "left",
+                          lineHeight: "30px",
+                          width: "100%",
+                        }}
+                      >
+                        {testimonial.feedback}
+                      </p>
+                      <h3
+                        style={{
+                          textAlign: "left",
+                          paddingTop: "1rem",
+                          width: "100%",
+                        }}
+                      >
+                        {testimonial.name}
+                      </h3>
+                    </Box>
+                  </motion.div>
+                ))}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                margin: "0 auto",
+                justifyContent: "right",
+                alignItems: "right",
+              }}
+            >
+              <ArrowBackIcon
+                onClick={handleBack}
+                style={{
+                  display: isMobile ? "" : "none",
+                  cursor: "pointer",
+                  marginRight: "1em",
+                }}
+              />
+              <ArrowForwardIcon
+                onClick={handleNext}
+                style={{ cursor: "pointer", marginLeft: "1em" }}
+              />
+            </div>
+          </div>
           <Typography
             variant="body1"
             style={{
-              fontSize: "25px",
-              marginTop: "1rem",
+              fontSize: "40px",
+              marginTop: isMobile ? "2rem" : "1rem",
               marginBottom: "1rem",
+              color: "#484b52",
+              wordSpacing: "20px",
+              letterSpacing: "4px",
+              fontFamily: "Roboto",
+              borderRadius: "4px",
+              margin: "0 auto",
+              width: "100%",
+              borderTop: "2px silver solid",
+              paddingTop: isMobile ? "1.5rem" : "2.5rem",
+              paddingBottom: isMobile ? ".8rem" : "1.5rem",
             }}
           >
             <b>Frequently Asked Questions</b>
           </Typography>
           <div>
-            <Accordion style={{ marginTop: "16px" }}>
+            <Accordion
+              style={{
+                backgroundColor: "#5E7E91",
+                marginTop: "16px",
+              }}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
+                  }}
+                >
                   Is this some sort of attempt to replace therapists with AI?
                 </Typography>
               </AccordionSummary>
@@ -690,6 +972,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <Typography
                   style={{
                     textAlign: "left",
+                    color: "whitesmoke",
+                    fontFamily: "'Roboto Slab', serif",
                   }}
                 >
                   Nope... And even if we were... we just don't have that kind of
@@ -735,14 +1019,28 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-            <Accordion style={{ marginTop: "16px" }}>
+            <Accordion
+              style={{
+                marginTop: "16px",
+
+                backgroundColor: "#95baa3",
+              }}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                  }}
+                >
                   I've never seen something like this. How can I trust it?
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                  }}
+                >
                   This is an AI trained on trillions of data points about
                   psychology, and has been trained on a large amount of text.
                   Because of this, we've found that while JungGPT may not be
@@ -756,14 +1054,28 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-            <Accordion style={{ marginTop: "16px" }}>
+            <Accordion
+              style={{
+                backgroundColor: "#5E7E91",
+                marginTop: "16px",
+              }}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>What are the benefits of subscribing?</Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
+                  }}
+                >
+                  What are the benefits of subscribing?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography
                   style={{
                     textAlign: "left",
+                    color: "whitesmoke",
+                    fontFamily: "'Roboto Slab', serif",
                   }}
                 >
                   If you subscribe, you gain unlimited messaging and access to
@@ -781,12 +1093,28 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-            <Accordion style={{ marginBottom: "16px", marginTop: "16px" }}>
+            <Accordion
+              style={{
+                backgroundColor: "#95baa3",
+                marginBottom: "16px",
+                marginTop: "16px",
+              }}
+            >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>Do you store data of our conversations?</Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                  }}
+                >
+                  Do you store data of our conversations?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                  }}
+                >
                   NO! We never read your conversations!
                   <br />
                   <br /> We do not store your data, we never read your
@@ -803,6 +1131,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           </div>
         </div>
       </div>
+
       <Box
         sx={{
           alignItems: "center",
@@ -820,6 +1149,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             marginTop: "0rem",
             marginBottom: "2rem",
             width: "100%",
+            fontFamily: "'Roboto Slab', serif",
+            color: "#8c7c66",
           }}
         >
           <b>Let us know how you feel!</b>
