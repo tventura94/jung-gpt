@@ -74,7 +74,10 @@ html {
   background-color: #5b6b7f;
   font-family: "Strait";
   color: rgb(196, 194, 194);
+  top: 0;
+  width: 100%;
 }
+
 .logout-button {
   border: none;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

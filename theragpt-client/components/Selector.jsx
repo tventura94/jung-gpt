@@ -230,11 +230,17 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       className={isMobile ? "jung-background-3" : "jung-background-2"}
       style={{
         boxSizing: "border-box",
-        backgroundPositionY: isMobile ? "66.68%" : "110%",
+        backgroundPositionY: isMobile ? "62.5%" : "110%",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="main">
+      <div
+        className="main"
+        style={{
+          position: isMobile ? "fixed" : "fixed",
+          zIndex: isMobile ? "100" : "100",
+        }}
+      >
         <img
           style={{
             color: "white",
@@ -272,13 +278,13 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             justifyContent: "space-evenly",
             alignItems: "center",
             width: "100%",
-            maxWidth: "80vw",
+            maxWidth: "95vw",
             marginBottom: isMobile ? "3rem" : "0",
             margin: isMobile ? "3rem" : "0",
             backgroundColor: isMobile ? "" : "whitesmoke",
             borderRadius: "30px",
             padding: isMobile ? "" : "2.5rem",
-            marginTop: isMobile ? "1rem" : "3rem",
+            marginTop: isMobile ? "4rem" : "3rem",
           }}
         >
           <motion.div
@@ -793,9 +799,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
                 lineHeight: isMobile ? "1.8125rem" : "2rem",
-                borderTop: isMobile ? "2px solid silver" : "",
-                marginTop: "2rem",
-                paddingTop: "4rem",
+                paddingTop: isMobile ? "8.8rem" : "1rem",
                 fontFamily: "'Roboto Slab', serif",
                 fontSize: isMobile ? "1.05rem" : "1.1875rem",
               }}
@@ -956,6 +960,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               borderTop: "2px silver solid",
               paddingTop: isMobile ? "1.5rem" : "2.5rem",
               paddingBottom: isMobile ? ".8rem" : "1.5rem",
+              fontFamily: "'Roboto Slab', serif",
             }}
           >
             <b>Frequently Asked Questions</b>
@@ -1039,6 +1044,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <Typography
                   style={{
                     fontFamily: "'Roboto Slab', serif",
+                    color: "white",
                   }}
                 >
                   I've never seen something like this. How can I trust it?
@@ -1048,6 +1054,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <Typography
                   style={{
                     fontFamily: "'Roboto Slab', serif",
+                    color: "white",
                   }}
                 >
                   This is an AI trained on trillions of data points about
@@ -1113,6 +1120,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <Typography
                   style={{
                     fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
                   }}
                 >
                   Do you store data of our conversations?
@@ -1122,6 +1130,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <Typography
                   style={{
                     fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
                   }}
                 >
                   NO! We never read your conversations!
@@ -1173,6 +1182,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             marginBottom: "1rem",
             width: "100%",
             lineHeight: "35px",
+            fontFamily: "'Roboto Slab', serif",
           }}
         >
           We value user feedback greatly.
@@ -1200,6 +1210,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
 
               color: "white",
               fontSize: "1rem",
+
+              fontFamily: "'Roboto Slab', serif",
             }}
           >
             {" "}
@@ -1210,6 +1222,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               margin: ".7rem",
               color: "white",
 
+              fontFamily: "'Roboto Slab', serif",
               fontSize: ".9rem",
             }}
           >
@@ -1220,6 +1233,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             sx={{
               margin: ".7rem",
 
+              fontFamily: "'Roboto Slab', serif",
               color: "white",
               fontSize: ".8rem",
             }}
