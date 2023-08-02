@@ -76,6 +76,7 @@ html {
   color: rgb(196, 194, 194);
   top: 0;
   width: 100%;
+  border-bottom: 1px silver solid;
 }
 
 .logout-button {

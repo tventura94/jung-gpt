@@ -256,13 +256,13 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 </b>{" "}
                 <br />
                 <br />
-                Conceived by a team of psychologists and AI researchers, we
-                provide an innovative approach to self-reflection and emotional
-                understanding. With the aim of fostering self-awareness, we
-                blend fields of psychology, medicine, psychiatry, and philosophy
-                to encourage introspection and insight. Remember, we are not a
-                replacement for professional therapy. Let's start your journey
-                towards greater emotional clarity today.
+                Introducing JungGPT - your personal, pocket-sized therapist!
+                This groundbreaking innovation comes alive, powered by a
+                colossal knowledge bank gleaned from trillions of data points in
+                psychology, therapy, psychiatry, and philosophy. Engineered to
+                be your emotional mirror, JungGPT delves deep into your
+                sentiments and sparks enlightening conversations, always leaving
+                you with intriguing questions to ponder on.
               </Typography>
             </Box>
           </Grid>

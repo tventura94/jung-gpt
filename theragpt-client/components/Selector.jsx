@@ -210,21 +210,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     border: "2px solid silver",
     boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
   };
-  const boxStylesUser = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#F5F5F5",
-    color: "#607E92",
-    padding: isMobile ? "1em" : "2em",
-    width: "400px",
-    margin: isMobile ? "1em 0" : "0",
-    fontFamily: "'Roboto Slab', serif",
-    lineHeight: "1.6rem",
-
-    boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
-  };
   return (
     <div
       className={isMobile ? "jung-background-3" : "jung-background-2"}
@@ -266,9 +251,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "1em",
           backgroundColor: isMobile ? "#aec2b6" : "",
           borderBottom: isMobile ? "silver 3px solid" : "",
+          padding: "1em",
         }}
       >
         <Box
