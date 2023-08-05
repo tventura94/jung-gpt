@@ -256,7 +256,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 </b>{" "}
                 <br />
                 <br />
-                Introducing JungGPT - your personal, pocket-sized therapist!
+                Introducing JungGPT - your personal, pocket-sized AI Help Bot!
                 This groundbreaking innovation comes alive, powered by a
                 colossal knowledge bank gleaned from trillions of data points in
                 psychology, therapy, psychiatry, and philosophy. Engineered to
