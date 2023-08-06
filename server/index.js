@@ -113,7 +113,7 @@ app.post("/jung", async (req, res) => {
     }
   });
   const response = await openai.createChatCompletion({
-    model: "curie:ft-personal-2023-08-05-23-08-39",
+    model: "ft-personal-2023-08-05-23-08-39",
     messages: [
       {
         role: "assistant",
