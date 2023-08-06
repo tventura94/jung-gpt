@@ -112,8 +112,8 @@ app.post("/jung", async (req, res) => {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-  const response = await openai.createCompletion({
-    model: "curie:ft-personal-2023-08-05-23-08-39",
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo-16k",
     messages: [
       {
         role: "assistant",
