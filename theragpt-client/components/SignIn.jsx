@@ -256,13 +256,12 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 </b>{" "}
                 <br />
                 <br />
-                Introducing JungGPT - your personal, pocket-sized AI Help Bot!
-                This groundbreaking innovation comes alive, powered by a
-                colossal knowledge bank gleaned from trillions of data points in
-                psychology, therapy, psychiatry, and philosophy. Engineered to
-                be your emotional mirror, JungGPT delves deep into your
-                sentiments and sparks enlightening conversations, always leaving
-                you with intriguing questions to ponder on.
+                Meet JungGPT: Your compact AI companion for emotional insights!
+                This revolutionary tool is fueled by a vast repository of
+                information spanning psychology, therapy, psychiatry, and
+                philosophy. Crafted to reflect your emotions, JungGPT dives into
+                your feelings, initiating profound discussions and consistently
+                presenting thought-provoking queries for your contemplation.
               </Typography>
             </Box>
           </Grid>

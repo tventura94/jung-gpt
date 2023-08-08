@@ -166,7 +166,7 @@ const ChatMessage = ({ message }) => {
       <div
         className="message"
         style={{
-          color: isMobile ? "brown" : "black",
+          color: isMobile ? "brown" : "white",
         }}
       >
         {message.message}
