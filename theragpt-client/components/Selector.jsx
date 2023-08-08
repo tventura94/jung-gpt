@@ -871,7 +871,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         backgroundColor: "#F5F5F5",
                         color: "#607E92",
                         padding: isMobile ? "1em" : "2em",
-                        minWidth: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
+                        width: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
                         margin: isMobile ? "1em 0" : "0",
                         marginBottom: isMobile ? "2.5rem" : "",
                         marginTop: isMobile ? "3rem" : "",
