@@ -21,6 +21,7 @@ import MainLogo from "/will.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { isMotionValue } from "framer-motion";
+import { IconButton } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -235,11 +236,12 @@ export default function SignIn({ setUserEmail, setAuthState }) {
             <Box
               sx={{
                 display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
                 height: "95%",
                 width: "100%",
                 ml: "2rem",
-                mt: isMobile ? "2.5rem" : "0rem",
+                mt: isMobile ? "2.5rem" : "2rem",
               }}
             >
               <Typography
@@ -263,6 +265,33 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 your feelings, initiating profound discussions and consistently
                 presenting thought-provoking queries for your contemplation.
               </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  margin: "0 auto",
+                  marginTop: "1rem",
+                  justifyContent: "space-between",
+                  alignItems: "space-between",
+                }}
+              >
+                <IconButton
+                  onClick={() =>
+                    window.open("https://www.tiktok.com/@junggpt", "_blank")
+                  }
+                >
+                  <i className="fa-brands fa-tiktok"></i>
+                </IconButton>
+                <IconButton
+                  sx={{
+                    marginLeft: "1rem",
+                  }}
+                  onClick={() =>
+                    window.open("https://www.instagram.com/junggpt", "_blank")
+                  }
+                >
+                  <i className="fa fa-instagram"></i>
+                </IconButton>
+              </Box>
             </Box>
           </Grid>
         </Grid>

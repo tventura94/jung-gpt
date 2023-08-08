@@ -45,6 +45,8 @@ import {
 } from "firebase/firestore";
 import { getUserData, db } from "./Fire";
 
+import { IconButton } from "@mui/material";
+
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
   const [logoSrc, setLogoSrc] = useState(MainLogo);
@@ -1225,6 +1227,37 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           >
             We look forward to hearing from you!
           </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              margin: "0 auto",
+              marginLeft: "1.5rem",
+              width: "20%",
+              justifyContent: "center",
+            }}
+          >
+            <IconButton
+              sx={{
+                color: "whitesmoke",
+              }}
+              onClick={() =>
+                window.open("https://www.tiktok.com/@junggpt", "_blank")
+              }
+            >
+              <i className="fa-brands fa-tiktok"></i>
+            </IconButton>
+            <IconButton
+              sx={{
+                marginLeft: "1rem",
+                color: "whitesmoke",
+              }}
+              onClick={() =>
+                window.open("https://www.instagram.com/junggpt", "_blank")
+              }
+            >
+              <i className="fa fa-instagram"></i>
+            </IconButton>
+          </Box>
         </Box>
       </Box>
     </div>
