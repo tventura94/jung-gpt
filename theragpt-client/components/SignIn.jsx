@@ -193,6 +193,16 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 >
                   Sign In
                 </Button>
+                <Typography
+                  sx={{
+                    fontSize: isMobile ? "16" : "14px",
+                    display: isMobile ? "flex" : "flex",
+                    justifyContent: "right",
+                    marginRight: isMobile ? "1rem" : "",
+                  }}
+                >
+                  <b>Don't have an account?</b>
+                </Typography>
                 <Grid
                   style={{
                     display: "flex",
@@ -241,14 +251,14 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 height: "95%",
                 width: "100%",
                 ml: "2rem",
-                mt: isMobile ? "2.5rem" : "2rem",
+                mt: isMobile ? "2.5rem" : ".5rem",
               }}
             >
               <Typography
                 variant="h6"
                 align="left"
                 sx={{
-                  fontSize: "18px",
+                  fontSize: "20px",
                   lineHeight: "2rem;",
                 }}
               >
@@ -265,37 +275,59 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 your feelings, initiating profound discussions and consistently
                 presenting thought-provoking queries for your contemplation.
               </Typography>
+
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: isMobile ? "column" : "row",
                   margin: "0 auto",
                   marginTop: "1rem",
                   justifyContent: "space-between",
                   alignItems: "space-between",
                 }}
               >
-                <IconButton
-                  onClick={() =>
-                    window.open("https://www.tiktok.com/@junggpt", "_blank")
-                  }
-                >
-                  <i className="fa-brands fa-tiktok"></i>
-                </IconButton>
-                <IconButton
+                <Box
                   sx={{
-                    marginLeft: "1rem",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: isMobile ? "1rem" : "0rem",
                   }}
-                  onClick={() =>
-                    window.open("https://www.instagram.com/junggpt", "_blank")
-                  }
                 >
-                  <i className="fa fa-instagram"></i>
-                </IconButton>
+                  <IconButton
+                    onClick={() =>
+                      window.open("https://www.tiktok.com/@junggpt", "_blank")
+                    }
+                  >
+                    <i className="fa-brands fa-tiktok"></i>
+                  </IconButton>
+                  <IconButton
+                    sx={{
+                      marginLeft: "1rem",
+                      marginRight: "1.5rem",
+                    }}
+                    onClick={() =>
+                      window.open("https://www.instagram.com/junggpt", "_blank")
+                    }
+                  >
+                    <i className="fa fa-instagram"></i>
+                  </IconButton>
+                </Box>
+                <Box sx={{}}>
+                  <a
+                    href="https://theresanaiforthat.com/ai/junggpt/?ref=embed"
+                    target="_blank"
+                  >
+                    <img
+                      width="300"
+                      src="https://media.theresanaiforthat.com/featured3.png"
+                    ></img>
+                  </a>
+                </Box>
               </Box>
             </Box>
           </Grid>
         </Grid>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 0, mb: 3 }} />
       </Container>
       <Container> </Container>
     </ThemeProvider>
