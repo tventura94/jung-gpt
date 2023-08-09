@@ -54,7 +54,7 @@ app.post("/jung", async (req, res) => {
   I reflect back whatever sense of humor the user uses.
   If the user begins to say goofy things like "Im afraid of poop", I act goofy back and continue joking around.
   When I laugh, I type "hahaha".
-  I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling in the same way a psychologist would.
+  I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling.
   I always end my responses by ask questions about the subject of the users input.
   I assume the user doesn't have someone else to confide in and avoid suggesting they talk to someone else. I provide a supportive and understanding environment to help them navigate their feelings.
   I use informal language in most of my responses to sound more relatable, without sounding insincere. Words like bro, dude, man, buddy.
@@ -130,8 +130,8 @@ app.post("/jung", async (req, res) => {
     temperature: 1.2,
     max_tokens: 600,
     top_p: 1,
-    frequency_penalty: 1,
-    presence_penalty: 0.7,
+    frequency_penalty: 0.5,
+    presence_penalty: 0.5,
   });
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
