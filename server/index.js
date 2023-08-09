@@ -10,7 +10,7 @@ const rateLimit = require("express-rate-limit");
 
 const configuration = new Configuration({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
-  apiKey: process.env.OPEN_AI_,
+  apiKey: process.env.OPEN_AI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
