@@ -325,7 +325,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 emotional context, and reflects it back to the user for enhanced
                 clarity. Leveraging this understanding, JungGPT provides
                 personalized, strategic suggestions for emotional navigation and
-                progression.
+                progression. <br />{" "}
+                <b>(Responses vary between 2-8 second wait times)</b>
               </p>
               <Button
                 style={{
@@ -1099,7 +1100,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             <Accordion
               style={{
                 backgroundColor: "#95baa3",
-                marginBottom: "16px",
                 marginTop: "16px",
               }}
             >
@@ -1129,6 +1129,37 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   <a href="https://openai.com/policies/api-data-usage-policies">
                     here.
                   </a>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion
+              style={{
+                backgroundColor: "#5E7E91",
+                marginBottom: "16px",
+                marginTop: "16px",
+                color: "whitesmoke",
+              }}
+            >
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography
+                  style={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
+                  }}
+                >
+                  Is JungGPT Multilingual?
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography
+                  style={{
+                    textAlign: "left",
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
+                  }}
+                >
+                  Yes! JungGPT is fluent in almost every modern language! Making
+                  it an effective companion for all citizens around the globe!
                 </Typography>
               </AccordionDetails>
             </Accordion>

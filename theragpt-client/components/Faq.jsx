@@ -224,7 +224,7 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ marginBottom: "16px", marginTop: "16px" }}>
+          <Accordion style={{ marginTop: "16px" }}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>Do you store data of our conversations?</Typography>
             </AccordionSummary>
@@ -239,6 +239,21 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
                 <a href="https://openai.com/policies/api-data-usage-policies">
                   here.
                 </a>
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion style={{ marginBottom: "32px", marginTop: "16px" }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>Is JungGPT Multilingual?</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography
+                style={{
+                  textAlign: "left",
+                }}
+              >
+                Yes! JungGPT is fluent in almost every modern language! Making
+                it an effective companion for all citizens around the globe!
               </Typography>
             </AccordionDetails>
           </Accordion>
