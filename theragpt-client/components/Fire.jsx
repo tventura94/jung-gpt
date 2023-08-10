@@ -5,6 +5,7 @@ import { ReCaptchaV3Provider } from "firebase/app-check";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { collection, doc, setDoc, getDoc, addDoc } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDTj2O54OA5PLUGeTlj_cJfnnir5vBcXj0",
@@ -18,7 +19,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const analytics = getAnalytics(app);
+logEvent(analytics, "notification_received");
 export const auth = getAuth();
 
 // Initialize database

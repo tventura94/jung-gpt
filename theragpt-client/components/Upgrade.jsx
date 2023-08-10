@@ -90,7 +90,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: "price_1NWlUrGx3uwFHp11NFEO6GHt",
+        price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
         success_url: window.location.href,
         cancel_url: window.location.href,
       }

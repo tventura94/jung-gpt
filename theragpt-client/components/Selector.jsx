@@ -255,7 +255,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           justifyContent: "center",
           backgroundColor: isMobile ? "#aec2b6" : "",
           borderBottom: isMobile ? "silver 3px solid" : "",
-          padding: "1em",
+          padding: isMobile ? "0em" : "1em",
         }}
       >
         <Box
@@ -267,11 +267,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             width: "100%",
             maxWidth: "95vw",
             marginBottom: isMobile ? "3rem" : "0",
-            margin: isMobile ? "3rem" : "0",
+            margin: isMobile ? "0rem" : "0",
             backgroundColor: isMobile ? "" : "whitesmoke",
-            borderRadius: "30px",
             padding: isMobile ? "" : "2.5rem",
-            marginTop: isMobile ? "4rem" : "3rem",
+            marginTop: isMobile ? "2.5rem" : "3rem",
+            borderRadius: "30px",
           }}
         >
           <motion.div
@@ -782,12 +782,12 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               variant="body1"
               style={{
                 minWidth: "50%", // Add this line
-                marginTop: isMobile ? "2rem" : "",
+                marginTop: isMobile ? "0rem" : "",
                 textAlign: "center",
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
                 lineHeight: isMobile ? "1.8125rem" : "2rem",
-                paddingTop: isMobile ? "8.8rem" : "1rem",
+                paddingTop: isMobile ? "10.8rem" : "1rem",
                 fontFamily: "'Roboto Slab', serif",
                 fontSize: isMobile ? "1.05rem" : "1.1875rem",
               }}
