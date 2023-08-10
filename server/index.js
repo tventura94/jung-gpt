@@ -133,7 +133,7 @@ app.post("/jung", async (req, res) => {
     max_tokens: 600,
     top_p: 1,
     frequency_penalty: 0.3,
-    presence_penalty: 1,
+    presence_penalty: 0.5,
   });
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
