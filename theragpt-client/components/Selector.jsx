@@ -1129,6 +1129,10 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   <a href="https://openai.com/policies/api-data-usage-policies">
                     here.
                   </a>
+                  <br /> <br />
+                  We do, however, keep and store other data related to your
+                  account. Such as: email, relative geographical data, how long
+                  the user spends on the app, etc.
                 </Typography>
               </AccordionDetails>
             </Accordion>

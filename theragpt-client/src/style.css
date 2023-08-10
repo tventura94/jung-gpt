@@ -29,7 +29,10 @@ html {
   margin-left: 10px;
 }
 /*********** REGISTER FORM *********/
-
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .register-form-container {
   display: flex;
   flex-direction: column;

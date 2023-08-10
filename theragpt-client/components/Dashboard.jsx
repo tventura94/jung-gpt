@@ -51,7 +51,7 @@ export default function Dashboard({
   }, []);
 
   useEffect(() => {
-    if (subscriptionStatus !== "active" && chatLog.length >= 21) {
+    if (subscriptionStatus !== "active" && chatLog.length >= 15) {
       setTrialLimitReached(true);
     } else {
       setTrialLimitReached(false);
@@ -152,7 +152,13 @@ export default function Dashboard({
             >
               {/* Conditionally render the "New Chat" button */}
               {isMenuOpen && (
-                <div className="side-menu-button" onClick={clearChat}>
+                <div
+                  className={
+                    "side-menu-button" +
+                    (subscriptionStatus !== "active" ? " disabled" : "")
+                  }
+                  onClick={subscriptionStatus === "active" ? clearChat : null}
+                >
                   <i className="fas fa-plus"></i>New Chat
                 </div>
               )}
@@ -215,7 +221,15 @@ export default function Dashboard({
                   }}
                   variant="h6"
                 >
-                  Sorry, you're on the free trial. Upgrade to continue chatting.
+                  We know how annoying it is to be stopped mid-conversation...
+                  <br />
+                  but we can't continue to run this app without your help.
+                  <br />
+                  <br /> As much as we wish we could keep this app running for
+                  free, we can't! <br /> Right now, you're on the free trial.
+                  <br />
+                  <br />
+                  Won't you consider Subscribing?
                 </Typography>
 
                 <Button
