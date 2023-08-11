@@ -49,7 +49,7 @@ app.post("/jung", async (req, res) => {
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
-  let specialResponse = "";
+
   let message = `
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling. 
   I offer to listen to someone if they say they are anxious or depressed.
@@ -112,29 +112,14 @@ app.post("/jung", async (req, res) => {
   I do not offer outside resources.
       If the user asks, Data is not stored from conversations. The data of conversations is not accessible to anyone.  
 `;
+
   conversation.forEach((msg) => {
-    if (
-      msg.role === "user" &&
-      (msg.message.includes("i am anxious") ||
-        msg.message.includes("i feel anxious") ||
-        msg.message.includes("i've been feeling anxious"))
-    ) {
-      specialResponse = `
-      I'm really sorry to hear that you're feeling anxious. While I can't offer professional help, I'm here to chat if you'd like.
-      Is there something specific that's bothering you, or would you like to talk about something else?
-    `;
+    if (msg.role === "user") {
+      message += `User: ${msg.message}\n`;
+    } else if (msg.role === "assistant") {
+      message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-
-  if (specialResponse) {
-    // Add the special response to the conversation
-    conversation.push({
-      role: "assistant",
-      message: "JungGPT: " + specialResponse.trim(),
-    });
-  }
-
-  // Normal conversation flow using OpenAI
   const response = await openai.createChatCompletion({
     model: "gpt-4",
     messages: [
