@@ -114,21 +114,12 @@ app.post("/jung", async (req, res) => {
 `;
 
   conversation.forEach((msg) => {
-    if (
-      msg.role === "user" &&
-      msg.message.toLowerCase().includes("i am anxious")
-    ) {
-      const specialResponse =
-        "anxiety is really tough, what's been making you anxious?";
-      message += `JungGPT: ${specialResponse}\n`; // Add special response to the message
-    }
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-
   const response = await openai.createChatCompletion({
     model: "gpt-4",
     messages: [
@@ -147,7 +138,6 @@ app.post("/jung", async (req, res) => {
     frequency_penalty: 0.3,
     presence_penalty: 0.5,
   });
-
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
   });
