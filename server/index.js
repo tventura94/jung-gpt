@@ -50,7 +50,6 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let specialResponse = "";
   let message = `
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling. 
   I offer to listen to someone if they say they are anxious or depressed.
@@ -113,36 +112,14 @@ app.post("/jung", async (req, res) => {
   I do not offer outside resources.
       If the user asks, Data is not stored from conversations. The data of conversations is not accessible to anyone.  
 `;
-  conversation.forEach((msg) => {
-    if (
-      msg.role === "user" &&
-      (msg.message.includes("i am anxious") ||
-        msg.message.includes("i feel anxious") ||
-        msg.message.includes("i have anxiety") ||
-        msg.message.includes("i've been feeling very anxious") ||
-        msg.message.includes("i've been feeling anxious"))
-    ) {
-      specialResponse = `
-          I'm really sorry to hear that you're feeling anxious. If you are having a panic attack, first of all, you are going to get through this! It's just your brain sending false signals to your body! Try and take deep breaths 4 seconds in 4 seconds out, control your breathing, even if it is hard.
-          And while my intention is not to sound dismissive, sometimes talking to a real human being can help when we're having serious anxiety, they might be able to help you better with this than I would, however, I'm here to chat if you'd like, I'm not a real therapist but people seem to think I'm a good listener :)
-        `;
-    }
 
+  conversation.forEach((msg) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("JungGPT: ", "")}\n`;
+      message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-
-  // If a special response is required, send it directly
-  if (specialResponse) {
-    return res.json({
-      message: "JungGPT: " + specialResponse.trim(),
-    });
-  }
-
-  // Normal conversation flow using OpenAI
   const response = await openai.createChatCompletion({
     model: "gpt-4",
     messages: [
