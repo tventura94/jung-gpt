@@ -1,4 +1,14 @@
 import React, { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  List,
+  ListItem,
+} from "@mui/material";
+
 import MenuPopupState from "./MenuPopup";
 import Fire from "./Fire";
 import { getUserData } from "./Fire";
@@ -23,6 +33,7 @@ export default function Dashboard({
   const [chatLog, setChatLog] = useState([]);
   const [input, setInput] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
+  const [showDeveloperNotes, setShowDeveloperNotes] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -149,6 +160,142 @@ export default function Dashboard({
       </div>
       <Fire user={user} />
       <div className="junggpt">
+        <Dialog
+          open={showDeveloperNotes}
+          onClose={() => setShowDeveloperNotes(false)}
+        >
+          <DialogTitle
+            sx={{
+              textAlign: "center",
+              fontFamily: "'Roboto Slab', serif",
+              backgroundColor: "#A7AEBC",
+              color: "white",
+            }}
+          >
+            A message from the developers
+          </DialogTitle>
+          <DialogContent
+            sx={{
+              backgroundColor: "#607E92",
+              color: "white",
+            }}
+          >
+            <DialogContentText>
+              <List>
+                <Typography
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "pink",
+                    textAlign: "center",
+                    marginTop: "1rem",
+                  }}
+                >
+                  We want to thank ALL OF YOU for taking the time to use this
+                  tool, it means the world that people are positively responding
+                  to this effort and we hope you will subscribe!{" "}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "pink",
+                  }}
+                >
+                  <b>
+                    <br />
+                    We are a small team of 4 people
+                  </b>{" "}
+                  and the fact that we have been able to have this big of an
+                  impact this quickly is really exciting.
+                  <br />
+                  <br /> That being said...{" "}
+                  <b>
+                    This is very expensive to run, this is just the reality of
+                    the situation.
+                  </b>{" "}
+                  While we wish we could give this tool away for free, we
+                  currently don't have the backed funding to do so. <br />{" "}
+                  <br />
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "whitesmoke",
+                    fontSize: "18px",
+                  }}
+                >
+                  Right now, people all over the globe are getting help with
+                  JungGPT. If you find this tool helpful - Consider subscribing!
+                  <br /> <br />{" "}
+                  <b
+                    style={{
+                      color: "pink",
+                    }}
+                  >
+                    It's only 7 dollars a month!
+                  </b>
+                </Typography>
+                <br />
+
+                <Typography
+                  sx={{
+                    fontSize: "22px",
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "white",
+                  }}
+                >
+                  What do I gain from subscribing?
+                </Typography>
+                <br />
+
+                <Typography
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "pink",
+                  }}
+                >
+                  {" "}
+                  - Unlimited 24/7 access to JungGPT <br /> - Access to
+                  JungSMART and all current and future models
+                </Typography>
+                <DialogTitle
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "white",
+                  }}
+                >
+                  Weekly Developer Notes
+                </DialogTitle>
+                <ListItem sx={{ color: "pink" }}>
+                  Currently, leading with basic statements like "I feel anxious"
+                  sometimes causes JungGPT to act counterintuitively. To avoid
+                  this behavior, simply type "Can we talk about the anxiety I'm
+                  feeling?" or something of the like
+                </ListItem>
+                <ListItem
+                  sx={{
+                    fontFamily: "'Roboto Slab', serif",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
+                >
+                  please email support@ventura-ux.com for any issues
+                </ListItem>
+                {/* Add more notes here */}
+              </List>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              sx={{
+                color: "brown",
+                backgroundColor: "pink",
+              }}
+              onClick={() => setShowDeveloperNotes(false)}
+            >
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
         {user ? (
           <div className="header">
             <aside
