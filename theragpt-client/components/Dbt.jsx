@@ -4,6 +4,7 @@ import Fire from "./Fire";
 import { getUserData } from "./Fire";
 import "@fortawesome/fontawesome-free/css/all.css";
 
+import { logPageView } from "../components/Fire";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -27,7 +28,9 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
 
     fetchData();
   }, [user.email]);
-
+  useEffect(() => {
+    logPageView("/dbt");
+  }, []);
   useEffect(() => {
     if (document.readyState === "complete") {
       setPageLoaded(true);
@@ -88,6 +91,7 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
           user={user}
         />
       </div>
+
       <Fire user={user} />
       <div>
         {user ? (

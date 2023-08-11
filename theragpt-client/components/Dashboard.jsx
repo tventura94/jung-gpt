@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { db } from "../components/Fire";
 import { collection, onSnapshot } from "firebase/firestore";
+import { logPageView } from "../components/Fire";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -35,6 +36,10 @@ export default function Dashboard({
 
     fetchData();
   }, [user.email]);
+
+  useEffect(() => {
+    logPageView("/Dashboard");
+  }, []);
 
   useEffect(() => {
     if (document.readyState === "complete") {

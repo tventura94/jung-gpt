@@ -26,6 +26,7 @@ import {
 } from "@mui/material";
 import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
+import { logPageView } from "../components/Fire";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const theme = useTheme();
@@ -73,7 +74,9 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       unsubscribe();
     };
   }, [user]);
-
+  useEffect(() => {
+    logPageView("/Upgrade");
+  }, []);
   const handleUpgrade = async (productId) => {
     setLoading(true);
     const selectedProduct = products.find(

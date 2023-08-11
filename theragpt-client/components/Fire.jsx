@@ -23,6 +23,12 @@ const analytics = getAnalytics(app);
 logEvent(analytics, "notification_received");
 export const auth = getAuth();
 
+export function logPageView(pageName) {
+  logEvent(analytics, "page_view", {
+    page_path: pageName, // e.g., '/Dashboard'
+    page_title: pageName, // e.g., 'Dashboard'
+  });
+}
 // Initialize database
 
 export const db = getFirestore();

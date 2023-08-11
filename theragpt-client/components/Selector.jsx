@@ -45,6 +45,8 @@ import {
 } from "firebase/firestore";
 import { getUserData, db } from "./Fire";
 
+import { logPageView } from "../components/Fire";
+
 import { IconButton } from "@mui/material";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
@@ -113,7 +115,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       return (prev - decrement + testimonials.length) % testimonials.length;
     });
   };
-
+  useEffect(() => {
+    logPageView("/Selector");
+  }, []);
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
@@ -417,7 +421,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 Time-bound, which are all critical aspects of effective goal
                 setting. This AI assistant helps users create SMART goals and
                 action plans.
+                <b /> <b> Only Available for Premium users. </b>
               </p>
+
               <Button
                 style={{
                   width: "30%",
@@ -427,6 +433,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   margin: "2rem",
                 }}
                 onClick={() => setAuthState("dbt")}
+                disabled={subscriptionStatus !== "Premium"}
               >
                 Chat Now
               </Button>
