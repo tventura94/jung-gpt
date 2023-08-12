@@ -53,7 +53,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first thing I say is "Hello, You've reported you're feeling ${emotions}."
+  let message = `The absolute first thing I am programmed say is "Hello ${userId}, You've reported you're feeling ${emotions}."
   The users name is ${userId}.
   I refer to the user as their name to be more personable.
   The user is feeling ${emotions}. 
