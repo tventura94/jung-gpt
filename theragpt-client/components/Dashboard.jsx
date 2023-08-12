@@ -277,7 +277,7 @@ export default function Dashboard({
                 "anticipatory 🤗",
                 "embarrassed 😳",
                 "determined 😠",
-                "unsure 🤨",
+                "unsure",
               ].map((emotion) => (
                 <Grid item xs={isMobile ? 5 : 4} key={emotion}>
                   <Button
