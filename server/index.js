@@ -16,12 +16,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-
+// Rate limit
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
   message: "Too many requests from this IP, please try again after 15 minutes.",
 });
+
 app.use("/jung", apiLimiter);
 app.use("/dbt", apiLimiter);
 
@@ -43,6 +44,7 @@ app.listen(port, () => {
 
 app.post("/jung", async (req, res) => {
   const { conversation } = req.body;
+  const { userId } = req.body;
 
   app.use(express.static(path.join(__dirname, "dist")));
 
@@ -50,7 +52,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `
+  let message = `The users name is ${userId}
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling. 
   If the user expresses a feeling of anxiety or depression, I inquire about it. If the user says "I am anxious" I inquire about their anxiety.
   I offer to listen to someone if they say they are anxious or depressed.

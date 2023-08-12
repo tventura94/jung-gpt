@@ -52,6 +52,7 @@ export default function Dashboard({
     fetchData();
   }, [user.email]);
 
+  // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
     logPageView("/Dashboard");
   }, []);
@@ -70,7 +71,7 @@ export default function Dashboard({
     }
   }, []);
 
-  // Subscription pay wall logic
+  // Subscription pay wall logic - if the user isnt subscribed they get 15 messages total, and a warning popup at nine messages.
   useEffect(() => {
     if (subscriptionStatus !== "active") {
       if (chatLog.length >= 15) {
@@ -119,6 +120,7 @@ export default function Dashboard({
     textarea.style.height = textarea.scrollHeight + "px";
   }
 
+  // Go to different pages
   function handleUpgrade() {
     setAuthState("upgrade");
   }
@@ -146,12 +148,13 @@ export default function Dashboard({
     return () => clearInterval(interval);
   }, [lastMessageTime]);
 
+  // Submit Message Logic
   async function handleSubmit(e) {
     e.preventDefault();
 
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < 7000) {
-      // Less than 5 seconds since the last message, so return without sending
+      // Less than 7 seconds since the last message, so return without sending
       alert("You must wait 7 seconds between messages.");
       return;
     }
@@ -162,11 +165,13 @@ export default function Dashboard({
     if (trialLimitReached) {
       return;
     }
+    const userId = user ? user.email : null; // Get the UID from the user object
 
     let chatLogNew = [...chatLog, { role: "user", message: `${input}` }];
     setInput("");
     setChatLog(chatLogNew);
 
+    // Fetch to backend
     const response = await fetch("https://jung-gpt.onrender.com/jung", {
       method: "POST",
       headers: {
@@ -174,6 +179,7 @@ export default function Dashboard({
       },
       body: JSON.stringify({
         conversation: chatLogNew,
+        userId: userId,
       }),
     });
 
@@ -514,6 +520,8 @@ export default function Dashboard({
     </div>
   );
 }
+
+// Chat HTML
 const ChatMessage = ({ message }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
