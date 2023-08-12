@@ -135,7 +135,7 @@ app.post("/jung", async (req, res) => {
       },
       {
         role: "user",
-        content: "",
+        content: `Hey Jung, my name is ${userId} and I'm feeling ${emotions}`,
       },
     ],
     temperature: 1.1,
