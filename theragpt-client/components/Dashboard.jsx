@@ -7,6 +7,7 @@ import {
   DialogActions,
   List,
   ListItem,
+  Grid,
 } from "@mui/material";
 
 import MenuPopupState from "./MenuPopup";
@@ -36,6 +37,19 @@ export default function Dashboard({
   const [warningPopup, setWarningPopup] = useState(false);
   const [lastMessageTime, setLastMessageTime] = useState(0);
   const [timer, setTimer] = useState(0);
+  const [open, setOpen] = useState(true);
+
+  // Emotion Select overlay
+  const [selectedEmotions, setSelectedEmotions] = useState([]);
+  const handleEmotionClick = (emotion) => {
+    setSelectedEmotions((prev) => {
+      if (prev.includes(emotion)) {
+        return prev.filter((e) => e !== emotion);
+      } else {
+        return [...prev, emotion];
+      }
+    });
+  };
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -148,7 +162,7 @@ export default function Dashboard({
     return () => clearInterval(interval);
   }, [lastMessageTime]);
 
-  // Submit Message Logic
+  // Submit Message Logic - 7 Second Wait Timer
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -180,6 +194,7 @@ export default function Dashboard({
       body: JSON.stringify({
         conversation: chatLogNew,
         userId: userId,
+        emotions: selectedEmotions, // send the selected emotions
       }),
     });
 
@@ -212,6 +227,97 @@ export default function Dashboard({
       </div>
       <Fire user={user} />
       <div className="junggpt">
+        <Dialog
+          sx={{
+            backgroundColor: "#1e4a66a3",
+          }}
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <DialogContent
+            sx={{
+              backgroundColor: "whitesmoke",
+              border: "4px solid gray",
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 auto",
+            }}
+          >
+            <Grid container spacing={2}>
+              <Typography
+                sx={{
+                  padding: "2rem",
+                  fontSize: "22px",
+                  fontFamily: "'Roboto Slab', serif",
+                  textAlign: "center",
+                }}
+              >
+                Let JungDBT know how you're feeling before you start chatting so
+                we can better cater to your specific needs!
+              </Typography>
+              {[
+                "happy",
+                "sad",
+                "angry",
+                "disgusted",
+                "shameful",
+                "surprised",
+                "jealous",
+                "nervous",
+                "anxious",
+                "reminiscent",
+                "anticipatory",
+                "embarassed",
+                "determined",
+                "unsure",
+              ].map((emotion) => (
+                <Grid item xs={6} key={emotion}>
+                  <Button
+                    sx={{
+                      fontFamily: "'Roboto Slab', serif",
+                      border: "solid 1px pink",
+                      "&:hover": {
+                        borderColor: "purple", // Change the border color on hover
+                      },
+                      variant: selectedEmotions.includes(emotion)
+                        ? "contained"
+                        : "outlined",
+                      ...(selectedEmotions.includes(emotion) && {
+                        color: "white", // Change the text color when selected
+                      }),
+                    }}
+                    variant={
+                      selectedEmotions.includes(emotion)
+                        ? "contained"
+                        : "outlined"
+                    }
+                    onClick={() => handleEmotionClick(emotion)}
+                  >
+                    {emotion}
+                  </Button>
+                </Grid>
+              ))}
+            </Grid>
+            <Button
+              sx={{
+                marginTop: "2rem",
+                backgroundColor: "#607E92",
+                border: "1px solid pink",
+                color: "whitesmoke",
+                width: "50%",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+              variant="contained"
+              onClick={() => {
+                // Close overlay
+                setOpen(false);
+              }}
+            >
+              I'm ready to chat
+            </Button>
+          </DialogContent>
+        </Dialog>
         <Dialog
           open={showDeveloperNotes}
           onClose={() => setShowDeveloperNotes(false)}
