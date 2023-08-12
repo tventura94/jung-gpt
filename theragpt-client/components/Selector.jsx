@@ -42,6 +42,7 @@ import {
   addDoc,
   onSnapshot,
   getDoc,
+  setDoc,
 } from "firebase/firestore";
 import { getUserData, db } from "./Fire";
 
@@ -167,11 +168,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
   const isMed = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = React.useState(false);
   const [checked, setChecked] = React.useState(false);
-
-  const handleTermsClick = (e) => {
-    e.preventDefault();
-    setAuthState("terms");
-  };
 
   React.useEffect(() => {
     const hasAcceptedTerms = localStorage.getItem("hasAcceptedTerms");
