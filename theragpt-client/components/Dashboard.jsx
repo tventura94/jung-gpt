@@ -18,7 +18,6 @@ import { Typography } from "@mui/material";
 import { db } from "../components/Fire";
 import { collection, onSnapshot } from "firebase/firestore";
 import { logPageView } from "../components/Fire";
-
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 export default function Dashboard({
@@ -34,7 +33,12 @@ export default function Dashboard({
   const [input, setInput] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
   const [showDeveloperNotes, setShowDeveloperNotes] = useState(true);
+  const [warningPopup, setWarningPopup] = useState(false);
+  const [lastMessageTime, setLastMessageTime] = useState(0);
+  const [timer, setTimer] = useState(0);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -66,13 +70,25 @@ export default function Dashboard({
     }
   }, []);
 
+  // Subscription pay wall logic
   useEffect(() => {
-    if (subscriptionStatus !== "active" && chatLog.length >= 15) {
-      setTrialLimitReached(true);
+    if (subscriptionStatus !== "active") {
+      if (chatLog.length >= 15) {
+        setTrialLimitReached(true);
+      } else if (chatLog.length === 9) {
+        setWarningPopup(true); // Show the warning popup at the 9th message
+      }
     } else {
       setTrialLimitReached(false);
+      setWarningPopup(false);
     }
   }, [chatLog, subscriptionStatus]);
+
+  const handleWarningClose = () => {
+    setWarningPopup(false);
+  };
+
+  // Firebase - Check user sub
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -111,8 +127,38 @@ export default function Dashboard({
     setAuthState("selector");
   }
 
+  // Chat Timer
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentTime = Date.now();
+      const remainingTime = Math.max(
+        0,
+        7 - Math.floor((currentTime - lastMessageTime) / 1000)
+      );
+
+      setTimer(remainingTime);
+
+      if (remainingTime === 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [lastMessageTime]);
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    const currentTime = Date.now();
+    if (currentTime - lastMessageTime < 7000) {
+      // Less than 5 seconds since the last message, so return without sending
+      alert("You must wait 7 seconds between messages.");
+      return;
+    }
+
+    // Update the last message time
+    setLastMessageTime(currentTime);
+
     if (trialLimitReached) {
       return;
     }
@@ -200,15 +246,24 @@ export default function Dashboard({
                     color: "pink",
                   }}
                 >
-                  <b>
+                  <b
+                    style={{
+                      color: "white",
+                    }}
+                  >
                     <br />
                     We are a small team of 4 people
                   </b>{" "}
-                  and the fact that we have been able to have this big of an
-                  impact this quickly is really exciting.
+                  and we feel so grateful for the fact that we have been able to
+                  have this big of an impact this quickly after launch - It is
+                  really exciting!
                   <br />
                   <br /> That being said...{" "}
-                  <b>
+                  <b
+                    style={{
+                      color: "white",
+                    }}
+                  >
                     This is very expensive to run, this is just the reality of
                     the situation.
                   </b>{" "}
@@ -263,13 +318,18 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes
+                  Weekly Developer Notes 8/11/23
                 </DialogTitle>
                 <ListItem sx={{ color: "pink" }}>
-                  Currently, leading with basic statements like "I feel anxious"
-                  sometimes causes JungGPT to act counterintuitively. To avoid
-                  this behavior, simply type "Can we talk about the anxiety I'm
-                  feeling?" or something of the like
+                  - Due to how fast this app is expanding, we may have to take
+                  the site down for maintenance on Sunday through Tuesday, but
+                  hopefully this won't have to happen and if it does it will
+                  hopefully be much shorter than that.
+                  <br />
+                  <br />- Currently, leading with basic statements like "I feel
+                  anxious" sometimes causes JungGPT to act counterintuitively.
+                  To avoid this behavior, simply type "Can we talk about the
+                  anxiety I'm feeling?" or something of the like.
                 </ListItem>
                 <ListItem
                   sx={{
@@ -288,7 +348,7 @@ export default function Dashboard({
             <Button
               sx={{
                 color: "brown",
-                backgroundColor: "pink",
+                backgroundColor: "#A7D2B7",
               }}
               onClick={() => setShowDeveloperNotes(false)}
             >
@@ -343,6 +403,7 @@ export default function Dashboard({
                         }
                       }}
                       disabled={trialLimitReached}
+                      maxLength={1500}
                     ></textarea>
                     <button
                       type="submit"
@@ -353,11 +414,51 @@ export default function Dashboard({
                     </button>
                   </form>
                 </div>
-                <div className="chat-disclaimer">
+                <div style={{}}>
+                  {timer > 0 && (
+                    <span>
+                      You can send the next message in {timer} seconds
+                    </span>
+                  )}
+                </div>
+                <div
+                  style={{
+                    paddingTop: "2rem",
+                  }}
+                  className="chat-disclaimer"
+                >
                   JungGPT may produce inaccurate information about people,
                   places, or facts.
                 </div>
               </div>
+              <Dialog open={warningPopup} onClose={handleWarningClose}>
+                <DialogTitle
+                  sx={{
+                    textAlign: "center",
+                    fontSize: "40px",
+                  }}
+                >
+                  Sorry to interrupt!
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText
+                    sx={{
+                      textAlign: "center",
+                      fontSize: "25px",
+                    }}
+                  >
+                    Your freemium conversation has almost run out! If you're in
+                    the middle of a conversation, feel free to wrap it up!
+                    <br />
+                    <b>You have three messages left!</b>
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleWarningClose} color="primary">
+                    OK
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </section>
             {trialLimitReached && (
               <div
