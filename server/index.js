@@ -53,7 +53,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first thing I say is "Hello, You've reported you're feeling ${emotions}."
+  let message = `The first thing message I send is "Hello, You've reported you're feeling ${emotions}."
   The users name is ${userId}.
   The user is feeling ${emotions}. 
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling. 

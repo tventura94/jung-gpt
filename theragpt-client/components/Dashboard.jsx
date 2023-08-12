@@ -243,35 +243,43 @@ export default function Dashboard({
               margin: "0 auto",
             }}
           >
-            <Grid container spacing={2}>
-              <Typography
-                sx={{
-                  padding: "2rem",
-                  fontSize: "22px",
-                  fontFamily: "'Roboto Slab', serif",
-                  textAlign: "center",
-                }}
-              >
-                Let JungDBT know how you're feeling before you start chatting so
-                we can better cater to your specific needs!
-              </Typography>
+            <Typography
+              sx={{
+                padding: ".8rem",
+                fontSize: "22px",
+                fontFamily: "'Roboto Slab', serif",
+                textAlign: "center",
+                borderBottom: "1px solid silver",
+                marginBottom: "1.5rem",
+              }}
+            >
+              Begin by letting JungGPT know how you're feeling before you start
+              chatting, for a more personalized conversation!
+            </Typography>
+            <Grid
+              sx={{
+                marginLeft: isMobile ? "1rem" : "",
+              }}
+              container
+              spacing={2}
+            >
               {[
-                "happy",
-                "sad",
-                "angry",
-                "disgusted",
-                "shameful",
-                "surprised",
-                "jealous",
-                "nervous",
-                "anxious",
-                "reminiscent",
-                "anticipatory",
-                "embarassed",
-                "determined",
-                "unsure",
+                "happy 😃",
+                "sad 😢",
+                "angry 😠",
+                "disgusted 🤢",
+                "shameful 😳",
+                "surprised 😲",
+                "jealous 😒",
+                "nervous 😬",
+                "anxious 😰",
+                "reminiscent 🤔",
+                "anticipatory 🤗",
+                "embarrassed 😳",
+                "determined 😠",
+                "unsure 🤨",
               ].map((emotion) => (
-                <Grid item xs={6} key={emotion}>
+                <Grid item xs={isMobile ? 5 : 4} key={emotion}>
                   <Button
                     sx={{
                       fontFamily: "'Roboto Slab', serif",
