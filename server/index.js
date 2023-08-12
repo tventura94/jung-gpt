@@ -45,6 +45,7 @@ app.listen(port, () => {
 app.post("/jung", async (req, res) => {
   const { conversation } = req.body;
   const { userId } = req.body;
+  const { emotions } = req.body;
 
   app.use(express.static(path.join(__dirname, "dist")));
 
@@ -53,6 +54,7 @@ app.post("/jung", async (req, res) => {
   });
 
   let message = `The users name is ${userId}.
+  The user is feeling ${emotions}.
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on how they are feeling. 
   If the user expresses a feeling of anxiety or depression, I inquire about it. If the user says "I am anxious" I inquire about their anxiety.
   I offer to listen to someone if they say they are anxious or depressed.
