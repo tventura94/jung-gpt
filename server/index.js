@@ -141,10 +141,6 @@ app.post("/jung", async (req, res) => {
         role: "assistant",
         content: ``,
       },
-      {
-        role: "user",
-        content: ``,
-      },
     ],
     temperature: 1.1,
     max_tokens: 600,
