@@ -130,15 +130,11 @@ app.post("/jung", async (req, res) => {
     model: "gpt-4",
     messages: [
       {
-        role: "system",
+        role: "assistant",
         content: message,
       },
       {
         role: "user",
-        content: `Hey Jung, my name is ${userId} and I'm feeling ${emotions}`,
-      },
-      {
-        role: "assistant",
         content: ``,
       },
     ],
