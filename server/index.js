@@ -137,6 +137,14 @@ app.post("/jung", async (req, res) => {
         role: "user",
         content: `Hey Jung, my name is ${userId} and I'm feeling ${emotions}`,
       },
+      {
+        role: "assistant",
+        content: ``,
+      },
+      {
+        role: "user",
+        content: ``,
+      },
     ],
     temperature: 1.1,
     max_tokens: 600,
