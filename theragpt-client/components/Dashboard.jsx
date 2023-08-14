@@ -335,11 +335,12 @@ export default function Dashboard({
                 setInterestsOpen(true);
               }}
             >
-              Next
+              Start Chatting
             </Button>
           </DialogContent>
         </Dialog>
-        <Dialog
+        {/* Metaphor Feature************************ */}
+        {/* <Dialog
           sx={{
             backgroundColor: "#1e4a66a3",
           }}
@@ -448,8 +449,8 @@ export default function Dashboard({
               Start Chat
             </Button>
           </DialogContent>
-        </Dialog>
-
+        </Dialog> */}
+        {/* ************************** */}
         <Dialog
           open={showDeveloperNotes}
           onClose={() => setShowDeveloperNotes(false)}
@@ -632,7 +633,7 @@ export default function Dashboard({
                   preliminary explanations a user might have to give to JungGPT.
                   <br />
                   <br />{" "}
-                  <b
+                  {/* <b
                     style={{
                       color: "whitesmoke",
                       fontSize: "19px",
@@ -644,7 +645,7 @@ export default function Dashboard({
                   <br />
                   You will now be prompted to select what your interest's or
                   hobbies are for the purpose of JungGPT offering personalized
-                  metaphor. Now JungGPT really "speaks your languge" 😉😏
+                  metaphor. Now JungGPT really "speaks your languge" 😉😏 */}
                 </ListItem>
                 <ListItem
                   sx={{
