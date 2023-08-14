@@ -64,7 +64,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         let newSub = activeSubs[0];
 
         if (newSub) {
-          console.log(`Account is ${newSub.status}`);
           setSubscriptionStatus(newSub.status);
         }
       }

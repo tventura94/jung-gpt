@@ -22,7 +22,6 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
         await getUserData(user.email);
       } catch (error) {
         // Handle any potential errors
-        console.log("Error retrieving user data:", error);
       }
     };
 
@@ -68,7 +67,6 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
       ...chatLogDbt,
       { role: "assistant", message: `${data.message}` },
     ]);
-    console.log(data);
   }
 
   function clearChat(e) {

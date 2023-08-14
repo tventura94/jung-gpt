@@ -35,6 +35,25 @@ function Terms({ setUser, setAuthState, user }) {
         margin="auto" // This centers the Box horizontally
       >
         <Typography
+          marginTop="2rem"
+          marginBottom="2rem"
+          variant="h6"
+          align="lenter"
+          gutterBottom
+        >
+          TOS User Usage Acknowledgement:
+          <br /> I understand that this platform provides AI chat-based support
+          and is NOT a replacement for professional mental health services.{" "}
+          <br />I understand and acknowledge that I am using this chat bot of my
+          own volition and that I should NOT use this bot if I am having
+          feelings of self harm, suicidal ideation, or am having a panic attack.
+          This service does not constitute mental health therapy, counseling,
+          medical or psychological diagnosis, or professional mental health
+          advice. <br />
+          If I am in crisis, feel like I may harm myself or others, I understand
+          it is essential to seek immediate professional help.
+        </Typography>
+        <Typography
           display={"flex"}
           justifyContent="center"
           alignContent="center"

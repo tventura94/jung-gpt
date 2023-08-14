@@ -39,8 +39,11 @@ export default function Dashboard({
   const [timer, setTimer] = useState(0);
   const [open, setOpen] = useState(true);
 
-  // Emotion Select overlay
+  // Emotion / Interests Select overlay
   const [selectedEmotions, setSelectedEmotions] = useState([]);
+  const [selectedInterests, setSelectedInterests] = useState([]);
+  const [interestsOpen, setInterestsOpen] = useState(false);
+
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
       if (prev.includes(emotion)) {
@@ -51,15 +54,25 @@ export default function Dashboard({
     });
   };
 
+  const handleInterestClick = (interest) => {
+    setSelectedInterests((prev) => {
+      if (prev.includes(interest)) {
+        return prev.filter((i) => i !== interest);
+      } else {
+        return [...prev, interest];
+      }
+    });
+  };
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         await getUserData(user.email);
       } catch (error) {
         // Handle any potential errors
-        console.log("Error retrieving user data:", error);
       }
     };
 
@@ -116,10 +129,8 @@ export default function Dashboard({
         let newSub = activeSubs[0];
 
         if (newSub) {
-          console.log(`Account is ${newSub.status}`);
           setSubscriptionStatus(newSub.status);
         } else {
-          console.log("Account not active");
         }
       }
     );
@@ -195,6 +206,7 @@ export default function Dashboard({
         conversation: chatLogNew,
         userId: userId,
         emotions: selectedEmotions, // send the selected emotions
+        interests: selectedInterests, // send the selected interests
       }),
     });
 
@@ -254,8 +266,9 @@ export default function Dashboard({
               }}
             >
               Begin by letting JungGPT know how you're feeling before you start
-              chatting, for a more personalized conversation!
+              chatting for a more personalized conversation!
             </Typography>
+
             <Grid
               sx={{
                 marginLeft: isMobile ? "1rem" : "",
@@ -318,14 +331,125 @@ export default function Dashboard({
               }}
               variant="contained"
               onClick={() => {
-                // Close overlay
                 setOpen(false);
+                setInterestsOpen(true);
               }}
             >
-              I'm ready to chat
+              Next
             </Button>
           </DialogContent>
         </Dialog>
+        <Dialog
+          sx={{
+            backgroundColor: "#1e4a66a3",
+          }}
+          open={interestsOpen}
+          onClose={() => setInterestsOpen(false)}
+        >
+          <DialogContent
+            sx={{
+              backgroundColor: "whitesmoke",
+              border: "4px solid gray",
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 auto",
+            }}
+          >
+            <Typography
+              sx={{
+                padding: ".8rem",
+                fontSize: "17px",
+                fontFamily: "'Roboto Slab', serif",
+                textAlign: "left",
+                borderBottom: "1px solid silver",
+                marginBottom: "1.5rem",
+              }}
+            >
+              JungGPT has been trained to use metaphor in a strategic,
+              personalized way to help users further understand emotions and
+              circumstance.
+              <br />
+              <br />
+              The purpose of using metaphor in this way is to aid users in
+              understanding emotions and situations that might be complex or
+              abstract.
+              <br />
+              <br />
+              What are some of your interests to help JungGPT "speak your
+              language"?
+            </Typography>
+
+            <Grid
+              sx={{
+                marginLeft: isMobile ? "1rem" : "",
+              }}
+              container
+              spacing={2}
+            >
+              {[
+                "Music 🎵",
+                "Sports ⚽",
+                "Art 🎨",
+                "Tech 💻",
+                "Film 🎥",
+                "Videogames 🎮",
+                "Psychology 🔮",
+                "Counseling 🫂 ",
+                "Astrology 🌠",
+                "Science 🔬",
+                "Superheroes 💥",
+
+                // Add other interests here
+              ].map((interest) => (
+                <Grid item xs={isMobile ? 5 : 4} key={interest}>
+                  <Button
+                    sx={{
+                      fontFamily: "'Roboto Slab', serif",
+                      border: "solid 1px pink",
+                      "&:hover": {
+                        borderColor: "purple", // Change the border color on hover
+                      },
+                      variant: selectedInterests.includes(interest)
+                        ? "contained"
+                        : "outlined",
+                      ...(selectedInterests.includes(interest) && {
+                        color: "white", // Change the text color when selected
+                      }),
+                    }}
+                    variant={
+                      selectedInterests.includes(interest)
+                        ? "contained"
+                        : "outlined"
+                    }
+                    onClick={() => handleInterestClick(interest)}
+                  >
+                    {interest}
+                  </Button>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Button
+              sx={{
+                marginTop: "2rem",
+                backgroundColor: "#607E92",
+                border: "1px solid pink",
+                color: "whitesmoke",
+                width: "50%",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+              variant="contained"
+              onClick={() => {
+                // Close interests dialog
+                setInterestsOpen(false);
+              }}
+            >
+              Start Chat
+            </Button>
+          </DialogContent>
+        </Dialog>
+
         <Dialog
           open={showDeveloperNotes}
           onClose={() => setShowDeveloperNotes(false)}
@@ -438,18 +562,89 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes 8/11/23
+                  Weekly Developer Notes - 8/14/23
                 </DialogTitle>
-                <ListItem sx={{ color: "pink" }}>
-                  - Due to how fast this app is expanding, we may have to take
-                  the site down for maintenance on Sunday through Tuesday, but
-                  hopefully this won't have to happen and if it does it will
-                  hopefully be much shorter than that.
+                <ListItem
+                  sx={{
+                    color: "pink",
+                    borderRadius: "30px",
+                    padding: "1rem",
+                  }}
+                >
+                  - We are back! Thank you all for being so patient with us! We
+                  shouldn't be having any more outages any time soon!
                   <br />
-                  <br />- Currently, leading with basic statements like "I feel
+                  <br />
+                  - Currently, leading with basic statements like "I feel
                   anxious" sometimes causes JungGPT to act counterintuitively.
                   To avoid this behavior, simply type "Can we talk about the
                   anxiety I'm feeling?" or something of the like.
+                  <br />
+                  <br />
+                </ListItem>
+                <ListItem
+                  sx={{
+                    display: "flex",
+                    flexDirection: " column",
+                    color: "pink",
+                  }}
+                >
+                  <b
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "22px",
+                      textAlign: "left",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    Added Features - 8/14/23
+                  </b>
+                  <br />
+                  <b
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "19px",
+                      textAlign: "left",
+                    }}
+                  >
+                    {" "}
+                    Personal Identification:{" "}
+                  </b>
+                  <br /> JungGPT is now aware of your username (the email you
+                  signed up with). If your name is in that email, a lot of the
+                  time JungGPT will just call you by your name! Pretty neat,
+                  Huh?
+                  <br />
+                  <br /> <b></b>
+                  <b
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "19px",
+                      textAlign: "left",
+                    }}
+                  >
+                    {" "}
+                    Emotion Selector:{" "}
+                  </b>
+                  <br /> You will now be prompted to select how you're feeling
+                  prior to speaking with JungGPT. This is to give the user a
+                  more personal experience, and to take away some of the
+                  preliminary explanations a user might have to give to JungGPT.
+                  <br />
+                  <br />{" "}
+                  <b
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "19px",
+                      textAlign: "left",
+                    }}
+                  >
+                    Personalized Metaphor:
+                  </b>
+                  <br />
+                  You will now be prompted to select what your interest's or
+                  hobbies are for the purpose of JungGPT offering personalized
+                  metaphor. Now JungGPT really "speaks your languge" 😉😏
                 </ListItem>
                 <ListItem
                   sx={{

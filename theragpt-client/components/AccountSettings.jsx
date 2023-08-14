@@ -27,14 +27,12 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
         let newSub = activeSubs[0];
 
         if (newSub) {
-          console.log(`Account is ${newSub.status}`);
           if (newSub.status === "active") {
             setSubscriptionStatus("Premium");
           } else {
             setSubscriptionStatus(newSub.status);
           }
         } else {
-          console.log("Account not active");
           setSubscriptionStatus("Free Plan");
         }
       }

@@ -17,8 +17,11 @@ import {
   AccordionSummary,
   AccordionDetails,
   TextField,
+  Modal,
   Container,
 } from "@mui/material";
+import { signOut } from "firebase/auth";
+import { auth } from "./Fire";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { motion } from "framer-motion";
@@ -94,6 +97,13 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
         "JungGPT has been instrumental in my emotional self-improvement journey. The insights it provides are profound and easy to understand. I've learned so much about myself and how to manage my emotions effectively. I can't recommend it enough!",
     },
   ];
+  function handleSignOut() {
+    signOut(auth).then(() => {
+      setUserEmail(null);
+      setAuthState("login");
+    });
+  }
+
   const handleNext = () => {
     setCurrentTestimonial((prev) => {
       const increment = isMobile ? 1 : 3;
@@ -130,7 +140,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
         let newSub = activeSubs[0];
 
         if (newSub) {
-          console.log(`Account is ${newSub.status}`);
           if (newSub.status === "active") {
             setSubscriptionStatus("Premium");
             setLogoSrc(GoldLogo);
@@ -139,7 +148,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             setLogoSrc(MainLogo);
           }
         } else {
-          console.log("Account not active");
           setSubscriptionStatus("Free Plan");
           setLogoSrc(MainLogo);
         }
@@ -155,9 +163,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     const fetchData = async () => {
       try {
         await getUserData(user.email);
-      } catch (error) {
-        console.log("Error retrieving user data:", error);
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -258,6 +264,85 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           padding: isMobile ? "0em" : "1em",
         }}
       >
+        {/* MAINTENANCE MODAL****************************************** */}
+        {/* <Modal
+          open={true}
+          aria-labelledby="maintenance-modal-title"
+          aria-describedby="maintenance-modal-description"
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 400,
+              bgcolor: "background.paper",
+              border: "2px solid #000",
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography
+              id="maintenance-modal-title"
+              variant="h6"
+              component="h2"
+              fontSize="26px"
+            >
+              A message from the JungGPT Team 8/13/23
+            </Typography>
+            <Typography id="maintenance-modal-description" variant="body1">
+              <br />
+              HOLY COW Everybody! We gained 600 users in 4 days!
+              <br />
+              <br />
+              Unfortunately, we have to take a few days to focus on enhancing
+              our infrastructure and implementing essential updates before
+              things get too out of control on our end. Still, this is a very
+              cool problem to have and we're so grateful for all the positive
+              feedback we've been getting <br />
+              <br />
+              We appreciate your patience and understanding, and we'll be back
+              up and running in the next few days! Feel free to reach out to our
+              support team at support@ventura-ux.com if you have any questions
+              or concerns. Thank you for being a part of our community!
+              <br />
+              <br />
+              We will be notifying all users through their account emails when
+              we are back online!
+            </Typography>
+            <Typography
+              sx={{
+                marginTop: "1rem",
+                fontSize: "22px",
+              }}
+            >
+              We should be back up no later than Wednesday 8/16!
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: "2rem",
+                margin: "0 auto",
+                justifyContent: "left",
+                alignItems: "center",
+              }}
+            >
+              <Typography>The </Typography>{" "}
+              <img
+                style={{
+                  padding: "0rem",
+                  width: "30%",
+                }}
+                src={MainLogo}
+              />
+              <Typography>Team </Typography>
+            </Box>
+
+            <Button onClick={handleSignOut}>Sign Out</Button>
+          </Box>
+        </Modal> */}
+        {/*************************************************************** */}
         <Box
           sx={{
             display: "flex",
@@ -729,8 +814,10 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               />
             }
             label="I understand that this platform provides AI chat-based support and is NOT a replacement for professional mental health services.
+            I understand and acknowledge that I am using this chat bot at my own volition and that I should NOT use this bot if I am having feelings of self harm, suicidal ideation, or am having a panic attack.
              This service does not constitute mental health therapy, counseling, medical or psychological diagnosis, or professional mental health advice.
-              If I am in crisis, feel like I may harm myself or others, I understand it is essential to seek immediate professional help."
+              If I am in crisis, feel like I may harm myself or others, I understand it is essential to seek immediate professional help.
+               "
           />
         </DialogContent>
         <DialogActions>
