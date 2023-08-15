@@ -9,7 +9,7 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 
 const configuration = new Configuration({
-  organization: "org-GfyBa41h13uJ30VZNsgjAbMG",
+  organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
 });
 
@@ -126,8 +126,9 @@ app.post("/jung", async (req, res) => {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
+
   const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo-16k",
+    model: "gpt-4",
     messages: [
       {
         role: "assistant",
