@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
   Grid,
+  TextField,
 } from "@mui/material";
 
 import MenuPopupState from "./MenuPopup";
@@ -43,6 +44,7 @@ export default function Dashboard({
   const [selectedEmotions, setSelectedEmotions] = useState([]);
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [interestsOpen, setInterestsOpen] = useState(false);
+  const [typedInterest, setTypedInterest] = useState("");
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -207,6 +209,7 @@ export default function Dashboard({
         userId: userId,
         emotions: selectedEmotions, // send the selected emotions
         interests: selectedInterests, // send the selected interests
+        typedInterest: typedInterest,
       }),
     });
 
@@ -335,15 +338,13 @@ export default function Dashboard({
                 setInterestsOpen(true);
               }}
             >
-              Start Chatting
+              Next
             </Button>
           </DialogContent>
         </Dialog>
         {/* Metaphor Feature************************ */}
-        {/* <Dialog
-          sx={{
-            backgroundColor: "#1e4a66a3",
-          }}
+        <Dialog
+          sx={{ backgroundColor: "#1e4a66a3" }}
           open={interestsOpen}
           onClose={() => setInterestsOpen(false)}
         >
@@ -380,6 +381,14 @@ export default function Dashboard({
               language"?
             </Typography>
 
+            <TextField
+              label="Type your interests"
+              variant="outlined"
+              value={typedInterest}
+              onChange={(e) => setTypedInterest(e.target.value)}
+              sx={{ marginBottom: "1rem" }}
+            />
+
             <Grid
               sx={{
                 marginLeft: isMobile ? "1rem" : "",
@@ -391,6 +400,9 @@ export default function Dashboard({
                 "Music 🎵",
                 "Sports ⚽",
                 "Art 🎨",
+                "Music 🎵",
+                "Sports ⚽",
+                "Art 🎨",
                 "Tech 💻",
                 "Film 🎥",
                 "Videogames 🎮",
@@ -398,23 +410,19 @@ export default function Dashboard({
                 "Counseling 🫂 ",
                 "Astrology 🌠",
                 "Science 🔬",
-                "Superheroes 💥",
-
-                // Add other interests here
+                "Superheroes 💥", // ... other interests
               ].map((interest) => (
                 <Grid item xs={isMobile ? 5 : 4} key={interest}>
                   <Button
                     sx={{
                       fontFamily: "'Roboto Slab', serif",
                       border: "solid 1px pink",
-                      "&:hover": {
-                        borderColor: "purple", // Change the border color on hover
-                      },
+                      "&:hover": { borderColor: "purple" },
                       variant: selectedInterests.includes(interest)
                         ? "contained"
                         : "outlined",
                       ...(selectedInterests.includes(interest) && {
-                        color: "white", // Change the text color when selected
+                        color: "white",
                       }),
                     }}
                     variant={
@@ -442,14 +450,13 @@ export default function Dashboard({
               }}
               variant="contained"
               onClick={() => {
-                // Close interests dialog
                 setInterestsOpen(false);
               }}
             >
               Start Chat
             </Button>
           </DialogContent>
-        </Dialog> */}
+        </Dialog>
         {/* ************************** */}
         <Dialog
           open={showDeveloperNotes}
@@ -563,7 +570,7 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes - 8/14/23
+                  Weekly Developer Notes - 8/17/23
                 </DialogTitle>
                 <ListItem
                   sx={{
@@ -598,7 +605,7 @@ export default function Dashboard({
                       textDecoration: "underline",
                     }}
                   >
-                    Added Features - 8/14/23
+                    Added Features - 8/17/23
                   </b>
                   <br />
                   <b
@@ -633,7 +640,7 @@ export default function Dashboard({
                   preliminary explanations a user might have to give to JungGPT.
                   <br />
                   <br />{" "}
-                  {/* <b
+                  <b
                     style={{
                       color: "whitesmoke",
                       fontSize: "19px",
@@ -645,7 +652,7 @@ export default function Dashboard({
                   <br />
                   You will now be prompted to select what your interest's or
                   hobbies are for the purpose of JungGPT offering personalized
-                  metaphor. Now JungGPT really "speaks your languge" 😉😏 */}
+                  metaphor. Now JungGPT really "speaks your languge" 😉😏
                 </ListItem>
                 <ListItem
                   sx={{

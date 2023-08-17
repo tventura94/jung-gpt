@@ -91,6 +91,21 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
             >
               Manage Subscription
             </Button>
+            <Typography
+              sx={{
+                marginTop: "1rem",
+                fontSize: " 17px",
+                fontFamily: "'Roboto Slab', serif",
+                lineHeight: "30px",
+              }}
+            >
+              <b>
+                {" "}
+                DO NOT USE THIS BUTTON TO PURCHASE SUBSCRIPTION.
+                <br />{" "}
+              </b>
+              Instead, select 'Upgrade' from the navigation menu.
+            </Typography>
           </Box>
         </TabPanel>
 

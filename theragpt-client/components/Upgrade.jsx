@@ -95,6 +95,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
         success_url: window.location.href,
         cancel_url: window.location.href,
+        allow_promotion_codes: true,
       }
     );
 
