@@ -203,14 +203,14 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     justifyContent: "center",
     backgroundColor: "#E8E1DC",
     borderRadius: "2em",
-    padding: isMobile ? "1em" : "0em",
+    padding: "0em",
     width: "100%",
-    maxWidth: isMobile ? "90vw" : "30vw",
+    maxWidth: isMobile ? "8vw" : "30vw",
     minWidth: "500px",
     margin: isMobile ? "1em 0" : "0",
     transition: isMobile ? "" : "transform 0.15s ease-in-out",
     ":hover": isMobile ? "" : { transform: "scale(1.05)" },
-    fontFamily: "'Roboto Slab', serif",
+    fontFamily: "'League Spartan', serif",
     lineHeight: "1.6rem",
     "@media (max-width: 1096px)": {
       minWidth: "400px",
@@ -220,11 +220,12 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
   };
   return (
     <div
-      className={isMobile ? "jung-background-3" : "jung-background-2"}
+      className={isMobile ? "jung-background-2" : "jung-background-2"}
       style={{
         boxSizing: "border-box",
-        backgroundPositionY: isMobile ? "62.5%" : "110%",
+        backgroundPositionY: isMobile ? "69.9%" : "110%",
         backgroundRepeat: "no-repeat",
+        backgroundSize: "contain",
       }}
     >
       <div
@@ -259,7 +260,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: isMobile ? "#aec2b6" : "",
+          backgroundColor: isMobile ? "#607E92" : "",
           borderBottom: isMobile ? "silver 3px solid" : "",
           padding: isMobile ? "0em" : "1em",
         }}
@@ -376,7 +377,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <img
                   style={{
                     // add this line
-                    width: "18rem",
+                    width: isMobile ? "16rem" : "18rem",
                   }}
                   src={logoSrc} // Use the logoSrc state variable here
                 />
@@ -384,7 +385,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               <p
                 style={{
                   wordWrap: "break-word", // add this line
-                  width: "80%",
+                  width: isMobile ? "90%" : "80%",
                   maxWidth: "100%", // add this line
                   marginBottom: "1rem",
                   lineHeight: "2rem",
@@ -861,7 +862,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             <img
               style={{
                 borderRadius: "16px",
-                marginBottom: "1rem",
+                marginBottom: "0rem",
                 marginTop: "2rem",
                 width: isMobile ? "97%" : "50%",
               }}
@@ -877,9 +878,10 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
                 lineHeight: isMobile ? "1.8125rem" : "2rem",
-                paddingTop: isMobile ? "10.8rem" : "1rem",
+                paddingTop: isMobile ? "4.8rem" : "1rem",
                 fontFamily: "'Roboto Slab', serif",
                 fontSize: isMobile ? "1.05rem" : "1.1875rem",
+                color: "#121212",
               }}
             >
               <b>
@@ -919,7 +921,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               margin: isMobile ? "0em" : "2em",
               width: "100%",
 
-              marginBottom: "4rem",
+              marginBottom: "2rem",
             }}
           >
             <ArrowBackIcon
@@ -966,7 +968,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         margin: isMobile ? "1em 0" : "0",
                         marginBottom: isMobile ? "2.5rem" : "",
                         marginTop: isMobile ? "3rem" : "",
-                        fontFamily: "'Roboto Slab', serif",
+                        fontFamily: "'League Spartan', serif",
                         lineHeight: "1.6rem",
                         boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
                         "@media (min-width: 600px) and (max-width: 1224px)": {
@@ -1275,11 +1277,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
         <Typography
           variant="body1"
           style={{
-            fontSize: "25px",
+            fontSize: "40px",
             marginTop: "0rem",
             marginBottom: "2rem",
             width: "100%",
-            fontFamily: "'Roboto Slab', serif",
+            fontFamily: "'League Spartan', serif",
             color: "#8c7c66",
           }}
         >
@@ -1323,7 +1325,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               color: "white",
               fontSize: "1rem",
 
-              fontFamily: "'Roboto Slab', serif",
+              fontFamily: "'League Spartan', serif",
             }}
           >
             {" "}
@@ -1334,18 +1336,42 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               margin: ".7rem",
               color: "white",
 
-              fontFamily: "'Roboto Slab', serif",
+              fontFamily: "'League Spartan', serif",
               fontSize: ".9rem",
             }}
           >
             support@ventura-ux.com
+          </Typography>
+          <Typography
+            sx={{
+              margin: ".5rem",
+              marginTop: "1rem",
+              color: "white",
+              fontSize: "1rem",
+
+              fontFamily: "'League Spartan', serif",
+            }}
+          >
+            {" "}
+            Media Inquiries and Press:
+          </Typography>
+          <Typography
+            sx={{
+              margin: ".7rem",
+              color: "white",
+
+              fontFamily: "'League Spartan', serif",
+              fontSize: ".9rem",
+            }}
+          >
+            media@ventura-ux.com
           </Typography>
 
           <Typography
             sx={{
               margin: ".7rem",
 
-              fontFamily: "'Roboto Slab', serif",
+              fontFamily: "'League Spartan', serif",
               color: "white",
               fontSize: ".8rem",
             }}

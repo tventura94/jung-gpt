@@ -119,6 +119,8 @@ export default function SignIn({ setUserEmail, setAuthState }) {
               padding: "15px",
               borderRadius: "3%",
               marginLeft: "14px",
+              border: isMobile ? "" : "2px solid silver",
+              boxShadow: isMobile ? "" : "0px 4px 6px rgba(0, 0, 0, 0.1)", // Light shadow effect
             }}
           >
             <Box>
@@ -149,6 +151,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 fontSize="22px"
                 component="h1"
                 variant="h5"
+                sx={{ fontFamily: "League Spartan" }}
               >
                 Sign In
               </Typography>
@@ -186,7 +189,13 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, width: "80%", padding: "15px" }}
+                  sx={{
+                    mt: 3,
+                    mb: 2,
+                    width: "80%",
+                    padding: "15px",
+                    fontFamily: "League Spartan",
+                  }}
                   style={{
                     backgroundColor: "#1E4B66",
                   }}
@@ -199,6 +208,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                     display: isMobile ? "flex" : "flex",
                     justifyContent: "right",
                     marginRight: isMobile ? "1rem" : "",
+                    fontFamily: "League Spartan",
                   }}
                 >
                   <b>Don't have an account?</b>
@@ -219,6 +229,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                       style={{
                         backgroundColor: "#506072",
                         marginTop: "0px",
+                        fontFamily: "League Spartan",
                       }}
                       onClick={handleForgotPassword}
                     >
@@ -232,6 +243,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                       style={{
                         backgroundColor: "#689980",
                         marginTop: "0px",
+                        fontFamily: "League Spartan",
                       }}
                       onClick={() => setAuthState("register")}
                     >
@@ -260,6 +272,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 sx={{
                   fontSize: "20px",
                   lineHeight: "2rem;",
+                  fontFamily: "League Spartan",
                 }}
               >
                 <b>

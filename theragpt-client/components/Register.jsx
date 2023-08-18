@@ -78,7 +78,11 @@ export default function Register({ setUserEmail, setAuthState }) {
           <Avatar sx={{ m: 1, bgcolor: "#1E4B66" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5" sx={{ mt: 0 }}>
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{ mt: 0, fontFamily: "League Spartan" }}
+          >
             Create New Account
           </Typography>
           <Box component="form" noValidate sx={{ mt: 0 }}>
@@ -123,11 +127,18 @@ export default function Register({ setUserEmail, setAuthState }) {
                 backgroundColor: "#1E4B66",
                 marginTop: "30px",
                 marginBottom: "60px",
+                fontFamily: "League Spartan",
               }}
             >
               Sign Up
             </Button>
-            <div className="alreadyHaveAnAccount">
+            <div
+              style={{
+                fontFamily: "League Spartan",
+                fontSize: isMobile ? "22px" : "18px",
+              }}
+              className="alreadyHaveAnAccount"
+            >
               <p>Already have an account?</p>
               <Button
                 halfWidth
@@ -135,6 +146,7 @@ export default function Register({ setUserEmail, setAuthState }) {
                 style={{
                   backgroundColor: "#1E4B66",
                   marginTop: "0px",
+                  fontFamily: "League Spartan",
                 }}
                 onClick={() => setAuthState("signin")}
               >
