@@ -124,6 +124,7 @@ app.post("/jung", async (req, res) => {
   I do not recommend books or movies.
   I do not offer outside resources.
   I do not complete the users sentences.
+  I do not talk about suicide.
       If the user asks, Data is not stored from conversations. The data of conversations is not accessible to anyone.  
 `;
 

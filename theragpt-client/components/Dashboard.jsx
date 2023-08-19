@@ -18,10 +18,17 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { db } from "../components/Fire";
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  setDoc,
+  getDocs,
+} from "firebase/firestore";
 import { logPageView } from "../components/Fire";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 export default function Dashboard({
   setUserEmail,
   setAuthState,
@@ -45,6 +52,7 @@ export default function Dashboard({
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [interestsOpen, setInterestsOpen] = useState(false);
   const [typedInterest, setTypedInterest] = useState("");
+  const [interestsData, setInterestsData] = useState(null);
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -56,16 +64,54 @@ export default function Dashboard({
     });
   };
 
-  const handleInterestClick = (interest) => {
-    setSelectedInterests((prev) => {
-      if (prev.includes(interest)) {
-        return prev.filter((i) => i !== interest);
-      } else {
-        return [...prev, interest];
-      }
+  const getInterestsFromFirebase = async () => {
+    const userRef = doc(db, "users", user.uid); // Document reference
+    const interestsCollectionRef = collection(userRef, "interests"); // Subcollection reference
+
+    const querySnapshot = await getDocs(interestsCollectionRef);
+
+    querySnapshot.forEach((doc) => {
+      const interestsData = doc.data();
+      setSelectedInterests(interestsData.selectedInterests); // Update your local state
     });
   };
 
+  useEffect(() => {
+    getInterestsFromFirebase();
+  }, []);
+
+  const handleInterestClick = (interest) => {
+    setSelectedInterests((prev) => {
+      const newSelectedInterests = prev.includes(interest)
+        ? prev.filter((i) => i !== interest)
+        : [...prev, interest];
+
+      // Define a function to send the new state to Firebase
+      const sendInterestsToFirebase = () => {
+        const userRef = doc(db, "users", user.uid); // Document reference
+        const interestRef = collection(userRef, "interests"); // Subcollection reference
+
+        const newInterestDoc = doc(interestRef, user.uid); // New document reference within the subcollection
+
+        setDoc(newInterestDoc, {
+          // Define the document
+          selectedInterests: newSelectedInterests,
+          typedInterest: typedInterest,
+        })
+          .then(() => {
+            console.log("");
+          })
+          .catch((error) => {
+            console.error("Error writing interests: ", error);
+          });
+      };
+      // Call the function to send the new interests to Firebase
+      sendInterestsToFirebase();
+
+      // Return the new state to update the selectedInterests state variable
+      return newSelectedInterests;
+    });
+  };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -230,7 +276,6 @@ export default function Dashboard({
   function handleMenuToggle() {
     setIsMenuOpen(!isMenuOpen);
   }
-
   return (
     <div className="dashboard">
       <div className="main">
