@@ -695,7 +695,7 @@ export default function Dashboard({
                   <br />
                   You will now be prompted to select what your interest's or
                   hobbies are for the purpose of JungGPT offering personalized
-                  metaphor. Now JungGPT really "speaks your languge" 😉😏
+                  metaphor. Now JungGPT really "speaks your language" 😉😏
                 </ListItem>
                 <ListItem
                   sx={{
