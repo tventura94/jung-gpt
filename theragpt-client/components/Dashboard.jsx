@@ -112,6 +112,7 @@ export default function Dashboard({
       return newSelectedInterests;
     });
   };
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -453,7 +454,8 @@ export default function Dashboard({
                 "Counseling 🫂 ",
                 "Astrology 🌠",
                 "Science 🔬",
-                "Superheroes 💥", // ... other interests
+                "Superheroes 💥",
+                "Animals 🐶", // ... other interests
               ].map((interest) => (
                 <Grid item xs={isMobile ? 5 : 4} key={interest}>
                   <Button
