@@ -334,7 +334,34 @@ function Terms({ setUser, setAuthState, user }) {
           understandings.
           <br />
           <br />
-          Last updated on 7/26/23
+          18. **Data Confidentiality and Usage**: At Ventura UX, LLC, we take
+          the confidentiality and security of user data very seriously. We want
+          to assure you of the following: <br />
+          **Strict Confidentiality**: All data associated with your use of the
+          JungGPT application is kept strictly confidential. We do not sell,
+          trade, or otherwise transfer your personal data to outside parties.
+          <br />
+          **No Usage for Model Training**: The data collected will not be used
+          to train or enhance our models. Your interactions with the Application
+          remain private and are not utilized for any development or improvement
+          of our AI algorithms. <br />
+          **Data We Collect**: We collect specific data related to your use of
+          the Application, including the time spent using the app, the frequency
+          of use, the messages sent, the number of messages, and the number of
+          characters in each message.
+          <br /> **Purpose of Data Collection**: The purpose of tracking this
+          data is to understand how users are engaging with the app, to improve
+          our services, and to protect the company legally. This information
+          helps us gain insights into user behavior and preferences, enabling us
+          to enhance the overall user experience. <br />
+          **Commitment to Privacy**: We are committed to maintaining the highest
+          standards of privacy and security. Our data collection practices are
+          designed to be transparent and aligned with legal requirements, and we
+          have implemented robust security measures to safeguard your
+          information. By using the JungGPT application, you acknowledge and
+          agree to our data handling practices as outlined above.
+          <br />
+          <br /> Last updated on 8/21/23
         </Typography>
         {/* Add more sections as per the needs */}
       </Box>

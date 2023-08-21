@@ -65,7 +65,6 @@ export default function Dashboard({
       }
     });
   };
-
   const sendMessageToFirebase = async (userText, assistantText) => {
     const userWordCount = userText
       .split(" ")
@@ -81,8 +80,10 @@ export default function Dashboard({
 
     try {
       await addDoc(messagesRef, {
+        user_text: userText, // User's message text
         user_word_count: userWordCount,
         user_char_count: userCharCount,
+        assistant_text: assistantText, // Assistant's message text
         assistant_word_count: assistantWordCount,
         assistant_char_count: assistantCharCount,
         timestamp: serverTimestamp(), // Timestamp for the entire conversation

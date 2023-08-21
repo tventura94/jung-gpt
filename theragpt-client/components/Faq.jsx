@@ -232,18 +232,15 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
               <Typography>
                 NO! We never read your conversations!
                 <br />
-                <br /> We do not store your data, we never read your
-                conversations, and privacy is of the utmost importance to us,
-                however, we have trained a highly customized LLM provided by the
-                OpenAI API, their policy on data-collection can be seen
-                <a href="https://openai.com/policies/api-data-usage-policies">
-                  {" "}
-                  here.
-                </a>
-                <br /> <br />
-                We do, however, keep and store other data related to your
-                account. Such as: email, relative geographical data, how long
-                the user spends on the app, etc.
+                <br /> We do store the data of conversations for legal purposes,
+                we never read your conversations, and privacy is of the utmost
+                importance to us. What we do read and collect is your usage
+                amount on the app, how many words per message you send, and what
+                time you message at. We do not sell your data to any
+                third-parties. We do not use your data to train our models.
+                <br />
+                <br />
+                All data is kept strictly confidential
               </Typography>
             </AccordionDetails>
           </Accordion>

@@ -537,7 +537,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           >
             <Typography variant="body1">
               {/* Replace this with your actual Terms of Service text */}
-              {` Welcome to JungGPT. The following Terms of Service ("TOS") contain the
+              {`  Welcome to JungGPT. The following Terms of Service ("TOS") contain the
           terms and conditions that govern your use of the JungGPT application
           ("Application") and the services provided by the Application
           ("Services"). By using the Application, you agree to be bound by these
@@ -765,22 +765,22 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           representative action, whether within or outside of arbitration, or on
           behalf of any other individual or group of individuals.
          
-          15. **Delegation Clause** You and Ventura UX, LLC agree that any and all
-          disputes or claims related to the interpretation, enforceability, or
-          formation of this arbitration agreement, including but not limited to
-          any claim that all or any part of this arbitration agreement is void
-          or voidable, or whether a claim is subject to arbitration, shall be
-          resolved exclusively by the appointed arbitrator and not by any court.
-          This includes the scope, applicability, validity, and enforceability
-          of the arbitration agreement. This arbitration agreement allows for
-          the arbitrator, not any federal, state, or local court or agency, to
-          have exclusive authority to resolve any dispute relating to the
-          interpretation, applicability, enforceability or formation of this
-          arbitration agreement, including, but not limited to, any claim that
-          all or any part of this arbitration agreement is void or voidable. The
-          arbitrator will decide all issues of this nature before addressing the
-          merits of the dispute, claim or controversy that is subject to
-          arbitration as provided under these TOS. 
+          15. **Delegation Clause** You and Ventura UX, LLC agree that any and
+          all disputes or claims related to the interpretation, enforceability,
+          or formation of this arbitration agreement, including but not limited
+          to any claim that all or any part of this arbitration agreement is
+          void or voidable, or whether a claim is subject to arbitration, shall
+          be resolved exclusively by the appointed arbitrator and not by any
+          court. This includes the scope, applicability, validity, and
+          enforceability of the arbitration agreement. This arbitration
+          agreement allows for the arbitrator, not any federal, state, or local
+          court or agency, to have exclusive authority to resolve any dispute
+          relating to the interpretation, applicability, enforceability or
+          formation of this arbitration agreement, including, but not limited
+          to, any claim that all or any part of this arbitration agreement is
+          void or voidable. The arbitrator will decide all issues of this nature
+          before addressing the merits of the dispute, claim or controversy that
+          is subject to arbitration as provided under these TOS.
          
           16. **Amendments**: Ventura UX, LLC, reserves the right to modify or
           replace any of these TOS at any time by posting a notice on the
@@ -792,7 +792,30 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           Application and Services, superseding any prior agreements or
           understandings.
          
-        Last updated on 7/26/23 `}
+          18. **Data Confidentiality and Usage**: At Ventura UX, LLC, we take the
+          confidentiality and security of user data very seriously. We want to
+          assure you of the following: **Strict Confidentiality**: All data
+          associated with your use of the JungGPT application is kept strictly
+          confidential. We do not sell, trade, or otherwise transfer your
+          personal data to outside parties. **No Usage for Model Training**: The
+          data collected will not be used to train or enhance our models. Your
+          interactions with the Application remain private and are not utilized
+          for any development or improvement of our AI algorithms. **Data We
+          Collect**: We collect specific data related to your use of the
+          Application, including the time spent using the app, the frequency of
+          use, the messages sent, the number of messages, and the number of
+          characters in each message. **Purpose of Data Collection**: The purpose of
+          tracking this data is to understand how users are engaging with the
+          app, to improve our services, and to protect the company legally. This
+          information helps us gain insights into user behavior and preferences,
+          enabling us to enhance the overall user experience. **Commitment to
+          Privacy**: We are committed to maintaining the highest standards of
+          privacy and security. Our data collection practices are designed to be
+          transparent and aligned with legal requirements, and we have
+          implemented robust security measures to safeguard your information. By
+          using the JungGPT application, you acknowledge and agree to our data
+          handling practices as outlined above. 
+          Last updated on 7/26/23 `}
             </Typography>
           </Paper>
           <FormControlLabel
@@ -1214,17 +1237,16 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 >
                   NO! We never read your conversations!
                   <br />
-                  <br /> We do not store your data, we never read your
-                  conversations, and privacy is of the utmost importance to us,
-                  however, we have trained a highly customized LLM provided by
-                  the OpenAI API, their policy on data-collection can be seen{" "}
-                  <a href="https://openai.com/policies/api-data-usage-policies">
-                    here.
-                  </a>
-                  <br /> <br />
-                  We do, however, keep and store other data related to your
-                  account. Such as: email, relative geographical data, how long
-                  the user spends on the app, etc.
+                  <br /> We do store the data of conversations for legal
+                  purposes, we never read your conversations, and privacy is of
+                  the utmost importance to us. What we do read and collect is
+                  your usage amount on the app, how many words per message you
+                  send, and what time you message at. We do not sell your data
+                  to any third-parties. We do not use your data to train our
+                  models.
+                  <br />
+                  <br />
+                  All data is kept strictly confidential
                 </Typography>
               </AccordionDetails>
             </Accordion>
