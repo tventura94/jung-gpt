@@ -24,10 +24,12 @@ import {
   doc,
   setDoc,
   getDocs,
+  addDoc,
 } from "firebase/firestore";
 import { logPageView } from "../components/Fire";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp function
 
 export default function Dashboard({
   setUserEmail,
@@ -64,6 +66,32 @@ export default function Dashboard({
     });
   };
 
+  const sendMessageToFirebase = async (userText, assistantText) => {
+    const userWordCount = userText
+      .split(" ")
+      .filter((word) => word !== "").length;
+    const userCharCount = userText.length;
+    const assistantWordCount = assistantText
+      .split(" ")
+      .filter((word) => word !== "").length;
+    const assistantCharCount = assistantText.length;
+
+    const userRef = doc(db, "users", user.uid);
+    const messagesRef = collection(userRef, "messages");
+
+    try {
+      await addDoc(messagesRef, {
+        user_word_count: userWordCount,
+        user_char_count: userCharCount,
+        assistant_word_count: assistantWordCount,
+        assistant_char_count: assistantCharCount,
+        timestamp: serverTimestamp(), // Timestamp for the entire conversation
+      });
+      console.log("Message data written successfully");
+    } catch (error) {
+      console.error("Error writing message data: ", error);
+    }
+  };
   const getInterestsFromFirebase = async () => {
     const userRef = doc(db, "users", user.uid); // Document reference
     const interestsCollectionRef = collection(userRef, "interests"); // Subcollection reference
@@ -261,10 +289,12 @@ export default function Dashboard({
     });
 
     const data = await response.json();
+    const assistantMessage = `${data.message}`;
     setChatLog([
       ...chatLogNew,
       { role: "assistant", message: `${data.message}` },
     ]);
+    sendMessageToFirebase(input, assistantMessage);
   }
 
   function clearChat(e) {
