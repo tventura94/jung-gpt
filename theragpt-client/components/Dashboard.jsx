@@ -176,7 +176,7 @@ export default function Dashboard({
     }
   }, []);
 
-  // Subscription pay wall logic - if the user isnt subscribed they get 15 messages total, and a warning popup at nine messages.
+  // Subscription pay wall logic - if the user isnt subscribed they get 20 messages total, and a warning popup at 14 messages.
   useEffect(() => {
     if (subscriptionStatus !== "active") {
       if (chatLog.length >= 20) {
@@ -639,6 +639,7 @@ export default function Dashboard({
                   {" "}
                   - Unlimited 24/7 access to JungGPT <br /> - Access to
                   JungSMART and all current and future models
+                  <br /> - 1000 character context length per message
                 </Typography>
                 <DialogTitle
                   sx={{
@@ -802,7 +803,7 @@ export default function Dashboard({
                         }
                       }}
                       disabled={trialLimitReached}
-                      maxLength={1500}
+                      maxLength={subscriptionStatus === "active" ? 1000 : 300}
                     ></textarea>
                     <button
                       type="submit"

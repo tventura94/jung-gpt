@@ -175,6 +175,10 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                 style={{ marginTop: "1rem" }}
               >
                 Limited Messaging with JungGPT
+                <br />
+                300 characters per message.
+                <br />
+                20 messages per chat.
               </Typography>
               <Typography
                 variant="h6"
@@ -225,6 +229,10 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                   style={{ marginTop: "1rem" }}
                 >
                   {product.description} for all available models
+                  <br />
+                  1000 characters per message.
+                  <br />
+                  20 messages per chat.
                 </Typography>
                 <Typography
                   variant="h6"
