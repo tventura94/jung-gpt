@@ -235,7 +235,7 @@ textarea::placeholder {
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-55.5%);
+  transform: translateY(-80%);
   background-color: #92baa0;
   border: none;
   color: white;

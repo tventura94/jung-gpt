@@ -787,24 +787,32 @@ export default function Dashboard({
                   className="form-container"
                 >
                   <form onSubmit={handleSubmit}>
-                    <textarea
-                      className="chat-input-textarea"
-                      placeholder="Send a message..."
-                      rows="1"
-                      value={input}
-                      onChange={(e) => {
-                        setInput(e.target.value);
-                        autosize(e.target);
-                      }}
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          handleSubmit(e);
-                        }
-                      }}
-                      disabled={trialLimitReached}
-                      maxLength={subscriptionStatus === "active" ? 1000 : 300}
-                    ></textarea>
+                    <div>
+                      <textarea
+                        className="chat-input-textarea"
+                        placeholder="Send a message..."
+                        rows="1"
+                        value={input}
+                        onChange={(e) => {
+                          setInput(e.target.value);
+                          autosize(e.target);
+                        }}
+                        onKeyPress={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleSubmit(e);
+                          }
+                        }}
+                        disabled={trialLimitReached}
+                        maxLength={subscriptionStatus === "active" ? 1000 : 300}
+                      ></textarea>
+                      <div className="character-counter">
+                        {subscriptionStatus === "active"
+                          ? 1000 - input.length
+                          : 300 - input.length}{" "}
+                        characters left
+                      </div>
+                    </div>
                     <button
                       type="submit"
                       className="send-button"

@@ -617,28 +617,15 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           but it is important to prioritize your mental health and consult with
           qualified professionals for personalized and comprehensive assistance.
          
-          4. **Privacy**: At Ventura UX, LLC, we prioritize the privacy and
-          confidentiality of our users. We want you to feel secure when using
-          our application. That's why we want to assure you that we do not store
-          or retain any personal data beyond your username. All conversations
-          with JungGPT are private and confidential. We do not collect, store,
-          or have access to any information shared during these interactions.
-          Your username is used solely for the purpose of identifying and
-          personalizing your experience within the application. We have
-          implemented stringent security measures to protect your privacy and
-          ensure that your conversations remain confidential. Our systems are
-          designed to prevent unauthorized access or disclosure of your
-          information. Rest assured that your personal details, including your
-          identity, location, and the content of your conversations, are not
-          stored or accessible by us. We respect your privacy and strive to
-          provide a safe and secure environment for your interactions with
-          JungGPT. If you have any concerns or questions regarding your privacy
-          or data security, please feel free to reach out to our support team.
-          We are here to address any inquiries and provide further clarification
-          on our privacy practices. Our commitment to privacy means that your
-          personal data is not collected, stored, or shared beyond your
-          username. You can engage with JungGPT knowing that your privacy is
-          respected and protected.
+          4.**Data Privacy, Confidentiality, and Usage**: At Ventura UX, LLC, our priority is the confidentiality and security of user data in the JungGPT application. Here's what you need to know:
+          Strict Confidentiality: All personal data, including location, messages, number of messages, number of words, and number of characters, is kept strictly confidential. We do not sell, trade, or transfer your information to outside parties.
+          Data Retention for Legal Reasons: Conversations are stored and tracked, but solely for legal purposes. Access to this data is strictly controlled, and no one is permitted to view it without proper authorization.
+          No Usage for Model Training: The data collected is not used to train or enhance our models. Your interactions with the Application remain private and are not utilized for any development or improvement of our AI algorithms.
+          Data We Collect: Specific data related to your use of the Application is collected, including location, time spent using the app, frequency of use, the text of messages sent, the number of messages, number of words, and number of characters in each message.
+          
+          Purpose of Data Collection: We track this data to understand user engagement with the app, to enhance our services, and to fulfill legal obligations. This information helps us gain insights into user behavior, improve the overall user experience, and protect the company legally.
+          
+          Commitment to Privacy and Security: We are committed to maintaining the highest standards of privacy and have implemented robust security measures to safeguard your information. By using the JungGPT application, you acknowledge and agree to our data handling practices as outlined above.
          
           5. **Medical Assistance**: It is important to note that the Services
           provided by JungGPT are not intended to replace professional medical
@@ -792,30 +779,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           Application and Services, superseding any prior agreements or
           understandings.
          
-          18. **Data Confidentiality and Usage**: At Ventura UX, LLC, we take the
-          confidentiality and security of user data very seriously. We want to
-          assure you of the following: **Strict Confidentiality**: All data
-          associated with your use of the JungGPT application is kept strictly
-          confidential. We do not sell, trade, or otherwise transfer your
-          personal data to outside parties. **No Usage for Model Training**: The
-          data collected will not be used to train or enhance our models. Your
-          interactions with the Application remain private and are not utilized
-          for any development or improvement of our AI algorithms. **Data We
-          Collect**: We collect specific data related to your use of the
-          Application, including the time spent using the app, the frequency of
-          use, the messages sent, the number of messages, and the number of
-          characters in each message. **Purpose of Data Collection**: The purpose of
-          tracking this data is to understand how users are engaging with the
-          app, to improve our services, and to protect the company legally. This
-          information helps us gain insights into user behavior and preferences,
-          enabling us to enhance the overall user experience. **Commitment to
-          Privacy**: We are committed to maintaining the highest standards of
-          privacy and security. Our data collection practices are designed to be
-          transparent and aligned with legal requirements, and we have
-          implemented robust security measures to safeguard your information. By
-          using the JungGPT application, you acknowledge and agree to our data
-          handling practices as outlined above. 
-          Last updated on 7/26/23 `}
+          
+          Last updated on 8/22/23 `}
             </Typography>
           </Paper>
           <FormControlLabel

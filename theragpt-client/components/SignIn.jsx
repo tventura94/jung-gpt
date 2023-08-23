@@ -22,6 +22,8 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { isMotionValue } from "framer-motion";
 import { IconButton } from "@mui/material";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import googleLogo from "../google.png"; // Update the path to the location of the logo in your project
 
 function Copyright(props) {
   return (
@@ -44,6 +46,20 @@ export default function SignIn({ setUserEmail, setAuthState }) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const { email } = result.user;
+      getUserData(email); // Pass the UID and email to getUserData
+      setUserEmail(email);
+      setAuthState("selector");
+    } catch (error) {
+      // Handle any errors that occur during the sign-in process
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -202,6 +218,28 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 >
                   Sign In
                 </Button>
+                <p
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    textAlign: "center",
+                    alignItems: "center",
+                    alignSelf: "center",
+                    justifyContent: "center",
+                    fontFamily: "League Spartan",
+                  }}
+                >
+                  or
+                </p>
+                <Button type="submit" onClick={handleGoogle}>
+                  <img
+                    style={{
+                      width: isMobile ? "55%" : "65%",
+                    }}
+                    src={googleLogo}
+                    alt="Google Logo"
+                  />
+                </Button>
                 <Typography
                   sx={{
                     fontSize: isMobile ? "16" : "14px",
@@ -209,6 +247,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                     justifyContent: "right",
                     marginRight: isMobile ? "1rem" : "",
                     fontFamily: "League Spartan",
+                    marginTop: ".4rem",
                   }}
                 >
                   <b>Don't have an account?</b>
