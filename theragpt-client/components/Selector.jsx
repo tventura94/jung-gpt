@@ -349,7 +349,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
             justifyContent: "space-evenly",
-            alignItems: "center",
+            alignItems: isMobile ? "center" : "top",
             width: "100%",
             maxWidth: "95vw",
             marginBottom: isMobile ? "3rem" : "0",
@@ -385,7 +385,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               <p
                 style={{
                   wordWrap: "break-word", // add this line
-                  width: isMobile ? "90%" : "80%",
+                  width: isMobile ? "83%" : "80%",
                   maxWidth: "100%", // add this line
                   marginBottom: "1rem",
                   lineHeight: "2rem",
@@ -471,7 +471,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                     >
                       <img
                         style={{
-                          width: "18rem",
+                          width: isMobile ? "16rem" : "18rem",
                         }}
                         src={DbtLogo}
                       />
@@ -486,9 +486,15 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   maxWidth: "100%", // add this line
                   marginBottom: "1rem",
                   lineHeight: "2rem",
+
+                  width: isMobile ? "83%" : "80%",
                 }}
               >
-                <p style={{ marginBottom: "0rem" }}>
+                <p
+                  style={{
+                    marginBottom: "0rem",
+                  }}
+                >
                   {" "}
                   <b
                     style={{
@@ -500,10 +506,13 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 </p>{" "}
                 <br />
                 SMART stands for Specific, Measurable, Achievable, Relevant, and
-                Time-bound, which are all critical aspects of effective goal
-                setting. This AI assistant helps users create SMART goals and
-                action plans.
-                <b /> <b> Only Available for Premium users. </b>
+                Time-bound. These critical aspects foster effective goal
+                setting. This AI, like an intelligent mentor, offers
+                comprehensive guidance in crafting SMART goals and developing
+                action plans that lead to success. JungSMART helps you create a
+                path to reach your goals faster!
+                <br />
+                <b> (Only Available for Premium users) </b>
               </p>
 
               <Button
