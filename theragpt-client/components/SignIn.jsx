@@ -34,7 +34,7 @@ function Copyright(props) {
       {...props}
     >
       {""}
-      <Link color="inherit" href="#"></Link> {"."}
+      <Link color="inherit" href="#"></Link> {""}
     </Typography>
   );
 }
@@ -302,7 +302,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 height: "95%",
                 width: "100%",
                 ml: "2rem",
-                mt: isMobile ? "2.5rem" : ".5rem",
+                mt: isMobile ? "2.5rem" : "2rem",
               }}
             >
               <Typography
