@@ -122,6 +122,7 @@ export default function Dbt({ setUserEmail, setAuthState, user }) {
                       placeholder="Send a message..."
                       rows="1"
                       value={input}
+                      maxLength={1000}
                       onChange={(e) => {
                         setInput(e.target.value);
                         autosize(e.target);
