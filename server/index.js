@@ -1,4 +1,4 @@
-// v2.0 3.5 TURBO WORKING MODEL 7/19 7:00PM
+// v3.0  GPT-4 WORKING MODEL 8/26 7:00PM
 
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");

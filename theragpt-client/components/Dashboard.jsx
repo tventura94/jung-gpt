@@ -65,8 +65,60 @@ export default function Dashboard({
       }
     });
   };
+
+  async function encryptText(plainText, password) {
+    const textEncoder = new TextEncoder();
+    const textBuffer = textEncoder.encode(plainText);
+    const passwordBuffer = textEncoder.encode(password);
+
+    const passwordKey = await crypto.subtle.importKey(
+      "raw",
+      passwordBuffer,
+      { name: "PBKDF2" },
+      false,
+      ["deriveKey"]
+    );
+
+    const key = await crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        salt: passwordBuffer,
+        iterations: 1000,
+        hash: "SHA-256",
+      },
+      passwordKey,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["encrypt", "decrypt"]
+    );
+
+    const encrypted = await crypto.subtle.encrypt(
+      {
+        name: "AES-GCM",
+        iv: passwordBuffer,
+      },
+      key,
+      textBuffer
+    );
+
+    return new Uint8Array(encrypted);
+  }
+
   const sendMessageToFirebase = async (userText, assistantText) => {
+    // Encryption
+    const password = "SelfHelp2121!"; // Choose a secure password
+    const encryptedUserText = await encryptText(userText, password);
+    const encryptedAssistantText = await encryptText(assistantText, password);
+
+    // Convert encrypted Uint8Array to Base64 for easier storage and compatibility
+    const encryptedUserTextBase64 = btoa(
+      String.fromCharCode(...encryptedUserText)
+    );
+    const encryptedAssistantTextBase64 = btoa(
+      String.fromCharCode(...encryptedAssistantText)
+    );
     const userWordCount = userText
+
       .split(" ")
       .filter((word) => word !== "").length;
     const userCharCount = userText.length;
@@ -80,10 +132,10 @@ export default function Dashboard({
 
     try {
       await addDoc(messagesRef, {
-        user_text: userText, // User's message text
+        user_text: encryptedUserTextBase64, // Encrypted User's message text in Base64
+        assistant_text: encryptedAssistantTextBase64,
         user_word_count: userWordCount,
         user_char_count: userCharCount,
-        assistant_text: assistantText, // Assistant's message text
         assistant_word_count: assistantWordCount,
         assistant_char_count: assistantCharCount,
         timestamp: serverTimestamp(), // Timestamp for the entire conversation
