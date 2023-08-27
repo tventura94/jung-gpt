@@ -36,10 +36,6 @@ app.use(
   })
 );
 
-app.get("/getKey", (req, res) => {
-  res.json({ key: process.env.ENCRYPTION_KEY });
-});
-
 const port = process.env.PORT || 3080;
 
 app.listen(port, () => {
@@ -52,7 +48,6 @@ app.post("/jung", async (req, res) => {
   const { emotions } = req.body;
   const { interests } = req.body;
   const { typedInterest } = req.body;
-
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
