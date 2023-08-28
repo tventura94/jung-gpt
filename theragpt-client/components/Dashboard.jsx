@@ -66,10 +66,10 @@ export default function Dashboard({
     });
   };
 
-  async function encryptText(plainText, password) {
+  async function encryptText(plainText, blackAlpaca) {
     const textEncoder = new TextEncoder();
     const textBuffer = textEncoder.encode(plainText);
-    const passwordBuffer = textEncoder.encode(password);
+    const passwordBuffer = textEncoder.encode(blackAlpaca);
 
     const passwordKey = await crypto.subtle.importKey(
       "raw",
@@ -106,9 +106,12 @@ export default function Dashboard({
 
   const sendMessageToFirebase = async (userText, assistantText) => {
     // Encryption
-    const password = "SelfHelp2121!"; // Choose a secure password
-    const encryptedUserText = await encryptText(userText, password);
-    const encryptedAssistantText = await encryptText(assistantText, password);
+    const blackAlpaca = "x1!,54372usjw!"; // Encryption password
+    const encryptedUserText = await encryptText(userText, blackAlpaca);
+    const encryptedAssistantText = await encryptText(
+      assistantText,
+      blackAlpaca
+    );
 
     // Convert encrypted Uint8Array to Base64 for easier storage and compatibility
     const encryptedUserTextBase64 = btoa(
@@ -118,7 +121,6 @@ export default function Dashboard({
       String.fromCharCode(...encryptedAssistantText)
     );
     const userWordCount = userText
-
       .split(" ")
       .filter((word) => word !== "").length;
     const userCharCount = userText.length;
@@ -140,7 +142,6 @@ export default function Dashboard({
         assistant_char_count: assistantCharCount,
         timestamp: serverTimestamp(), // Timestamp for the entire conversation
       });
-      console.log("Message data written successfully");
     } catch (error) {
       console.error("Error writing message data: ", error);
     }
