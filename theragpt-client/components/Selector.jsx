@@ -968,9 +968,22 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         fontFamily: "'League Spartan', serif",
                         lineHeight: "1.6rem",
                         boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
+                        "@media(max-width: 1458px)": {
+                          width: "300px",
+                        },
+
+                        "@media(max-width: 1259px)": {
+                          width: "300px",
+                        },
+
                         "@media (min-width: 600px) and (max-width: 1224px)": {
-                          // This targets tablet devices
-                          width: "200px", // Set the width to 200px for tablet devices
+                          width: "200px",
+                        },
+                        "@media(max-width: 845px)": {
+                          width: "150px",
+                        },
+                        "@media(max-width: 600px)": {
+                          width: "400px",
                         },
                       }}
                     >

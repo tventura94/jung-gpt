@@ -106,9 +106,7 @@ html {
   background-color: rgb(55, 61, 74);
   background-image: url("../marble-background.png");
   margin: 0 auto;
-  width: 100vw;
   min-height: 95vh;
-  overflow-y: scroll;
 }
 .sidemenu {
   display: flex;
@@ -454,9 +452,8 @@ body {
     background-color: rgb(55, 61, 74);
     background-image: url("../marble-background.png");
     margin: 0 auto;
-    width: 100vw;
+    width: 100%;
     min-height: 95vh;
-    overflow-y: scroll;
   }
 }
 

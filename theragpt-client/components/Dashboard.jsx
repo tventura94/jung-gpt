@@ -473,7 +473,9 @@ export default function Dashboard({
             </Button>
           </DialogContent>
         </Dialog>
+
         {/* Metaphor Feature************************ */}
+
         <Dialog
           sx={{ backgroundColor: "#1e4a66a3" }}
           open={interestsOpen}
