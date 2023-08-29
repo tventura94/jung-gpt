@@ -983,7 +983,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                           width: "150px",
                         },
                         "@media(max-width: 600px)": {
-                          width: "400px",
+                          width: "390px",
                         },
                       }}
                     >
@@ -1222,18 +1222,18 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                     color: "whitesmoke",
                   }}
                 >
-                  NO! We never read your conversations!
+                  We do store the data of conversations for legal purposes
+                  within a double-encrypted server, we cannot read your
+                  conversations, and privacy is of the utmost importance to us.
+                  What we do read and collect is your usage amount on the app,
+                  how many words per message you send, how many characters per
+                  message you send, your demographics and what time you message
+                  at. We do not sell your data to any third-parties. We do not
+                  use your data to train our models.
                   <br />
-                  <br /> We do store the data of conversations for legal
-                  purposes, we never read your conversations, and privacy is of
-                  the utmost importance to us. What we do read and collect is
-                  your usage amount on the app, how many words per message you
-                  send, and what time you message at. We do not sell your data
-                  to any third-parties. We do not use your data to train our
-                  models.
                   <br />
-                  <br />
-                  All data is kept strictly confidential
+                  All data is kept strictly confidential in a private database
+                  that is double encrypted by both us and Google.
                 </Typography>
               </AccordionDetails>
             </Accordion>
