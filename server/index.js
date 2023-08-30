@@ -7,7 +7,7 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 
 const configuration = new Configuration({
-  organization: process.env.ORGANIZATION_ID,
+  organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
 });
 
