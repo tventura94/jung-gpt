@@ -48,16 +48,31 @@ app.post("/jung", async (req, res) => {
   const { emotions } = req.body;
   const { interests } = req.body;
   const { typedInterest } = req.body;
+  const selectedPrompt = prompts[getRandomIndex(0, prompts.length - 1)];
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
+  // PROMPT VARIABILITY
+
+  // Your new array of prompts
+  const prompts = [
+    "I will talk about the user's interests.",
+    "I will NOT talk about the user's interests.",
+  ];
+
+  // Your new random number generator function
+  function getRandomIndex(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   let message = `The first thing message I send is "Hello, You've reported you're feeling ${emotions}."
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
+  ${selectedPrompt}.
   I only mention the users interests if it helps me explain something.
   If the users interests contains an inappropriate or banned word or concept, I explain I cannot talk about that.
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on the emotions they've reported and how to navigate them.

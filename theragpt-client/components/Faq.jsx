@@ -164,7 +164,7 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
                 out to a friend or family member who loves you that you can talk
                 to. Your safety is incredibly important to your friends, your
                 family, and to us, its never worth it to risk it. Seek help if
-                you're feeling truly awful, connection with others and
+                you're feeling truly awful. Connection with others and
                 self-exploration with the help of a trained professional are
                 vital steps toward growth and healing.
                 <br />
