@@ -104,7 +104,7 @@ export default function Dashboard({
     return new Uint8Array(encrypted);
   }
 
-  const sendMessageToFirebase = async (userText, assistantText) => {
+  const sendMessageToFirebase = async (userText, assistantText, tokenData) => {
     // Encryption
     const blackAlpaca = "x1!,54372usjw!"; // Encryption password
     const encryptedUserText = await encryptText(userText, blackAlpaca);
@@ -138,6 +138,7 @@ export default function Dashboard({
         assistant_text: encryptedAssistantTextBase64,
         user_word_count: userWordCount,
         user_char_count: userCharCount,
+        usage: tokenData, // convert object to JSON string
         assistant_word_count: assistantWordCount,
         assistant_char_count: assistantCharCount,
         timestamp: serverTimestamp(), // Timestamp for the entire conversation
@@ -146,6 +147,7 @@ export default function Dashboard({
       console.error("Error writing message data: ", error);
     }
   };
+
   const getInterestsFromFirebase = async () => {
     const userRef = doc(db, "users", user.uid); // Document reference
     const interestsCollectionRef = collection(userRef, "interests"); // Subcollection reference
@@ -343,12 +345,14 @@ export default function Dashboard({
     });
 
     const data = await response.json();
+
+    const tokenData = data.usage;
     const assistantMessage = `${data.message}`;
     setChatLog([
       ...chatLogNew,
       { role: "assistant", message: `${data.message}` },
     ]);
-    sendMessageToFirebase(input, assistantMessage);
+    sendMessageToFirebase(input, assistantMessage, tokenData);
   }
 
   function clearChat(e) {
