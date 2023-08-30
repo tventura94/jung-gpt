@@ -152,6 +152,7 @@ app.post("/jung", async (req, res) => {
   });
   res.json({
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
+    usage: response.data.usage,
   });
 });
 
