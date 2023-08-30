@@ -53,7 +53,7 @@ app.post("/jung", async (req, res) => {
 
   let selectedPrompt;
 
-  if (Math.random() < 0.1) {
+  if (Math.random() < 0.5) {
     selectedPrompt = prompts[0]; // 10% chance
   } else {
     selectedPrompt = prompts[1]; // 90% chance
