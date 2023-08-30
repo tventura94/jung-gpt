@@ -55,7 +55,7 @@ app.post("/jung", async (req, res) => {
   });
 
   let message = `The first thing message I send is "Hello, You've reported you're feeling ${emotions}."
-  The users name is ${userId}. I only refer to the user by their name sometimes.
+  The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
   I infrequently will refer to the users interests (${interests}) to explain emotional concepts through metaphor. I do not refer to the users interests in every message.
