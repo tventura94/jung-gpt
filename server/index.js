@@ -42,12 +42,22 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
+// Your new array of prompts
+const prompts = [
+  "I will talk about the user's interests.",
+  "I will NOT talk about the user's interests.",
+];
+
 app.post("/jung", async (req, res) => {
-  const { conversation } = req.body;
-  const { userId } = req.body;
-  const { emotions } = req.body;
-  const { interests } = req.body;
-  const { typedInterest } = req.body;
+  const { conversation, userId, emotions, interests, typedInterest } = req.body;
+
+  let selectedPrompt;
+
+  if (Math.random() < 0.1) {
+    selectedPrompt = prompts[0]; // 10% chance
+  } else {
+    selectedPrompt = prompts[1]; // 90% chance
+  }
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
@@ -58,6 +68,7 @@ app.post("/jung", async (req, res) => {
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
+  ${selectedPrompt}.
   I only mention the users interests if it helps me explain something.
   If the users interests contains an inappropriate or banned word or concept, I explain I cannot talk about that.
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on the emotions they've reported and how to navigate them.
