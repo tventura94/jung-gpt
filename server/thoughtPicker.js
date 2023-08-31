@@ -2,6 +2,7 @@ const {
   existentialismArray,
   philosophyArray,
   loveArray,
+  lonelinessArray,
   // ... other arrays
 } = require("./thoughts");
 
@@ -27,6 +28,12 @@ function pickThought(lastUserMessage) {
     lastUserMessage.includes("romance")
   ) {
     thought = loveArray[Math.floor(Math.random() * loveArray.length)];
+  } else if (
+    lastUserMessage.includes("lonely") ||
+    lastUserMessage.includes("loneliness") ||
+  ) {
+    thought =
+      lonelinessArray[Math.floor(Math.random() * lonelinessArray.length)];
   }
 
   // Add more conditions as needed
