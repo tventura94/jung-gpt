@@ -1,41 +1,39 @@
+const nlp = require("compromise");
 const {
   existentialismArray,
   philosophyArray,
   loveArray,
   lonelinessArray,
-  // ... other arrays
 } = require("./thoughts");
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 function pickThought(lastUserMessage) {
   let thought = "";
 
-  if (
-    lastUserMessage.includes("existentialism") ||
-    lastUserMessage.includes("existential")
-  ) {
-    thought =
-      existentialismArray[
-        Math.floor(Math.random() * existentialismArray.length)
-      ];
+  // Perform NLP on the last user message
+  const doc = nlp(lastUserMessage.toLowerCase());
+
+  // Identify keywords and topics
+  const topics = doc.topics().out("array");
+  console.log(topics);
+  if (topics.includes("existentialism") || topics.includes("existential")) {
+    thought = getRandomElement(existentialismArray);
   } else if (
-    lastUserMessage.includes("philosophy") ||
-    lastUserMessage.includes("philosophical")
+    topics.includes("philosophy") ||
+    topics.includes("philosophical")
   ) {
-    thought =
-      philosophyArray[Math.floor(Math.random() * philosophyArray.length)];
+    thought = getRandomElement(philosophyArray);
+  } else if (topics.includes("love") || topics.includes("romance")) {
+    thought = getRandomElement(loveArray);
   } else if (
-    lastUserMessage.includes("love") ||
-    lastUserMessage.includes("romance")
+    topics.includes("lonely") ||
+    topics.includes("loneliness") ||
+    topics.includes("alone")
   ) {
-    thought = loveArray[Math.floor(Math.random() * loveArray.length)];
-  } else if (
-    lastUserMessage.includes("lonely") ||
-    lastUserMessage.includes("loneliness") ||
-    lastUserMessage.includes("feel alone") ||
-    lastUserMessage.includes("feeling alone")
-  ) {
-    thought =
-      lonelinessArray[Math.floor(Math.random() * lonelinessArray.length)];
+    thought = getRandomElement(lonelinessArray);
   }
 
   // Add more conditions as needed
