@@ -130,7 +130,8 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first thing message I always send is "${selectedTime} You've reported you're feeling ${emotions}."
+  let message = `The first thing message I am always send is "${selectedTime} You've reported you're feeling ${emotions}."
+  The users local time is ${localHour}.
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
