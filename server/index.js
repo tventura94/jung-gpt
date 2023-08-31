@@ -48,6 +48,7 @@ const {
   afternoonPrompts,
   eveningPrompts,
   prompts,
+  lateNightPrompts,
 } = require("./prompts");
 
 app.post("/jung", async (req, res) => {
@@ -63,7 +64,10 @@ app.post("/jung", async (req, res) => {
   let selectedTime;
 
   // Determine time of day
-  if (localHour < 12) {
+  if (localHour >= 0 && localHour < 5) {
+    selectedTime =
+      lateNightPrompts[Math.floor(Math.random() * lateNightPrompts.length)];
+  } else if (localHour >= 5 && localHour < 12) {
     selectedTime =
       morningPrompts[Math.floor(Math.random() * morningPrompts.length)];
   } else if (localHour >= 12 && localHour < 17) {

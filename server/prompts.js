@@ -70,7 +70,31 @@ exports.eveningPrompts = [
   "The day's over! How'd it go?",
 ];
 
-// Random interest string
+exports.lateNightPrompts = [
+  "Burning the midnight oil, huh?",
+  "Up late, I see!",
+  "Can't sleep?",
+  "Trouble sleeping?",
+  "You're a night owl!",
+  "Late nights, big thoughts?",
+  "What's keeping you awake?",
+  "How's the night treating you?",
+  "Anything interesting happening this late?",
+  "Hey friend, trouble sleeping? I'm here to chat. What's got you up?",
+  "Up for some late-night thoughts?",
+  "Late-night snack run?",
+  "Still up? What's on your mind?",
+  "What brings you here at this hour?",
+  "Hey, night owl! What are you up to?",
+  "Sleep evading you too?",
+  "Stargazing or soul-searching?",
+  "Nighttime is the right time for what?",
+  "Hey, enjoying the quiet night?",
+  "How's the late shift going?",
+  "What's your midnight mission?",
+];
+
+// Random Interest Probability Strings
 
 exports.prompts = [
   "If possible, I incorporate the users interest to explain an emotional concept through metaphor",
