@@ -99,7 +99,8 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `.${thought}The first message I send is restricted to: "${selectedTime} You've reported you're feeling ${emotions}."
+  let message = `${thought}
+  The first message I send is restricted to: "${selectedTime} You've reported you're feeling ${emotions}."
   The users local time is ${localHour}.
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
