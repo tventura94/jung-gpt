@@ -44,8 +44,8 @@ app.listen(port, () => {
 
 // Your new array of prompts
 const prompts = [
-  "I will talk about the user's interests.",
-  "I will NOT talk about the user's interests.",
+  "I will talk about the user's interests",
+  "I will NOT talk about the user's interests",
 ];
 
 app.post("/jung", async (req, res) => {
@@ -53,7 +53,7 @@ app.post("/jung", async (req, res) => {
 
   let selectedPrompt;
 
-  if (Math.random() < 0.5) {
+  if (Math.random() < 0.2) {
     selectedPrompt = prompts[0]; // 10% chance
   } else {
     selectedPrompt = prompts[1]; // 90% chance
