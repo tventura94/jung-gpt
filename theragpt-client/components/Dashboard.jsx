@@ -408,11 +408,12 @@ export default function Dashboard({
             </Typography>
 
             <Grid
-              sx={{
-                marginLeft: isMobile ? "1rem" : "",
-              }}
               container
               spacing={2}
+              sx={{
+                overflowX: "hidden",
+                paddingLeft: "2rem",
+              }}
             >
               {[
                 "happy 😃",
@@ -431,9 +432,17 @@ export default function Dashboard({
                 "determined 😠",
                 "unsure",
               ].map((emotion) => (
-                <Grid item xs={isMobile ? 5 : 4} key={emotion}>
+                <Grid
+                  item
+                  xs={isMobile ? 5 : 4}
+                  key={emotion}
+                  sx={{
+                    overflowX: "hidden",
+                  }}
+                >
                   <Button
                     sx={{
+                      width: isMobile ? "93%" : "100%",
                       fontFamily: "'Roboto Slab', serif",
                       border: "solid 1px pink",
                       "&:hover": {
