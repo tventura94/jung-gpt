@@ -42,8 +42,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-// Your new array of prompts
-
 // Define arrays of alternative prompts
 const {
   morningPrompts,
