@@ -1,4 +1,5 @@
-const nlp = require("compromise");
+const natural = require("natural");
+const tokenizer = new natural.WordTokenizer();
 const {
   existentialismArray,
   philosophyArray,
@@ -13,30 +14,46 @@ function getRandomElement(arr) {
 function pickThought(lastUserMessage) {
   let thought = "";
 
-  // Perform NLP on the last user message
-  const doc = nlp(lastUserMessage.toLowerCase());
+  // Perform tokenization on the last user message
+  const tokens = tokenizer.tokenize(lastUserMessage.toLowerCase());
+  console.log(tokens);
+  // Define the keywords
+  const keywords = [
+    "existentialism",
+    "existential",
+    "philosophy",
+    "philosophical",
+    "love",
+    "romance",
+    "lonely",
+    "loneliness",
+    "alone",
+  ];
+  for (const keyword of keywords) {
+    if (tokens.includes(keyword)) {
+      switch (keyword) {
+        case "existentialism":
+        case "existential":
+          thought = getRandomElement(existentialismArray);
+          break;
+        case "philosophy":
+        case "philosophical":
+          thought = getRandomElement(philosophyArray);
+          break;
+        case "love":
+        case "romance":
+          thought = getRandomElement(loveArray);
+          break;
+        case "lonely":
+        case "loneliness":
+        case "alone":
+          thought = getRandomElement(lonelinessArray);
+          break;
+      }
 
-  // Identify keywords and topics
-  const topics = doc.topics().out("array");
-  console.log(topics);
-  if (topics.includes("existentialism") || topics.includes("existential")) {
-    thought = getRandomElement(existentialismArray);
-  } else if (
-    topics.includes("philosophy") ||
-    topics.includes("philosophical")
-  ) {
-    thought = getRandomElement(philosophyArray);
-  } else if (topics.includes("love") || topics.includes("romance")) {
-    thought = getRandomElement(loveArray);
-  } else if (
-    topics.includes("lonely") ||
-    topics.includes("loneliness") ||
-    topics.includes("alone")
-  ) {
-    thought = getRandomElement(lonelinessArray);
+      if (thought) break; // Exit the loop if a thought has been picked
+    }
   }
-
-  // Add more conditions as needed
 
   return thought;
 }
