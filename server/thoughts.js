@@ -79,11 +79,8 @@ exports.lonelinessArray = [
 exports.lonelinessNegativeArray = [
   "Feeling lonely can be incredibly tough. Sometimes, joining group activities can introduce you to like-minded individuals.",
   "That sounds really difficult. Have you considered online communities that focus on your interests?",
-  "Loneliness can be harsh, but it's also an opportunity for self-reflection. However, prolonged feelings of loneliness should be addressed with professional help.",
   "I understand that loneliness can feel overwhelming. Perhaps adopting a pet could offer some companionship.",
   "You're not alone in feeling lonely; many people go through this. Have you thought about reconnecting with old friends?",
   "I'm sorry you're experiencing loneliness. Self-care methods, like meditation or exercise, could also help improve your mental state.",
   "It's tough to feel isolated. Sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
-  "Feeling lonely is hard, especially if it's for an extended period. If it becomes too much, don't hesitate to seek professional guidance.",
-  "If you're finding it hard to cope with loneliness, it might be helpful to speak to a counselor or therapist.",
 ];

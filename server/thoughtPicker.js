@@ -21,38 +21,41 @@ function getRandomElement(arr) {
 function pickThought(lastUserMessage) {
   let thought = "";
 
-  // Tokenize the message
-  const tokens = tokenizer.tokenize(lastUserMessage.toLowerCase());
+  // Split the message into sentences
+  const sentences = lastUserMessage.toLowerCase().split(". ");
 
-  // Perform sentiment analysis
-  const sentimentScore = analyzer.getSentiment(tokens);
-  console.log(sentimentScore);
-  // Perform stemming
-  const stemmedTokens = tokens.map((token) => stemmer.stem(token));
-  console.log(stemmedTokens);
-  const keywords = ["exist", "philosoph", "love", "romanc", "lone", "alon"];
+  // Initialize keyword stems
+  const keywordStems = ["exist", "philosoph", "love", "romanc", "lone", "alon"];
 
-  for (const keyword of keywords) {
-    if (stemmedTokens.includes(keyword)) {
-      switch (keyword) {
+  for (const keywordStem of keywordStems) {
+    // Find the first sentence that includes the keyword stem
+    const relevantSentence = sentences.find((sentence) =>
+      sentence.includes(keywordStem)
+    );
+
+    console.log(sentences);
+    console.log(relevantSentence);
+
+    if (relevantSentence) {
+      // Tokenize and stem the relevant sentence
+      const tokens = tokenizer.tokenize(relevantSentence);
+      const stemmedTokens = tokens.map((token) => stemmer.stem(token));
+
+      // Analyze the sentiment of the relevant sentence
+      const sentimentScore = analyzer.getSentiment(stemmedTokens);
+      console.log(stemmedTokens);
+      console.log(sentimentScore);
+
+      switch (keywordStem) {
         case "exist":
-          thought =
-            sentimentScore < 0
-              ? getRandomElement(existentialismNegativeArray)
-              : getRandomElement(existentialismArray);
+          thought = getRandomElement(existentialismArray);
           break;
         case "philosoph":
-          thought =
-            sentimentScore < 0
-              ? getRandomElement(philosophyNegativeArray)
-              : getRandomElement(philosophyArray);
+          thought = getRandomElement(philosophyArray);
           break;
         case "love":
         case "romanc":
-          thought =
-            sentimentScore < 0
-              ? getRandomElement(loveNegativeArray)
-              : getRandomElement(loveArray);
+          thought = getRandomElement(loveArray);
           break;
         case "lone":
         case "alon":
@@ -63,7 +66,7 @@ function pickThought(lastUserMessage) {
           break;
       }
 
-      if (thought) break;
+      if (thought) break; // Exit the loop if a thought has been picked
     }
   }
 
