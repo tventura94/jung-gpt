@@ -71,6 +71,28 @@ const morningPrompts = [
   "Hey! Rest up well?",
   "Hey, how was your beauty sleep?",
 ];
+const afternoonPrompts = [
+  "Good afternoon!",
+  "Hey there, how's your afternoon?",
+  "Afternoon, what's up?",
+  "Hope you're having a pleasant afternoon!",
+  "How's your afternoon going?",
+  "Hey, enjoying your afternoon?",
+  "Good afternoon, how's your day so far?",
+  "Afternoon delight! How are you?",
+  "Hey! How's your afternoon shaping up?",
+  "Afternoon! What's on the agenda?",
+  "Hello! How's your afternoon treating you?",
+  "What's cooking this afternoon?",
+  "Good afternoon, anything exciting happening?",
+  "Afternoon, got any plans?",
+  "Howdy! Good afternoon!",
+  "Hey, making the most of your afternoon?",
+  "Greetings! How's your afternoon?",
+  "Good P.M.! What's new?",
+  "Hey! How's the afternoon going?",
+  "Sun's high! How's your day?",
+];
 
 const eveningPrompts = [
   "How was your day?",
@@ -87,7 +109,6 @@ const eveningPrompts = [
   "Evening! Ready to unwind?",
   "The stars are out, what's on your agenda?",
   "Good evening! How did your day unfold?",
-  "Hey there, evening person! What's new?",
   "Hey, how'd your day go?",
   "Evening's here! Got any plans?",
   "Good evening! Anything exciting happen today?",
@@ -111,6 +132,9 @@ app.post("/jung", async (req, res) => {
   if (localHour < 12) {
     selectedTime =
       morningPrompts[Math.floor(Math.random() * morningPrompts.length)];
+  } else if (localHour >= 12 && localHour < 17) {
+    selectedTime =
+      afternoonPrompts[Math.floor(Math.random() * afternoonPrompts.length)];
   } else {
     selectedTime =
       eveningPrompts[Math.floor(Math.random() * eveningPrompts.length)];
