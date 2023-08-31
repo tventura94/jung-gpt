@@ -341,6 +341,7 @@ export default function Dashboard({
         emotions: selectedEmotions, // send the selected emotions
         interests: selectedInterests, // send the selected interests
         typedInterest: typedInterest,
+        localHour: new Date().getHours(),
       }),
     });
 
