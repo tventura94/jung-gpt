@@ -9,7 +9,6 @@ const analyzer = new Analyzer("English", stemmer, "afinn");
 const {
   existentialismArray,
   philosophyArray,
-  loveArray,
   lonelinessArray,
   lonelinessNegativeArray,
 } = require("./thoughts");
@@ -52,10 +51,6 @@ function pickThought(lastUserMessage) {
           break;
         case "philosoph":
           thought = getRandomElement(philosophyArray);
-          break;
-        case "love":
-        case "romanc":
-          thought = getRandomElement(loveArray);
           break;
         case "lone":
         case "alon":
