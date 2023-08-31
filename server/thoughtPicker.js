@@ -30,7 +30,7 @@ function pickThought(lastUserMessage) {
     thought = loveArray[Math.floor(Math.random() * loveArray.length)];
   } else if (
     lastUserMessage.includes("lonely") ||
-    lastUserMessage.includes("loneliness") ||
+    lastUserMessage.includes("loneliness")
   ) {
     thought =
       lonelinessArray[Math.floor(Math.random() * lonelinessArray.length)];
