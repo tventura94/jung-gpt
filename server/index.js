@@ -42,8 +42,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-// Your new array of prompts
-
 // Define arrays of alternative prompts
 const {
   morningPrompts,
@@ -90,7 +88,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first message I absolutely must send is "${selectedTime} You've reported you're feeling ${emotions}."
+  let message = `
   The users local time is ${localHour}.
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
@@ -179,6 +177,10 @@ app.post("/jung", async (req, res) => {
       {
         role: "system",
         content: message,
+      },
+      {
+        role: "assistant",
+        content: `${selectedTime} You've reported you're feeling ${emotions}.`,
       },
     ],
     temperature: 1.1,
