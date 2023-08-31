@@ -81,9 +81,9 @@ app.post("/jung", async (req, res) => {
   let selectedPrompt;
 
   if (Math.random() < 0.2) {
-    selectedPrompt = prompts[0]; // 10% chance
+    selectedPrompt = prompts[0]; // 20% chance
   } else {
-    selectedPrompt = prompts[1]; // 90% chance
+    selectedPrompt = prompts[1]; // 80% chance
   }
 
   app.use(express.static(path.join(__dirname, "dist")));
