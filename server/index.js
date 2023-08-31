@@ -109,6 +109,7 @@ app.post("/jung", async (req, res) => {
     selectedTime =
       eveningPrompts[Math.floor(Math.random() * eveningPrompts.length)];
   }
+
   let selectedPrompt;
 
   if (Math.random() < 0.2) {
@@ -116,13 +117,14 @@ app.post("/jung", async (req, res) => {
   } else {
     selectedPrompt = prompts[1]; // 90% chance
   }
+
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first thing message I send is "${selectedTime} You've reported you're feeling ${emotions}."
+  let message = `The first thing message I always send is "${selectedTime} You've reported you're feeling ${emotions}."
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
