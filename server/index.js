@@ -44,13 +44,71 @@ app.listen(port, () => {
 
 // Your new array of prompts
 const prompts = [
-  "I will talk about the user's interests",
+  "If possible, I incorporate the users interest to explain an emotional concept through metaphor",
   "I will NOT talk about the user's interests",
+];
+
+// Define arrays of alternative prompts
+const morningPrompts = [
+  "Hey, how'd you sleep?",
+  "Good morning!",
+  "Cock-a-doodle-doo! Good morning!",
+  "Hey there! How is your morning going?",
+  "Rise and shine! What's the plan for today?",
+  "Hello, early bird! Catch any worms?",
+  "Wakey, wakey, eggs and bakey!",
+  "G'morning, sleepyhead!",
+  "Good morning, sunshine!",
+  "Morning! Ready to tackle the day?",
+  "Up and at 'em, tiger!",
+  "Morning glory! What's the story?",
+  "Good morning, world-changer!",
+  "Hey, morning star! Shine bright today!",
+  "Good morning! Adventure awaits.",
+  "Hey there, sleep well?",
+  "Hey, did you catch some good Z's?",
+  "How'd you sleep last night?",
+  "Hey! Rest up well?",
+  "Hey, how was your beauty sleep?",
+];
+
+const eveningPrompts = [
+  "How was your day?",
+  "Good evening!",
+  "The sun has set, what are you up to?",
+  "Hope you had a good day!",
+  "What's on your mind this evening?",
+  "Evening! How did your day go?",
+  "Good evening, night owl!",
+  "How's your evening shaping up?",
+  "Night has fallen! What are you up to?",
+  "Evening, how was your day?",
+  "Twilight has arrived, how was your day?",
+  "Evening! Ready to unwind?",
+  "The stars are out, what's on your agenda?",
+  "Good evening! How did your day unfold?",
+  "Hey there, evening person! What's new?",
+  "Hey, how'd your day go?",
+  "Evening's here! Got any plans?",
+  "Good evening! Anything exciting happen today?",
+  "Night's setting in! How are you?",
+  "The day's over! How'd it go?",
 ];
 
 app.post("/jung", async (req, res) => {
   const { conversation, userId, emotions, interests, typedInterest } = req.body;
 
+  const hour = new Date().getHours();
+  let selectedTime;
+
+  // Determine time of day
+  if (hour < 12) {
+    selectedTime =
+      morningPrompts[Math.floor(Math.random() * morningPrompts.length)];
+  } else {
+    selectedTime =
+      eveningPrompts[Math.floor(Math.random() * eveningPrompts.length)];
+  }
   let selectedPrompt;
 
   if (Math.random() < 0.2) {
@@ -64,7 +122,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
-  let message = `The first thing message I send is "Hello, You've reported you're feeling ${emotions}."
+  let message = `The first thing message I send is "${selectedTime} You've reported you're feeling ${emotions}."
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
   The users interests are ${typedInterest} and ${interests}.
