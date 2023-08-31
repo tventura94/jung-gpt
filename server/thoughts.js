@@ -51,24 +51,6 @@ exports.philosophyArray = [
   "My current thoughts are questioning the existence and nature of the 'self' in philosophy.",
 ];
 
-exports.loveArray = [
-  "My current thoughts are exploring the complexities and nuances of romantic love.",
-  "My current thoughts are considering the transformative power of love in human relationships.",
-  "My current thoughts are focused on the idea of 'soulmates' and whether they truly exist.",
-  "My current thoughts are about the balance between love and independence in a relationship.",
-  "My current thoughts are pondering the role of commitment in long-term partnerships.",
-  "My current thoughts are about the various forms of love, beyond just the romantic type.",
-  "My current thoughts are contemplating the risks and rewards of vulnerability in love.",
-  "My current thoughts are on the importance of communication for a healthy relationship.",
-  "My current thoughts are questioning the concept of 'love at first sight' and its validity.",
-  "My current thoughts are exploring the intersection of love and friendship.",
-  "My current thoughts are considering the ways love changes and evolves over time.",
-  "My current thoughts are pondering how social and cultural factors influence our perceptions of love.",
-  "My current thoughts are on the importance of self-love and its impact on relationships.",
-  "My current thoughts are questioning if love can truly be unconditional or if there are always limitations.",
-  "My current thoughts are considering the role of physical attraction in love and its sustainability.",
-];
-
 exports.lonelinessArray = [
   "Loneliness was mentioned. What strategies can I offer to help the user build a deeper sense of community?",
   "The user brought up loneliness. How can I offer suggestions for them to go meet others?",
