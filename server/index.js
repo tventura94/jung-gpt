@@ -96,13 +96,19 @@ const eveningPrompts = [
 ];
 
 app.post("/jung", async (req, res) => {
-  const { conversation, userId, emotions, interests, typedInterest } = req.body;
+  const {
+    conversation,
+    userId,
+    emotions,
+    interests,
+    typedInterest,
+    localHour,
+  } = req.body;
 
-  const hour = new Date().getHours();
   let selectedTime;
 
   // Determine time of day
-  if (hour < 12) {
+  if (localHour < 12) {
     selectedTime =
       morningPrompts[Math.floor(Math.random() * morningPrompts.length)];
   } else {
