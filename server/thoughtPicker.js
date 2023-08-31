@@ -24,6 +24,7 @@ function pickThought(lastUserMessage) {
   // Split the message into sentences
   const sentences = lastUserMessage.toLowerCase().split(". ");
 
+  console.log(sentences);
   // Initialize keyword stems
   const keywordStems = ["exist", "philosoph", "love", "romanc", "lone", "alon"];
 
@@ -33,9 +34,6 @@ function pickThought(lastUserMessage) {
       sentence.includes(keywordStem)
     );
 
-    console.log(sentences);
-    console.log(relevantSentence);
-
     if (relevantSentence) {
       // Tokenize and stem the relevant sentence
       const tokens = tokenizer.tokenize(relevantSentence);
@@ -43,8 +41,6 @@ function pickThought(lastUserMessage) {
 
       // Analyze the sentiment of the relevant sentence
       const sentimentScore = analyzer.getSentiment(stemmedTokens);
-      console.log(stemmedTokens);
-      console.log(sentimentScore);
 
       switch (keywordStem) {
         case "exist":
@@ -70,6 +66,9 @@ function pickThought(lastUserMessage) {
     }
   }
 
+  console.log(relevantSentence);
+  console.log(stemmedTokens);
+  console.log(sentimentScore);
   return thought;
 }
 
