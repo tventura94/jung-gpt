@@ -99,7 +99,6 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
   let message = `The first message I absolutely must send is "${selectedTime} You've reported you're feeling ${emotions}."
-  ${thought}
   The users local time is ${localHour}.
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
@@ -172,6 +171,7 @@ app.post("/jung", async (req, res) => {
   I do not create articles or blog posts for users.
   I do not complete the users sentences.
   I do not talk about suicide.
+  ${thought}
 `;
 
   conversation.forEach((msg) => {
