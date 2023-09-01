@@ -24,44 +24,48 @@ function pickThought(lastUserMessage) {
   const sentences = lastUserMessage.toLowerCase().split(". ");
 
   // Initialize keyword stems
-  const keywordStems = ["existen", "philos", "lone"];
-
-  const keywordSentiments = {};
+  const keywordStems = ["exist", "philosoph", "love", "romanc", "lone", "alon"];
 
   for (const keywordStem of keywordStems) {
-    // Find all sentences that include the keyword stem
-    const relevantSentences = sentences.filter((sentence) =>
+    // Find the first sentence that includes the keyword stem
+    const relevantSentence = sentences.find((sentence) =>
       sentence.includes(keywordStem)
     );
 
-    // Process each sentence to get sentiment
-    for (const relevantSentence of relevantSentences) {
+    console.log(sentences);
+    console.log(relevantSentence);
+
+    if (relevantSentence) {
+      // Tokenize and stem the relevant sentence
       const tokens = tokenizer.tokenize(relevantSentence);
       const stemmedTokens = tokens.map((token) => stemmer.stem(token));
 
       // Analyze the sentiment of the relevant sentence
       const sentimentScore = analyzer.getSentiment(stemmedTokens);
-
-      // Store the sentiment for this keyword
-      keywordSentiments[keywordStem] = sentimentScore;
-
-      console.log(relevantSentences);
       console.log(stemmedTokens);
       console.log(sentimentScore);
+
+      switch (keywordStem) {
+        case "exist":
+          thought = getRandomElement(existentialismArray);
+          break;
+        case "philosoph":
+          thought = getRandomElement(philosophyArray);
+          break;
+        case "lone":
+        case "alon":
+          thought =
+            sentimentScore <= 0.28
+              ? getRandomElement(lonelinessNegativeArray)
+              : getRandomElement(lonelinessArray);
+          break;
+      }
+
+      if (thought) break; // Exit the loop if a thought has been picked
     }
-  }
-  // Make decisions based on the sentiment scores
-  if (keywordSentiments["lone"]) {
-    thought =
-      keywordSentiments["lone"] <= 0.28
-        ? getRandomElement(lonelinessNegativeArray)
-        : getRandomElement(lonelinessArray);
-  } else if (keywordSentiments["existen"]) {
-    thought = getRandomElement(existentialismArray);
-  } else if (keywordSentiments["philos"]) {
-    thought = getRandomElement(philosophyArray);
   }
 
   return thought;
 }
+
 module.exports = { pickThought };
