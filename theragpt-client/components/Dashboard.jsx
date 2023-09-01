@@ -873,11 +873,11 @@ export default function Dashboard({
                           }
                         }}
                         disabled={trialLimitReached}
-                        maxLength={subscriptionStatus === "active" ? 1000 : 300}
+                        maxLength={subscriptionStatus === "active" ? 600 : 300}
                       ></textarea>
                       <div className="character-counter">
                         {subscriptionStatus === "active"
-                          ? 1000 - input.length
+                          ? 600 - input.length
                           : 300 - input.length}{" "}
                         characters left
                       </div>
