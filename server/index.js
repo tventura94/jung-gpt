@@ -67,7 +67,7 @@ app.post("/jung", async (req, res) => {
     conversation[conversation.length - 1].message.toLowerCase();
 
   const thought = pickThought(lastUserMessage);
-
+  console.log(thought);
   let selectedTime;
 
   // Determine time of day
