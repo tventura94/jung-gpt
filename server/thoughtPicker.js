@@ -32,7 +32,6 @@ function pickThought(lastUserMessage) {
       sentence.includes(keywordStem)
     );
 
-    console.log(sentences);
     console.log(relevantSentence);
 
     if (relevantSentence) {
