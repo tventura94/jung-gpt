@@ -172,7 +172,7 @@ ${thought}
       },
     ],
     temperature: 1.1,
-    max_tokens: 600,
+    max_tokens: 280,
     top_p: 1,
     frequency_penalty: 0.3,
     presence_penalty: 0.5,
