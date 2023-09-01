@@ -241,8 +241,8 @@ async function SAPP(lastUserMessage) {
       const [result] = await client.analyzeSentiment({ document: document });
       const sentimentScore = result.documentSentiment.score;
 
-      console.log(`Sentence: ${relevantSentence}`);
-      console.log(`Sentiment Score: ${sentimentScore}`);
+      // console.log(`Sentence: ${relevantSentence}`);
+      // console.log(`Sentiment Score: ${sentimentScore}`);
 
       switch (keywordStem) {
         case "exist":
