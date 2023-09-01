@@ -54,7 +54,7 @@ function pickThought(lastUserMessage) {
         case "lone":
         case "alon":
           thought =
-            sentimentScore < 0.28
+            sentimentScore <= 0
               ? getRandomElement(lonelinessNegativeArray)
               : getRandomElement(lonelinessArray);
           break;
