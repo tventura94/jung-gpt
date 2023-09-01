@@ -85,6 +85,7 @@ app.post("/jung", async (req, res) => {
       eveningPrompts[Math.floor(Math.random() * eveningPrompts.length)];
   }
 
+  // 20% chance the bot tries to use a metaphor based on the users interest
   let selectedPrompt;
 
   if (Math.random() < 0.2) {
@@ -92,8 +93,6 @@ app.post("/jung", async (req, res) => {
   } else {
     selectedPrompt = prompts[1]; // 80% chance
   }
-  console.log(selectedTime);
-  console.log(selectedPrompt);
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
