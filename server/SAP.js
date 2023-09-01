@@ -12,7 +12,7 @@ const {
   philosophyArray,
   lonelinessArray,
   lonelinessNegativeArray,
-} = require("./thoughts"); // Replace with your actual file path
+} = require("./thoughts");
 
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
