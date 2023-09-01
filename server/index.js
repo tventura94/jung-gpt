@@ -51,7 +51,7 @@ const {
   lateNightPrompts,
 } = require("./prompts");
 
-const { SAP } = require("./SAP");
+const { SAPP } = require("./SAPP");
 
 app.post("/jung", async (req, res) => {
   const {
@@ -66,7 +66,7 @@ app.post("/jung", async (req, res) => {
   const lastUserMessage =
     conversation[conversation.length - 1].message.toLowerCase();
 
-  const thought = await SAP(lastUserMessage);
+  const thought = await SAPP(lastUserMessage);
   console.log(thought);
   let selectedTime;
 

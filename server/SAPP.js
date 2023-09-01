@@ -18,7 +18,7 @@ function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-async function SAP(lastUserMessage) {
+async function SAPP(lastUserMessage) {
   let thought = "";
 
   // Split the message into sentences
@@ -69,4 +69,4 @@ async function SAP(lastUserMessage) {
   return thought;
 }
 
-module.exports = { SAP };
+module.exports = { SAPP };
