@@ -39,11 +39,11 @@ exports.philosophyArray = [
 ];
 
 exports.lonelinessArray = [
-  "Loneliness was mentioned. What strategies can I offer to help the user build a deeper sense of community?",
-  "The user brought up loneliness. How can I offer suggestions for them to go meet others?",
-  "The topic is loneliness. How can I incorporate the thought that self-compassion can be a useful tool for combating feelings of isolation?",
-  "Loneliness came up. How can I suggest that sometimes loneliness can serve as an opportunity for self-reflection and growth?",
-  "The user brought up feeling lonely. How can I include the idea that being alone and being lonely are not necessarily the same, and one can find peace in solitude?",
+  "The user mentioned enjoying being alone. In my next message, I agree that being alone can be good once in a while.",
+  "The user brought up loneliness in a positive way. In my next message, I ask them what it is about being alone that they enjoy?",
+  "The topic is loneliness. In my next message, How can I incorporate the thought that self-compassion can be a useful tool for combating feelings of isolation?",
+  "Loneliness came up. In my next message, How can I suggest that sometimes loneliness can serve as an opportunity for self-reflection and growth?",
+  "The user brought up feeling lonely. In my next message, How can I include the idea that being alone and being lonely are not necessarily the same, and one can find peace in solitude?",
 ];
 exports.lonelinessNegativeArray = [
   "Feeling lonely can be incredibly tough. In my next message, I can ask the user about group activities they might be able to join to try and meet like-minded folks.",
@@ -51,5 +51,5 @@ exports.lonelinessNegativeArray = [
   "The user has brought up feeling lonely. In my next message, How can I make them feel better?",
   "The user feels lonely. In my next message, I remind them they're alone in feeling lonely; many people go through this.",
   "The user is feeling lonely. In my next message, I inquire as to why they feel so alone",
-  "The user has brought up loneliness, It's tough to feel isolated. I explain Sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
+  "The user has brought up loneliness, It's tough to feel isolated. I explain sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
 ];
