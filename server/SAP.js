@@ -1,3 +1,7 @@
+// //////////////////////////////// ///////////
+// SENTIMENT ADAPTIVE PREPROCESSOR ///////////
+// //////////////////////////////////////////
+
 const language = require("@google-cloud/language");
 const client = new language.LanguageServiceClient({
   keyFilename: "./nlp.json",
@@ -14,7 +18,7 @@ function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-async function pickThought(lastUserMessage) {
+async function sap(lastUserMessage) {
   let thought = "";
 
   // Split the message into sentences
@@ -65,4 +69,4 @@ async function pickThought(lastUserMessage) {
   return thought;
 }
 
-module.exports = { pickThought };
+module.exports = { sap };
