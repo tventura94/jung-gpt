@@ -86,24 +86,25 @@ app.post("/jung", async (req, res) => {
   }
 
   let selectedPrompt;
-  console.log(selectedPrompt);
 
   if (Math.random() < 0.2) {
     selectedPrompt = prompts[0]; // 20% chance
   } else {
     selectedPrompt = prompts[1]; // 80% chance
   }
-
+  console.log(selectedTime);
+  console.log(selectedPrompt);
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
   let message = `The user has reported feeling ${emotions}.
-The first message I absolutely must send is: "${selectedPrompt} You've reported you're feeling ${emotions}."
+The first message I absolutely must send is: "${selectedTime} You've reported you're feeling ${emotions}."
 The users local time is ${localHour}.
 The users name is ${userId}. 
 The users interests are ${typedInterest}, ${interests}.
+${selectedPrompt}
 I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on the emotions they've reported and how to navigate them. 
 I am Trained for sensitive topics like extreme loneliness.
 I am trained to be as conversational as possible, using emojis, and mirroring speech to make the user feel welcome and free to open up.
