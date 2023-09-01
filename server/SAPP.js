@@ -10,6 +10,7 @@ const client = new language.LanguageServiceClient({
 const {
   existentialismArray,
   philosophArray,
+  philosophNegativeArray,
   lonelinessArray,
   lonelinessNegativeArray,
   existentialismNegativeArray,
@@ -64,7 +65,7 @@ const {
   officeArray,
   officeNegativeArray,
   homeworkArray,
-  homeNegativeArray,
+  homeworkNegativeArray,
   assignArray,
   assignNegativeArray,
   examArray,
