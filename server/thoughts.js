@@ -34,21 +34,8 @@ exports.existentialismArray = [
   "Existentialism has been raised. I'm contemplating existentialism's critique of traditional ethics. I'm compelled to discuss this in my next message.",
 ];
 exports.philosophyArray = [
-  "My current thoughts are pondering the nature of reality and what truly exists.",
-  "My current thoughts are delving into the ethical implications of human actions.",
-  "My current thoughts are focused on the concept of justice and what it means for society.",
-  "My current thoughts are considering the mind-body problem and the essence of consciousness.",
-  "My current thoughts are questioning the limitations of human knowledge and perception.",
-  "My current thoughts are contemplating the role of language in shaping thought and reality.",
-  "My current thoughts are evaluating the idea of free will and determinism.",
-  "My current thoughts are about the moral worth of actions and the complexities of ethical choices.",
-  "My current thoughts are on the philosophical implications of artificial intelligence.",
-  "My current thoughts are considering the virtues that contribute to a good life.",
-  "My current thoughts are focused on the social contract and the foundations of political legitimacy.",
-  "My current thoughts are on the intersection of philosophy and science, particularly in understanding the universe.",
-  "My current thoughts are about epistemology and the nature and scope of human knowledge.",
-  "My current thoughts are contemplating whether objective morality exists or if it's all relative.",
-  "My current thoughts are questioning the existence and nature of the 'self' in philosophy.",
+  "The topic is philosophy. In my next message, I ask the user about their interest in philosophy",
+  "The user has brought up philosophy. In my next message, I ask them about their favorite philosophers and how their theories relate to what we have been talking about.",
 ];
 
 exports.lonelinessArray = [
@@ -59,10 +46,10 @@ exports.lonelinessArray = [
   "The user brought up feeling lonely. How can I include the idea that being alone and being lonely are not necessarily the same, and one can find peace in solitude?",
 ];
 exports.lonelinessNegativeArray = [
-  "Feeling lonely can be incredibly tough. Sometimes, joining group activities can introduce you to like-minded individuals.",
-  "That sounds really difficult. Have you considered online communities that focus on your interests?",
-  "I understand that loneliness can feel overwhelming. Perhaps adopting a pet could offer some companionship.",
-  "You're not alone in feeling lonely; many people go through this. Have you thought about reconnecting with old friends?",
-  "I'm sorry you're experiencing loneliness. Self-care methods, like meditation or exercise, could also help improve your mental state.",
-  "It's tough to feel isolated. Sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
+  "Feeling lonely can be incredibly tough. In my next message, I can ask the user about group activities they might be able to join to try and meet like-minded folks.",
+  "The user is feeling overwhelmed with loneliness. In my next message, I can comfort them and help them find their strengths",
+  "The user has brought up feeling lonely. In my next message, How can I make them feel better?",
+  "The user feels lonely. In my next message, I remind them they're alone in feeling lonely; many people go through this.",
+  "The user is feeling lonely. In my next message, I inquire as to why they feel so alone",
+  "The user has brought up loneliness, It's tough to feel isolated. I explain Sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
 ];
