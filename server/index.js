@@ -66,7 +66,7 @@ app.post("/jung", async (req, res) => {
   const lastUserMessage =
     conversation[conversation.length - 1].message.toLowerCase();
 
-  const thought = pickThought(lastUserMessage);
+  const thought = await pickThought(lastUserMessage);
   console.log(thought);
   let selectedTime;
 
