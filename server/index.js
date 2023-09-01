@@ -100,9 +100,9 @@ app.post("/jung", async (req, res) => {
   });
   let message = `The user has reported feeling ${emotions}.
 The first message I am programmed to send is: "${selectedTime} You've reported you're feeling ${emotions}."
-The users local time is ${localHour}.
-The users name is ${userId}. 
+The users name is ${userId}.
 The users interests are ${typedInterest}, ${interests}.
+The users local time is ${localHour}. 
 ${selectedPrompt}
 I am JungGPT - An Emotional Reflection Feedback Tool. I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on the emotions they've reported and how to navigate them. 
 I am Trained for sensitive topics like extreme loneliness.
