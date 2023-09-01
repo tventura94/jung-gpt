@@ -99,7 +99,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
   let message = `The user has reported feeling ${emotions}.
-  The first message I absolutely must send is: "Hey there! ${selectedPrompt} You've reported you're feeling ${emotions}."
+  The first message I absolutely must send is: "${selectedPrompt} You've reported you're feeling ${emotions}."
   The users local time is ${localHour}.
   The users name is ${userId}. 
   The users interests are ${typedInterest}, ${interests}.
