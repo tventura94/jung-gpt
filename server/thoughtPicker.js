@@ -1,23 +1,20 @@
-const natural = require("natural");
-const tokenizer = new natural.WordTokenizer();
-const Analyzer = require("natural").SentimentAnalyzer;
-const stemmer = require("natural").PorterStemmer;
-
-// Initialize sentiment analyzer
-const analyzer = new Analyzer("English", stemmer, "afinn");
+const language = require("@google-cloud/language");
+const client = new language.LanguageServiceClient({
+  keyFilename: "./nlp.json",
+});
 
 const {
   existentialismArray,
   philosophyArray,
   lonelinessArray,
   lonelinessNegativeArray,
-} = require("./thoughts");
+} = require("./thoughts"); // Replace with your actual file path
 
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function pickThought(lastUserMessage) {
+async function pickThought(lastUserMessage) {
   let thought = "";
 
   // Split the message into sentences
@@ -32,17 +29,18 @@ function pickThought(lastUserMessage) {
       sentence.includes(keywordStem)
     );
 
-    console.log(relevantSentence);
-
     if (relevantSentence) {
-      // Tokenize and stem the relevant sentence
-      const tokens = tokenizer.tokenize(relevantSentence);
-      const stemmedTokens = tokens.map((token) => stemmer.stem(token));
+      const document = {
+        content: relevantSentence,
+        type: "PLAIN_TEXT",
+      };
 
-      // Analyze the sentiment of the relevant sentence
-      const sentimentScore = analyzer.getSentiment(stemmedTokens);
-      console.log(stemmedTokens);
-      console.log(sentimentScore);
+      // Use Google's Natural Language API to analyze the sentiment
+      const [result] = await client.analyzeSentiment({ document: document });
+      const sentimentScore = result.documentSentiment.score;
+
+      console.log(`Sentence: ${relevantSentence}`);
+      console.log(`Sentiment Score: ${sentimentScore}`);
 
       switch (keywordStem) {
         case "exist":
