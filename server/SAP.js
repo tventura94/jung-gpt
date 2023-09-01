@@ -1,6 +1,6 @@
-// //////////////////////////////// ///////////
+///////////////////////////////////////////////
 // SENTIMENT ADAPTIVE PREPROCESSOR ///////////
-// //////////////////////////////////////////
+/////////////////////////////////////////////
 
 const language = require("@google-cloud/language");
 const client = new language.LanguageServiceClient({
@@ -18,7 +18,7 @@ function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-async function sap(lastUserMessage) {
+async function SAP(lastUserMessage) {
   let thought = "";
 
   // Split the message into sentences
@@ -69,4 +69,4 @@ async function sap(lastUserMessage) {
   return thought;
 }
 
-module.exports = { sap };
+module.exports = { SAP };
