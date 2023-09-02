@@ -349,6 +349,7 @@ export default function Dashboard({
 
     const tokenData = data.usage;
     const assistantMessage = `${data.message}`;
+
     setChatLog([
       ...chatLogNew,
       { role: "assistant", message: `${data.message}` },

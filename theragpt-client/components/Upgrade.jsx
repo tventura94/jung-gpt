@@ -178,7 +178,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                 <br />
                 300 characters per message.
                 <br />
-                20 messages per chat.
+                10 messages per chat.
               </Typography>
               <Typography
                 variant="h6"
@@ -230,7 +230,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                 >
                   {product.description} for all available models
                   <br />
-                  1000 characters per message.
+                  600 characters per message.
                 </Typography>
                 <Typography
                   variant="h6"
