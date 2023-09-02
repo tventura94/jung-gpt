@@ -27,6 +27,7 @@ import {
 import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
 import { logPageView } from "../components/Fire";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const theme = useTheme();
@@ -73,11 +74,14 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       unsubscribe();
     };
   }, [user]);
+
   useEffect(() => {
     logPageView("/Upgrade");
   }, []);
+
   const handleUpgrade = async (productId) => {
     setLoading(true);
+
     const selectedProduct = products.find(
       (product) => product.id === productId
     );
@@ -87,37 +91,24 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       return;
     }
 
-    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-
-    const sessionRef = await addDoc(
-      collection(db, "users", user.uid, "checkout_sessions"),
-      {
-        price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
-        success_url: window.location.href,
-        cancel_url: window.location.href,
-        allow_promotion_codes: true,
-      }
+    const functions = getFunctions();
+    const createCheckoutSession = httpsCallable(
+      functions,
+      "createCheckoutSession"
     );
 
-    const sessionSnapshot = await getDoc(sessionRef);
-    const sessionId = sessionSnapshot.id;
-
-    const sessionListener = onSnapshot(
-      doc(db, "users", user.uid, "checkout_sessions", sessionId),
-      (sessionDoc) => {
-        const { error, url } = sessionDoc.data();
-        if (error) {
-          alert(`An error occurred: ${error.message}`);
-        } else if (url) {
-          window.location.href = url;
-        }
-      }
-    );
-
-    return () => {
-      sessionListener();
-    };
+    try {
+      const {
+        data: { sessionId },
+      } = await createCheckoutSession({});
+      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+      stripe.redirectToCheckout({ sessionId });
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+      alert(`An error occurred: ${error.message}`);
+    }
   };
+
   return (
     <div>
       <div className="main">
