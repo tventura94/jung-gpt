@@ -182,7 +182,7 @@ ${thought}
     message: "JungGPT: " + response.data.choices[0].message.content.trim(),
     usage: response.data.usage.total_tokens,
   });
-  console.log(usage);
+  console.log(response.data.usage.total_tokens);
 });
 
 app.post("/dbt", async (req, res) => {
