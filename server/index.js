@@ -189,13 +189,18 @@ app.post("/jung", async (req, res) => {
   });
 
   const usageTokens = response.data.usage.total_tokens;
-
-  await stripe.usageRecords.create({
-    quantity: usageTokens,
-    timestamp: Math.floor(Date.now() / 1000),
-    subscription_item: "price_1NlwVJGx3uwFHp11F4HC6UDu",
-    action: "increment",
-  });
+  console.log(stripe);
+  console.log(stripe.usageRecords);
+  try {
+    await stripe.usageRecords.create({
+      quantity: usageTokens,
+      timestamp: Math.floor(Date.now() / 1000),
+      subscription_item: "price_1NlwVJGx3uwFHp11F4HC6UDu",
+      action: "increment",
+    });
+  } catch (error) {
+    console.error("stripe error:", error);
+  }
 
   // Look up the user's UID based on their email
 
