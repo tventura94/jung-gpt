@@ -87,8 +87,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       return;
     }
 
-    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
