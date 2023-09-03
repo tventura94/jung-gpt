@@ -34,8 +34,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  // Get Product info from firebase
   useEffect(() => {
     const fetchProducts = async () => {
       const productsQuery = query(
@@ -55,7 +53,6 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     fetchProducts();
   }, []);
 
-  // handle if they become active or not
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
@@ -76,38 +73,50 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
       unsubscribe();
     };
   }, [user]);
-
-  // Logging if the page was visited
   useEffect(() => {
     logPageView("/Upgrade");
   }, []);
-
-  // Handle Upgrade (takes user to stripe)
-  const handleUpgrade = async () => {
+  const handleUpgrade = async (productId) => {
     setLoading(true);
+    const selectedProduct = products.find(
+      (product) => product.id === productId
+    );
 
-    try {
-      const response = await fetch("/api/stripe/create-checkout-session", {
-        // match with the backend endpoint
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: user.uid, // Sending only userId
-        }),
-      });
-
-      const { sessionId, url } = await response.json();
-
-      if (url) {
-        window.location.href = url;
-      }
-    } catch (error) {
-      alert(`An error occurred: ${error.message}`);
-    } finally {
-      setLoading(false); // Reset loading state
+    if (!selectedProduct || !selectedProduct.stripe_price_id) {
+      alert("Product or price ID not found!");
+      return;
     }
+
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
+    const sessionRef = await addDoc(
+      collection(db, "users", user.uid, "checkout_sessions"),
+      {
+        price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
+        success_url: window.location.href,
+        cancel_url: window.location.href,
+        allow_promotion_codes: true,
+      }
+    );
+
+    const sessionSnapshot = await getDoc(sessionRef);
+    const sessionId = sessionSnapshot.id;
+
+    const sessionListener = onSnapshot(
+      doc(db, "users", user.uid, "checkout_sessions", sessionId),
+      (sessionDoc) => {
+        const { error, url } = sessionDoc.data();
+        if (error) {
+          alert(`An error occurred: ${error.message}`);
+        } else if (url) {
+          window.location.href = url;
+        }
+      }
+    );
+
+    return () => {
+      sessionListener();
+    };
   };
   return (
     <div>

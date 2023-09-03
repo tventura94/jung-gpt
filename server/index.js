@@ -4,10 +4,9 @@ const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
-const stripeRoutes = require("./stripe");
-require("dotenv").config();
 
 const configuration = new Configuration({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
@@ -36,7 +35,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use("/api/stripe", stripeRoutes);
 
 const port = process.env.PORT || 3080;
 
