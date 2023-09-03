@@ -27,7 +27,6 @@ import {
 import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
 import { logPageView } from "../components/Fire";
-import { getFunctions, httpsCallable } from "firebase/functions";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const theme = useTheme();
@@ -35,6 +34,8 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Get Product info from firebase
   useEffect(() => {
     const fetchProducts = async () => {
       const productsQuery = query(
@@ -54,6 +55,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     fetchProducts();
   }, []);
 
+  // handle if they become active or not
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
@@ -75,40 +77,38 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     };
   }, [user]);
 
+  // Logging if the page was visited
   useEffect(() => {
     logPageView("/Upgrade");
   }, []);
 
-  const handleUpgrade = async (productId) => {
+  // Handle Upgrade (takes user to stripe)
+  const handleUpgrade = async () => {
     setLoading(true);
 
-    const selectedProduct = products.find(
-      (product) => product.id === productId
-    );
-
-    if (!selectedProduct || !selectedProduct.stripe_price_id) {
-      alert("Product or price ID not found!");
-      return;
-    }
-
-    const functions = getFunctions();
-    const createCheckoutSession = httpsCallable(
-      functions,
-      "createCheckoutSession"
-    );
-
     try {
-      const {
-        data: { sessionId },
-      } = await createCheckoutSession({});
-      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-      stripe.redirectToCheckout({ sessionId });
+      const response = await fetch("/api/stripe/create-checkout-session", {
+        // match with the backend endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user.uid, // Sending only userId
+        }),
+      });
+
+      const { sessionId, url } = await response.json();
+
+      if (url) {
+        window.location.href = url;
+      }
     } catch (error) {
-      console.error("Error creating checkout session:", error);
       alert(`An error occurred: ${error.message}`);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
-
   return (
     <div>
       <div className="main">
