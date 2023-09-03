@@ -21,8 +21,8 @@ router.post("/create-checkout-session", async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: "https://jung-gpt.com",
-      cancel_url: "https://jung-gpt.com",
+      success_url: window.location.href,
+      cancel_url: window.location.href,
     });
 
     // Save sessionId to Firebase (optional)
