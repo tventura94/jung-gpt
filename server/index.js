@@ -51,12 +51,6 @@ app.use(
   stripeRoutes
 );
 
-const port = process.env.PORT || 3080;
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
 // Define arrays of alternative prompts
 const {
   morningPrompts,
