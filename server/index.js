@@ -36,20 +36,13 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.listen(port, () => {
-  console.log(`Server started, listening on port ${port}`); // Log when the server starts
-});
+app.use("/api/stripe", stripeRoutes);
 
-app.use(
-  "/api/stripe",
-  (req, res, next) => {
-    console.log(
-      `Received request to Stripe API, method: ${req.method}, path: ${req.originalUrl}`
-    ); // Log incoming Stripe API request
-    next();
-  },
-  stripeRoutes
-);
+const port = process.env.PORT || 3080;
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
 
 // Define arrays of alternative prompts
 const {
