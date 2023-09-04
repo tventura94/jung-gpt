@@ -338,8 +338,23 @@ function Terms({ setUser, setAuthState, user }) {
           understandings.
           <br />
           <br />
+          18. **Billing and Fees**: By signing up and using the JungGPT
+          application, you agree to pay a monthly subscription fee of $5. In
+          addition to the subscription fee, you also acknowledge that your usage
+          of tokens will be billed at a rate of $0.000045 per thousand tokens
+          used. The total token usage fee will be calculated based on the number
+          of tokens consumed during your interactions with the application.
+          Ventura UX, LLC reserves the right to modify the subscription fee and
+          token usage rate with prior notice. Payment for the subscription fee
+          and token usage will be processed through the billing information
+          provided by you. You are responsible for ensuring that your billing
+          information is accurate and up to date. Failure to make timely
+          payments may result in a suspension or termination of your access to
+          the Application and Services. By signing up and using the Application,
+          you acknowledge and agree to the billing terms outlined in this
+          clause.
           <br />
-          <br /> Last updated on 8/22/23
+          <br /> Last updated on 9/3/23
         </Typography>
         {/* Add more sections as per the needs */}
       </Box>

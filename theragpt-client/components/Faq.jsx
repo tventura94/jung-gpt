@@ -99,6 +99,8 @@ const Faq = ({ setUserEmail, setAuthState, user }) => {
               textAlign: "left",
               marginLeft: "2rem",
               marginRight: "2rem",
+              fontFamily: "Montserrat",
+              fontSize: "16px",
             }}
           >
             <b>

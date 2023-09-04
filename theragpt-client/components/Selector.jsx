@@ -19,7 +19,11 @@ import {
   TextField,
   Modal,
   Container,
+  Grid,
 } from "@mui/material";
+import Choose from "/chooseus.png";
+import Harvard from "/PSY.png";
+import SAPP from "/SAPP.png";
 import { signOut } from "firebase/auth";
 import { auth } from "./Fire";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -36,6 +40,8 @@ import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
 import JungAdmat from "/jung-rev.png";
 import Image from "/img-2-scaled.jpg";
+
+import Smart from "/notjustsmart.png";
 import {
   collection,
   where,
@@ -52,6 +58,7 @@ import { getUserData, db } from "./Fire";
 import { logPageView } from "../components/Fire";
 
 import { IconButton } from "@mui/material";
+import Over80 from "/Over80.png";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
@@ -223,7 +230,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       className={isMobile ? "jung-background-2" : "jung-background-2"}
       style={{
         boxSizing: "border-box",
-        backgroundPositionY: isMobile ? "69.9%" : "110%",
+        backgroundPositionY: isMobile ? "69.9%" : "104%",
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
       }}
@@ -532,6 +539,153 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           </motion.div>
         </Box>
       </div>
+      <img
+        style={{
+          width: "100%",
+          marginTop: "1rem",
+          marginBottom: "1rem",
+        }}
+        src={Smart}
+      ></img>
+      <Grid
+        container
+        spacing={5}
+        style={{
+          marginBottom: "3rem",
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          margin: "0 auto",
+          justifyContent: "center",
+          width: "95%",
+        }}
+      >
+        <Grid item xs={11} sm={6} md={4} lg={3}>
+          <Box
+            sx={{
+              padding: "1rem",
+              textAlign: "center",
+              boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              borderRadius: "8px",
+            }}
+          >
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "0 auto",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "1rem",
+              }}
+            >
+              <img
+                src={Harvard}
+                style={{
+                  width: "50%",
+                }}
+              ></img>
+              <Typography
+                sx={{
+                  width: isMobile ? "90%" : "100%",
+                  textAlign: "center",
+                  margin: "0 auto",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                At JungGPT, we've had the privilege of consulting with a team of
+                psychologists who are postdoctoral fellows of prestigious IVY
+                league institutions. These seasoned experts have contributed
+                their deep insights to the careful design of our conversational
+                prompts, ensuring they meet high ethical and psychological
+                standards.
+              </Typography>
+            </Grid>
+          </Box>
+        </Grid>
+        <Grid item xs={11} sm={6} md={4} lg={3}>
+          <Box
+            sx={{
+              padding: "1rem",
+              textAlign: "center",
+              boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              borderRadius: "8px",
+            }}
+          >
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "0 auto",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "1rem",
+              }}
+            >
+              <img
+                src={SAPP}
+                style={{
+                  width: "50%",
+                }}
+              ></img>
+              <Typography
+                sx={{
+                  width: "100%",
+                  textAlign: "center",
+                  margin: "0 auto",
+                  fontFamily: "Montserrat",
+                }}
+              >
+                <b
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  {" "}
+                  Introducing SAPP — Sentiment Adaptive Pre-Processor.
+                </b>{" "}
+                <br />
+                SAPP is an custom in-house techology built from the ingenuity of
+                our developers at Ventura UX. Imagine a chatbot that doesn't
+                just respond but actually 'feels' the vibe of the conversation.
+                <br />
+                <br />{" "}
+                <span
+                  style={{
+                    color: "#496D96",
+                  }}
+                >
+                  {" "}
+                  <b>
+                    {" "}
+                    Using advanced natural language technology, SAPP tunes into
+                    the emotion behind your words and adapts accordingly. It's
+                    like giving 'thoughts' to the chatbot, real time, based on
+                    the users input; we've created these "thoughts" with the
+                    help of a consulting psychologist.
+                  </b>
+                </span>{" "}
+              </Typography>
+            </Grid>
+          </Box>
+        </Grid>
+        <Grid item xs={11} sm={5} md={4} lg={3}>
+          <Box
+            sx={{
+              padding: "1rem",
+              textAlign: "center",
+              boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+              borderRadius: "8px",
+            }}
+          >
+            <img
+              src={Over80}
+              style={{
+                width: "100%",
+              }}
+            ></img>
+          </Box>
+        </Grid>
+      </Grid>
 
       {/* Terms of Service Dialog */}
       <Dialog open={open}>
@@ -787,6 +941,21 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           agreement between you and Ventura UX, LLC, regarding the use of the
           Application and Services, superseding any prior agreements or
           understandings.
+
+          18. **Billing and Fees**: By signing up and using the JungGPT application,
+          you agree to pay a monthly subscription fee of $5. In addition to the
+          subscription fee, you also acknowledge that your usage of tokens will
+          be billed at a rate of $0.000045 per thousand tokens used. The total
+          token usage fee will be calculated based on the number of tokens
+          consumed during your interactions with the application. Ventura UX,
+          LLC reserves the right to modify the subscription fee and token usage
+          rate with prior notice. Payment for the subscription fee and token
+          usage will be processed through the billing information provided by
+          you. You are responsible for ensuring that your billing information is
+          accurate and up to date. Failure to make timely payments may result in
+          a suspension or termination of your access to the Application and
+          Services. By signing up and using the Application, you acknowledge and
+          agree to the billing terms outlined in this clause.
          
           
           Last updated on 8/22/23 `}
@@ -884,7 +1053,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               <b>
                 <span
                   style={{
-                    fontSize: isMobile ? "1.875rem" : "1.75rem",
+                    fontSize: isMobile ? "1.875rem" : "3rem",
+                    color: "#4E708B",
                     wordSpacing: ".3rem",
                   }}
                 >

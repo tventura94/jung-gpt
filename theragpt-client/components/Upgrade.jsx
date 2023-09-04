@@ -23,10 +23,20 @@ import {
   Typography,
   Box,
   CircularProgress,
+  TextField,
+  Divider,
+  InputAdornment,
+  Grid,
 } from "@mui/material";
 import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
 import { logPageView } from "../components/Fire";
+import Harvard from "/harvard2.jpg";
+import SAPP from "/SAPP.png";
+import Choose from "/chooseus.png";
+import Pricing from "/pricing.jpg";
+import Over80 from "/Over80.png";
+import Psy from "/PSY.PNG";
 
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const theme = useTheme();
@@ -34,6 +44,15 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [products, setProducts] = useState([]);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const [amount, setAmount] = React.useState(0);
+  const sessions = (amount / 0.45).toFixed(0);
+  const tokens = (amount / 0.000045).toFixed(0);
+
+  const handleChange = (e) => {
+    setAmount(e.target.value);
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       const productsQuery = query(
@@ -90,7 +109,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
+        price: "price_1NmT9UGx3uwFHp11WeYI1N6J",
         success_url: window.location.href,
         cancel_url: window.location.href,
         allow_promotion_codes: true,
@@ -117,7 +136,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     };
   };
   return (
-    <div>
+    <div className="jung-background-2 ">
       <div className="main">
         <MenuPopupState
           setUser={setUserEmail}
@@ -133,67 +152,284 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
           marginBottom: "2rem",
           flexWrap: "wrap",
           margin: isMobile ? "1rem" : "",
+          backgroundPositionY: "2.3%",
         }}
+        className={isMobile ? "" : "jung-background-3"}
       >
-        <Card
+        <Box
           sx={{
-            minWidth: { xs: "90vw", sm: 350 }, // 90% of the viewport width on extra small screens, and 350px on small screens and up
-            minHeight: 400,
-            marginBottom: 2,
             textAlign: "center",
-            backgroundColor: "#F8F8F8",
-            borderRadius: 20,
-            border: "2px gray solid",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+            padding: "1rem",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
           }}
         >
-          <CardContent>
-            <Typography
+          <Typography
+            variant="body1"
+            component="p"
+            style={{
+              marginTop: "1rem",
+              fontSize: "60px",
+              fontFamily: "League Spartan",
+            }}
+          >
+            Thinking about <span style={{ color: "#6093CF" }}>Upgrading?</span>
+          </Typography>
+          <Typography
+            sx={{
+              marginTop: "1rem",
+              fontSize: "30px",
+              fontFamily: "League Spartan",
+            }}
+          >
+            Awesome! We're so excited for you to join our community!
+          </Typography>
+          <img
+            style={{
+              width: isMobile ? "90%" : "40%",
+            }}
+            src={Choose}
+          ></img>
+          <Grid
+            container
+            spacing={isMobile ? 2 : 3}
+            style={{
+              marginBottom: "3rem",
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              margin: "0 auto",
+              justifyContent: "center",
+            }}
+          >
+            <Grid item xs={11} sm={6} md={4} lg={3}>
+              <Box
+                sx={{
+                  padding: "1rem",
+                  textAlign: "center",
+                  boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                  borderRadius: "8px",
+                }}
+              >
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    margin: "0 auto",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <img
+                    src={Psy}
+                    style={{
+                      width: "40%",
+                    }}
+                  ></img>
+                  <Typography
+                    sx={{
+                      width: isMobile ? "90%" : "100%",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    At JungGPT, we've had the privilege of consulting with a
+                    team of psychologists who are postdoctoral fellows of
+                    prestigious IVY league institutions. These seasoned experts
+                    have contributed their deep insights to the careful design
+                    of our conversational prompts, ensuring they meet high
+                    ethical and psychological standards.
+                  </Typography>
+                </Grid>
+              </Box>
+            </Grid>
+            <Grid item xs={11} sm={6} md={4} lg={3}>
+              <Box
+                sx={{
+                  padding: "1rem",
+                  textAlign: "center",
+                  boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                  borderRadius: "8px",
+                }}
+              >
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    margin: "0 auto",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <img
+                    src={SAPP}
+                    style={{
+                      width: "50%",
+                    }}
+                  ></img>
+                  <Typography
+                    sx={{
+                      width: "100%",
+                      textAlign: "center",
+                      margin: "0 auto",
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    <b
+                      style={{
+                        fontSize: "20px",
+                      }}
+                    >
+                      {" "}
+                      Introducing SAPP — Sentiment Adaptive Pre-Processor.
+                    </b>{" "}
+                    <br />
+                    SAPP is an custom in-house techology built from the
+                    ingenuity of our developers at Ventura UX. Imagine a chatbot
+                    that doesn't just respond but actually 'feels' the vibe of
+                    the conversation. <br />
+                    <br />
+                    <span
+                      style={{
+                        color: "#496D96",
+                      }}
+                    >
+                      {" "}
+                      <b>
+                        {" "}
+                        Using advanced natural language technology, SAPP tunes
+                        into the emotion behind your words and adapts
+                        accordingly. It's like giving 'thoughts' to the chatbot,
+                        real time, based on the users input; with prompt
+                        development guided by a consulting psychologist.
+                      </b>
+                    </span>{" "}
+                  </Typography>
+                </Grid>
+              </Box>
+            </Grid>
+            <Grid item xs={11} sm={5} md={4} lg={3}>
+              <Box
+                sx={{
+                  padding: "1rem",
+                  textAlign: "center",
+                  boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+                  borderRadius: "8px",
+                }}
+              >
+                {" "}
+                <img
+                  src={Over80}
+                  style={{
+                    width: "100%",
+                  }}
+                ></img>
+              </Box>
+            </Grid>
+          </Grid>
+          <Divider style={{ margin: "3rem 0" }} />
+          <img
+            style={{
+              width: isMobile ? "90%" : "25%",
+            }}
+            src={Pricing}
+          ></img>
+          <Typography
+            variant="body1"
+            component="p"
+            style={{
+              marginTop: "1rem",
+              fontSize: "40px",
+              width: isMobile ? "90%" : "45%",
+              textAlign: "center",
+              margin: "0 auto",
+              marginBottom: "2rem",
+              fontFamily: "League Spartan",
+              border: "1px silver solid",
+              padding: "1rem",
+              borderRadius: "20px",
+            }}
+          >
+            $5 a month + monthly usage
+            <br />
+            4.5¢ / 1000 tokens 🪙
+          </Typography>
+          <Typography
+            variant="body1"
+            component="p"
+            style={{
+              marginTop: "1rem",
+              fontSize: "20px",
+              width: isMobile ? "90%" : "45%",
+              textAlign: "center",
+              margin: "0 auto",
+              marginBottom: "2rem",
+              fontFamily: "League Spartan",
+            }}
+          >
+            For just 4.5 cents per thousand tokens, you can enjoy a
+            comprehensive session with JungGPT. An average 60 chat long session
+            might only set you back about $1.50, so you can chat away without
+            breaking the bank!
+          </Typography>
+          <Typography
+            variant="body2"
+            component="p"
+            style={{ marginTop: "1rem", color: "grey", marginBottom: "1rem" }}
+          >
+            Token to Dollar Converter
+          </Typography>
+          <TextField
+            label="Amount in Dollars"
+            variant="outlined"
+            type="number"
+            onChange={handleChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+            }}
+          />
+          <Typography
+            variant="body1"
+            component="p"
+            style={{ marginTop: "1rem", fontFamily: "montserrat" }}
+          >
+            With{" "}
+            <b
               style={{
-                marginTop: "4rem",
+                fontSize: "25px",
               }}
-              variant="h5"
-              component="div"
             >
-              Free Tier
-            </Typography>
-
-            <img
+              ${amount}
+            </b>
+            , you can have approximately{" "}
+            <b
               style={{
-                width: "100%",
+                fontSize: "25px",
               }}
-              src={JungLogo}
-            ></img>
-            <ul style={{ marginTop: "2rem" }}>
-              <Typography variant="h6" component="li">
-                Access to JungGPT
-              </Typography>
-              <Typography
-                variant="h6"
-                component="li"
-                style={{ marginTop: "1rem" }}
-              >
-                Limited Messaging with JungGPT
-                <br />
-                300 characters per message.
-                <br />
-                10 messages per chat.
-              </Typography>
-              <Typography
-                variant="h6"
-                component="li"
-                style={{ marginTop: "1rem" }}
-              >
-                Delayed access to new or improved models
-              </Typography>
-            </ul>
-          </CardContent>
-        </Card>
+            >
+              {sessions}
+            </b>
+            <br />
+            <b
+              style={{
+                fontSize: "20px",
+              }}
+            >
+              20-message sessions.
+            </b>
+          </Typography>
+        </Box>
         {products.map((product) => (
           <Card
             sx={{
               border: "2px #CB9800 solid",
-              minWidth: isMobile ? 280 : 350,
-              minHeight: 300,
+              width: isMobile ? "95%" : "420px",
               marginBottom: 2,
               textAlign: "center",
               backgroundColor: "#F8F8F8",
@@ -201,39 +437,39 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
             }}
           >
             <CardContent>
-              <Typography
-                style={{
-                  marginTop: "4rem",
-                }}
-                variant="h5"
-                component="div"
-              >
-                {product.name}
-              </Typography>
+              <Typography variant="h5" component="div"></Typography>
 
               <img
                 style={{
-                  width: "100%",
+                  width: "80%",
                 }}
                 src={GoldLogo}
               ></img>
-              <ul style={{ marginTop: "2rem" }}>
-                <Typography variant="h6" component="li">
+              <Divider></Divider>
+              <ul style={{ marginTop: "1rem", marginRight: "1.5rem" }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontFamily: "montserrat",
+                  }}
+                >
                   Access to JungGPT & JungSMART
                 </Typography>
                 <Typography
                   variant="h6"
-                  component="li"
                   style={{ marginTop: "1rem" }}
+                  sx={{
+                    fontFamily: "montserrat",
+                  }}
                 >
                   {product.description} for all available models
-                  <br />
-                  600 characters per message.
                 </Typography>
                 <Typography
                   variant="h6"
-                  component="li"
                   style={{ marginTop: "1rem" }}
+                  sx={{
+                    fontFamily: "montserrat",
+                  }}
                 >
                   First Access to newer and updated models
                 </Typography>
@@ -245,10 +481,14 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "#5E7E91",
+                  backgroundColor: "#5C76ED",
                   color: "#FFF",
-                  "&:hover": { backgroundColor: "#4B697C" },
-                  marginBottom: "3rem",
+                  "&:hover": { backgroundColor: "#FFBE30" },
+                  marginBottom: "1rem",
+                  fontSize: "20px",
+                  borderRadius: "30px",
+                  width: "50%",
+                  fontFamily: "League Spartan",
                 }}
                 onClick={() => handleUpgrade(product.id)}
                 disabled={subscriptionStatus === "active" || loading}
@@ -260,6 +500,19 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                 )}
               </Button>
             </CardActions>
+            <Typography
+              sx={{
+                margin: "0 auto",
+                width: "80%",
+                textAlign: "center",
+                padding: "1rem",
+                fontSize: "10px",
+              }}
+            >
+              By clicking upgrade, you acknowledge you will be billed a monthly
+              fee of $5, as well as be billed for monthly usage at USD $.045 /
+              1000 tokens at the end of each pay period.
+            </Typography>
           </Card>
         ))}
       </Box>

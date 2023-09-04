@@ -7,9 +7,13 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Typography } from "@mui/material";
 import { Drawer } from "@mui/material";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+
 export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   function handleSignOut() {
     signOut(auth).then(() => {
       setUserEmail(null);
@@ -58,16 +62,61 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         onClose={() => setIsDrawerOpen(false)}
       >
         <MenuItem onClick={() => setIsDrawerOpen(false)}>
-          <Typography color="textSecondary" variant="body1">
+          <Typography
+            color="textSecondary"
+            variant="body1"
+            fontFamily={"Montserrat"}
+          >
             Logged in as {user.email}
           </Typography>
         </MenuItem>
 
-        <MenuItem onClick={backButton}>Dashboard</MenuItem>
-        <MenuItem onClick={Faq}>Learn More (FAQ)</MenuItem>
-        <MenuItem onClick={accountSettings}>Account Settings</MenuItem>
-        <MenuItem onClick={handleUpgrade}>Upgrade</MenuItem>
-        <MenuItem onClick={handleSignOut}>Logout</MenuItem>
+        <MenuItem
+          sx={{
+            fontFamily: "League Spartan",
+            fontSize: isMobile ? "1.5rem" : "1.3rem",
+          }}
+          onClick={backButton}
+        >
+          Dashboard
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontFamily: "League Spartan",
+            fontSize: isMobile ? "1.5rem" : "1.3rem",
+          }}
+          onClick={Faq}
+        >
+          Learn More (FAQ)
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontFamily: "League Spartan",
+            fontSize: isMobile ? "1.5rem" : "1.3rem",
+          }}
+          onClick={accountSettings}
+        >
+          Account Settings
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontFamily: "League Spartan",
+            fontSize: isMobile ? "1.7rem" : "1.5rem",
+            color: "#5484AB",
+          }}
+          onClick={handleUpgrade}
+        >
+          <b>Upgrade</b>
+        </MenuItem>
+        <MenuItem
+          sx={{
+            fontFamily: "League Spartan",
+            fontSize: isMobile ? "1.5rem" : "1.3rem",
+          }}
+          onClick={handleSignOut}
+        >
+          Logout
+        </MenuItem>
       </Drawer>
     </React.Fragment>
   );

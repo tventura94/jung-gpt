@@ -684,7 +684,14 @@ export default function Dashboard({
                       color: "pink",
                     }}
                   >
-                    It's only 7 dollars a month!
+                    Its only 5 dollars a month!{" "}
+                    <span
+                      style={{
+                        fontSize: "10px",
+                      }}
+                    >
+                      + monthly usage fees
+                    </span>
                   </b>
                 </Typography>
                 <br />
@@ -717,7 +724,7 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes - 8/17/23
+                  Weekly Developer Notes - 9/3/23
                 </DialogTitle>
                 <ListItem
                   sx={{
@@ -726,15 +733,10 @@ export default function Dashboard({
                     padding: "1rem",
                   }}
                 >
-                  - We are back! Thank you all for being so patient with us! We
-                  shouldn't be having any more outages any time soon!
-                  <br />
-                  <br />
                   - Currently, leading with basic statements like "I feel
                   anxious" sometimes causes JungGPT to act counterintuitively.
                   To avoid this behavior, simply type "Can we talk about the
                   anxiety I'm feeling?" or something of the like.
-                  <br />
                   <br />
                 </ListItem>
                 <ListItem
@@ -752,7 +754,7 @@ export default function Dashboard({
                       textDecoration: "underline",
                     }}
                   >
-                    Added Features - 8/17/23
+                    Added Features - 9/3/23
                   </b>
                   <br />
                   <b
@@ -763,43 +765,14 @@ export default function Dashboard({
                     }}
                   >
                     {" "}
-                    Personal Identification:{" "}
+                    SAPP:{" "}
                   </b>
-                  <br /> JungGPT is now aware of your username (the email you
-                  signed up with). If your name is in that email, a lot of the
-                  time JungGPT will just call you by your name! Pretty neat,
-                  Huh?
-                  <br />
-                  <br /> <b></b>
-                  <b
-                    style={{
-                      color: "whitesmoke",
-                      fontSize: "19px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    Emotion Selector:{" "}
-                  </b>
-                  <br /> You will now be prompted to select how you're feeling
-                  prior to speaking with JungGPT. This is to give the user a
-                  more personal experience, and to take away some of the
-                  preliminary explanations a user might have to give to JungGPT.
-                  <br />
-                  <br />{" "}
-                  <b
-                    style={{
-                      color: "whitesmoke",
-                      fontSize: "19px",
-                      textAlign: "left",
-                    }}
-                  >
-                    Personalized Metaphor:
-                  </b>
-                  <br />
-                  You will now be prompted to select what your interest's or
-                  hobbies are for the purpose of JungGPT offering personalized
-                  metaphor. Now JungGPT really "speaks your language" 😉😏
+                  SAPP, our proprietary technology developed by Ventura UX, goes
+                  beyond traditional chatbots. With advanced natural language
+                  processing, SAPP senses the conversation's emotion and
+                  responds accordingly. It's like giving real-time 'thoughts' to
+                  the chatbot, tailored by consulting a psychologist. Get
+                  genuine assistance with SAPP.
                 </ListItem>
                 <ListItem
                   sx={{

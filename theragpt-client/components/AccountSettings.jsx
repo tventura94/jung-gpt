@@ -11,11 +11,26 @@ import {
 import MenuPopupState from "./MenuPopup";
 import Link from "@mui/material/Link";
 import MainLogo from "/will.png";
-import { onSnapshot, collection } from "firebase/firestore";
-import { db } from "../components/Fire"; // assuming you've configured firebase in a file named firebase.js
+import {
+  onSnapshot,
+  collection,
+  query,
+  where,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
 
+import { useTheme } from "@mui/material/styles";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { db } from "../components/Fire"; // assuming you've configured firebase in a file named firebase.js
 function AccountSettings({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
+  const [totalTokens, setTotalTokens] = useState(0);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "users", user.uid, "subscriptions"),
@@ -25,7 +40,6 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
           .filter((sub) => ["trialing", "active"].includes(sub.status));
 
         let newSub = activeSubs[0];
-
         if (newSub) {
           if (newSub.status === "active") {
             setSubscriptionStatus("Premium");
@@ -42,15 +56,52 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
       unsubscribe();
     };
   }, [user.uid]);
-  const [currentTab, setCurrentTab] = useState(0);
 
+  const [currentTab, setCurrentTab] = useState(0);
   const handleChange = (event, newValue) => {
     setCurrentTab(newValue);
   };
+
   function terms(e) {
-    e.preventDefault;
+    e.preventDefault();
     setAuthState("terms");
   }
+
+  useEffect(() => {
+    // Define the first and last day of the current month
+    const date = new Date();
+    const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+    const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    // First Query: Filter by timestamp
+    const unsubscribe = onSnapshot(
+      query(
+        collection(db, "users", user.uid, "messages"),
+        where("timestamp", ">=", firstDayOfMonth),
+        where("timestamp", "<=", lastDayOfMonth)
+      ),
+      async (snapshot) => {
+        // Initialize total tokens
+        let calculatedTotalTokens = 0;
+
+        // Second Step: Further filter by usage on client side
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          if (data.usage && data.usage.total_tokens) {
+            calculatedTotalTokens += data.usage.total_tokens;
+          }
+        });
+
+        // Update state
+        setTotalTokens(calculatedTotalTokens);
+      }
+    );
+
+    // Cleanup
+    return () => {
+      unsubscribe();
+    };
+  }, [user.uid]);
 
   return (
     <div maxWidth="100%">
@@ -70,6 +121,9 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
           value={currentTab}
           onChange={handleChange}
           aria-label="account settings tabs"
+          sx={{
+            width: "130%",
+          }}
         >
           <Tab label="Subscription" />
           <Tab label="General" />
@@ -127,11 +181,43 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
             <Typography variant="h6">Usage</Typography>
           </Box>
           <Box marginBottom={2}>
-            <Typography variant="body1">
+            <Typography
+              sx={{
+                margin: "1rem",
+                fontSize: isMobile ? "16px" : "20px",
+                fontFamily: "League Spartan",
+              }}
+              variant="body1"
+            >
               {subscriptionStatus === "Premium"
                 ? "Unlimited Messaging, Access to JungSMART & First Access to new and improved models"
                 : `Free Plan - Limited Messaging`}
             </Typography>
+            {subscriptionStatus === "Premium" && (
+              <Box marginBottom={2}>
+                <Typography
+                  sx={{
+                    margin: "1rem",
+                    fontSize: isMobile ? "20px" : "30px",
+                    fontFamily: "League Spartan",
+                  }}
+                  variant="body1"
+                >
+                  Total monthly tokens used: {totalTokens}
+                </Typography>
+                <Typography
+                  sx={{
+                    margin: "1rem",
+                    fontSize: isMobile ? "20px" : "30px",
+                    fontFamily: "League Spartan",
+                  }}
+                  variant="body1"
+                >
+                  Total monthly cost in dollars: $
+                  {(totalTokens * 0.000045).toFixed(2)}
+                </Typography>
+              </Box>
+            )}
           </Box>
         </TabPanel>
       </div>
