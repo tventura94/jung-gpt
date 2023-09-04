@@ -67,7 +67,6 @@ app.post("/jung", async (req, res) => {
     conversation[conversation.length - 1].message.toLowerCase();
 
   const thought = await SAPP(lastUserMessage);
-  console.log(thought);
   let selectedTime;
 
   // Determine time of day

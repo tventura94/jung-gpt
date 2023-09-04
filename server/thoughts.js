@@ -668,7 +668,7 @@ exports.exArray = [
 exports.exNegativeArray = [
   "The user has mentioned they're not on good terms with their ex. In my next message, how can I ask what led to the fallout?",
   "The user finds their ex a source of stress. In my next message, how can I explore if they've considered a clean break?",
-  "The ex-partner is a point of concern for the user. In my next message, how can I discuss whether they've thought about legal steps?",
+  "The ex-partner is a point of concern for the user. In my next message, how can I discuss whether they've thought about steps to distance themselves?",
   "The user isn't happy when talking about their ex. In my next message, how can I ask if they've considered professional help?",
   "The relationship with the ex is causing the user stress. In my next message, how can I discuss whether they've thought about closure?",
 ];
