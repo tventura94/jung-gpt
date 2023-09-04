@@ -304,8 +304,9 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                         Using advanced natural language technology, SAPP tunes
                         into the emotion behind your words and adapts
                         accordingly. It's like giving 'thoughts' to the chatbot,
-                        real time, based on the users input; with prompt
-                        development guided by a consulting psychologist.
+                        real time, based on the users input; we've created this
+                        massive database of "thoughts" with the help of a
+                        consulting psychologist.
                       </b>
                     </span>{" "}
                   </Typography>

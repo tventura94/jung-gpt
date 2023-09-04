@@ -230,7 +230,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       className={isMobile ? "jung-background-2" : "jung-background-2"}
       style={{
         boxSizing: "border-box",
-        backgroundPositionY: isMobile ? "69.9%" : "104%",
+        backgroundPositionY: isMobile ? "52.4%" : "104%",
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
       }}
@@ -660,8 +660,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                     Using advanced natural language technology, SAPP tunes into
                     the emotion behind your words and adapts accordingly. It's
                     like giving 'thoughts' to the chatbot, real time, based on
-                    the users input; we've created these "thoughts" with the
-                    help of a consulting psychologist.
+                    the users input; we've created this massive database of
+                    "thoughts" with the help of a consulting psychologist.
                   </b>
                 </span>{" "}
               </Typography>
