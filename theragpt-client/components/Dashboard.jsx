@@ -106,7 +106,7 @@ export default function Dashboard({
 
   const sendMessageToFirebase = async (userText, assistantText, tokenData) => {
     // Encryption
-    const blackAlpaca = "x1!,54372usjw!"; // Encryption password
+    const blackAlpaca = "x1!,54372usjw!";
     const encryptedUserText = await encryptText(userText, blackAlpaca);
     const encryptedAssistantText = await encryptText(
       assistantText,
