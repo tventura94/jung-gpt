@@ -177,11 +177,14 @@ ${thought}
     presence_penalty: 0.5,
   });
 
+  let botMessage = response.data.choices[0].message.content.trim();
+  if (!botMessage.startsWith("JungGPT: ")) {
+      botMessage = "JungGPT: " + botMessage;
+  }
   res.json({
-    message: response.data.choices[0].message.content.trim(),
-    usage: response.data.usage,
+      message: botMessage,
+      usage: response.data.usage,
   });
-});
 
 app.post("/dbt", async (req, res) => {
   const { conversation } = req.body;
