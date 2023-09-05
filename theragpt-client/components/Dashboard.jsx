@@ -149,6 +149,38 @@ export default function Dashboard({
       console.error("Error writing message data: ", error);
     }
   };
+  async function decryptText(cipherText, blackAlpaca) {
+    const textDecoder = new TextDecoder();
+    const passwordBuffer = new TextEncoder().encode(blackAlpaca);
+    const passwordKey = await crypto.subtle.importKey(
+      "raw",
+      passwordBuffer,
+      { name: "PBKDF2" },
+      false,
+      ["deriveKey"]
+    );
+    const key = await crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        salt: passwordBuffer,
+        iterations: 1000,
+        hash: "SHA-256",
+      },
+      passwordKey,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["encrypt", "decrypt"]
+    );
+    const decrypted = await crypto.subtle.decrypt(
+      {
+        name: "AES-GCM",
+        iv: passwordBuffer,
+      },
+      key,
+      cipherText
+    );
+    return textDecoder.decode(new Uint8Array(decrypted));
+  }
 
   const getInterestsFromFirebase = async () => {
     const userRef = doc(db, "users", user.uid); // Document reference
@@ -363,10 +395,27 @@ export default function Dashboard({
   async function fetchChatHistories() {
     const chatCollection = collection(db, "users", user.uid, "chats");
     const chatSnapshot = await getDocs(chatCollection);
-    const allChats = chatSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+
+    const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
+    const allChats = await Promise.all(
+      chatSnapshot.docs.map(async (doc) => {
+        const data = doc.data();
+        const encryptedChatLogArray = new Uint8Array(
+          [...atob(data.chatLog)].map((char) => char.charCodeAt(0))
+        );
+        const decryptedChatLog = await decryptText(
+          encryptedChatLogArray,
+          blackAlpaca
+        );
+
+        return {
+          id: doc.id,
+          chatLog: JSON.parse(decryptedChatLog),
+          date: data.date,
+        };
+      })
+    );
+
     setChatHistories(allChats);
   }
 
@@ -376,19 +425,28 @@ export default function Dashboard({
 
   async function clearChat(e) {
     e.stopPropagation();
+    const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
 
     // Only proceed if chatLog is not empty
     if (chatLog.length > 0) {
+      const encryptedChatLog = await encryptText(
+        JSON.stringify(chatLog),
+        blackAlpaca
+      );
+      const encryptedChatLogBase64 = btoa(
+        String.fromCharCode(...encryptedChatLog)
+      );
+
       // Check if chatLog is already in chatHistories
       const isDuplicate = chatHistories.some(
         (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
       );
 
       if (!isDuplicate) {
-        // Store the chat in Firebase with current date
+        // Store the encrypted chat in Firebase with current date
         const chatCollection = collection(db, "users", user.uid, "chats");
         const docRef = await addDoc(chatCollection, {
-          chatLog: chatLog,
+          chatLog: encryptedChatLogBase64,
           date: Timestamp.now(), // This will add the current date and time
         });
 
@@ -421,6 +479,7 @@ export default function Dashboard({
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [chatLog, chatHistories]);
+
   async function handleBeforeUnload(e) {
     if (chatLog.length > 0) {
       // Similar checks as your clearChat function

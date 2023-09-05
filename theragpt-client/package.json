@@ -21,6 +21,7 @@
     "body-parser": "^1.20.2",
     "cesium": "^1.102.0",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "deck.gl": "^8.8.23",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
