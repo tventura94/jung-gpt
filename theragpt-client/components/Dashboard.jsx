@@ -802,7 +802,7 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes - 9/3/23
+                  Weekly Developer Notes - 9/5/23
                 </DialogTitle>
                 <ListItem
                   sx={{
@@ -832,7 +832,7 @@ export default function Dashboard({
                       textDecoration: "underline",
                     }}
                   >
-                    Added Features - 9/3/23
+                    Added Features - 9/5/23
                   </b>
                   <br />
                   <b
@@ -851,6 +851,25 @@ export default function Dashboard({
                   responds accordingly. It's like giving real-time 'thoughts' to
                   the chatbot, tailored by consulting a psychologist. Get
                   genuine assistance with SAPP.
+                  <br />
+                  <br />
+                  <b
+                    style={{
+                      color: "whitesmoke",
+                      fontSize: "19px",
+                      textAlign: "left",
+                    }}
+                  >
+                    Saving and continuing previous conversations for Premium
+                    Users
+                  </b>
+                  <br />
+                  You can now view and continue your past 9 conversations on
+                  Premium. Please be advised, tokenage compounds. Continuing old
+                  conversations for too long will cause the bot to hallucinate,
+                  lose effectiveness and cause your monthly bill to heavily
+                  increase. We advise using your past chats as reference, and to
+                  not continue them past 60 messages.
                 </ListItem>
                 <ListItem
                   sx={{
