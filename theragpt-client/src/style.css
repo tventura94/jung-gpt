@@ -110,12 +110,14 @@ html {
 }
 .sidemenu {
   display: flex;
+  flex-direction: column;
   width: 300px;
   padding: 10px;
   border-right: 1px solid rgba(255, 255, 255, 0.305);
   border-top: 1px solid rgba(255, 255, 255, 0.361);
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  overflow-y: auto; /* This will enable scrolling when the content overflows the max-height */
 
   background-color: #3d4c5e;
 }
@@ -292,7 +294,7 @@ body {
     padding: 10px;
     border-right: 1px solid rgba(255, 255, 255, 0.305);
     border-top: 1px solid rgba(255, 255, 255, 0.361);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
 
     background-color: #3d4c5e;

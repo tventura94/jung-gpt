@@ -214,7 +214,7 @@ function AccountSettings({ setUserEmail, setAuthState, user }) {
                   variant="body1"
                 >
                   Total monthly cost in dollars: $
-                  {(totalTokens * 0.000045).toFixed(2)}
+                  {(totalTokens * 0.00006).toFixed(2)}
                 </Typography>
               </Box>
             )}

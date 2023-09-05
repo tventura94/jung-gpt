@@ -46,8 +46,8 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const [loading, setLoading] = useState(false);
 
   const [amount, setAmount] = React.useState(0);
-  const sessions = (amount / 0.45).toFixed(0);
-  const tokens = (amount / 0.000045).toFixed(0);
+  const sessions = (amount / 0.6).toFixed(0);
+  const tokens = (amount / 0.00006).toFixed(0);
 
   const handleChange = (e) => {
     setAmount(e.target.value);
@@ -109,7 +109,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
     const sessionRef = await addDoc(
       collection(db, "users", user.uid, "checkout_sessions"),
       {
-        price: "price_1NmT9UGx3uwFHp11WeYI1N6J",
+        price: "price_1NdN86Gx3uwFHp11LgNZsS1d",
         success_url: window.location.href,
         cancel_url: window.location.href,
         allow_promotion_codes: true,
@@ -237,11 +237,13 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
                     }}
                   >
                     At JungGPT, we've had the privilege of consulting with a
-                    team of psychologists who are postdoctoral fellows of
-                    prestigious IVY league institutions. These seasoned experts
-                    have contributed their deep insights to the careful design
-                    of our conversational prompts, ensuring they meet high
-                    ethical and psychological standards.
+                    team of psychologists who completed Ivy-League Fellowships,
+                    taught multiple psychology courses in undergraduate and
+                    graduate programs, and directed psychology training
+                    programs. These seasoned experts have contributed their deep
+                    insights to the careful design of our conversational
+                    prompts, ensuring they meet high ethical and psychological
+                    standards.
                   </Typography>
                 </Grid>
               </Box>
@@ -355,9 +357,9 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               borderRadius: "20px",
             }}
           >
-            $5 a month + monthly usage
+            $7 a month + monthly usage
             <br />
-            4.5¢ / 1000 tokens 🪙
+            6¢ / 1000 tokens 🪙
           </Typography>
           <Typography
             variant="body1"
@@ -372,10 +374,10 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               fontFamily: "League Spartan",
             }}
           >
-            For just 4.5 cents per thousand tokens, you can enjoy a
-            comprehensive session with JungGPT. An average 60 chat long session
-            might only set you back about $1.50, so you can chat away without
-            breaking the bank!
+            For just 6 cents per thousand tokens, you can enjoy a comprehensive
+            session with JungGPT. An average 60 chat long session might only set
+            you back about $1.50, so you can chat away without breaking the
+            bank!
           </Typography>
           <Typography
             variant="body2"
@@ -511,7 +513,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
               }}
             >
               By clicking upgrade, you acknowledge you will be billed a monthly
-              fee of $5, as well as be billed for monthly usage at USD $.045 /
+              fee of $7, as well as be billed for monthly usage at USD $.06 /
               1000 tokens at the end of each pay period.
             </Typography>
           </Card>

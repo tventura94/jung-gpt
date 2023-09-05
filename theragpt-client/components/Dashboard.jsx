@@ -30,6 +30,7 @@ import { logPageView } from "../components/Fire";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp function
+import { Timestamp } from "firebase/firestore";
 
 export default function Dashboard({
   setUserEmail,
@@ -55,6 +56,7 @@ export default function Dashboard({
   const [interestsOpen, setInterestsOpen] = useState(false);
   const [typedInterest, setTypedInterest] = useState("");
   const [interestsData, setInterestsData] = useState(null);
+  const [isOldChat, setIsOldChat] = useState(false);
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -356,17 +358,93 @@ export default function Dashboard({
     ]);
     sendMessageToFirebase(input, assistantMessage, tokenData);
   }
+  const [chatHistories, setChatHistories] = useState([]);
 
-  function clearChat(e) {
+  async function fetchChatHistories() {
+    const chatCollection = collection(db, "users", user.uid, "chats");
+    const chatSnapshot = await getDocs(chatCollection);
+    const allChats = chatSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    setChatHistories(allChats);
+  }
+
+  useEffect(() => {
+    fetchChatHistories();
+  }, []); // Empty
+
+  async function clearChat(e) {
     e.stopPropagation();
-    setChatLog([]);
-    setTrialLimitReached(false);
+
+    // Only proceed if chatLog is not empty
+    if (chatLog.length > 0) {
+      // Check if chatLog is already in chatHistories
+      const isDuplicate = chatHistories.some(
+        (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
+      );
+
+      if (!isDuplicate) {
+        // Store the chat in Firebase with current date
+        const chatCollection = collection(db, "users", user.uid, "chats");
+        const docRef = await addDoc(chatCollection, {
+          chatLog: chatLog,
+          date: Timestamp.now(), // This will add the current date and time
+        });
+
+        // Update chatHistories state to include the new chat
+        const newChat = {
+          id: docRef.id,
+          chatLog: chatLog,
+          date: Timestamp.now(),
+        };
+        setChatHistories((prevChats) => [...prevChats, newChat]);
+      }
+
+      // Clear current chat
+      setChatLog([]);
+      setTrialLimitReached(false);
+    }
   }
 
   // Add a function to handle menu toggle
   function handleMenuToggle() {
     setIsMenuOpen(!isMenuOpen);
   }
+
+  useEffect(() => {
+    // When component mounts
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      // When component unmounts
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [chatLog, chatHistories]);
+  async function handleBeforeUnload(e) {
+    if (chatLog.length > 0) {
+      // Similar checks as your clearChat function
+      const isDuplicate = chatHistories.some(
+        (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
+      );
+
+      if (!isDuplicate) {
+        // Store the chat in Firebase
+        const chatCollection = collection(db, "users", user.uid, "chats");
+        await addDoc(chatCollection, {
+          chatLog: chatLog,
+          date: Timestamp.now(),
+        });
+
+        // Note: You don't need to update the state here since the user is leaving the page.
+      }
+    }
+
+    // This message is usually not shown to the user in modern browsers, but the event needs it.
+    e.preventDefault();
+    e.returnValue = "Are you sure you want to leave?";
+  }
+
   return (
     <div className="dashboard">
       <div className="main">
@@ -684,7 +762,7 @@ export default function Dashboard({
                       color: "pink",
                     }}
                   >
-                    Its only 5 dollars a month!{" "}
+                    Its only 7 dollars a month!{" "}
                     <span
                       style={{
                         fontSize: "10px",
@@ -805,17 +883,48 @@ export default function Dashboard({
               className={`sidemenu ${isMenuOpen ? "open" : ""}`}
               onClick={handleMenuToggle}
             >
-              {/* Conditionally render the "New Chat" button */}
               {isMenuOpen && (
-                <div
-                  className={
-                    "side-menu-button" +
-                    (subscriptionStatus !== "active" ? " disabled" : "")
-                  }
-                  onClick={subscriptionStatus === "active" ? clearChat : null}
-                >
-                  <i className="fas fa-plus"></i>New Chat
-                </div>
+                <>
+                  <div
+                    className={
+                      "side-menu-button" +
+                      (subscriptionStatus !== "active" ? " disabled" : "")
+                    }
+                    // Only allow clicking "New Chat" if subscriptionStatus is "active" and chatLog has content
+                    onClick={
+                      subscriptionStatus === "active" && chatLog.length > 0
+                        ? clearChat
+                        : null
+                    }
+                  >
+                    <i className="fas fa-plus"></i>New Chat
+                  </div>
+
+                  {/* Only render chat histories for "active" subscribers */}
+                  {subscriptionStatus === "active" &&
+                    chatHistories.slice(-9).map((chat) => (
+                      <div
+                        key={chat.id}
+                        className="side-menu-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setChatLog(chat.chatLog);
+                        }}
+                        style={{
+                          marginTop: ".5rem",
+                        }}
+                      >
+                        Chat from{" "}
+                        {chat.date && typeof chat.date.toDate === "function"
+                          ? `${chat.date
+                              .toDate()
+                              .toLocaleDateString()} at ${chat.date
+                              .toDate()
+                              .toLocaleTimeString()}`
+                          : "Unknown Date"}
+                      </div>
+                    ))}
+                </>
               )}
             </aside>
             <section className="chatbox">
@@ -875,13 +984,30 @@ export default function Dashboard({
                 <div
                   style={{
                     paddingTop: "2rem",
+                    fontFamily: "League Spartan",
                   }}
                   className="chat-disclaimer"
                 >
                   JungGPT may produce inaccurate information about people,
                   places, or facts.
                 </div>
+                <p
+                  style={{
+                    display: "flex",
+                    fontFamily: "League Spartan",
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
+                  }}
+                  className="chat-disclaimer"
+                >
+                  * Tokenage compounds. Continuing old conversations for too
+                  long can heavily increase your monthly bill, as well as cause
+                  the bot to hallucinate.
+                  <br />
+                  We recommend using your past conversations as reference.
+                </p>
               </div>
+
               <Dialog open={warningPopup} onClose={handleWarningClose}>
                 <DialogTitle
                   sx={{
