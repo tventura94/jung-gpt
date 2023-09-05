@@ -593,11 +593,12 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 }}
               >
                 At JungGPT, we've had the privilege of consulting with a team of
-                psychologists who are postdoctoral fellows of prestigious IVY
-                league institutions. These seasoned experts have contributed
-                their deep insights to the careful design of our conversational
-                prompts, ensuring they meet high ethical and psychological
-                standards.
+                psychologists who completed Ivy-League Fellowships, taught
+                multiple psychology courses in undergraduate and graduate
+                programs, and directed psychology training programs. These
+                seasoned experts have contributed their deep insights to the
+                careful design of our conversational prompts, ensuring they meet
+                high ethical and psychological standards.
               </Typography>
             </Grid>
           </Box>
@@ -942,20 +943,21 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           Application and Services, superseding any prior agreements or
           understandings.
 
-          18. **Billing and Fees**: By signing up and using the JungGPT application,
-          you agree to pay a monthly subscription fee of $5. In addition to the
-          subscription fee, you also acknowledge that your usage of tokens will
-          be billed at a rate of $0.000045 per thousand tokens used. The total
-          token usage fee will be calculated based on the number of tokens
-          consumed during your interactions with the application. Ventura UX,
-          LLC reserves the right to modify the subscription fee and token usage
-          rate with prior notice. Payment for the subscription fee and token
-          usage will be processed through the billing information provided by
-          you. You are responsible for ensuring that your billing information is
-          accurate and up to date. Failure to make timely payments may result in
-          a suspension or termination of your access to the Application and
-          Services. By signing up and using the Application, you acknowledge and
-          agree to the billing terms outlined in this clause.
+          18. **Billing and Fees**: By signing up and using the JungGPT
+          application, you agree to pay a monthly subscription fee of $7. In
+          addition to the subscription fee, you also acknowledge that your usage
+          of tokens will be billed at a rate of $0.000056 per thousand tokens
+          used. The total token usage fee will be calculated based on the number
+          of tokens consumed during your interactions with the application.
+          Ventura UX, LLC reserves the right to modify the subscription fee and
+          token usage rate with prior notice. Payment for the subscription fee
+          and token usage will be processed through the billing information
+          provided by you. You are responsible for ensuring that your billing
+          information is accurate and up to date. Failure to make timely
+          payments may result in a suspension or termination of your access to
+          the Application and Services. By signing up and using the Application,
+          you acknowledge and agree to the billing terms outlined in this
+          clause.
          
           
           Last updated on 8/22/23 `}
