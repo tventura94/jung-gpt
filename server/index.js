@@ -178,7 +178,7 @@ ${thought}
   });
 
   res.json({
-    message: "JungGPT: " + response.data.choices[0].message.content.trim(),
+    message: response.data.choices[0].message.content.trim(),
     usage: response.data.usage,
   });
 });
