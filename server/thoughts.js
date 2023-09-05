@@ -81,7 +81,16 @@ exports.lonelinessArray = [
   "The user brought up loneliness in a positive way. In my next message, I ask them what it is about being alone that they enjoy?",
   "The topic is loneliness. In my next message, How can I incorporate the thought that self-compassion can be a useful tool for combating feelings of isolation?",
   "Loneliness came up. In my next message, How can I suggest that sometimes loneliness can serve as an opportunity for self-reflection and growth?",
-  "The user brought up feeling lonely. In my next message, How can I include the idea that being alone and being lonely are not necessarily the same, and one can find peace in solitude?",
+  "The user mentioned enjoying being alone. Cue to explore topics related to self-enjoyment and solitude.",
+  "The user has a positive view on loneliness. Cue to discuss the pleasures and benefits of spending time alone.",
+  "Topic of conversation is loneliness. Cue to consider addressing the emotional and psychological advantages of solitude.",
+  "Loneliness is brought up in a positive light. Cue to delve into the idea of solitude as a form of self-care or self-discovery.",
+  "The user doesn't equate being alone with feeling lonely. Cue to talk about the distinction and the positive aspects of enjoying one's own company.",
+  "The user appreciates alone time. Cue to discuss the concept of 'me time' and its role in well-being.",
+  "The user values solitude. Cue to explore the spiritual or philosophical aspects of being alone.",
+  "Loneliness as a topic has a positive connotation here. Cue to discuss how alone time can boost creativity and focus.",
+  "The user sees the value in being alone. Cue to delve into how solitude can help in resetting emotional and mental states.",
+  "The user enjoys their own company. Cue to talk about the self-sufficiency and independence that can come from enjoying solitude.",
 ];
 
 exports.lonelinessNegativeArray = [
@@ -90,15 +99,35 @@ exports.lonelinessNegativeArray = [
   "The user has brought up feeling lonely. In my next message, How can I make them feel better?",
   "The user feels lonely. In my next message, I remind them they're not alone in feeling lonely; many people go through this.",
   "The user is feeling lonely. In my next message, I inquire as to why they feel so alone",
+  "The user is struggling with loneliness. Cue to explore opportunities for social engagement and community involvement.",
+  "Loneliness is affecting the user negatively. Cue to offer emotional support and encourage self-reflection on their strengths.",
+  "The user mentions feeling isolated. Cue to provide comforting reassurances and potential coping strategies.",
+  "The user acknowledges loneliness as an issue. Cue to normalize the feeling by sharing that many people experience loneliness at some point.",
+  "Loneliness is causing the user distress. Cue to delve into the underlying reasons they might be feeling this way.",
+  "The user expresses feeling cut off from others. Cue to suggest altruistic activities like volunteering as a way to feel connected.",
+  "The user feels disconnected. Cue to discuss the value of small social interactions, even online, in combating feelings of loneliness.",
+  "Loneliness has been a recurring theme for the user. Cue to consider discussing long-term solutions like joining clubs or taking up social hobbies.",
+  "The user expresses a longing for connection. Cue to explore the idea of rebuilding old friendships or reaching out to family.",
+  "The user mentions their loneliness is affecting their well-being. Cue to talk about professional support options like counseling or therapy.",
+  "The user is feeling isolated from their usual social circles. Cue to discuss ways to re-engage with community or build a new one.",
+  "The user mentions feeling lonely even when around people. Cue to explore the concept of emotional loneliness as opposed to social loneliness.",
+  "The user is bothered by their own solitude. Cue to discuss activities that could make alone time more fulfilling, thereby reducing feelings of loneliness.",
+  "Loneliness seems to be a significant issue for the user. Cue to consider mentioning mindfulness techniques that could help them cope in the moment.",
+  "The user feels lonely despite being active on social media. Cue to discuss the quality versus quantity of social interactions and its impact on loneliness.",
   "The user has brought up loneliness, It's tough to feel isolated. I explain sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
 ];
 
 exports.loveArray = [
-  "The user has mentioned love. In my next message, how can I explore their views on romantic love versus platonic love?",
   "Love is the topic at hand. In my next message, how can I inquire about their favorite love stories or poems?",
   "The user has brought up love. In my next message, how can I discuss the role of love in well-being and happiness?",
   "Love seems to be on the user's mind. In my next message, how can I ask about their experiences with love and how it has shaped them?",
-  "The user is pondering love. In my next message, how can I talk about the complexities and nuances of love in different cultures?",
+  "The user has mentioned love. Cue to explore their perspectives on different kinds of love, such as romantic and platonic.",
+  "The user is thinking about love. Cue to explore their personal experiences with love and its impact on their life.",
+  "Love has been brought up by the user. Cue to explore the concept of 'love languages' and how they understand or prefer to express love.",
+  "The topic is love. Cue to discuss the challenges and obstacles that can sometimes accompany love, and how they might be overcome.",
+  "The user is contemplating love. Cue to explore how love can change over time, in both platonic and romantic relationships.",
+  "Love is a point of interest. Cue to consider discussing the role of self-love and its importance in a holistic understanding of love.",
+  "The user mentions love. Cue to talk about the idea of unconditional love versus conditional love, and their thoughts on it.",
 ];
 
 exports.loveNegativeArray = [
