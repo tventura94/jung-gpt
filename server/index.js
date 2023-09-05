@@ -154,14 +154,6 @@ Don't complete sentences.
 ${thought}
 `;
 
-  conversation.forEach((msg) => {
-    if (msg.role === "user") {
-      message += `User: ${msg.message}\n`;
-    } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
-    }
-  });
-
   const response = await openai.createChatCompletion({
     model: "gpt-4",
     messages: [
@@ -178,7 +170,7 @@ ${thought}
   });
 
   res.json({
-    message: response.data.choices[0].message.content.trim(),
+    message: "JungGPT: " + response.data.choices[0].message.content.trim(),
     usage: response.data.usage,
   });
 });
