@@ -177,13 +177,11 @@ ${thought}
     presence_penalty: 0.5,
   });
 
-  let openaiResponse = response.data.choices[0].message.content.trim();
-  let prefixedResponse = openaiResponse.startsWith("JungGPT:") ? openaiResponse : "JungGPT: " + openaiResponse;
-  
   res.json({
-      message: prefixedResponse,
-      usage: response.data.usage,
+    message: response.data.choices[0].message.content.trim(),
+    usage: response.data.usage,
   });
+});
 
 app.post("/dbt", async (req, res) => {
   const { conversation } = req.body;
