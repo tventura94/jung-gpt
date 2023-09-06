@@ -61,7 +61,6 @@ app.post("/jung", async (req, res) => {
     interests,
     typedInterest,
     localHour,
-    recentMessages,
   } = req.body;
 
   const lastUserMessage =
@@ -99,7 +98,7 @@ app.post("/jung", async (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
   let message = `The user has reported feeling ${emotions}.
-The first message I am programmed to send is: "${selectedTime} You've reported you're feeling ${emotions}. The last time we talked, we talked about ${recentMessages}"
+The first message I am programmed to send is: "${selectedTime} You've reported you're feeling ${emotions}."
 The users name is ${userId}.
 The users interests are ${typedInterest}, ${interests}.
 The users local time is ${localHour}. 
@@ -154,7 +153,7 @@ No articles or blogs.
 Don't complete sentences.
 ${thought}
 `;
-  console.log(message);
+
   conversation.forEach((msg) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
