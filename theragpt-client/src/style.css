@@ -108,20 +108,60 @@ html {
   margin: 0 auto;
   min-height: 95vh;
 }
+
 .sidemenu {
   display: flex;
   flex-direction: column;
   width: 300px;
   padding: 10px;
-  border-right: 1px solid rgba(255, 255, 255, 0.305);
-  border-top: 1px solid rgba(255, 255, 255, 0.361);
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: auto; /* This will enable scrolling when the content overflows the max-height */
 
-  background-color: #3d4c5e;
+  /* Gradient background for a glassy effect */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 50%
+  );
+
+  /* Adding some box shadows for the raised effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+    /* Horizontal and vertical offsets, blur, spread, color */ 0 0 5px
+      rgba(0, 0, 0, 0.1),
+    /* Slight shadow around the pane */ inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow for the depth effect */
+
+  /* Border for a clear frame */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* To round the corners slightly for more aesthetic look */
+  border-radius: 5px;
+
+  /* Transition for smooth interaction feedback */
+  transition: all 0.3s ease-in-out;
+
+  /* Optional: You can add a hover effect to make the window pane more interactive */
+  &:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 0, 0, 0.1),
+      inset 0 0 8px rgba(0, 0, 0, 0.1);
+  }
 }
+
 .side-menu-button {
+  display: flex;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  font-family: arial;
+  font-size: 15px;
+  background-color: rgba(200, 197, 197, 0);
+  transition: ease 0.25s all;
+}
+.side-menu-button2 {
   display: flex;
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.218);
@@ -134,6 +174,9 @@ html {
   transition: ease 0.25s all;
 }
 .side-menu-button:hover {
+  background-color: #a88aa5b9;
+}
+.side-menu-button2:hover {
   background-color: #a88aa5b9;
 }
 .fas,
@@ -290,25 +333,53 @@ body {
   }
   .sidemenu {
     display: flex;
-    width: 200px;
+    flex-direction: column;
+    width: 300px;
     padding: 10px;
-    border-right: 1px solid rgba(255, 255, 255, 0.305);
-    border-top: 1px solid rgba(255, 255, 255, 0.361);
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-y: auto; /* This will enable scrolling when the content overflows the max-height */
 
-    background-color: #3d4c5e;
+    /* Gradient background for a glassy effect */
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 50%
+    );
+
+    /* Adding some box shadows for the raised effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+      /* Horizontal and vertical offsets, blur, spread, color */ 0 0 5px
+        rgba(0, 0, 0, 0.1),
+      /* Slight shadow around the pane */ inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow for the depth effect */
+
+    /* Border for a clear frame */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* To round the corners slightly for more aesthetic look */
+    border-radius: 5px;
+
+    /* Transition for smooth interaction feedback */
+    transition: all 0.3s ease-in-out;
+
+    /* Optional: You can add a hover effect to make the window pane more interactive */
+    &:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 0, 0, 0.1),
+        inset 0 0 8px rgba(0, 0, 0, 0.1);
+    }
   }
 
   .side-menu-button {
     display: flex;
-    padding: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.218);
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 5px;
     width: 100%;
     text-align: left;
     font-family: arial;
-    font-size: 13px;
+    font-size: 15px;
     background-color: rgba(200, 197, 197, 0);
     transition: ease 0.25s all;
   }

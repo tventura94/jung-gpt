@@ -31,6 +31,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp function
 import { Timestamp } from "firebase/firestore";
+import ButtonCanva from "/button.png";
 
 export default function Dashboard({
   setUserEmail,
@@ -149,6 +150,7 @@ export default function Dashboard({
       console.error("Error writing message data: ", error);
     }
   };
+
   async function decryptText(cipherText, blackAlpaca) {
     const textDecoder = new TextDecoder();
     const passwordBuffer = new TextEncoder().encode(blackAlpaca);
@@ -340,7 +342,10 @@ export default function Dashboard({
     return () => clearInterval(interval);
   }, [lastMessageTime]);
 
-  // Submit Message Logic - 7 Second Wait Timer
+  // HANDLE SUBMIT MESSAGE
+  // ///////////////////////////////////////////////
+  // //////////////////////////////////////////////
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -395,6 +400,7 @@ export default function Dashboard({
     ]);
     sendMessageToFirebase(input, assistantMessage, tokenData);
   }
+
   const [chatHistories, setChatHistories] = useState([]);
 
   async function fetchChatHistories() {
@@ -1025,7 +1031,13 @@ export default function Dashboard({
                         : null
                     }
                   >
-                    <i className="fas fa-plus"></i>New Chat / Save Chat
+                    {" "}
+                    <img
+                      style={{
+                        width: "100%",
+                      }}
+                      src={ButtonCanva}
+                    ></img>
                   </div>
 
                   {/* Only render chat histories for "active" subscribers */}
@@ -1033,15 +1045,18 @@ export default function Dashboard({
                     chatHistories.slice(-9).map((chat) => (
                       <div
                         key={chat.id}
-                        className="side-menu-button"
+                        className="side-menu-button2"
                         onClick={(e) => {
                           e.stopPropagation();
                           setChatLog(chat.chatLog);
                         }}
                         style={{
                           marginTop: ".5rem",
+                          letterSpacing: "1px",
+                          fontFamily: "League Spartan",
                         }}
                       >
+                        {" "}
                         Chat from{" "}
                         {chat.date && typeof chat.date.toDate === "function"
                           ? `${chat.date
