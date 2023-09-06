@@ -434,11 +434,9 @@ export default function Dashboard({
     fetchChatHistories();
   }, []); // Empty
 
-  async function clearChat(e) {
-    e.stopPropagation();
-    const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
+  const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
 
-    // Only proceed if chatLog is not empty
+  async function saveEncryptedChatToFirebase() {
     if (chatLog.length > 0) {
       const encryptedChatLog = await encryptText(
         JSON.stringify(chatLog),
@@ -458,7 +456,7 @@ export default function Dashboard({
         const chatCollection = collection(db, "users", user.uid, "chats");
         const docRef = await addDoc(chatCollection, {
           chatLog: encryptedChatLogBase64,
-          date: Timestamp.now(), // This will add the current date and time
+          date: Timestamp.now(),
         });
 
         // Update chatHistories state to include the new chat
@@ -469,14 +467,21 @@ export default function Dashboard({
         };
         setChatHistories((prevChats) => [...prevChats, newChat]);
       }
-
-      // Clear current chat
-      setChatLog([]);
-      setTrialLimitReached(false);
     }
   }
 
-  // Add a function to handle menu toggle
+  window.addEventListener("beforeunload", handleBeforeUnload);
+
+  async function clearChat(e) {
+    e.stopPropagation();
+
+    await saveEncryptedChatToFirebase();
+
+    // Clear current chat
+    setChatLog([]);
+    setTrialLimitReached(false);
+  }
+
   function handleMenuToggle() {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -492,29 +497,13 @@ export default function Dashboard({
   }, [chatLog, chatHistories]);
 
   async function handleBeforeUnload(e) {
-    if (chatLog.length > 0) {
-      // Similar checks as your clearChat function
-      const isDuplicate = chatHistories.some(
-        (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
-      );
-
-      if (!isDuplicate) {
-        // Store the chat in Firebase
-        const chatCollection = collection(db, "users", user.uid, "chats");
-        await addDoc(chatCollection, {
-          chatLog: chatLog,
-          date: Timestamp.now(),
-        });
-
-        // Note: You don't need to update the state here since the user is leaving the page.
-      }
-    }
+    await saveEncryptedChatToFirebase();
 
     // This message is usually not shown to the user in modern browsers, but the event needs it.
     e.preventDefault();
-    e.returnValue = "Are you sure you want to leave?";
+    e.returnValue =
+      "Are you sure you want to leave? Remember to save your chats!!!";
   }
-
   const bannedKeywords = [
     "suicide",
     "self-harm",
