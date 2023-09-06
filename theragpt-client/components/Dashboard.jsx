@@ -10,7 +10,7 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-
+import { BannedWordsModal } from "./BannedWordsModal";
 import MenuPopupState from "./MenuPopup";
 import Fire from "./Fire";
 import { getUserData } from "./Fire";
@@ -344,6 +344,11 @@ export default function Dashboard({
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (containsBannedKeywords(input)) {
+      setShowBannedModal(true);
+      return;
+    }
+
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < 7000) {
       // Less than 7 seconds since the last message, so return without sending
@@ -504,6 +509,51 @@ export default function Dashboard({
     e.returnValue = "Are you sure you want to leave?";
   }
 
+  const bannedKeywords = [
+    "suicide",
+    "self-harm",
+    "suicid",
+    "unalive",
+    "unalivv",
+    "unalivvve",
+    "unalived",
+    "suicided",
+    "end my life",
+    "ending my life",
+    "take my own life",
+    "kill myself",
+    "kms",
+    "hurt myself",
+    "self inflicted",
+    "overdose",
+    "want to die",
+    "don't want to live",
+    "suicidio", // Spanish
+    "selbstmord", // German
+    "samobójstwo", // Polish
+    "自杀", // Mandarin
+    "自殺", // Japanese
+    "자살", // Korean
+    "suicídio", // Portuguese
+    "התאבדות", // Hebrew
+    "suicidio", // Italian
+    "αυτοκτονία", // Greek
+    "суицид", // Russian
+    "sebevražda", // Czech
+    "selvmord", // Norwegian
+    "hunanol", // Welsh
+    // Note: Cantonese uses the same written form as Mandarin for "suicide", which is "自杀".
+  ];
+  const [showBannedModal, setShowBannedModal] = useState(false);
+
+  function containsBannedKeywords(text) {
+    for (let keyword of bannedKeywords) {
+      if (text.toLowerCase().includes(keyword.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
+  }
   return (
     <div className="dashboard">
       <div className="main">
@@ -975,7 +1025,7 @@ export default function Dashboard({
                         : null
                     }
                   >
-                    <i className="fas fa-plus"></i>New Chat
+                    <i className="fas fa-plus"></i>New Chat / Save Chat
                   </div>
 
                   {/* Only render chat histories for "active" subscribers */}
@@ -1018,6 +1068,10 @@ export default function Dashboard({
                 >
                   <form onSubmit={handleSubmit}>
                     <div>
+                      <BannedWordsModal
+                        show={showBannedModal}
+                        onClose={() => setShowBannedModal(false)}
+                      />
                       <textarea
                         className="chat-input-textarea"
                         placeholder="Send a message..."
@@ -1047,6 +1101,14 @@ export default function Dashboard({
                       type="submit"
                       className="send-button"
                       disabled={trialLimitReached}
+                      onChange={(e) => {
+                        if (containsBannedKeywords(e.target.value)) {
+                          alert("Sorry, we cannot talk about that topic."); // This uses the browser's built-in alert, but you could use a more user-friendly modal/popup.
+                          return; // Don't set the input if it contains banned words
+                        }
+                        setInput(e.target.value);
+                        autosize(e.target);
+                      }}
                     >
                       &#10148;
                     </button>

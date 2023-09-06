@@ -153,7 +153,7 @@ No articles or blogs.
 Don't complete sentences.
 ${thought}
 `;
-
+  console.log(message);
   conversation.forEach((msg) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
