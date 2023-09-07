@@ -1055,6 +1055,7 @@ export default function Dashboard({
               )}
             </aside>
             <section className="chatbox">
+              {/* <Stress /> */}
               <div className="chat-log">
                 {chatLog.map((message, index) => (
                   <ChatMessage key={index} message={message} />
