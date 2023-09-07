@@ -32,6 +32,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp function
 import { Timestamp } from "firebase/firestore";
 import ButtonCanva from "/button.png";
+import Stress from "./Stress";
 
 export default function Dashboard({
   setUserEmail,
@@ -586,8 +587,7 @@ export default function Dashboard({
                 marginBottom: "1.5rem",
               }}
             >
-              Begin by letting JungGPT know how you're feeling before you start
-              chatting for a more personalized conversation!
+              Begin by letting JungGPT know how you're feeling!
             </Typography>
 
             <Grid
@@ -700,11 +700,6 @@ export default function Dashboard({
               JungGPT has been trained to use metaphor in a strategic,
               personalized way to help users further understand emotions and
               circumstance.
-              <br />
-              <br />
-              The purpose of using metaphor in this way is to aid users in
-              understanding emotions and situations that might be complex or
-              abstract.
               <br />
               <br />
               What are some of your interests to help JungGPT "speak your
@@ -1011,7 +1006,7 @@ export default function Dashboard({
                   <div
                     className={
                       "side-menu-button" +
-                      (subscriptionStatus !== "active" ? " disabled" : "")
+                      (subscriptionStatus !== "active" ? "disabled" : "")
                     }
                     // Only allow clicking "New Chat" if subscriptionStatus is "active" and chatLog has content
                     onClick={
@@ -1273,7 +1268,7 @@ const ChatMessage = ({ message }) => {
         <div
           className="message"
           style={{
-            fontSize: isMobile ? "14px" : "14px",
+            fontSize: isMobile ? "15px" : "18px",
             paddingTop: isMobile ? "0rem" : "0rem",
             width: "80%",
             color:
@@ -1282,6 +1277,7 @@ const ChatMessage = ({ message }) => {
                   ? "#8B6041"
                   : "#AEC7CC"
                 : "inherit",
+            fontFamily: "League Spartan",
           }}
         >
           {message.message}

@@ -119,8 +119,8 @@ exports.lonelinessNegativeArray = [
 ];
 
 exports.loveArray = [
-  "The user has brought up love. If it makes sense, Only if it makes sense, In my next message, how can I discuss the role of love in well-being and happiness?",
-  "Love seems to be on the user's mind. If it makes sense, Only if it makes sense, In my next message, how can I ask about their experiences with love and how it has shaped them?",
+  "The user has brought up love.  Only if it makes sense, In my next message, how can I discuss the role of love in well-being and happiness?",
+  "Love seems to be on the user's mind. Only if it makes sense, In my next message, how can I ask about their experiences with love and how it has shaped them?",
   "The user has mentioned love. Only if it makes sense, Cue to explore their perspectives on different kinds of love, such as romantic and platonic.",
   "The user is thinking about love. Only if it makes sense, Cue to explore their personal experiences with love and its impact on their life.",
   "Love has been brought up by the user. Only if it makes sense, Cue to explore the concept of 'love languages' and how they understand or prefer to express love.",
@@ -132,7 +132,7 @@ exports.loveArray = [
 
 exports.loveNegativeArray = [
   "If The user has mentioned that they don't like the concept of love. Only if it makes sense, In my next message, how can I acknowledge their skepticism about romantic ideals?",
-  "If Love doesn't seem to resonate with the user.  Only if it makes sense, In my next message, how can I explore their negative experiences or fears related to love?",
+  "If Love doesn't seem to resonate with  the user.  Only if it makes sense, In my next message, how can I explore their negative experiences or fears related to love?",
   "If The user has a negative view on love. Only if it makes sense, In my next message, how can I discuss their concerns about love being overly commercialized?",
   "If The user isn't fond of love.  Only if it makes sense, In my next message, how can I inquire whether they think love is just a social construct?",
   "If Love doesn't appeal to the user. Only if it makes sense, In my next message, how can I ask if they view love as a distraction or an unrealistic expectation?",
@@ -202,6 +202,12 @@ exports.employArray = [
   "The user seems positive about being employed. Only if it makes sense, In my next message, how can I discuss the impact of job stability on their overall well-being?",
   "The user has brought up their employment. Only if it makes sense, In my next message, how can I ask about the relationship they have with their colleagues?",
   "Employment is on the user's mind. Only if it makes sense, In my next message, how can I explore the sense of purpose or fulfillment they derive from their job?",
+  "It seems employment is a focal point for the user. Only if it makes sense, In my next message, how can I delve into the challenges they've faced in their current position?",
+  "The user is reflecting on their job. Only if it makes sense, In my next message, how can I ask about any significant milestones or achievements they've reached in their role?",
+  "Employment appears to be a current theme. Only if it makes sense, In my next message, how can I inquire if they have any aspirations or plans for professional growth in the future?",
+  "The user is discussing their professional life. Only if it makes sense, In my next message, how can I question what motivated them to choose this particular career or job?",
+  "Job matters are evident in the user's words. Only if it makes sense, In my next message, how can I explore the balance they've struck between work and personal life?",
+  "The user is delving into employment topics. Only if it makes sense, In my next message, how can I ask about the kind of work culture they thrive in or appreciate most?",
 ];
 
 exports.employNegativeArray = [
@@ -210,6 +216,12 @@ exports.employNegativeArray = [
   "The user has a negative view on employment. Only if it makes sense, In my next message, how can I ask if they're considering freelancing or other alternatives?",
   "The user isn't satisfied with their employment situation. Only if it makes sense, In my next message, how can I inquire if they have issues with work-life balance?",
   "Employment doesn't seem fulfilling for the user. Only if it makes sense, In my next message, how can I ask if they feel underappreciated or undervalued in their current role?",
+  "The user is expressing discontent with their job. Only if it makes sense, In my next message, how can I explore if their current role aligns with their long-term career goals?",
+  "The user seems disenchanted with employment matters. Only if it makes sense, In my next message, how can I inquire if they're experiencing challenges with their immediate supervisor or colleagues?",
+  "Job satisfaction seems to be a concern for the user. Only if it makes sense, In my next message, how can I ask if they've thought about seeking career counseling or coaching?",
+  "The user is indicating frustration with their work situation. Only if it makes sense, In my next message, how can I explore if they're coping with undue expectations or unrealistic job demands?",
+  "Professional fulfillment seems lacking for the user. Only if it makes sense, In my next message, how can I ask if they've contemplated a complete career change or switching industries?",
+  "The user appears to be in a tough spot with their job. Only if it makes sense, In my next message, how can I inquire about their support system outside of work and how they're handling the challenges?",
 ];
 
 exports.bossArray = [
@@ -218,6 +230,12 @@ exports.bossArray = [
   "The user has brought up their boss in a positive light. Only if it makes sense, In my next message, how can I discuss the role a good boss plays in job satisfaction?",
   "The user seems to have a good relationship with their boss. Only if it makes sense, In my next message, how can I explore how their boss supports their career development?",
   "Bosses are on the user's mind. Only if it makes sense, In my next message, how can I ask about the ways their boss helps in maintaining a good work environment?",
+  "The user is reflecting on their boss's influence. Only if it makes sense, In my next message, how can I ask about any mentorship or guidance they've received from their boss?",
+  "The topic seems to be revolving around positive boss interactions. Only if it makes sense, In my next message, how can I inquire about the most memorable piece of advice or feedback they've gotten from their boss?",
+  "The user is appreciating their boss. Only if it makes sense, In my next message, how can I ask about any joint projects or challenges they've successfully tackled together?",
+  "The user seems to value their boss's leadership. Only if it makes sense, In my next message, how can I explore the aspects of their boss's communication style they find most effective?",
+  "It appears the user's boss has made a positive impact on them. Only if it makes sense, In my next message, how can I inquire about any opportunities or growth they've experienced because of their boss's support?",
+  "The user is discussing their boss in favorable terms. Only if it makes sense, In my next message, how can I ask how their boss handles team dynamics and conflicts?",
 ];
 
 exports.bossNegativeArray = [
@@ -226,6 +244,12 @@ exports.bossNegativeArray = [
   "The user has a negative view of their boss. Only if it makes sense, In my next message, how can I discuss whether this is affecting their overall job satisfaction?",
   "The user isn't fond of their boss. Only if it makes sense, In my next message, how can I inquire if they've taken any steps to address the situation?",
   "The user finds it difficult to work with their boss. Only if it makes sense, In my next message, how can I ask if they've considered seeking HR assistance or looking for another job?",
+  "The user is expressing discontent with their boss. Only if it makes sense, In my next message, how can I ask about any particular incidents or conversations that led to this sentiment?",
+  "The topic revolves around challenging boss dynamics. Only if it makes sense, In my next message, how can I inquire if their peers share the same sentiment or if it's an individual experience?",
+  "The user seems to be struggling with their boss's approach. Only if it makes sense, In my next message, how can I explore if they've ever tried providing feedback to their boss?",
+  "The user indicates a strained relationship with their boss. Only if it makes sense, In my next message, how can I ask about the coping mechanisms they employ to manage the stress stemming from this?",
+  "It appears the user's boss might be a source of professional friction. Only if it makes sense, In my next message, how can I ask if they've sought any advice or mentoring on how to handle the situation?",
+  "The user is facing boss-related challenges. Only if it makes sense, In my next message, how can I inquire if the issues are due to a clash in personal values or work ethics?",
 ];
 
 exports.coworkArray = [
@@ -234,6 +258,12 @@ exports.coworkArray = [
   "The user has brought up their coworkers. Only if it makes sense, In my next message, how can I discuss the role of coworkers in making the workplace enjoyable?",
   "The user seems to have a good relationship with their coworkers. Only if it makes sense, In my next message, how can I explore what qualities they appreciate in a coworker?",
   "Coworkers are on the user's mind. Only if it makes sense, In my next message, how can I ask about any friendships they've formed at work?",
+  "The user is reflecting on their peers at work. Only if it makes sense, In my next message, how can I ask about any joint projects or achievements they're particularly proud of?",
+  "The topic seems to center around coworker interactions. Only if it makes sense, In my next message, how can I inquire about how they handle differences or conflicts with colleagues?",
+  "The user appreciates their colleagues. Only if it makes sense, In my next message, how can I explore if there are any coworker-inspired practices or habits they've adopted?",
+  "The user is discussing their workmates in favorable terms. Only if it makes sense, In my next message, how can I ask about their role in team meetings or brainstorming sessions?",
+  "It seems the user values teamwork. Only if it makes sense, In my next message, how can I inquire about the dynamics of their team and if they have any team rituals or customs?",
+  "The user is opening up about their coworkers. Only if it makes sense, In my next message, how can I ask how they celebrate team successes or milestones together?",
 ];
 
 exports.coworkNegativeArray = [
@@ -242,6 +272,12 @@ exports.coworkNegativeArray = [
   "The user has a negative view of their coworkers. Only if it makes sense, In my next message, how can I inquire if they've faced any challenges in team projects?",
   "The user isn't happy with their coworkers. Only if it makes sense, In my next message, how can I ask if the office culture might be a contributing factor?",
   "Coworkers seem to be a problem for the user. Only if it makes sense, In my next message, how can I discuss whether they've considered talking to HR about the situation?",
+  "The user is expressing difficulty with their peers. Only if it makes sense, In my next message, how can I ask if these issues have been long-standing or if they arose recently?",
+  "The topic revolves around challenging coworker dynamics. Only if it makes sense, In my next message, how can I inquire if they've tried resolving these conflicts through direct communication?",
+  "The user seems to be stressed due to colleague interactions. Only if it makes sense, In my next message, how can I explore if they've ever sought mentorship or advice on handling such situations?",
+  "The user indicates they feel isolated or misunderstood by coworkers. Only if it makes sense, In my next message, how can I ask about any team-building exercises or workshops the office might offer?",
+  "It appears the user's workplace dynamics aren't positive. Only if it makes sense, In my next message, how can I inquire if there's any particular colleague they get along with, or if it's a general sentiment?",
+  "The user is struggling with peer relationships. Only if it makes sense, In my next message, how can I ask how they cope with the stress or negativity stemming from these interactions?",
 ];
 
 exports.schoolArray = [
@@ -250,6 +286,8 @@ exports.schoolArray = [
   "The user has brought up school. Only if it makes sense, In my next message, how can I discuss the importance of education in personal development?",
   "The user seems to have positive memories of school. Only if it makes sense, In my next message, how can I explore their best school experiences?",
   "School is on the user's mind. Only if it makes sense, In my next message, how can I ask about influential teachers or mentors they've had?",
+  "The user has mentioned school. Only if it makes sense, In my next message, I inquire on the users favorite subject",
+  "The user has mentioned school. Only if it makes sense, In my next message, I inquire on the users favorite subject",
 ];
 
 exports.schoolNegativeArray = [
