@@ -893,7 +893,7 @@ export default function Dashboard({
                   {" "}
                   - Unlimited 24/7 access to JungGPT <br /> - Access to
                   JungSMART and all current and future models
-                  <br /> - 1000 character context length per message
+                  <br /> - 600 character context length per message
                 </Typography>
                 <DialogTitle
                   sx={{
