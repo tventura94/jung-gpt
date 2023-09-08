@@ -99,6 +99,7 @@ app.post("/jung", async (req, res) => {
   });
   let message = `The first message I send is restricted to: "${selectedTime} Hey there! I'm JungGPT! You've reported you're feeling ${emotions}."
   ${thought}
+  I do not recommend the user seek professional help, the user understands I am not professional help.
   The users local time is ${localHour}.
   The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
   The user is feeling ${emotions}. 
