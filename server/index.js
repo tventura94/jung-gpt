@@ -97,7 +97,7 @@ app.post("/jung", async (req, res) => {
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
-  let message = `The first message I send is restricted to: "${selectedTime} Hey there! I'm JungGPT! You've reported you're feeling ${emotions}."
+  let message = `The first message I send is restricted to: "${selectedTime} I'm JungGPT! You've reported you're feeling ${emotions}."
   ${thought}
   I do not recommend the user seek professional help, the user understands I am not professional help.
   The users local time is ${localHour}.
