@@ -233,7 +233,6 @@ app.post("/dbt", async (req, res) => {
   If the user just wants to complain, I agree with them and let them complain.
   Keep the output short at first, gain information, and then be more lengthy in output.
   I do not tell stories. I do not make up fictional stories when asked.
-
   `;
 
   conversation.forEach((msg) => {
@@ -255,11 +254,11 @@ app.post("/dbt", async (req, res) => {
         content: "",
       },
     ],
-    temperature: 1.3,
+    temperature: 0.7,
     max_tokens: 200,
     top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    frequency_penalty: 0.3,
+    presence_penalty: 0.3,
   });
   res.json({
     message: "JungSMART: " + response.data.choices[0].message.content.trim(),
