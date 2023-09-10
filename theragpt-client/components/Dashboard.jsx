@@ -374,7 +374,7 @@ export default function Dashboard({
     setInput("");
     setChatLog(chatLogNew);
 
-    // Fetch to backend
+    // Fetch to backend   LIVE  https://jung-gpt.onrender.com/jung   DEV http://localhost:3080/jung"
     const response = await fetch("https://jung-gpt.onrender.com/jung", {
       method: "POST",
       headers: {
@@ -437,6 +437,8 @@ export default function Dashboard({
 
   const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
 
+  const [currentChatId, setCurrentChatId] = useState(null);
+
   async function saveEncryptedChatToFirebase() {
     if (chatLog.length > 0) {
       const encryptedChatLog = await encryptText(
@@ -447,39 +449,33 @@ export default function Dashboard({
         String.fromCharCode(...encryptedChatLog)
       );
 
-      // Check if chatLog is already in chatHistories
-      const isDuplicate = chatHistories.some(
-        (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
-      );
+      const chatCollection = collection(db, "users", user.uid, "chats");
 
-      if (!isDuplicate) {
-        // Store the encrypted chat in Firebase with current date
-        const chatCollection = collection(db, "users", user.uid, "chats");
+      if (currentChatId) {
+        // If a chat session is ongoing, update it
+        const chatRef = doc(chatCollection, currentChatId);
+        await updateDoc(chatRef, {
+          chatLog: encryptedChatLogBase64,
+        });
+      } else {
+        // Otherwise, create a new chat session
         const docRef = await addDoc(chatCollection, {
           chatLog: encryptedChatLogBase64,
           date: Timestamp.now(),
         });
-
-        // Update chatHistories state to include the new chat
-        const newChat = {
-          id: docRef.id,
-          chatLog: chatLog,
-          date: Timestamp.now(),
-        };
-        setChatHistories((prevChats) => [...prevChats, newChat]);
+        setCurrentChatId(docRef.id);
       }
     }
   }
-
-  window.addEventListener("beforeunload", handleBeforeUnload);
 
   async function clearChat(e) {
     e.stopPropagation();
 
     await saveEncryptedChatToFirebase();
 
-    // Clear current chat
+    // Clear current chat and reset current chat ID
     setChatLog([]);
+    setCurrentChatId(null);
     setTrialLimitReached(false);
   }
 
@@ -1054,6 +1050,7 @@ export default function Dashboard({
                 </>
               )}
             </aside>
+
             <section className="chatbox">
               {/* <Stress /> */}
               <div className="chat-log">

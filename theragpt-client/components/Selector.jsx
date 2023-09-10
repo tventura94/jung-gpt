@@ -549,7 +549,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       ></img>
       <Grid
         container
-        spacing={5}
+        spacing={isMobile ? 5 : 8}
         style={{
           marginBottom: "3rem",
           display: "flex",

@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "https://jung-gpt.com",
+    origin: "https://jung-gpt.com", // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
