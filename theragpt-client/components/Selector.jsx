@@ -364,7 +364,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             margin: isMobile ? "0rem" : "0",
             backgroundColor: isMobile ? "" : "whitesmoke",
             padding: isMobile ? "" : "2.5rem",
-            marginTop: isMobile ? "2.5rem" : "3rem",
+            marginTop: isMobile ? "2.5rem" : "3.5rem",
             borderRadius: "30px",
             marginBottom: "0rem",
           }}
