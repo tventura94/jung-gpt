@@ -270,6 +270,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           backgroundColor: isMobile ? "#607E92" : "",
           borderBottom: isMobile ? "silver 3px solid" : "",
           padding: isMobile ? "0em" : "1em",
+          paddingBottom: "0rem",
         }}
       >
         {/* MAINTENANCE MODAL****************************************** */}
@@ -365,6 +366,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             padding: isMobile ? "" : "2.5rem",
             marginTop: isMobile ? "2.5rem" : "3rem",
             borderRadius: "30px",
+            marginBottom: "0rem",
           }}
         >
           <motion.div
@@ -542,7 +544,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       <img
         style={{
           width: "100%",
-          marginTop: "1rem",
+          marginTop: "0rem",
           marginBottom: "1rem",
         }}
         src={Smart}
