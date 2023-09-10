@@ -471,8 +471,6 @@ export default function Dashboard({
     }
   }
 
-  window.addEventListener("beforeunload", handleBeforeUnload);
-
   async function clearChat(e) {
     e.stopPropagation();
 
@@ -487,24 +485,6 @@ export default function Dashboard({
     setIsMenuOpen(!isMenuOpen);
   }
 
-  useEffect(() => {
-    // When component mounts
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      // When component unmounts
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [chatLog, chatHistories]);
-
-  async function handleBeforeUnload(e) {
-    await saveEncryptedChatToFirebase();
-
-    // This message is usually not shown to the user in modern browsers, but the event needs it.
-    e.preventDefault();
-    e.returnValue =
-      "Are you sure you want to leave? Remember to save your chats!!!";
-  }
   const bannedKeywords = [
     "suicide",
     "self-harm",
