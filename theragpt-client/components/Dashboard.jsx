@@ -437,8 +437,6 @@ export default function Dashboard({
 
   const blackAlpaca = "x1!,54372usjw!"; // Your encryption key
 
-  const [currentChatId, setCurrentChatId] = useState(null);
-
   async function saveEncryptedChatToFirebase() {
     if (chatLog.length > 0) {
       const encryptedChatLog = await encryptText(
@@ -449,33 +447,39 @@ export default function Dashboard({
         String.fromCharCode(...encryptedChatLog)
       );
 
-      const chatCollection = collection(db, "users", user.uid, "chats");
+      // Check if chatLog is already in chatHistories
+      const isDuplicate = chatHistories.some(
+        (history) => JSON.stringify(history.chatLog) === JSON.stringify(chatLog)
+      );
 
-      if (currentChatId) {
-        // If a chat session is ongoing, update it
-        const chatRef = doc(chatCollection, currentChatId);
-        await updateDoc(chatRef, {
-          chatLog: encryptedChatLogBase64,
-        });
-      } else {
-        // Otherwise, create a new chat session
+      if (!isDuplicate) {
+        // Store the encrypted chat in Firebase with current date
+        const chatCollection = collection(db, "users", user.uid, "chats");
         const docRef = await addDoc(chatCollection, {
           chatLog: encryptedChatLogBase64,
           date: Timestamp.now(),
         });
-        setCurrentChatId(docRef.id);
+
+        // Update chatHistories state to include the new chat
+        const newChat = {
+          id: docRef.id,
+          chatLog: chatLog,
+          date: Timestamp.now(),
+        };
+        setChatHistories((prevChats) => [...prevChats, newChat]);
       }
     }
   }
+
+  window.addEventListener("beforeunload", handleBeforeUnload);
 
   async function clearChat(e) {
     e.stopPropagation();
 
     await saveEncryptedChatToFirebase();
 
-    // Clear current chat and reset current chat ID
+    // Clear current chat
     setChatLog([]);
-    setCurrentChatId(null);
     setTrialLimitReached(false);
   }
 
