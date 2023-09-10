@@ -123,6 +123,7 @@ function App() {
           setUserEmail={setUserEmail}
           user={user}
           subscriptionStatus={subscriptionStatus}
+          setSubscriptionStatus={setSubscriptionStatus}
         />
 
         <Footer />
@@ -144,6 +145,7 @@ function App() {
           setUserEmail={setUserEmail}
           user={user}
           subscriptionStatus={subscriptionStatus}
+          setSubscriptionStatus={setSubscriptionStatus}
         />
         <Footer />
       </Box>
