@@ -24,6 +24,7 @@ import { isMotionValue } from "framer-motion";
 import { IconButton } from "@mui/material";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import googleLogo from "../google.png"; // Update the path to the location of the logo in your project
+import GoogleAd from "./googleAd";
 
 function Copyright(props) {
   return (
@@ -377,6 +378,7 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 </Box>
               </Box>
             </Box>
+            <GoogleAd />
           </Grid>
         </Grid>
         <Copyright sx={{ mt: 0, mb: 3 }} />

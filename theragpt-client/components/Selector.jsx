@@ -59,6 +59,7 @@ import { logPageView } from "../components/Fire";
 
 import { IconButton } from "@mui/material";
 import Over80 from "/Over80.png";
+import GoogleAd from "./googleAd";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
@@ -1593,6 +1594,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             </IconButton>
           </Box>
         </Box>
+        <GoogleAd />
       </Box>
     </div>
   );

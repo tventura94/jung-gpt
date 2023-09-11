@@ -271,9 +271,9 @@ export default function Dashboard({
   // Subscription pay wall logic - if the user isnt subscribed they get 16 messages total, and a warning popup at 12 messages.
   useEffect(() => {
     if (subscriptionStatus !== "active") {
-      if (chatLog.length >= 16) {
+      if (chatLog.length >= 10) {
         setTrialLimitReached(true);
-      } else if (chatLog.length === 12) {
+      } else if (chatLog.length === 6) {
         setWarningPopup(true); // Show the warning popup at the 9th message
       }
     } else {
