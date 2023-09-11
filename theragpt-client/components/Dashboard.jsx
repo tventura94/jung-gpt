@@ -561,7 +561,7 @@ export default function Dashboard({
               sx={{
                 padding: ".8rem",
                 fontSize: "22px",
-                fontFamily: "'Roboto Slab', serif",
+                fontFamily: "'League Spartan', serif",
                 textAlign: "center",
                 borderBottom: "1px solid silver",
                 marginBottom: "1.5rem",
@@ -605,24 +605,34 @@ export default function Dashboard({
                 >
                   <Button
                     sx={{
-                      width: isMobile ? "93%" : "100%",
-                      fontFamily: "'Roboto Slab', serif",
-                      border: "solid 1px pink",
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10em",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      padding: "1em 2em",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease-in-out",
+                      border: "1px solid black",
+                      boxShadow: "0 0 0 0 black",
                       "&:hover": {
-                        borderColor: "purple", // Change the border color on hover
+                        transform: "translateY(-4px) translateX(-2px)",
+                        boxShadow: "2px 5px 0 0 black",
                       },
+                      "&:active": {
+                        transform: "translateY(2px) translateX(1px)",
+                        boxShadow: "0 0 0 0 black",
+                        color: "#607E92",
+                      },
+                      fontFamily: "League Spartan, serif",
+                      width: isMobile ? "93%" : "100%",
                       variant: selectedEmotions.includes(emotion)
                         ? "contained"
                         : "outlined",
                       ...(selectedEmotions.includes(emotion) && {
-                        color: "white", // Change the text color when selected
+                        color: "#3B83B4", // Change the text color when selected
                       }),
                     }}
-                    variant={
-                      selectedEmotions.includes(emotion)
-                        ? "contained"
-                        : "outlined"
-                    }
                     onClick={() => handleEmotionClick(emotion)}
                   >
                     {emotion}
@@ -633,12 +643,34 @@ export default function Dashboard({
             <Button
               sx={{
                 marginTop: "2rem",
-                backgroundColor: "#607E92",
+                backgroundColor: "#3B83B4",
                 border: "1px solid pink",
                 color: "whitesmoke",
                 width: "50%",
                 alignContent: "center",
                 alignSelf: "center",
+                // The button styles:
+                backgroundColor: "white",
+                color: "black",
+                borderRadius: "10em",
+                fontSize: "17px",
+                fontWeight: 600,
+
+                fontFamily: "League Spartan",
+                padding: "1em 2em",
+                cursor: "pointer",
+                transition: "all 0.3s ease-in-out",
+                border: "1px solid black",
+                boxShadow: "0 0 0 0 black",
+                "&:hover": {
+                  transform: "translateY(-4px) translateX(-2px)",
+                  boxShadow: "2px 5px 0 0 black",
+                  backgroundColor: "#607E92",
+                },
+                "&:active": {
+                  transform: "translateY(2px) translateX(1px)",
+                  boxShadow: "0 0 0 0 black",
+                },
               }}
               variant="contained"
               onClick={() => {
@@ -671,7 +703,7 @@ export default function Dashboard({
               sx={{
                 padding: ".8rem",
                 fontSize: "17px",
-                fontFamily: "'Roboto Slab', serif",
+                fontFamily: "League Spartan, serif",
                 textAlign: "left",
                 borderBottom: "1px solid silver",
                 marginBottom: "1.5rem",
@@ -718,21 +750,32 @@ export default function Dashboard({
                 <Grid item xs={isMobile ? 5 : 4} key={interest}>
                   <Button
                     sx={{
-                      fontFamily: "'Roboto Slab', serif",
-                      border: "solid 1px pink",
-                      "&:hover": { borderColor: "purple" },
+                      backgroundColor: "white",
+                      color: "black",
+                      borderRadius: "10em",
+                      fontSize: "12px",
+                      fontWeight: 600,
+                      padding: "1em 2em",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease-in-out",
+                      border: "1px solid black",
+                      boxShadow: "0 0 0 0 black",
+                      "&:hover": {
+                        transform: "translateY(-4px) translateX(-2px)",
+                        boxShadow: "2px 5px 0 0 black",
+                      },
+                      "&:active": {
+                        transform: "translateY(2px) translateX(1px)",
+                        boxShadow: "0 0 0 0 black",
+                      },
+                      fontFamily: "'League Spartan', serif",
                       variant: selectedInterests.includes(interest)
                         ? "contained"
                         : "outlined",
                       ...(selectedInterests.includes(interest) && {
-                        color: "white",
+                        color: "#3B83B4",
                       }),
                     }}
-                    variant={
-                      selectedInterests.includes(interest)
-                        ? "contained"
-                        : "outlined"
-                    }
                     onClick={() => handleInterestClick(interest)}
                   >
                     {interest}
@@ -744,12 +787,33 @@ export default function Dashboard({
             <Button
               sx={{
                 marginTop: "2rem",
-                backgroundColor: "#607E92",
+                backgroundColor: "#3B83B4",
                 border: "1px solid pink",
                 color: "whitesmoke",
                 width: "50%",
                 alignContent: "center",
                 alignSelf: "center",
+                // The button styles:
+                backgroundColor: "white",
+                color: "black",
+                borderRadius: "10em",
+                fontSize: "17px",
+                fontWeight: 600,
+                padding: "1em 2em",
+                cursor: "pointer",
+                transition: "all 0.3s ease-in-out",
+                border: "1px solid black",
+                boxShadow: "0 0 0 0 black",
+                fontFamily: "League Spartan",
+                "&:hover": {
+                  transform: "translateY(-4px) translateX(-2px)",
+                  boxShadow: "2px 5px 0 0 black",
+                  backgroundColor: "#607E92",
+                },
+                "&:active": {
+                  transform: "translateY(2px) translateX(1px)",
+                  boxShadow: "0 0 0 0 black",
+                },
               }}
               variant="contained"
               onClick={() => {
