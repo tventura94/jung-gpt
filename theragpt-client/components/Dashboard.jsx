@@ -849,52 +849,10 @@ export default function Dashboard({
               <List>
                 <Typography
                   sx={{
-                    fontFamily: "'Roboto Slab', serif",
-                    color: "pink",
-                    textAlign: "center",
-                    marginTop: "1rem",
-                  }}
-                >
-                  We want to thank ALL OF YOU for taking the time to use this
-                  tool, it means the world that people are positively responding
-                  to this effort and we hope you will subscribe!{" "}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "'Roboto Slab', serif",
-                    color: "pink",
-                  }}
-                >
-                  <b
-                    style={{
-                      color: "white",
-                    }}
-                  >
-                    <br />
-                    We are a small team of 4 people
-                  </b>{" "}
-                  and we feel so grateful for the fact that we have been able to
-                  have this big of an impact this quickly after launch - It is
-                  really exciting!
-                  <br />
-                  <br /> That being said...{" "}
-                  <b
-                    style={{
-                      color: "white",
-                    }}
-                  >
-                    This is very expensive to run, this is just the reality of
-                    the situation.
-                  </b>{" "}
-                  While we wish we could give this tool away for free, we
-                  currently don't have the backed funding to do so. <br />{" "}
-                  <br />
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "'Roboto Slab', serif",
+                    fontFamily: "'League Spartan', serif",
                     color: "whitesmoke",
-                    fontSize: "18px",
+                    fontSize: "25px",
+                    margin: "1rem",
                   }}
                 >
                   Right now, people all over the globe are getting help with
@@ -903,6 +861,7 @@ export default function Dashboard({
                   <b
                     style={{
                       color: "pink",
+                      fontSize: "36px",
                     }}
                   >
                     Its only 7 dollars a month!{" "}
@@ -920,7 +879,7 @@ export default function Dashboard({
                 <Typography
                   sx={{
                     fontSize: "22px",
-                    fontFamily: "'Roboto Slab', serif",
+                    fontFamily: "'Montserrat', serif",
                     color: "white",
                   }}
                 >
@@ -930,8 +889,9 @@ export default function Dashboard({
 
                 <Typography
                   sx={{
-                    fontFamily: "'Roboto Slab', serif",
+                    fontFamily: "'League Spartan', serif",
                     color: "pink",
+                    fontSize: "20px",
                   }}
                 >
                   {" "}
@@ -945,7 +905,7 @@ export default function Dashboard({
                     color: "white",
                   }}
                 >
-                  Weekly Developer Notes - 9/5/23
+                  Weekly Developer Notes - 9/11/23
                 </DialogTitle>
                 <ListItem
                   sx={{
@@ -975,7 +935,7 @@ export default function Dashboard({
                       textDecoration: "underline",
                     }}
                   >
-                    Added Features - 9/5/23
+                    Added Features - 9/11/23
                   </b>
                   <br />
                   <b
