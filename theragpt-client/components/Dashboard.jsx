@@ -835,6 +835,7 @@ export default function Dashboard({
               fontFamily: "'Roboto Slab', serif",
               backgroundColor: "#A7AEBC",
               color: "white",
+              fontSize: isMobile ? "18px" : "25px",
             }}
           >
             A message from the developers
@@ -851,7 +852,7 @@ export default function Dashboard({
                   sx={{
                     fontFamily: "'League Spartan', serif",
                     color: "whitesmoke",
-                    fontSize: "25px",
+                    fontSize: isMobile ? "20px" : "25px",
                     margin: "1rem",
                   }}
                 >
@@ -861,7 +862,7 @@ export default function Dashboard({
                   <b
                     style={{
                       color: "pink",
-                      fontSize: "36px",
+                      fontSize: "32px",
                     }}
                   >
                     Its only 7 dollars a month!{" "}

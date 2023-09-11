@@ -212,7 +212,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     borderRadius: "2em",
     padding: "0em",
     width: "100%",
-    maxWidth: isMobile ? "8vw" : "30vw",
+    maxWidth: isMobile ? "7vw" : "30vw",
     minWidth: "500px",
     margin: isMobile ? "1em 0" : "0",
     transition: isMobile ? "" : "transform 0.15s ease-in-out",
@@ -220,7 +220,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
     fontFamily: "'League Spartan', serif",
     lineHeight: "1.6rem",
     "@media (max-width: 1096px)": {
-      minWidth: "400px",
+      minWidth: "390px",
     },
     border: "2px solid silver",
     boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
@@ -408,7 +408,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   {" "}
                   <b
                     style={{
-                      fontSize: "26px",
+                      fontSize: isMobile ? "20px" : "26px",
                     }}
                   >
                     Our very first Emotional Reflection Feedback tool
@@ -507,7 +507,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   {" "}
                   <b
                     style={{
-                      fontSize: "26px",
+                      fontSize: isMobile ? "20px" : "26px",
                     }}
                   >
                     Our groundbreaking SMART Tool, JungSMART
@@ -1134,7 +1134,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         justifyContent: "center",
                         backgroundColor: "#F5F5F5",
                         color: "#607E92",
-                        padding: isMobile ? "1em" : "2em",
+                        padding: isMobile ? "1.5em" : "2em",
                         width: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
                         margin: isMobile ? "1em 0" : "0",
                         marginBottom: isMobile ? "2.5rem" : "",
@@ -1157,7 +1157,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                           width: "150px",
                         },
                         "@media(max-width: 600px)": {
-                          width: "390px",
+                          width: "360px",
                         },
                       }}
                     >
@@ -1188,7 +1188,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             <div
               style={{
                 display: "flex",
-                width: "100%",
+                width: "90%",
                 margin: "0 auto",
                 justifyContent: "right",
                 alignItems: "right",

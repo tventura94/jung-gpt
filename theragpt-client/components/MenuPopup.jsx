@@ -66,6 +66,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
             color="textSecondary"
             variant="body1"
             fontFamily={"Montserrat"}
+            sx={{ fontSize: isMobile ? ".75rem" : "1rem" }}
           >
             Logged in as {user.email}
           </Typography>
@@ -74,7 +75,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         <MenuItem
           sx={{
             fontFamily: "League Spartan",
-            fontSize: isMobile ? "1.5rem" : "1.3rem",
+            fontSize: isMobile ? "1.3rem" : "1.3rem",
           }}
           onClick={backButton}
         >
@@ -83,7 +84,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         <MenuItem
           sx={{
             fontFamily: "League Spartan",
-            fontSize: isMobile ? "1.5rem" : "1.3rem",
+            fontSize: isMobile ? "1.3rem" : "1.3rem",
           }}
           onClick={Faq}
         >
@@ -92,7 +93,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         <MenuItem
           sx={{
             fontFamily: "League Spartan",
-            fontSize: isMobile ? "1.5rem" : "1.3rem",
+            fontSize: isMobile ? "1.3rem" : "1.3rem",
           }}
           onClick={accountSettings}
         >
@@ -101,7 +102,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         <MenuItem
           sx={{
             fontFamily: "League Spartan",
-            fontSize: isMobile ? "1.7rem" : "1.5rem",
+            fontSize: isMobile ? "1.4rem" : "1.5rem",
             color: "#5484AB",
           }}
           onClick={handleUpgrade}
@@ -111,7 +112,7 @@ export default function MenuPopupState({ setUserEmail, setAuthState, user }) {
         <MenuItem
           sx={{
             fontFamily: "League Spartan",
-            fontSize: isMobile ? "1.5rem" : "1.3rem",
+            fontSize: isMobile ? "1.3rem" : "1.3rem",
           }}
           onClick={handleSignOut}
         >
