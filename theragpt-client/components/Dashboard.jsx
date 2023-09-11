@@ -653,7 +653,7 @@ export default function Dashboard({
                 backgroundColor: "white",
                 color: "black",
                 borderRadius: "10em",
-                fontSize: "17px",
+                fontSize: isMobile ? "13px" : "17px",
                 fontWeight: 600,
 
                 fontFamily: "League Spartan",
