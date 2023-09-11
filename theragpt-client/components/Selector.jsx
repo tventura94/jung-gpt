@@ -595,7 +595,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 }}
               >
                 At JungGPT, we've had the privilege of consulting with a team of
-                psychologists who completed Ivy-League Fellowships, taught
+                psychologists who have completed Ivy-League Fellowships, taught
                 multiple psychology courses in undergraduate and graduate
                 programs, and directed psychology training programs. These
                 seasoned experts have contributed their deep insights to the
