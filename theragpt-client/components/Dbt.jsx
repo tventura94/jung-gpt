@@ -374,7 +374,7 @@ export default function Dbt({
     setChatLog(chatLogNew);
 
     // Fetch to backend   LIVE  https://jung-gpt.onrender.com/dbt   DEV http://localhost:3080/dbt"
-    const response = await fetch("https://jung-gpt.onrender.com/dbt", {
+    const response = await fetch("http://localhost:3080/dbt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -323,9 +323,9 @@ export default function SignIn({ setUserEmail, setAuthState }) {
                 <br />
                 Meet JungGPT: Your compact AI companion for emotional insights!
                 This revolutionary tool is fueled by a vast repository of
-                information spanning psychology, therapy, psychiatry, and
-                philosophy. Crafted to reflect your emotions, JungGPT dives into
-                your feelings, initiating profound discussions and consistently
+                information spanning psychology, therapy, and philosophy.
+                Crafted to reflect your emotions, JungGPT dives into your
+                feelings, initiating profound discussions and consistently
                 presenting thought-provoking queries for your contemplation.
               </Typography>
 
