@@ -1,21 +1,28 @@
 // v3.0  GPT-4 WORKING MODEL 8/26 7:00PM
 
-const { Configuration, OpenAIApi } = require("openai");
+const OpenAI = require("openai");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
+const { Pinecone } = require("@pinecone-database/pinecone");
 
-const configuration = new Configuration({
+const pinecone = new Pinecone({
+  apiKey: process.env.PINECONE_API_KEY,
+  environment: process.env.PINECONE_ENVIRONMENT,
+});
+
+const index = pinecone.Index("junggpt");
+
+const openai = new OpenAI({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
 });
 
-const openai = new OpenAIApi(configuration);
-
 const app = express();
+
 // Rate limit
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -56,17 +63,18 @@ const { SAPP } = require("./SAPP");
 app.post("/jung", async (req, res) => {
   const {
     conversation,
-    userId,
     emotions,
-    interests,
-    typedInterest,
     localHour,
+    nameValue,
+    descriptionValue,
+    jobValue,
   } = req.body;
 
   const lastUserMessage =
     conversation[conversation.length - 1].message.toLowerCase();
 
   const thought = await SAPP(lastUserMessage);
+
   let selectedTime;
 
   // Determine time of day
@@ -92,18 +100,22 @@ app.post("/jung", async (req, res) => {
   } else {
     selectedPrompt = prompts[1]; // 80% chance
   }
+
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
-  let message = `The first message I send is restricted to: "${selectedTime} I'm JungGPT! You've reported you're feeling ${emotions}."
+
+  let message = `The users name is ${nameValue}. I infrequently refer to the user by their first name to appear more personable.
+  If the user included a first and last name, I use the users first name.
+  The first message I send is restricted to: "${selectedTime} ${nameValue} I'm JungGPT! You've reported you're feeling ${emotions}."
   ${thought}
   I do not recommend the user seek professional help, the user understands I am not professional help.
   The users local time is ${localHour}.
-  The users name is ${userId}. I infrequently refer to the user by their name to appear more personable.
+  The users career is ${jobValue}.
+  The user would like you to know ${descriptionValue}
   The user is feeling ${emotions}. 
-  The users interests are ${typedInterest} and ${interests}.
   ${selectedPrompt}.
   I only mention the users interests if it helps me explain something.
   If the users interests contains an inappropriate or banned word or concept, I explain I cannot talk about that.
@@ -180,7 +192,7 @@ app.post("/jung", async (req, res) => {
     }
   });
 
-  const response = await openai.createChatCompletion({
+  const response = await openai.chat.completions.create({
     model: "gpt-4",
     messages: [
       {
@@ -196,8 +208,8 @@ app.post("/jung", async (req, res) => {
   });
 
   res.json({
-    message: response.data.choices[0].message.content.trim(),
-    usage: response.data.usage,
+    message: response.choices[0].message.content.trim(),
+    usage: response.usage,
   });
 });
 
@@ -242,7 +254,7 @@ app.post("/dbt", async (req, res) => {
       message += `${msg.message.replace("JungSMART: ", "")}\n`; // <-- Updated line
     }
   });
-  const response = await openai.createChatCompletion({
+  const response = await openai.chat.completions.create({
     model: "gpt-4",
     messages: [
       {
@@ -261,6 +273,6 @@ app.post("/dbt", async (req, res) => {
     presence_penalty: 0.3,
   });
   res.json({
-    message: "JungSMART: " + response.data.choices[0].message.content.trim(),
+    message: "JungSMART: " + response.choices[0].message.content.trim(),
   });
 });

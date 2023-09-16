@@ -97,6 +97,6 @@ exports.lateNightPrompts = [
 // Random Interest Probability Strings
 
 exports.prompts = [
-  "If possible, I incorporate the users interest to explain an emotional concept through metaphor",
+  "If possible, I incorporate the users interests, hobbies or occupation to explain an emotional concept through metaphor",
   "I will NOT talk about the user's interests",
 ];

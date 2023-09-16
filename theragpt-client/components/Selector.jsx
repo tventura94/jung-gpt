@@ -40,8 +40,13 @@ import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
 import JungAdmat from "/jung-rev.png";
 import Image from "/img-2-scaled.jpg";
+import Welcome from "./Welcome";
 
-import Smart from "/notjustsmart.png";
+import Smart from "/notjustsmart.svg";
+import Smart2 from "/notjustsmart2.png";
+import Dec from "/dec.svg";
+import Dec2 from "/dec2.png";
+import Dec3 from "/dec3.svg";
 import {
   collection,
   where,
@@ -60,11 +65,67 @@ import { logPageView } from "../components/Fire";
 import { IconButton } from "@mui/material";
 import Over80 from "/Over80.png";
 import GoogleAd from "./googleAd";
+import { urlencoded } from "body-parser";
 
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
   const [logoSrc, setLogoSrc] = useState(MainLogo);
   const [checkedSecond, setCheckedSecond] = React.useState(false);
+  const [hasJob, setHasJob] = useState(false);
+  const [hasDescription, setHasDescription] = useState(false);
+  const [hasName, setHasName] = useState(false);
+  const [hasJobString, setHasJobString] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  useEffect(() => {
+    const checkJobCollection = async () => {
+      const jobCollectionRef = collection(db, "users", user.uid, "job");
+      const snapshot = await getDocs(jobCollectionRef);
+
+      // Checking if any document within 'job' collection contains a string
+      const jobStringExists = snapshot.docs.some((doc) => {
+        const data = doc.data();
+        return Object.values(data).some(
+          (value) => typeof value === "string" && value.trim() !== ""
+        );
+      });
+
+      setHasJobString(jobStringExists);
+      setLoading(false); // Set loading to false after check is done
+    };
+
+    checkJobCollection();
+  }, [user.uid, db]);
+
+  useEffect(() => {
+    const checkCollections = async () => {
+      const jobCollection = await collection(
+        db,
+        "users",
+        user.uid,
+        "job"
+      ).get();
+      const descriptionCollection = await collection(
+        db,
+        "users",
+        user.uid,
+        "description"
+      ).get();
+      const nameCollection = await collection(
+        db,
+        "users",
+        user.uid,
+        "name"
+      ).get();
+
+      setHasJob(!jobCollection.empty);
+      setHasDescription(!descriptionCollection.empty);
+      setHasName(!nameCollection.empty);
+    };
+
+    checkCollections();
+  }, [user.uid]);
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
@@ -260,7 +321,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           user={user}
         />
       </div>
-
+      {!loading && !hasJobString && <Welcome />}
       <div
         className="div"
         style={{
@@ -269,6 +330,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: isMobile ? "#607E92" : "",
+          background: isMobile
+            ? `linear-gradient(165deg, rgba(255,255,255,1) 0%, rgba(175,175,175,1) 100%), url(${Dec3})`
+            : `url(${Dec3})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           borderBottom: isMobile ? "silver 3px solid" : "",
           padding: isMobile ? "0em" : "1em",
           paddingBottom: "0rem",
@@ -363,9 +429,10 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
             maxWidth: "95vw",
             marginBottom: isMobile ? "3rem" : "0",
             margin: isMobile ? "0rem" : "0",
-            backgroundColor: isMobile ? "" : "whitesmoke",
-            padding: isMobile ? "" : "2.5rem",
-            marginTop: isMobile ? "2.5rem" : "3.5rem",
+            backgroundColor: isMobile ? "" : "",
+
+            padding: isMobile ? "" : "5.5rem",
+            marginTop: isMobile ? "2.5rem" : "0rem",
             borderRadius: "30px",
             marginBottom: "0rem",
           }}
@@ -425,15 +492,34 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <b>(Responses vary between 2-8 second wait times)</b>
               </p>
               <Button
-                style={{
-                  width: "30%",
-                  backgroundColor: "#607E92",
-                  color: "whitesmoke",
-                  margin: "2rem",
+                sx={{
+                  backgroundColor: "white",
+                  color: "#56778D",
+                  borderRadius: "10em",
+                  fontSize: isMobile ? "11px" : "14px",
+                  fontWeight: 600,
+                  backgroundColor: "#E8E2DE",
+                  padding: "1em 2em",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease-in-out",
+                  border: "1px solid #2D2D2D",
+                  boxShadow: "0 0 0 0 #2D2D2D",
+                  margin: "1rem",
+                  "&:hover": {
+                    transform: "translateY(-4px) translateX(-2px)",
+                    boxShadow: "2px 5px 0 0 #2D2D2D",
+                  },
+                  "&:active": {
+                    transform: "translateY(2px) translateX(1px)",
+                    boxShadow: "0 0 0 0 #2D2D2D",
+                    color: "#607E92",
+                  },
+                  fontFamily: "League Spartan, serif",
+                  width: isMobile ? "50%" : "40%",
                 }}
                 onClick={() => setAuthState("dashboard")}
               >
-                Chat Now
+                <b> Chat Now</b>
               </Button>
             </Box>
           </motion.div>
@@ -526,17 +612,35 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               </p>
 
               <Button
-                style={{
-                  width: "30%",
-                  backgroundColor: "#607E92",
-                  color: "whitesmoke",
-
-                  margin: "2rem",
+                sx={{
+                  backgroundColor: "white",
+                  color: "#56778D",
+                  borderRadius: "10em",
+                  fontSize: isMobile ? "11px" : "14px",
+                  fontWeight: 600,
+                  backgroundColor: "#E8E2DE",
+                  padding: "1em 2em",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease-in-out",
+                  border: "1px solid #2D2D2D",
+                  boxShadow: "0 0 0 0 #2D2D2D",
+                  margin: "1rem",
+                  "&:hover": {
+                    transform: "translateY(-4px) translateX(-2px)",
+                    boxShadow: "2px 5px 0 0 #2D2D2D",
+                  },
+                  "&:active": {
+                    transform: "translateY(2px) translateX(1px)",
+                    boxShadow: "0 0 0 0 #2D2D2D",
+                    color: "#607E92",
+                  },
+                  fontFamily: "League Spartan, serif",
+                  width: isMobile ? "50%" : "40%",
                 }}
                 onClick={() => setAuthState("dbt")}
                 disabled={subscriptionStatus !== "Premium"}
               >
-                Chat Now
+                <b>Chat Now</b>{" "}
               </Button>
             </Box>
           </motion.div>
@@ -546,9 +650,9 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
         style={{
           width: "100%",
           marginTop: "0rem",
-          marginBottom: "1rem",
+          borderTop: ".3rem silver solid",
         }}
-        src={Smart}
+        src={isMobile ? Smart2 : Smart}
       ></img>
       <Grid
         container
@@ -559,7 +663,11 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
           flexDirection: isMobile ? "column" : "row",
           margin: "0 auto",
           justifyContent: "center",
-          width: "95%",
+          width: "100%",
+          backgroundImage: `url(${isMobile ? Dec2 : Dec})`,
+
+          backgroundRepeat: "no-repeat",
+          backgroundSize: isMobile ? "contain" : "contain",
         }}
       >
         <Grid item xs={11} sm={6} md={4} lg={3}>
@@ -568,7 +676,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               padding: "1rem",
               textAlign: "center",
               boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-              borderRadius: "8px",
+              borderRadius: "40px",
             }}
           >
             <Grid
@@ -593,6 +701,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   textAlign: "center",
                   margin: "0 auto",
                   fontFamily: "Montserrat",
+                  fontSize: "19px",
                 }}
               >
                 At JungGPT, we've had the privilege of consulting with a team of
@@ -612,7 +721,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               padding: "1rem",
               textAlign: "center",
               boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-              borderRadius: "8px",
+              borderRadius: "40px",
             }}
           >
             <Grid
@@ -650,7 +759,12 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 <br />
                 SAPP is an custom in-house techology built from the ingenuity of
                 our developers at Ventura UX. Imagine a chatbot that doesn't
-                just respond but actually 'feels' the vibe of the conversation.
+                just respond but actually 'feels' the vibe of the conversation
+                and changes its decision making real-time based on user input.
+                <br />
+                <b>
+                  Our tool is the most dynamic emotional support tool to date!
+                </b>
                 <br />
                 <br />{" "}
                 <span
@@ -659,14 +773,6 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                   }}
                 >
                   {" "}
-                  <b>
-                    {" "}
-                    Using advanced natural language technology, SAPP tunes into
-                    the emotion behind your words and adapts accordingly. It's
-                    like giving 'thoughts' to the chatbot, real time, based on
-                    the users input; we've created this massive database of
-                    "thoughts" with the help of a consulting psychologist.
-                  </b>
                 </span>{" "}
               </Typography>
             </Grid>
@@ -678,7 +784,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               padding: "1rem",
               textAlign: "center",
               boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-              borderRadius: "8px",
+              borderRadius: "40px",
             }}
           >
             <img
@@ -1028,23 +1134,16 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               alignItems: "center",
               justifyContent: "space-between",
               marginBottom: "1rem",
+              width: "100%",
+              padding: "2rem",
             }}
           >
-            <img
-              style={{
-                borderRadius: "16px",
-                marginBottom: "0rem",
-                marginTop: "2rem",
-                width: isMobile ? "97%" : "50%",
-              }}
-              src={JungAdmat}
-              alt="admat"
-            />
             <Typography
               variant="body1"
               style={{
                 minWidth: "50%", // Add this line
-                marginTop: isMobile ? "0rem" : "",
+                marginTop: isMobile ? "0rem" : "2rem",
+                marginBottom: isMobile ? "0rem" : "2rem",
                 textAlign: "center",
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
@@ -1053,6 +1152,8 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                 fontFamily: "'Roboto Slab', serif",
                 fontSize: isMobile ? "1.05rem" : "1.1875rem",
                 color: "#121212",
+                padding: "1rem",
+                borderRadius: "30px",
               }}
             >
               <b>

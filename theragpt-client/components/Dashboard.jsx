@@ -51,6 +51,9 @@ export default function Dashboard({
   const [lastMessageTime, setLastMessageTime] = useState(0);
   const [timer, setTimer] = useState(0);
   const [open, setOpen] = useState(true);
+  const [jobValue, setJobValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
+  const [nameValue, setNameValue] = useState("");
 
   // Emotion / Interests Select overlay
   const [selectedEmotions, setSelectedEmotions] = useState([]);
@@ -59,6 +62,54 @@ export default function Dashboard({
   const [typedInterest, setTypedInterest] = useState("");
   const [interestsData, setInterestsData] = useState(null);
   const [isOldChat, setIsOldChat] = useState(false);
+
+  useEffect(() => {
+    const checkCollections = async () => {
+      const jobCollectionRef = collection(db, "users", user.uid, "job");
+      const descriptionCollectionRef = collection(
+        db,
+        "users",
+        user.uid,
+        "description"
+      );
+      const nameCollectionRef = collection(db, "users", user.uid, "name");
+
+      // Fetch the documents from the subcollections
+      const jobSnapshot = await getDocs(jobCollectionRef);
+      const descriptionSnapshot = await getDocs(descriptionCollectionRef);
+      const nameSnapshot = await getDocs(nameCollectionRef);
+
+      // Extract values from the documents
+      const jobDoc = jobSnapshot.docs[0];
+      if (jobDoc) {
+        const jobData = jobDoc.data();
+        if (jobData && jobData.value) {
+          // Assuming the field name is 'value' inside the job document
+          setJobValue(jobData.value);
+        }
+      }
+
+      const descriptionDoc = descriptionSnapshot.docs[0];
+      if (descriptionDoc) {
+        const descriptionData = descriptionDoc.data();
+        if (descriptionData && descriptionData.value) {
+          // Assuming the field name is 'value' inside the description document
+          setDescriptionValue(descriptionData.value);
+        }
+      }
+
+      const nameDoc = nameSnapshot.docs[0];
+      if (nameDoc) {
+        const nameData = nameDoc.data();
+        if (nameData && nameData.value) {
+          // Assuming the field name is 'value' inside the name document
+          setNameValue(nameData.value);
+        }
+      }
+    };
+
+    checkCollections();
+  }, [user.uid]);
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -201,39 +252,6 @@ export default function Dashboard({
     getInterestsFromFirebase();
   }, []);
 
-  const handleInterestClick = (interest) => {
-    setSelectedInterests((prev) => {
-      const newSelectedInterests = prev.includes(interest)
-        ? prev.filter((i) => i !== interest)
-        : [...prev, interest];
-
-      // Define a function to send the new state to Firebase
-      const sendInterestsToFirebase = () => {
-        const userRef = doc(db, "users", user.uid); // Document reference
-        const interestRef = collection(userRef, "interests"); // Subcollection reference
-
-        const newInterestDoc = doc(interestRef, user.uid); // New document reference within the subcollection
-
-        setDoc(newInterestDoc, {
-          // Define the document
-          selectedInterests: newSelectedInterests,
-          typedInterest: typedInterest,
-        })
-          .then(() => {
-            console.log("");
-          })
-          .catch((error) => {
-            console.error("Error writing interests: ", error);
-          });
-      };
-      // Call the function to send the new interests to Firebase
-      sendInterestsToFirebase();
-
-      // Return the new state to update the selectedInterests state variable
-      return newSelectedInterests;
-    });
-  };
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -375,17 +393,17 @@ export default function Dashboard({
     setChatLog(chatLogNew);
 
     // Fetch to backend   LIVE  https://jung-gpt.onrender.com/jung   DEV http://localhost:3080/jung"
-    const response = await fetch("http://localhost:3080/jung", {
+    const response = await fetch("https://jung-gpt.onrender.com/jung", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        jobValue: jobValue, // <-- Adjusted this
+        descriptionValue: descriptionValue, // <-- And this
+        nameValue: nameValue, // <-- And this
         conversation: chatLogNew,
-        userId: userId,
-        emotions: selectedEmotions, // send the selected emotions
-        interests: selectedInterests, // send the selected interests
-        typedInterest: typedInterest,
+        emotions: selectedEmotions,
         localHour: new Date().getHours(),
       }),
     });
@@ -488,8 +506,22 @@ export default function Dashboard({
   const bannedKeywords = [
     "suicide",
     "self-harm",
+    "selfharm",
+    "kill others",
+    "cut myself",
+    "cutting myself",
+    "I'm cutting",
+    "im cutting",
+    "im cuting",
+    "im cuttin",
+    "I'm cuttin",
+    "burn myself",
+    "burning myself",
+    "murder",
+    "murder others",
     "suicid",
     "unalive",
+    "un-alive",
     "unalivv",
     "unalivvve",
     "unalived",
@@ -498,7 +530,6 @@ export default function Dashboard({
     "ending my life",
     "take my own life",
     "kill myself",
-    "kms",
     "hurt myself",
     "self inflicted",
     "overdose",
@@ -608,7 +639,7 @@ export default function Dashboard({
                       backgroundColor: "white",
                       color: "black",
                       borderRadius: "10em",
-                      fontSize: isMobile ? "11px" : "14px",
+                      fontSize: isMobile ? "10px" : "12px",
                       fontWeight: 600,
                       padding: "1em 2em",
                       cursor: "pointer",
@@ -653,11 +684,11 @@ export default function Dashboard({
                 backgroundColor: "white",
                 color: "black",
                 borderRadius: "10em",
-                fontSize: isMobile ? "13px" : "17px",
+                fontSize: isMobile ? "13px" : "15px",
                 fontWeight: 600,
 
                 fontFamily: "League Spartan",
-                padding: "1em 2em",
+                padding: "1em",
                 cursor: "pointer",
                 transition: "all 0.3s ease-in-out",
                 border: "1px solid black",
@@ -666,6 +697,7 @@ export default function Dashboard({
                   transform: "translateY(-4px) translateX(-2px)",
                   boxShadow: "2px 5px 0 0 black",
                   backgroundColor: "#607E92",
+                  color: "whitesmoke",
                 },
                 "&:active": {
                   transform: "translateY(2px) translateX(1px)",
@@ -685,145 +717,6 @@ export default function Dashboard({
 
         {/* Metaphor Feature************************ */}
 
-        <Dialog
-          sx={{ backgroundColor: "#1e4a66a3" }}
-          open={interestsOpen}
-          onClose={() => setInterestsOpen(false)}
-        >
-          <DialogContent
-            sx={{
-              backgroundColor: "whitesmoke",
-              border: "4px solid gray",
-              display: "flex",
-              flexDirection: "column",
-              margin: "0 auto",
-            }}
-          >
-            <Typography
-              sx={{
-                padding: ".8rem",
-                fontSize: isMobile ? "18px" : "21px",
-                fontFamily: "League Spartan, serif",
-                textAlign: "left",
-                borderBottom: "1px solid silver",
-                marginBottom: "1.5rem",
-              }}
-            >
-              JungGPT has been trained to use metaphor in a strategic,
-              personalized way to help users further understand emotions and
-              circumstance.
-              <br />
-              <br />
-              What are some of your interests to help JungGPT "speak your
-              language"?
-            </Typography>
-
-            <TextField
-              label="Type your interests"
-              variant="outlined"
-              value={typedInterest}
-              onChange={(e) => setTypedInterest(e.target.value)}
-              sx={{ marginBottom: "1rem" }}
-            />
-
-            <Grid
-              sx={{
-                marginLeft: isMobile ? "1rem" : "",
-              }}
-              container
-              spacing={2}
-            >
-              {[
-                "Music 🎵",
-                "Sports ⚽",
-                "Art 🎨",
-                "Tech 💻",
-                "Film 🎥",
-                "Videogames 🎮",
-                "Psychology 🔮",
-                "Counseling 🫂 ",
-                "Astrology 🌠",
-                "Science 🔬",
-                "Superheroes 💥",
-                "Animals 🐶", // ... other interests
-              ].map((interest) => (
-                <Grid item xs={isMobile ? 5 : 4} key={interest}>
-                  <Button
-                    sx={{
-                      backgroundColor: "white",
-                      color: "black",
-                      borderRadius: "10em",
-                      fontSize: isMobile ? "10px" : "12px",
-                      fontWeight: 600,
-                      padding: "1em 2em",
-                      cursor: "pointer",
-                      transition: "all 0.3s ease-in-out",
-                      border: "1px solid black",
-                      boxShadow: "0 0 0 0 black",
-                      "&:hover": {
-                        transform: "translateY(-4px) translateX(-2px)",
-                        boxShadow: "2px 5px 0 0 black",
-                      },
-                      "&:active": {
-                        transform: "translateY(2px) translateX(1px)",
-                        boxShadow: "0 0 0 0 black",
-                      },
-                      fontFamily: "'League Spartan', serif",
-                      variant: selectedInterests.includes(interest)
-                        ? "contained"
-                        : "outlined",
-                      ...(selectedInterests.includes(interest) && {
-                        color: "#3B83B4",
-                      }),
-                    }}
-                    onClick={() => handleInterestClick(interest)}
-                  >
-                    {interest}
-                  </Button>
-                </Grid>
-              ))}
-            </Grid>
-
-            <Button
-              sx={{
-                marginTop: "2rem",
-                backgroundColor: "#3B83B4",
-                border: "1px solid pink",
-                color: "whitesmoke",
-                width: "50%",
-                alignContent: "center",
-                alignSelf: "center",
-                // The button styles:
-                backgroundColor: "white",
-                color: "black",
-                borderRadius: "10em",
-                fontSize: isMobile ? "13px" : "17px",
-                fontWeight: 600,
-                padding: "1em 2em",
-                cursor: "pointer",
-                transition: "all 0.3s ease-in-out",
-                border: "1px solid black",
-                boxShadow: "0 0 0 0 black",
-                fontFamily: "League Spartan",
-                "&:hover": {
-                  transform: "translateY(-4px) translateX(-2px)",
-                  boxShadow: "2px 5px 0 0 black",
-                  backgroundColor: "#607E92",
-                },
-                "&:active": {
-                  transform: "translateY(2px) translateX(1px)",
-                  boxShadow: "0 0 0 0 black",
-                },
-              }}
-              variant="contained"
-              onClick={() => {
-                setInterestsOpen(false);
-              }}
-            >
-              Start Chat
-            </Button>
-          </DialogContent>
-        </Dialog>
         {/* ************************** */}
         <Dialog
           open={showDeveloperNotes}

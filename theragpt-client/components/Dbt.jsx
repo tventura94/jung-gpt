@@ -374,7 +374,7 @@ export default function Dbt({
     setChatLog(chatLogNew);
 
     // Fetch to backend   LIVE  https://jung-gpt.onrender.com/dbt   DEV http://localhost:3080/dbt"
-    const response = await fetch("http://localhost:3080/dbt", {
+    const response = await fetch("https://jung-gpt.onrender.com/dbt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -483,10 +483,21 @@ export default function Dbt({
   function handleMenuToggle() {
     setIsMenuOpen(!isMenuOpen);
   }
-
   const bannedKeywords = [
     "suicide",
     "self-harm",
+    "selfharm",
+    "kill others",
+    "cut myself",
+    "I'm cutting",
+    "im cutting",
+    "im cuting",
+    "im cuttin",
+    "I'm cuttin",
+    "burn myself",
+    "burning myself",
+    "murder",
+    "murder others",
     "suicid",
     "unalive",
     "unalivv",

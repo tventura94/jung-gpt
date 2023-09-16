@@ -615,3 +615,13 @@ body {
   background-position-y: 70%;
   background-repeat: no-repeat;
 }
+
+.overlay-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+  z-index: 1000;
+}
