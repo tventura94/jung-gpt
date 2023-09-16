@@ -95,7 +95,7 @@ app.post("/jung", async (req, res) => {
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "dist", "index.html?v=1"));
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
   let message = `The users name is ${nameValue}. I infrequently refer to the user by their first name to appear more personable.
@@ -210,7 +210,7 @@ app.post("/dbt", async (req, res) => {
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "dist", "index.html?v=1"));
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
 
   let message = `I am JungSMART.
