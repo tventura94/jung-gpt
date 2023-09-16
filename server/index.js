@@ -92,7 +92,6 @@ app.post("/jung", async (req, res) => {
   } else {
     selectedPrompt = prompts[1]; // 80% chance
   }
-
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
