@@ -7,14 +7,6 @@ const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
-const { Pinecone } = require("@pinecone-database/pinecone");
-
-const pinecone = new Pinecone({
-  apiKey: process.env.PINECONE_API_KEY,
-  environment: process.env.PINECONE_ENVIRONMENT,
-});
-
-const index = pinecone.Index("junggpt");
 
 const openai = new OpenAI({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
