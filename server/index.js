@@ -7,7 +7,6 @@ const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
-require("abortcontroller-polyfill/dist/cjs-ponyfill");
 
 const openai = new OpenAI({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
