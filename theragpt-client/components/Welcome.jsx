@@ -352,9 +352,9 @@ const WelcomeOverlay = () => {
           <>
             <p
               style={{
-                fontSize: isMobile ? "27px" : "30px",
+                fontSize: isMobile ? "25px" : "30px",
                 marginBottom: "1rem",
-                marginLeft: isMobile ? "3rem" : "",
+                marginLeft: isMobile ? "5rem" : "",
               }}
             >
               Great! And what do you do for a profession?🧑🏾‍💼
@@ -385,6 +385,7 @@ const WelcomeOverlay = () => {
                 },
                 fontFamily: "League Spartan, serif",
                 width: "40%",
+                marginLeft: isMobile ? "3rem" : "",
               }}
               maxLength={30}
               type="text"
@@ -417,7 +418,7 @@ const WelcomeOverlay = () => {
                   color: "#607E92",
                 },
                 fontFamily: "League Spartan, serif",
-                width: "40%",
+                width: isMobile ? "33%" : "40%",
               }}
               onClick={() => {
                 saveToFirebase("job", job);
@@ -443,6 +444,7 @@ const WelcomeOverlay = () => {
                 style={{
                   width: isMobile ? "90%" : "52.5%",
                   fontSize: "22px",
+                  lineHeight: isMobile ? "30px" : "",
                 }}
               >
                 Are there any fundamental details about yourself you would like
