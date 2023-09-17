@@ -33,6 +33,7 @@ import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp 
 import { Timestamp } from "firebase/firestore";
 import ButtonCanva from "/button.png";
 import Stress from "./Stress";
+import Dec3 from "/dec3.svg";
 
 export default function Dashboard({
   setUserEmail,
@@ -736,6 +737,8 @@ export default function Dashboard({
           <DialogContent
             sx={{
               backgroundColor: "#607E92",
+              backgroundImage: `src(${Dec3})`,
+              backgroundSize: "contain",
               color: "white",
             }}
           >
@@ -746,7 +749,7 @@ export default function Dashboard({
                     fontFamily: "'League Spartan', serif",
                     color: "whitesmoke",
                     fontSize: isMobile ? "20px" : "25px",
-                    margin: "1rem",
+                    marginTop: "1rem",
                   }}
                 >
                   Right now, people all over the globe are getting help with
@@ -755,7 +758,7 @@ export default function Dashboard({
                   <b
                     style={{
                       color: "pink",
-                      fontSize: "32px",
+                      fontSize: isMobile ? "20px" : "32px",
                     }}
                   >
                     Its only 7 dollars a month!{" "}
@@ -772,7 +775,7 @@ export default function Dashboard({
 
                 <Typography
                   sx={{
-                    fontSize: "22px",
+                    fontSize: isMobile ? "18px" : "22px",
                     fontFamily: "'Montserrat', serif",
                     color: "white",
                   }}
@@ -785,7 +788,7 @@ export default function Dashboard({
                   sx={{
                     fontFamily: "'League Spartan', serif",
                     color: "pink",
-                    fontSize: "20px",
+                    fontSize: isMobile ? "17px" : "20px",
                   }}
                 >
                   {" "}
@@ -793,86 +796,12 @@ export default function Dashboard({
                   JungSMART and all current and future models
                   <br /> - 600 character context length per message
                 </Typography>
-                <DialogTitle
-                  sx={{
-                    fontFamily: "'Roboto Slab', serif",
-                    color: "white",
-                  }}
-                >
-                  Weekly Developer Notes - 9/11/23
-                </DialogTitle>
-                <ListItem
-                  sx={{
-                    color: "pink",
-                    borderRadius: "30px",
-                    padding: "1rem",
-                  }}
-                >
-                  - Currently, leading with basic statements like "I feel
-                  anxious" sometimes causes JungGPT to act counterintuitively.
-                  To avoid this behavior, simply type "Can we talk about the
-                  anxiety I'm feeling?" or something of the like.
-                  <br />
-                </ListItem>
-                <ListItem
-                  sx={{
-                    display: "flex",
-                    flexDirection: " column",
-                    color: "pink",
-                  }}
-                >
-                  <b
-                    style={{
-                      color: "whitesmoke",
-                      fontSize: "22px",
-                      textAlign: "left",
-                      textDecoration: "underline",
-                    }}
-                  >
-                    Added Features - 9/11/23
-                  </b>
-                  <br />
-                  <b
-                    style={{
-                      color: "whitesmoke",
-                      fontSize: "19px",
-                      textAlign: "left",
-                    }}
-                  >
-                    {" "}
-                    SAPP:{" "}
-                  </b>
-                  SAPP, our proprietary technology developed by Ventura UX, goes
-                  beyond traditional chatbots. With advanced natural language
-                  processing, SAPP senses the conversation's emotion and
-                  responds accordingly. It's like giving real-time 'thoughts' to
-                  the chatbot, tailored by consulting a psychologist. Get
-                  genuine assistance with SAPP.
-                  <br />
-                  <br />
-                  <b
-                    style={{
-                      color: "whitesmoke",
-                      fontSize: "19px",
-                      textAlign: "left",
-                    }}
-                  >
-                    Saving and continuing previous conversations for Premium
-                    Users
-                  </b>
-                  <br />
-                  You can now view and continue your past 9 conversations on
-                  Premium. Please be advised, tokenage compounds. Continuing old
-                  conversations for too long will cause the bot to hallucinate,
-                  lose effectiveness and cause your monthly bill to heavily
-                  increase. We advise using your past chats as reference, and to
-                  not continue them past 60 messages.
-                </ListItem>
+
                 <ListItem
                   sx={{
                     fontFamily: "'Roboto Slab', serif",
                     color: "white",
-                    fontSize: "18px",
+                    fontSize: isMobile ? "16px" : "18px",
                   }}
                 >
                   please email support@ventura-ux.com for any issues
@@ -881,11 +810,38 @@ export default function Dashboard({
               </List>
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions
+            sx={{
+              backgroundColor: "#607E92",
+            }}
+          >
             <Button
-              sx={{
-                color: "brown",
-                backgroundColor: "#A7D2B7",
+              style={{
+                backgroundColor: "#E8E2DE",
+                color: "#56778D",
+                borderRadius: "10em",
+                fontSize: "18px",
+                fontWeight: 600,
+                padding: "0.3rem",
+                cursor: "pointer",
+                transition: "all 0.3s ease-in-out",
+                border: "1px solid #2D2D2D",
+                boxShadow: "0 0 0 0 #2D2D2D",
+                margin: "1rem",
+                "&:hover": {
+                  transform: "translateY(-4px) translateX(-2px)",
+                  boxShadow: "2px 5px 0 0 #2D2D2D",
+                  backgroundColor: "#607E92",
+                  color: "whitesmoke",
+                },
+                "&:active": {
+                  transform: "translateY(2px) translateX(1px)",
+                  boxShadow: "0 0 0 0 #2D2D2D",
+                  color: "#607E92",
+                },
+                fontFamily: "League Spartan, serif",
+                width: "30%",
+                marginTop: "-1rem",
               }}
               onClick={() => setShowDeveloperNotes(false)}
             >
