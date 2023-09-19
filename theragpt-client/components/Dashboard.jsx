@@ -939,6 +939,8 @@ export default function Dashboard({
                             ? "silver"
                             : background === "FutureCity"
                             ? "#FFD1A3"
+                            : background === "Cat"
+                            ? "black"
                             : "",
                       }}
                       onClick={handleMenuToggle}
