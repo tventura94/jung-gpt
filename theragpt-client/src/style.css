@@ -358,9 +358,7 @@ body {
   color: whitesmoke;
   border: pink 1px solid;
 }
-.button-cat {
-  background-color: #ff6161;
-}
+
 .futurecity-border {
   border: 1px solid salmon;
   color: white;
@@ -654,6 +652,9 @@ body {
     border: 1px solid salmon;
     color: #363d46;
   }
+  .button-cat {
+    background-color: #ff6161;
+  }
 }
 
 .sidemenu {
@@ -813,7 +814,9 @@ body {
   background-color: rgb(83, 78, 78);
   color: whitesmoke;
 }
-
+.button-cat {
+  background-color: #ff6161;
+}
 .background-selector select {
   /* Other existing styles ... */
   transition: all 0.3s ease; /* This will smoothly transition all properties of the select element */
