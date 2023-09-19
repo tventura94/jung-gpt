@@ -31,7 +31,6 @@ import {
 import GoldLogo from "/gpt-gold.png";
 import JungLogo from "/will.png";
 import { logPageView } from "../components/Fire";
-import Harvard from "/harvard2.jpg";
 import SAPP from "/SAPP.png";
 import Choose from "/chooseus.png";
 import Pricing from "/pricing.jpg";

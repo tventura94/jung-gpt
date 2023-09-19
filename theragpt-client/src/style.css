@@ -120,7 +120,6 @@ html {
   padding: 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-y: auto; /* This will enable scrolling when the content overflows the max-height */
 
   /* Gradient background for a glassy effect */
   background: linear-gradient(
@@ -199,9 +198,10 @@ html {
 
 .chat-input-holder {
   padding: 12px;
-  width: 45%;
+  width: 80%;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  margin-right: 0rem;
 }
 .chat-disclaimer {
   font-size: 11px;
@@ -329,7 +329,42 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.nightsky-border {
+  border: 1px solid salmon;
+  color: #363d46;
+}
+.black-border {
+  border: 1px solid silver;
+  color: silver;
+}
+.sleek-border {
+  color: white;
+  border: silver 1px solid;
+}
+.lavalamp-border {
+  color: #447ef2;
+  border: #447ef2 1px solid;
+}
+.cat-border {
+  color: white;
+  border: 1px solid salmon;
+}
+.campfire-border {
+  color: #fc847b;
+  border: #4163ad 1px solid;
+}
 
+.dots-border {
+  color: whitesmoke;
+  border: pink 1px solid;
+}
+.button-cat {
+  background-color: #ff6161;
+}
+.futurecity-border {
+  border: 1px solid salmon;
+  color: white;
+}
 @media screen and (max-width: 650px) {
   body {
     background-image: url(../logos/jung-mobile.svg);
@@ -344,7 +379,6 @@ body {
     padding: 10px;
     justify-content: flex-start;
     align-items: flex-start;
-    overflow-y: auto; /* This will enable scrolling when the content overflows the max-height */
 
     /* Gradient background for a glassy effect */
     background: linear-gradient(
@@ -375,7 +409,57 @@ body {
         inset 0 0 8px rgba(0, 0, 0, 0.1);
     }
   }
+  .sidemenu {
+    position: fixed;
+    top: 0;
+    left: 0px; /* Initially, it's fully off the screen. */
+    height: 100%; /* Make it full height. */
+    width: 250px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/dec3.svg);
+    background-blend-mode: luminosity;
+    z-index: 1000; /* Assuming it should be on top of most other elements. Adjust as needed. */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for some depth */
+  }
 
+  .sidemenu.open {
+    color: white;
+    transform: translateX(
+      0px
+    ); /* This moves the menu to the right by its own width, essentially showing it. */
+  }
+  .sidemenu::-webkit-scrollbar {
+    width: 8px; /* Adjust this value to make the scrollbar wider or narrower */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.05
+    ); /* This gives a slight background color to the track of the scrollbar */
+  }
+
+  /* Style the scrollbar thumb (the part you drag) */
+  .sidemenu::-webkit-scrollbar-thumb {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ); /* This is the main color of the scrollbar */
+    border-radius: 4px; /* This makes the scrollbar thumb rounded */
+    border: 2px solid transparent; /* This will create space between the thumb and the track, to simulate some spacing */
+    background-clip: padding-box; /* This is important when using the border on the thumb */
+  }
+
+  /* Style the scrollbar thumb on hover for better feedback */
+  .sidemenu::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.25); /* Darker color on hover */
+  }
   .side-menu-button {
     display: flex;
     padding: 0px;
@@ -398,7 +482,7 @@ body {
   }
   .chatbox {
     margin: 0 auto;
-    width: 100%;
+    width: 93%;
     border-top: 1px rgba(255, 255, 255, 0.204) solid;
     display: flex;
     justify-content: space-between;
@@ -418,12 +502,13 @@ body {
   }
 
   .chat-input-textarea {
+    position: relative;
     overflow: hidden;
     background-color: #c1c0bf;
     width: 140%;
     border: 0px;
     padding: 15px;
-    margin-top: 1rem;
+    margin-top: 1.15rem;
     border-radius: 10px;
     font-family: "Arial";
     color: black;
@@ -535,6 +620,39 @@ body {
     min-height: 95vh;
     transition: background 0.5s ease; /* Change 0.5s to whatever duration you want */
     -webkit-transition: background 0.5s ease; /* WebKit browsers */
+  }
+  .nightsky-border {
+    border: 1px solid salmon;
+    color: #363d46;
+  }
+  .black-border {
+    border: 1px solid silver;
+    color: gray;
+  }
+  .sleek-border {
+    color: #607e92;
+    border: #607e92 1px solid;
+  }
+  .lavalamp-border {
+    color: #447ef2;
+    border: #447ef2 1px solid;
+  }
+  .cat-border {
+    color: #ff6161;
+    border: 1px solid salmon;
+  }
+  .campfire-border {
+    color: #fc847b;
+    border: #4163ad 1px solid;
+  }
+
+  .dots-border {
+    color: #607e92;
+    border: #607e92 1px solid;
+  }
+  .futurecity-border {
+    border: 1px solid salmon;
+    color: #363d46;
   }
 }
 
@@ -693,18 +811,6 @@ body {
 
 .button-black {
   background-color: rgb(83, 78, 78);
-  color: whitesmoke;
-}
-
-.nightsky-border {
-  border: 1px solid salmon;
-  color: #363d46;
-}
-.button-cat {
-  background-color: #ff6161;
-}
-.futurecity-border {
-  border: 1px solid whitesmoke;
   color: whitesmoke;
 }
 

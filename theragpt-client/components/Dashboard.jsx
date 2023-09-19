@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -73,7 +73,28 @@ export default function Dashboard({
     "FutureCity",
     "CampFire",
   ];
+  const sideMenuRef = useRef(null); // Create a reference for the side menu
+  useEffect(() => {
+    // Define a function to handle document click
+    const handleDocumentClick = (event) => {
+      // Check if the side menu is open and the clicked element is not within the side menu
+      if (
+        isMenuOpen &&
+        sideMenuRef.current &&
+        !sideMenuRef.current.contains(event.target)
+      ) {
+        setIsMenuOpen(false); // Close the side menu
+      }
+    };
 
+    // Attach the event listener
+    document.addEventListener("click", handleDocumentClick);
+
+    // Cleanup - remove the event listener when the component is unmounted
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [isMenuOpen]);
   function handleUpgrade() {
     setAuthState("upgrade");
   }
@@ -826,6 +847,7 @@ export default function Dashboard({
         {user ? (
           <div className={`header ${background}`}>
             <aside
+              ref={sideMenuRef} // Attach the reference to the side menu
               className={`sidemenu ${isMenuOpen ? "open" : ""}`}
               onClick={handleMenuToggle}
             >
@@ -856,7 +878,10 @@ export default function Dashboard({
                     style={{
                       marginTop: "1rem",
                       marginBottom: "1rem",
-                      marginLeft: isMobile ? "1.5rem" : "2.7rem",
+                      marginLeft: isMobile ? "2.3rem" : "1.6rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
                     <select
@@ -864,7 +889,7 @@ export default function Dashboard({
                         backgroundColor: "white",
                         color: "black",
                         borderRadius: "10em",
-                        fontSize: isMobile ? "14px" : "16px",
+                        fontSize: isMobile ? "16px" : "16px",
                         fontWeight: 500,
                         padding: ".5em ",
                         textAlign: "center",
@@ -890,6 +915,36 @@ export default function Dashboard({
                         </option>
                       ))}
                     </select>
+                    <button
+                      style={{
+                        marginLeft: isMobile ? "1rem" : "2.0rem",
+                        fontSize: isMobile ? "33px" : "30px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        backgroundColor: "transparent",
+                        border: "none",
+                        color:
+                          background === "Sleek"
+                            ? "whitesmoke"
+                            : background === "Nightsky"
+                            ? "#D791C7"
+                            : background === "Dots"
+                            ? "whitesmoke"
+                            : background === "Lavalamp"
+                            ? "#447ef2"
+                            : background === "CampFire"
+                            ? "#a07493"
+                            : background === "Black"
+                            ? "silver"
+                            : background === "FutureCity"
+                            ? "#FFD1A3"
+                            : "",
+                      }}
+                      onClick={handleMenuToggle}
+                    >
+                      <i className="fas fa-bars"></i>
+                    </button>
                   </div>
 
                   {/* Only render chat histories for "active" subscribers */}
@@ -902,6 +957,18 @@ export default function Dashboard({
                             ? "nightsky-border"
                             : background === "FutureCity"
                             ? "futurecity-border"
+                            : background === "Black"
+                            ? "black-border"
+                            : background === "Sleek"
+                            ? "sleek-border"
+                            : background === "Dots"
+                            ? "dots-border"
+                            : background === "Lavalamp"
+                            ? "lavalamp-border"
+                            : background === "Cat"
+                            ? "cat-border"
+                            : background === "CampFire"
+                            ? "campfire-border"
                             : ""
                         }`}
                         onClick={(e) => {
@@ -936,10 +1003,7 @@ export default function Dashboard({
                 ))}
               </div>
               <div className="chat-input-holder">
-                <div
-                  style={{ width: isMenuOpen ? "35vw" : "54vw" }}
-                  className="form-container"
-                >
+                <div style={{ width: "60%" }} className="form-container">
                   <form onSubmit={handleSubmit}>
                     <div>
                       <BannedWordsModal

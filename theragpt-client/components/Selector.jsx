@@ -38,8 +38,6 @@ import MainLogo from "/will.png";
 import { useEffect, useState } from "react";
 import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
-import JungAdmat from "/jung-rev.png";
-import Image from "/img-2-scaled.jpg";
 import Welcome from "./Welcome";
 
 import Smart from "/notjustsmart.svg";
