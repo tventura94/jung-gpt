@@ -63,7 +63,16 @@ export default function Dashboard({
   const [typedInterest, setTypedInterest] = useState("");
   const [interestsData, setInterestsData] = useState(null);
   const [isOldChat, setIsOldChat] = useState(false);
-  const backgrounds = ["Sleek", "Dots", "Nightsky", "Lavalamp", "Cat"];
+  const backgrounds = [
+    "Sleek",
+    "Black",
+    "Dots",
+    "Nightsky",
+    "Lavalamp",
+    "Cat",
+    "FutureCity",
+    "CampFire",
+  ];
 
   function handleUpgrade() {
     setAuthState("upgrade");
@@ -301,9 +310,9 @@ export default function Dashboard({
   // Subscription pay wall logic - if the user isnt subscribed they get 16 messages total, and a warning popup at 12 messages.
   useEffect(() => {
     if (subscriptionStatus !== "active") {
-      if (chatLog.length >= 10) {
+      if (chatLog.length >= 15) {
         setTrialLimitReached(true);
-      } else if (chatLog.length === 6) {
+      } else if (chatLog.length === 11) {
         setWarningPopup(true); // Show the warning popup at the 9th message
       }
     } else {
@@ -889,7 +898,11 @@ export default function Dashboard({
                       <div
                         key={chat.id}
                         className={`side-menu-button2 ${
-                          background === "Nightsky" ? "nightsky-border" : ""
+                          background === "Nightsky"
+                            ? "nightsky-border"
+                            : background === "FutureCity"
+                            ? "futurecity-border"
+                            : ""
                         }`}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -971,6 +984,12 @@ export default function Dashboard({
                           ? "button-lavalamp"
                           : background === "Cat"
                           ? "button-cat"
+                          : background === "FutureCity"
+                          ? "button-futurecity"
+                          : background === "CampFire"
+                          ? "button-campfire"
+                          : background === "Black"
+                          ? "button-black"
                           : ""
                       }`}
                       disabled={trialLimitReached}
@@ -988,7 +1007,14 @@ export default function Dashboard({
                   </form>
                 </div>
                 <div
-                  style={{ color: background === "Nightsky" ? "#363d46" : "" }}
+                  style={{
+                    color:
+                      background === "Nightsky"
+                        ? "#363d46"
+                        : background === "FutureCity"
+                        ? "whitesmoke"
+                        : "",
+                  }}
                 >
                   {timer > 0 && (
                     <span>
@@ -1000,7 +1026,12 @@ export default function Dashboard({
                   style={{
                     paddingTop: "0rem",
                     fontFamily: "League Spartan",
-                    color: background === "Nightsky" ? "#363d46" : "",
+                    color:
+                      background === "Nightsky"
+                        ? "#363d46"
+                        : background === "FutureCity"
+                        ? "white"
+                        : "",
                   }}
                   className="chat-disclaimer"
                 >
@@ -1013,7 +1044,12 @@ export default function Dashboard({
                     fontFamily: "League Spartan",
                     textDecoration: "none",
                     backgroundColor: "transparent",
-                    color: background === "Nightsky" ? "#363d46" : "",
+                    color:
+                      background === "Nightsky"
+                        ? "#363d46"
+                        : background === "FutureCity"
+                        ? "white"
+                        : "",
                   }}
                   className="chat-disclaimer"
                 >

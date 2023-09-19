@@ -655,19 +655,45 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.Calming {
-  background-image: url("/calming.gif");
+.FutureCity {
+  background-image: url("/space.gif");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+}
+
+.CampFire {
+  background-image: url("/campfire.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Black {
+  background-image: url("/black.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .button-nightsky {
   background-color: pink;
 }
+
+.button-campfire {
+  background-color: #a07493;
+}
 .button-lavalamp {
   background-color: #447ef2;
+}
+
+.button-futurecity {
+  background-color: #c55059;
+}
+
+.button-black {
+  background-color: rgb(83, 78, 78);
+  color: whitesmoke;
 }
 
 .nightsky-border {
@@ -676,6 +702,10 @@ body {
 }
 .button-cat {
   background-color: #ff6161;
+}
+.futurecity-border {
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
 }
 
 .background-selector select {
