@@ -1267,7 +1267,9 @@ exports.futurNegativeArray = [
   "The user disregards planning for the future. Only if it makes sense, In my next message, how can I discuss if they've considered the repercussions?",
 ];
 
-exports.depressArray = [""];
+exports.depressArray = [
+  "The user has mentioned feeling depressed. I activate my training in both Cognitive Behavioral Therapy (CBT) and Interpersonal Therapy (IPT) frameworks to guide the conversation.",
+];
 
 exports.depressNegativeArray = [
   "The user has mentioned feeling depressed. I activate my training in both Cognitive Behavioral Therapy (CBT) and Interpersonal Therapy (IPT) frameworks to guide the conversation.",
