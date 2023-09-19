@@ -847,17 +847,23 @@ export default function Dashboard({
                     style={{
                       marginTop: "1rem",
                       marginBottom: "1rem",
-                      marginLeft: isMobile ? "1.55rem" : "3rem",
+                      marginLeft: isMobile ? "1.5rem" : "2.7rem",
                     }}
                   >
                     <select
                       style={{
-                        borderRadius: "30px",
-                        fontFamily: "League Spartan",
-                        padding: ".3rem",
-                        fontSize: "14px",
+                        backgroundColor: "white",
+                        color: "black",
+                        borderRadius: "10em",
+                        fontSize: isMobile ? "14px" : "16px",
+                        fontWeight: 500,
+                        padding: ".5em ",
                         textAlign: "center",
-                        fontWeight: "500",
+                        cursor: "pointer",
+                        transition: "all 0.3s ease-in-out",
+                        border: "1px solid whitesmoke",
+                        boxShadow: "0 0 0 0 whitesmoke",
+                        fontFamily: "League Spartan, serif",
                       }}
                       value={background}
                       onChange={(e) => {
