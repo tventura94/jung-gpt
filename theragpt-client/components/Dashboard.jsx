@@ -34,7 +34,7 @@ import { Timestamp } from "firebase/firestore";
 import ButtonCanva from "/button.png";
 import Stress from "./Stress";
 import Dec3 from "/dec3.svg";
-
+import Sub from "/SubAd.svg";
 export default function Dashboard({
   setUserEmail,
   setAuthState,
@@ -63,6 +63,11 @@ export default function Dashboard({
   const [typedInterest, setTypedInterest] = useState("");
   const [interestsData, setInterestsData] = useState(null);
   const [isOldChat, setIsOldChat] = useState(false);
+  const backgrounds = ["Sleek", "Dots", "Nightsky", "Lavalamp", "Cat"];
+
+  function handleUpgrade() {
+    setAuthState("upgrade");
+  }
 
   useEffect(() => {
     const checkCollections = async () => {
@@ -121,7 +126,13 @@ export default function Dashboard({
       }
     });
   };
-
+  const [background, setBackground] = useState("defaultBackground");
+  useEffect(() => {
+    const savedBackground = localStorage.getItem("userBackgroundChoice");
+    if (savedBackground) {
+      setBackground(savedBackground);
+    }
+  }, []);
   async function encryptText(plainText, blackAlpaca) {
     const textEncoder = new TextEncoder();
     const textBuffer = textEncoder.encode(plainText);
@@ -722,135 +733,89 @@ export default function Dashboard({
         <Dialog
           open={showDeveloperNotes}
           onClose={() => setShowDeveloperNotes(false)}
+          sx={{
+            boxSizing: "border-box",
+            display: "flex",
+            margin: "0 auto",
+            width: "100%",
+            justifyContent: "center",
+          }}
         >
-          <DialogTitle
-            sx={{
-              textAlign: "center",
-              fontFamily: "'Roboto Slab', serif",
-              backgroundColor: "#A7AEBC",
-              color: "white",
-              fontSize: isMobile ? "18px" : "25px",
+          <img
+            style={{
+              width: "100%",
             }}
-          >
-            A message from the developers
-          </DialogTitle>
-          <DialogContent
-            sx={{
-              backgroundColor: "#607E92",
-              backgroundImage: `src(${Dec3})`,
-              backgroundSize: "contain",
-              color: "white",
-            }}
-          >
-            <DialogContentText>
-              <List>
-                <Typography
-                  sx={{
-                    fontFamily: "'League Spartan', serif",
-                    color: "whitesmoke",
-                    fontSize: isMobile ? "20px" : "25px",
-                    marginTop: "1rem",
-                  }}
-                >
-                  Right now, people all over the globe are getting help with
-                  JungGPT. If you find this tool helpful - Consider subscribing!
-                  <br /> <br />{" "}
-                  <b
-                    style={{
-                      color: "pink",
-                      fontSize: isMobile ? "20px" : "32px",
-                    }}
-                  >
-                    Its only 7 dollars a month!{" "}
-                    <span
-                      style={{
-                        fontSize: "10px",
-                      }}
-                    >
-                      + monthly usage fees
-                    </span>
-                  </b>
-                </Typography>
-                <br />
-
-                <Typography
-                  sx={{
-                    fontSize: isMobile ? "18px" : "22px",
-                    fontFamily: "'Montserrat', serif",
-                    color: "white",
-                  }}
-                >
-                  What do I gain from subscribing?
-                </Typography>
-                <br />
-
-                <Typography
-                  sx={{
-                    fontFamily: "'League Spartan', serif",
-                    color: "pink",
-                    fontSize: isMobile ? "17px" : "20px",
-                  }}
-                >
-                  {" "}
-                  - Unlimited 24/7 access to JungGPT <br /> - Access to
-                  JungSMART and all current and future models
-                  <br /> - 600 character context length per message
-                </Typography>
-
-                <ListItem
-                  sx={{
-                    fontFamily: "'Roboto Slab', serif",
-                    color: "white",
-                    fontSize: isMobile ? "16px" : "18px",
-                  }}
-                >
-                  please email support@ventura-ux.com for any issues
-                </ListItem>
-                {/* Add more notes here */}
-              </List>
-            </DialogContentText>
-          </DialogContent>
+            src={Sub}
+          ></img>
           <DialogActions
             sx={{
               backgroundColor: "#607E92",
             }}
           >
             <Button
-              style={{
-                backgroundColor: "#E8E2DE",
-                color: "#56778D",
+              sx={{
+                backgroundColor: "white",
+                color: "black",
                 borderRadius: "10em",
-                fontSize: "18px",
+                fontSize: isMobile ? "10px" : "12px",
                 fontWeight: 600,
-                padding: "0.3rem",
+                padding: "1em 2em",
                 cursor: "pointer",
                 transition: "all 0.3s ease-in-out",
-                border: "1px solid #2D2D2D",
-                boxShadow: "0 0 0 0 #2D2D2D",
-                margin: "1rem",
+                border: "1px solid whitesmoke",
+                boxShadow: "0 0 0 0 whitesmoke",
                 "&:hover": {
                   transform: "translateY(-4px) translateX(-2px)",
-                  boxShadow: "2px 5px 0 0 #2D2D2D",
-                  backgroundColor: "#607E92",
-                  color: "whitesmoke",
+                  boxShadow: "2px 5px 0 0 whitesmoke",
+                  color: "rgb(255, 222, 89)",
+                  border: "1px solid whitesmoke",
                 },
                 "&:active": {
                   transform: "translateY(2px) translateX(1px)",
-                  boxShadow: "0 0 0 0 #2D2D2D",
+                  boxShadow: "0 0 0 0 whitesmoke",
                   color: "#607E92",
                 },
                 fontFamily: "League Spartan, serif",
-                width: "30%",
-                marginTop: "-1rem",
+                width: isMobile ? "50%" : "25%",
+              }}
+              onClick={handleUpgrade}
+            >
+              UPGRADE NOW
+            </Button>
+            <Button
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                borderRadius: "10em",
+                fontSize: isMobile ? "10px" : "12px",
+                fontWeight: 600,
+                padding: "1em 2em",
+                cursor: "pointer",
+                transition: "all 0.3s ease-in-out",
+                border: "1px solid whitesmoke",
+                boxShadow: "0 0 0 0 whitesmoke",
+                "&:hover": {
+                  transform: "translateY(-4px) translateX(-2px)",
+                  boxShadow: "2px 5px 0 0 whitesmoke",
+                  color: "rgb(255, 222, 89)",
+                  border: "1px solid whitesmoke",
+                },
+                "&:active": {
+                  transform: "translateY(2px) translateX(1px)",
+                  boxShadow: "0 0 0 0 whitesmoke",
+                  color: "#607E92",
+                },
+                fontFamily: "League Spartan, serif",
+                width: isMobile ? "50%" : "25%",
               }}
               onClick={() => setShowDeveloperNotes(false)}
             >
-              OK
+              GOT IT
             </Button>
           </DialogActions>
         </Dialog>
         {user ? (
-          <div className="header">
+          <div className={`header ${background}`}>
             <aside
               className={`sidemenu ${isMenuOpen ? "open" : ""}`}
               onClick={handleMenuToggle}
@@ -862,14 +827,12 @@ export default function Dashboard({
                       "side-menu-button" +
                       (subscriptionStatus !== "active" ? "disabled" : "")
                     }
-                    // Only allow clicking "New Chat" if subscriptionStatus is "active" and chatLog has content
                     onClick={
                       subscriptionStatus === "active" && chatLog.length > 0
                         ? clearChat
                         : null
                     }
                   >
-                    {" "}
                     <img
                       style={{
                         width: "100%",
@@ -878,12 +841,50 @@ export default function Dashboard({
                     ></img>
                   </div>
 
+                  {/* Background selector */}
+                  <div
+                    className="background-selector"
+                    style={{
+                      marginTop: "1rem",
+                      marginBottom: "1rem",
+                      marginLeft: isMobile ? "1.55rem" : "3rem",
+                    }}
+                  >
+                    <select
+                      style={{
+                        borderRadius: "30px",
+                        fontFamily: "League Spartan",
+                        padding: ".3rem",
+                        fontSize: "14px",
+                        textAlign: "center",
+                        fontWeight: "500",
+                      }}
+                      value={background}
+                      onChange={(e) => {
+                        setBackground(e.target.value);
+                        localStorage.setItem(
+                          "userBackgroundChoice",
+                          e.target.value
+                        );
+                      }}
+                      onClick={(e) => e.stopPropagation()} // Prevents the side menu from closing
+                    >
+                      {backgrounds.map((bg) => (
+                        <option key={bg} value={bg}>
+                          {bg}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
                   {/* Only render chat histories for "active" subscribers */}
                   {subscriptionStatus === "active" &&
                     chatHistories.slice(-9).map((chat) => (
                       <div
                         key={chat.id}
-                        className="side-menu-button2"
+                        className={`side-menu-button2 ${
+                          background === "Nightsky" ? "nightsky-border" : ""
+                        }`}
                         onClick={(e) => {
                           e.stopPropagation();
                           setChatLog(chat.chatLog);
@@ -894,7 +895,6 @@ export default function Dashboard({
                           fontFamily: "League Spartan",
                         }}
                       >
-                        {" "}
                         Chat from{" "}
                         {chat.date && typeof chat.date.toDate === "function"
                           ? `${chat.date
@@ -954,7 +954,19 @@ export default function Dashboard({
                     </div>
                     <button
                       type="submit"
-                      className="send-button"
+                      className={`send-button ${
+                        background === "Sleek"
+                          ? "button-sleek"
+                          : background === "Dots"
+                          ? "button-dots"
+                          : background === "Nightsky"
+                          ? "button-nightsky"
+                          : background === "Lavalamp"
+                          ? "button-lavalamp"
+                          : background === "Cat"
+                          ? "button-cat"
+                          : ""
+                      }`}
                       disabled={trialLimitReached}
                       onChange={(e) => {
                         if (containsBannedKeywords(e.target.value)) {
@@ -969,7 +981,9 @@ export default function Dashboard({
                     </button>
                   </form>
                 </div>
-                <div style={{}}>
+                <div
+                  style={{ color: background === "Nightsky" ? "#363d46" : "" }}
+                >
                   {timer > 0 && (
                     <span>
                       You can send the next message in {timer} seconds
@@ -978,8 +992,9 @@ export default function Dashboard({
                 </div>
                 <div
                   style={{
-                    paddingTop: "2rem",
+                    paddingTop: "0rem",
                     fontFamily: "League Spartan",
+                    color: background === "Nightsky" ? "#363d46" : "",
                   }}
                   className="chat-disclaimer"
                 >
@@ -992,6 +1007,7 @@ export default function Dashboard({
                     fontFamily: "League Spartan",
                     textDecoration: "none",
                     backgroundColor: "transparent",
+                    color: background === "Nightsky" ? "#363d46" : "",
                   }}
                   className="chat-disclaimer"
                 >

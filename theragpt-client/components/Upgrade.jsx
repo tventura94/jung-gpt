@@ -148,7 +148,7 @@ export default function Upgrade({ setUserEmail, setAuthState, user }) {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          marginTop: "2rem",
+          marginTop: isMobile ? "0rem" : "-2rem",
           marginBottom: "2rem",
           flexWrap: "wrap",
           margin: isMobile ? "1rem" : "",

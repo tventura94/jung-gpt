@@ -104,9 +104,13 @@ html {
   font-family: "Strait";
   color: rgb(199, 199, 204);
   background-color: rgb(55, 61, 74);
-  background-image: url("../marble-background.png");
+  background-image: url("/dots2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
   min-height: 95vh;
+  transition: background 0.5s ease; /* Change 0.5s to whatever duration you want */
+  -webkit-transition: background 0.5s ease; /* WebKit browsers */
 }
 
 .sidemenu {
@@ -525,10 +529,12 @@ body {
     font-family: "Strait";
     color: rgb(199, 199, 204);
     background-color: rgb(55, 61, 74);
-    background-image: url("../marble-background.png");
+    background-image: url("/dots.svg");
     margin: 0 auto;
     width: 100%;
     min-height: 95vh;
+    transition: background 0.5s ease; /* Change 0.5s to whatever duration you want */
+    -webkit-transition: background 0.5s ease; /* WebKit browsers */
   }
 }
 
@@ -624,4 +630,56 @@ body {
   height: 100%;
   background-color: silver;
   z-index: 1000;
+}
+
+.Sleek {
+  background-image: url("/dots2.svg");
+}
+
+.Dots {
+  background-image: url("/dots.svg");
+}
+
+.Nightsky {
+  background-image: url("/stars.svg");
+}
+.Lavalamp {
+  background-image: url("/lavalamp.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Cat {
+  background-image: url("/cat.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Calming {
+  background-image: url("/calming.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.button-nightsky {
+  background-color: pink;
+}
+.button-lavalamp {
+  background-color: #447ef2;
+}
+
+.nightsky-border {
+  border: 1px solid salmon;
+  color: #363d46;
+}
+.button-cat {
+  background-color: #ff6161;
+}
+
+.background-selector select {
+  /* Other existing styles ... */
+  transition: all 0.3s ease; /* This will smoothly transition all properties of the select element */
+  -webkit-transition: all 0.3s ease; /* WebKit browsers */
 }
