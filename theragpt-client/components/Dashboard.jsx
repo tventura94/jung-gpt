@@ -56,6 +56,7 @@ export default function Dashboard({
   const [descriptionValue, setDescriptionValue] = useState("");
   const [nameValue, setNameValue] = useState("");
 
+  const headerRef = useRef(null);
   // Emotion / Interests Select overlay
   const [selectedEmotions, setSelectedEmotions] = useState([]);
   const [selectedInterests, setSelectedInterests] = useState([]);
@@ -74,27 +75,7 @@ export default function Dashboard({
     "CampFire",
   ];
   const sideMenuRef = useRef(null); // Create a reference for the side menu
-  useEffect(() => {
-    // Define a function to handle document click
-    const handleDocumentClick = (event) => {
-      // Check if the side menu is open and the clicked element is not within the side menu
-      if (
-        isMenuOpen &&
-        sideMenuRef.current &&
-        !sideMenuRef.current.contains(event.target)
-      ) {
-        setIsMenuOpen(false); // Close the side menu
-      }
-    };
 
-    // Attach the event listener
-    document.addEventListener("click", handleDocumentClick);
-
-    // Cleanup - remove the event listener when the component is unmounted
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, [isMenuOpen]);
   function handleUpgrade() {
     setAuthState("upgrade");
   }
@@ -435,7 +416,7 @@ export default function Dashboard({
     setChatLog(chatLogNew);
 
     // Fetch to backend   LIVE  https://jung-gpt.onrender.com/jung   DEV http://localhost:3080/jung"
-    const response = await fetch("http://localhost:3080/jung", {
+    const response = await fetch("https://jung-gpt.onrender.com/jung", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -541,8 +522,12 @@ export default function Dashboard({
     setTrialLimitReached(false);
   }
 
-  function handleMenuToggle() {
+  function handleMenuToggle(event) {
+    event.stopPropagation(); // Stop event from bubbling up to parent div
     setIsMenuOpen(!isMenuOpen);
+  }
+  function handleMenuClose(event) {
+    setIsMenuOpen(false);
   }
 
   const bannedKeywords = [
@@ -845,7 +830,11 @@ export default function Dashboard({
           </DialogActions>
         </Dialog>
         {user ? (
-          <div className={`header ${background}`}>
+          <div
+            ref={headerRef}
+            onClick={handleMenuClose}
+            className={`header ${background}`}
+          >
             <aside
               ref={sideMenuRef} // Attach the reference to the side menu
               className={`sidemenu ${isMenuOpen ? "open" : ""}`}
@@ -917,6 +906,7 @@ export default function Dashboard({
                     </select>
                     <button
                       style={{
+                        cursor: "pointer",
                         marginLeft: isMobile ? "1rem" : "2.0rem",
                         fontSize: isMobile ? "33px" : "30px",
                         display: "flex",
@@ -1027,6 +1017,7 @@ export default function Dashboard({
                             handleSubmit(e);
                           }
                         }}
+                        onClick={(e) => e.stopPropagation()} // Stop event from bubbling up
                         disabled={trialLimitReached}
                         maxLength={subscriptionStatus === "active" ? 600 : 300}
                       ></textarea>
@@ -1090,8 +1081,11 @@ export default function Dashboard({
                 </div>
                 <div
                   style={{
-                    paddingTop: "0rem",
+                    display: "flex",
                     fontFamily: "League Spartan",
+                    textAlign: "center",
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
                     color:
                       background === "Nightsky"
                         ? "#363d46"

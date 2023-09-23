@@ -137,7 +137,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
       id: 2,
       name: "Tom",
       feedback:
-        "I've never come across an app like JungGPT. The Emotional Reflection tool is like having a therapist in my pocket! It's been an incredible support system for me. The insights it provides are truly enlightening and have helped me manage my emotional well-being.",
+        "I've never come across an app like JungGPT. The Emotional Reflection tool is like having a therapist in my pocket! It's been an incredible support system for me. The insights it provides are truly enlightening and have helped me manage my emotional well-being. It has changed my life.",
     },
     {
       id: 3,
@@ -1141,7 +1141,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               style={{
                 minWidth: "50%", // Add this line
                 marginTop: isMobile ? "0rem" : "2rem",
-                marginBottom: isMobile ? "0rem" : "2rem",
+                marginBottom: isMobile ? "0rem" : "1rem",
                 textAlign: "center",
                 marginLeft: isMobile ? "" : "4rem",
                 marginRight: isMobile ? "" : "2rem",
@@ -1237,7 +1237,7 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
                         padding: isMobile ? "1.5em" : "2em",
                         width: isMobile ? "100%" : "400px", // Default to 100% on mobile and 400px on larger screens
                         margin: isMobile ? "1em 0" : "0",
-                        marginBottom: isMobile ? "2.5rem" : "",
+                        marginBottom: isMobile ? "2.5rem" : "2rem",
                         marginTop: isMobile ? "3rem" : "",
                         fontFamily: "'League Spartan', serif",
                         lineHeight: "1.6rem",
