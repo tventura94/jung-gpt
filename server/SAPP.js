@@ -153,77 +153,9 @@ async function SAPP(lastUserMessage) {
   const sentences = lastUserMessage.toLowerCase().split(". ");
 
   // Initialize keyword stems
-  const keywordStems = [
-    "exist",
-    "philosoph",
-    "love",
-    "romanc",
-    "lone",
-    "alon",
-    "job",
-    "employ",
-    "boss",
-    "cowork",
-    "school",
-    "colleg",
-    "univers",
-    "highschool",
-    "study",
-    "teach",
-    "profess",
-    "family",
-    "music",
-    "home",
-    "stress",
-    "career",
-    "promot",
-    "salari",
-    "interview",
-    "freelanc",
-    "project",
-    "client",
-    "office",
-    "homework",
-    "assign",
-    "exam",
-    "grade",
-    "lectur",
-    "major",
-    "minor",
-    "research",
-    "partner",
-    "spous",
-    "ex",
-    "fianc",
-    "in-law",
-    "stepfam",
-    "child",
-    "pet",
-    "anxiet",
-    "depress",
-    "happi",
-    "anger",
-    "mad",
-    "excit",
-    "fear",
-    "relief",
-    "health",
-    "fit",
-    "diet",
-    "travel",
-    "hobbi",
-    "sport",
-    "entertain",
-    "social",
-    "polit",
-    "religion",
-    "cultur",
-    "environ",
-    "financ",
-    "goal",
-    "time",
-    "futur",
-  ];
+  const { keywordStems } = require("./keywordStems");
+
+  console.log("Entering keyword loop. Beginning Sentiment Pre-Processing...");
 
   for (const keywordStem of keywordStems) {
     // Find the first sentence that includes the keyword stem
@@ -243,6 +175,7 @@ async function SAPP(lastUserMessage) {
 
       // console.log(`Sentence: ${relevantSentence}`);
       // console.log(`Sentiment Score: ${sentimentScore}`);
+      // console.log("Found relevant array:", thought);
 
       switch (keywordStem) {
         case "exist":
@@ -647,6 +580,7 @@ async function SAPP(lastUserMessage) {
     }
   }
 
+  // console.log(thought);
   return thought;
 }
 

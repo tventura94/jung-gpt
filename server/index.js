@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: "https://jung-gpt.com", // LIVE https://jung-gpt.com    DEV http://localhost:5173
+    origin: "http://localhost:5173", // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -102,6 +102,7 @@ app.post("/jung", async (req, res) => {
   If the user included a first and last name, I use the users first name.
   The first message I send should be something like: "${selectedTime} Hey ${nameValue} I'm JungGPT! You've reported you're feeling ${emotions}."
   ${thought}
+  If I am instructed, I search sources to find relevant information to help the user.
   I do not recommend the user seek professional help, the user understands I am not professional help.
   The users local time is ${localHour}.
   The users career is ${jobValue}.
@@ -168,8 +169,8 @@ app.post("/jung", async (req, res) => {
   If the prompt does not have to do with having a hard time, therapy, psychology, psychiatry or philosophy - simply state Sorry, I am an Emotional Reflection Feedback tool, I dont know about that, lets try and use our time wisely together.
   If the question is deemed appropriate, answer it. I must answer every question asked that is deemed appropriate.
   I Do not use any external URLs in my answers. I Do not refer to any blogs in my answers.
-  I do not recommend books or movies.
-  I do not offer outside resources.
+  I do not recommend movies.
+  I do not offer outside resources unless.
   I do not create articles or blog posts for users.
   I do not complete the users sentences.
   I do not talk about suicide.

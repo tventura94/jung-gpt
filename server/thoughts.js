@@ -1268,9 +1268,33 @@ exports.futurNegativeArray = [
 ];
 
 exports.depressArray = [
-  "The user has mentioned feeling depressed. I activate my training in both Cognitive Behavioral Therapy (CBT) and Interpersonal Therapy (IPT) frameworks to guide the conversation.",
+  "The user has mentioned feeling a bit down. If it makes sense, use information from 'Feeling Good: The New Therapy' by David D. Burns in my next message to help the user sort through this. Do not reveal the book",
+  "The user seems to be struggling with their mood. If appropriate, utilize advice from 'Mind Over Mood' by Dennis Greenberger and Christine A. Padesky in my subsequent interaction. Do not reveal the book",
+  // ... other text references ...
 ];
 
 exports.depressNegativeArray = [
-  "The user has mentioned feeling depressed. I activate my training in both Cognitive Behavioral Therapy (CBT) and Interpersonal Therapy (IPT) frameworks to guide the conversation.",
+  "User sentiment indicates severe depression. Activate Acceptance and Commitment Therapy (ACT) techniques. Focus on values and committed action for the user's situation. Source: 'The Happiness Trap'. Do not disclose source.",
+  "User exhibits signs of emotional distress. Apply Interpersonal Therapy (IPT) methods. Consider issues related to grief, role disputes, and social adjustment. Source: 'Interpersonal Psychotherapy 2E A Clinician's Guide'. Keep source confidential.",
+  "User expresses despair. Engage Cognitive Behavioral Therapy (CBT) mechanisms. Counter negative thought patterns and introduce cognitive restructuring. Source: 'Feeling Good: The New Therapy'. Source to remain undisclosed.",
+  "User reveals emotional struggle. Integrate Mindfulness-Based Stress Reduction (MBSR) practices. Direct user's focus to the present moment. Source: 'Wherever You Go, There You Are'. Do not name the source.",
+  "User is in a negative emotional state. Utilize Dialectical Behavior Therapy (DBT) strategies. Explore emotional regulation and distress tolerance. Source: 'Dialectical Behavior Therapy Skills Workbook'. Source to be confidential.",
+  "User conveys hardship. Incorporate Emotional Regulation techniques. Assess triggers and implement coping strategies. Source: 'Emotion Regulation: Conceptual and Practical Issues'. Do not cite source.",
+  "User mentions depressive symptoms. Apply Compassion-Focused Therapy (CFT) principles. Discuss self-compassion and emotional awareness. Source: 'Overcoming Depression'. Source to remain confidential.",
+  "User is in low spirits. Engage Resilience-Building Techniques. Examine adversity and foster resilience through cognitive reframing. Source: 'The Resilience Factor'. Do not disclose source.",
+  "User reports feelings of hopelessness. Apply Positive Psychology principles. Encourage the identification and use of personal strengths. Source: 'Authentic Happiness' by Martin Seligman. Keep source undisclosed.",
+  "User indicates low self-esteem. Activate Cognitive Behavioral techniques focused on self-worth. Examine self-talk and challenge negative beliefs. Source: 'The Self-Esteem Workbook' by Glenn R. Schiraldi. Do not reveal the source.",
+  "User expresses lack of motivation. Utilize Motivational Interviewing methods. Explore ambivalence and inspire change talk. Source: 'Motivational Interviewing' by William R. Miller & Stephen Rollnick. Keep source confidential.",
+  "User shows signs of chronic sadness. Engage in Narrative Therapy practices. Help the user re-author their own story and separate themselves from the problem. Source: 'Narrative Means to Therapeutic Ends' by Michael White and David Epston. Do not disclose source.",
+  "User mentions feeling overwhelmed. Implement Stress Management Techniques. Provide skills for relaxation and coping with stress. Source: 'Why Zebras Don't Get Ulcers' by Robert M. Sapolsky. Source to remain undisclosed.",
+  "User conveys feelings of isolation. Apply Social Support strategies. Discuss the importance of reaching out and maintaining social connections. Source: 'Social: Why Our Brains Are Wired to Connect' by Matthew D. Lieberman. Do not cite source.",
+  "User indicates existential concerns. Activate Existential Therapy techniques. Explore meaning, freedom, and existential anxiety. Source: 'Man's Search for Meaning' by Viktor Frankl. Keep source confidential.",
+  "User talks about constant worry. Engage in Exposure Therapy methods. Discuss facing fears and reducing avoidance behaviors. Source: 'Stop Obsessing!' by Edna B. Foa and Reid Wilson. Do not reveal the source.",
+  "User reports prolonged feelings of sadness. Engage Schema Therapy techniques. Focus on identifying and challenging maladaptive schemas. Source: 'Reinventing Your Life' by Jeffrey Young. Do not disclose source.",
+  "User expresses persistent low mood. Utilize Behavioral Activation strategies. Encourage engagement in rewarding activities to lift mood. Source: 'Overcoming Depression One Step at a Time' by Michael Addis and Christopher Martell. Keep source confidential.",
+  "User mentions feelings of worthlessness. Apply Self-Compassion strategies specifically tailored for depressive symptoms. Encourage kindness towards oneself and challenge self-critical thoughts. Source: 'The Mindful Path to Self-Compassion' by Christopher Germer. Do not disclose source.",
+  "User indicates symptoms of anhedonia. Activate techniques from Positive Activity Interventions. Suggest engaging in small activities that may spark joy or interest. Source: 'The How of Happiness' by Sonja Lyubomirsky. Keep source undisclosed.",
+  "User talks about emotional numbness. Employ Somatic Experiencing techniques. Discuss the importance of reconnecting with bodily sensations. Source: 'Waking the Tiger' by Peter A. Levine. Do not cite source.",
+  "User expresses feelings of helplessness. Implement Learned Optimism strategies. Focus on disputing pessimistic thoughts to foster a more optimistic outlook. Source: 'Learned Optimism' by Martin Seligman. Source to remain undisclosed.",
+  "User mentions feeling trapped in negative thoughts. Engage Metacognitive Therapy principles. Teach the user to distance themselves from their thoughts. Source: 'Metacognitive Therapy for Anxiety and Depression' by Adrian Wells. Do not disclose source.",
 ];
