@@ -175,7 +175,6 @@ async function SAPP(lastUserMessage) {
 
       // console.log(`Sentence: ${relevantSentence}`);
       // console.log(`Sentiment Score: ${sentimentScore}`);
-      // console.log("Found relevant array:", thought);
 
       switch (keywordStem) {
         case "exist":

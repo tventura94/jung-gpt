@@ -36,7 +36,10 @@ import Choose from "/chooseus.png";
 import Pricing from "/pricing.jpg";
 import Over80 from "/Over80.png";
 import Psy from "/PSY.PNG";
+import ReactGA from "react-ga4";
+ReactGA.send({ hitType: "pageview", page: "/Upgrade", title: "Upgrade" });
 
+ReactGA.initialize("AW-11340712718");
 export default function Upgrade({ setUserEmail, setAuthState, user }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));

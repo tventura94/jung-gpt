@@ -39,7 +39,6 @@ import { useEffect, useState } from "react";
 import DbtLogo from "/jungSmart.png";
 import JungFace from "/gpt-text-1.png";
 import Welcome from "./Welcome";
-
 import Smart from "/notjustsmart.svg";
 import Smart2 from "/notjustsmart2.png";
 import Dec from "/dec.svg";
@@ -64,7 +63,11 @@ import { IconButton } from "@mui/material";
 import Over80 from "/Over80.png";
 import GoogleAd from "./googleAd";
 import { urlencoded } from "body-parser";
+import ReactGA from "react-ga4";
+import AudioRecorder from "./AudioRecorder";
+ReactGA.send({ hitType: "pageview", page: "/Selector", title: "Selector" });
 
+ReactGA.initialize("AW-11340712718");
 export default function Selector({ setUserEmail, setAuthState, user }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState("Free Plan");
   const [logoSrc, setLogoSrc] = useState(MainLogo);
@@ -642,6 +645,50 @@ export default function Selector({ setUserEmail, setAuthState, user }) {
               </Button>
             </Box>
           </motion.div>
+          {/* <motion.div
+            className="box"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.1,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+          >
+            <Box sx={boxStyles}>
+           
+              <Button
+                sx={{
+                  backgroundColor: "white",
+                  color: "#56778D",
+                  borderRadius: "10em",
+                  fontSize: isMobile ? "11px" : "14px",
+                  fontWeight: 600,
+                  backgroundColor: "#E8E2DE",
+                  padding: "1em 2em",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease-in-out",
+                  border: "1px solid #2D2D2D",
+                  boxShadow: "0 0 0 0 #2D2D2D",
+                  margin: "1rem",
+                  "&:hover": {
+                    transform: "translateY(-4px) translateX(-2px)",
+                    boxShadow: "2px 5px 0 0 #2D2D2D",
+                  },
+                  "&:active": {
+                    transform: "translateY(2px) translateX(1px)",
+                    boxShadow: "0 0 0 0 #2D2D2D",
+                    color: "#607E92",
+                  },
+                  fontFamily: "League Spartan, serif",
+                  width: isMobile ? "50%" : "40%",
+                }}
+                onClick={() => setAuthState("AudioRecorder")}
+              >
+                <b>WHISPER</b>{" "}
+              </Button>
+            </Box>
+          </motion.div> */}
         </Box>
       </div>
       <img

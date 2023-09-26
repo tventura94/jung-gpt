@@ -7,7 +7,7 @@ const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
-
+const fs = require("fs");
 const openai = new OpenAI({
   organization: "org-d3pQZk3os1Tsy721vAbe4j3M",
   apiKey: process.env.OPEN_AI_API_KEY,
@@ -41,17 +41,22 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-// Define arrays of alternative prompts
+// Define arrays of alternative time-of-day prompts
 const {
   morningPrompts,
   afternoonPrompts,
   eveningPrompts,
   prompts,
   lateNightPrompts,
-} = require("./prompts");
+} = require("./SAPP/prompts");
 
-const { SAPP } = require("./SAPP");
-
+const { SAPP } = require("./SAPP/SAPP");
+//
+//
+//
+/////////// JungGPT
+//
+//
 app.post("/jung", async (req, res) => {
   const {
     conversation,
@@ -204,7 +209,14 @@ app.post("/jung", async (req, res) => {
     usage: response.usage,
   });
 });
-
+//
+//
+//
+//
+///////////////// JUNG SMART
+//
+//
+//
 app.post("/dbt", async (req, res) => {
   const { conversation } = req.body;
 
@@ -268,3 +280,33 @@ app.post("/dbt", async (req, res) => {
     message: "JungSMART: " + response.choices[0].message.content.trim(),
   });
 });
+//
+//
+//
+////////////////////// WHISPER
+//
+//
+//
+// async function transcribeAudio(audioPath) {
+//   const transcription = await openai.audio.transcriptions.create({
+//     file: fs.createReadStream(audioPath),
+//     model: "whisper-1",
+//   });
+//   return transcription.text;
+// }
+
+// app.post("/whisper", async (req, res) => {
+//   try {
+//     const audioPath = req.body.audioPath;
+
+//     const transcribedText = await transcribeAudio(audioPath);
+
+//     res.json({
+//       transcribedText: transcribedText,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       error: "An error occurred while processing the audio.",
+//     });
+//   }
+// });

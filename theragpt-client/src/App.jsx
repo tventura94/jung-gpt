@@ -13,6 +13,7 @@ import AccountSettings from "../components/AccountSettings";
 import Terms from "../components/Terms";
 import Upgrade from "../components/Upgrade";
 import Faq from "../components/Faq";
+import AudioRecorder from "../components/AudioRecorder";
 import { CircularProgress } from "@mui/material";
 function App() {
   const [user, setUser] = React.useState(null);
@@ -125,7 +126,6 @@ function App() {
           subscriptionStatus={subscriptionStatus}
           setSubscriptionStatus={setSubscriptionStatus}
         />
-
         <Footer />
       </Box>
     );
@@ -150,6 +150,27 @@ function App() {
         <Footer />
       </Box>
     );
+
+  // if (authState === "AudioRecorder")
+  //   return (
+  //     <Box
+  //       sx={{
+  //         display: "flex",
+  //         flexDirection: "column",
+  //         minHeight: "100vh",
+  //         justifyContent: "space-between",
+  //       }}
+  //     >
+  //       <AudioRecorder
+  //         setAuthState={setAuthState}
+  //         setUserEmail={setUserEmail}
+  //         user={user}
+  //         subscriptionStatus={subscriptionStatus}
+  //         setSubscriptionStatus={setSubscriptionStatus}
+  //       />
+  //       <Footer />
+  //     </Box>
+  //   );
 
   if (authState === "accountsettings")
     return (

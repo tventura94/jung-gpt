@@ -33,6 +33,10 @@ import { serverTimestamp } from "firebase/firestore"; // Import serverTimestamp 
 import { Timestamp } from "firebase/firestore";
 import ButtonCanva from "/button.png";
 import Stress from "./Stress";
+import ReactGA from "react-ga4";
+ReactGA.send({ hitType: "pageview", page: "/Dbt", title: "Dbt" });
+
+ReactGA.initialize("AW-11340712718");
 export default function Dbt({
   setUserEmail,
   setAuthState,

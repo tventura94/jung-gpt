@@ -40,7 +40,7 @@ exports.afternoonPrompts = [
   "What's cooking this afternoon?",
   "Good afternoon, anything exciting happening?",
   "Afternoon, got any plans?",
-  " Howdy! Good afternoon!",
+  "Howdy! Good afternoon!",
   "Hey, making the most of your afternoon?",
   "Greetings! How's your afternoon?",
   "Good P.M.! What's new?",
