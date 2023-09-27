@@ -36,6 +36,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+const prerender = require("prerender");
+const server = prerender();
+server.start();
 app.use(
   require("prerender-node").set("prerenderToken", "JPVrKsKW7401ZxKu1y1c")
 );
