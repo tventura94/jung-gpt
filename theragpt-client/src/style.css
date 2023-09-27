@@ -208,7 +208,23 @@ html {
   text-align: center;
   padding-top: 0.5rem;
 }
+.spinner {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 5px solid #000000;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .chat-input-textarea {
   background-color: #c1c0bf;
   width: 100%;

@@ -330,7 +330,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     console.log("Transcribed text:", transcribedText);
 
     const summaryMessage =
-      "Please summarize the following mental health-related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation and identify any potential issues socially or interpersonally the client might be facing. Do not use numbers when using lists.";
+      "Please summarize the following mental health-related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation and identify any potential issues socially or interpersonally the client might be facing. Do not use numbers when using lists. Respond in the language of the users input. ";
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
