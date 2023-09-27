@@ -155,7 +155,7 @@ async function SAPP(lastUserMessage) {
   // Initialize keyword stems
   const { keywordStems } = require("./keywordStems");
 
-  console.log("Entering keyword loop. Beginning Sentiment Pre-Processing...");
+  // console.log("Entering keyword loop. Beginning Sentiment Pre-Processing...");
 
   for (const keywordStem of keywordStems) {
     // Find the first sentence that includes the keyword stem
