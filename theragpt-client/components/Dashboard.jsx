@@ -421,7 +421,7 @@ export default function Dashboard({
     setChatLog(chatLogNew);
 
     // Fetch to backend   LIVE  https://jung-gpt.onrender.com/jung   DEV http://localhost:3080/jung"
-    const response = await fetch("http://localhost:3080/jung", {
+    const response = await fetch("https://jung-gpt.onrender.com/jung", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

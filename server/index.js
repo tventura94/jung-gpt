@@ -4,6 +4,8 @@ const OpenAI = require("openai");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const multer = require("multer");
+
 require("dotenv").config();
 const path = require("path");
 const rateLimit = require("express-rate-limit");
@@ -287,26 +289,102 @@ app.post("/dbt", async (req, res) => {
 //
 //
 //
-// async function transcribeAudio(audioPath) {
-//   const transcription = await openai.audio.transcriptions.create({
-//     file: fs.createReadStream(audioPath),
-//     model: "whisper-1",
-//   });
-//   return transcription.text;
-// }
+//
+app.use(express.urlencoded({ limit: "2gb", extended: true }));
 
-// app.post("/whisper", async (req, res) => {
-//   try {
-//     const audioPath = req.body.audioPath;
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + ".wav"); //Appending .wav
+  },
+});
 
-//     const transcribedText = await transcribeAudio(audioPath);
+const upload = multer({ storage: storage });
 
-//     res.json({
-//       transcribedText: transcribedText,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       error: "An error occurred while processing the audio.",
-//     });
-//   }
-// });
+app.post("/whisper", upload.single("audio"), async (req, res) => {
+  try {
+    console.log("Received request on /whisper");
+
+    if (!req.file) {
+      console.log("No file received");
+      return res.status(400).json({
+        error: "No audio data provided.",
+      });
+    }
+
+    // Log received file and its MIME type
+    console.log("Received file:", req.file);
+    console.log("File MIME type:", req.file.mimetype);
+
+    // Log the path where the file is stored
+    const audioPath = req.file.path;
+    console.log("Audio path:", audioPath);
+
+    // Check if the file stream is correct
+    console.log("File stream:", fs.createReadStream(audioPath));
+
+    // Attempt to transcribe the audio
+    const transcribedText = await transcribeAudio(audioPath);
+    console.log("Transcribed text:", transcribedText);
+
+    const summaryMessage =
+      "Please summarize the following mental health-related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation and identify any potential personality disorders.";
+    const summaryResponse = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        {
+          role: "assistant",
+          content: summaryMessage,
+        },
+        {
+          role: "user",
+          content: transcribedText,
+        },
+      ],
+      temperature: 1,
+      max_tokens: 4000,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    });
+
+    fs.unlink(audioPath, (err) => {
+      if (err) {
+        console.error("Failed to delete file:", err);
+      } else {
+        console.log(`Successfully deleted ${audioPath}`);
+      }
+    });
+
+    // Log the summary response
+    console.log("Summary response:", summaryResponse);
+
+    res.json({
+      summaryMessage: summaryResponse.choices[0].message.content.trim(),
+    });
+  } catch (error) {
+    console.error("Error caught:", error);
+
+    // Detailed error response
+    res
+      .status(500)
+      .json({ error: "An error occurred while processing the audio." });
+  }
+});
+
+async function transcribeAudio(audioPath) {
+  // Log the model being used for transcription
+  console.log("Transcribing using model whisper-1");
+
+  const transcription = await openai.audio.transcriptions.create({
+    file: fs.createReadStream(audioPath),
+    model: "whisper-1",
+  });
+
+  // Log the transcription
+  console.log("Transcription result:", transcription);
+
+  return transcription.text;
+}

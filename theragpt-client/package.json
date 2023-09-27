@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.8",
     "@react-oauth/google": "^0.6.1",
     "@stripe/stripe-js": "^1.54.1",
+    "audio-converter": "^1.0.13",
     "babel": "^6.23.0",
     "body-parser": "^1.20.2",
     "cesium": "^1.102.0",

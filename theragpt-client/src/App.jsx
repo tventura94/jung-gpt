@@ -151,26 +151,26 @@ function App() {
       </Box>
     );
 
-  // if (authState === "AudioRecorder")
-  //   return (
-  //     <Box
-  //       sx={{
-  //         display: "flex",
-  //         flexDirection: "column",
-  //         minHeight: "100vh",
-  //         justifyContent: "space-between",
-  //       }}
-  //     >
-  //       <AudioRecorder
-  //         setAuthState={setAuthState}
-  //         setUserEmail={setUserEmail}
-  //         user={user}
-  //         subscriptionStatus={subscriptionStatus}
-  //         setSubscriptionStatus={setSubscriptionStatus}
-  //       />
-  //       <Footer />
-  //     </Box>
-  //   );
+  if (authState === "AudioRecorder")
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          justifyContent: "space-between",
+        }}
+      >
+        <AudioRecorder
+          setAuthState={setAuthState}
+          setUserEmail={setUserEmail}
+          user={user}
+          subscriptionStatus={subscriptionStatus}
+          setSubscriptionStatus={setSubscriptionStatus}
+        />
+        <Footer />
+      </Box>
+    );
 
   if (authState === "accountsettings")
     return (
