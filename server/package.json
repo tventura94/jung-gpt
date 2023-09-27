@@ -28,6 +28,7 @@
     "node": "^20.6.0",
     "openai": "^4.7.1",
     "pinecone": "^0.1.0",
+    "prerender-node": "^3.7.0",
     "stripe": "^12.18.0"
   }
 }

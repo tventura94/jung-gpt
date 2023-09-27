@@ -36,6 +36,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+app.use(
+  require("prerender-node").set("prerenderToken", "JPVrKsKW7401ZxKu1y1c")
+);
 
 const port = process.env.PORT || 3080;
 
