@@ -38,7 +38,7 @@ app.use(
 );
 
 app.use(
-  require("prerender-node").set("prerenderToken", "JPVrKsKW7401ZxKu1y1c")
+  require("prerender-node").set("prerenderToken", "uBSRQK8cLuh683Dfz5Fh")
 );
 
 const port = process.env.PORT || 3080;
