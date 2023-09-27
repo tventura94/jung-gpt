@@ -294,10 +294,10 @@ app.use(express.urlencoded({ limit: "2gb", extended: true }));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, "/app/uploads/"); // Update this path
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + ".wav"); //Appending .wav
+    cb(null, Date.now() + ".wav");
   },
 });
 
