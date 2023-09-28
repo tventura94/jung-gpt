@@ -1,12 +1,36 @@
-# jungGPT
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-First and foremost, This chat bot is NOT intended to be a replacement for therapy.
-//////////////////////////////////////////////////////////////////////////////////
+## Getting Started
 
-In no way am I, the creator of this app, suggesting that talking to an AI is more beneficial than speaking with another human being. Human connection in regards to therapy I believe will always be more valuable, as therapy relies heavily on connection and intuition from the therapist.
+First, run the development server:
 
-With that being said, I have created this chatbot in order to help people recognize emotions within themselves, and bring clarity to their emotional states. This bot has been trained on all of the internets psychological, psychiatric, medical, and philosophical data up until 2021.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-I am hoping this bot will help those who dont have access to mental health care. The idea is to have a tool that CAN help people who need it when the tool is applicable. It is not meant to be a one size fits all thing.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Please use respectfully
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

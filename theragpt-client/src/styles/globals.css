@@ -1,0 +1,840 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Strait&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan&family=Roboto+Slab&display=swap");
+* {
+  box-sizing: border-box;
+  line-height: 1.3;
+  margin: 0;
+}
+
+html {
+  background-color: #506072;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: #1e4b66;
+  width: 100vw;
+  border-bottom: 8px rgb(203, 203, 221) solid;
+  box-shadow: 3px -5px 0px 13px rgba(209, 166, 166, 0.75);
+  -webkit-box-shadow: 3px -5px 0px 13px rgba(208, 184, 184, 0.75);
+  -moz-box-shadow: 3px -5px 0px 13px rgba(157, 131, 131, 0.75);
+}
+
+.nav-logo {
+  align-self: flex-end;
+  width: 4%;
+  opacity: 0.6;
+  margin-left: 10px;
+}
+/*********** REGISTER FORM *********/
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 50vw;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.register-form-container input {
+  margin-top: 1.5rem;
+  height: 3rem;
+}
+
+.register-form-container button {
+  margin-top: 3rem;
+  height: 3rem;
+  border: none;
+  font-family: "Roboto";
+}
+.register-form-container h2 {
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+.alreadyHaveAnAccount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Dashboard */
+.div {
+  background-image: url(/images/logos/Jung-background.png);
+  background-size: cover;
+  background-position: 100%;
+}
+.main {
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #5b6b7f;
+  font-family: "Strait";
+  color: rgb(196, 194, 194);
+  top: 0;
+  width: 100%;
+  border-bottom: 1px silver solid;
+}
+
+.logout-button {
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3;
+}
+
+.logout-button:hover {
+  opacity: 0.5;
+}
+
+.header {
+  margin: 0 auto;
+  display: flex;
+  font-family: "Strait";
+  color: rgb(199, 199, 204);
+  background-color: rgb(55, 61, 74);
+  background-image: url("/dots2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  min-height: 95vh;
+  transition: background 0.5s ease; /* Change 0.5s to whatever duration you want */
+  -webkit-transition: background 0.5s ease; /* WebKit browsers */
+}
+
+.sidemenu {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  /* Gradient background for a glassy effect */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 50%
+  );
+
+  /* Adding some box shadows for the raised effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+    /* Horizontal and vertical offsets, blur, spread, color */ 0 0 5px
+      rgba(0, 0, 0, 0.1),
+    /* Slight shadow around the pane */ inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow for the depth effect */
+
+  /* Border for a clear frame */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* To round the corners slightly for more aesthetic look */
+  border-radius: 5px;
+
+  /* Transition for smooth interaction feedback */
+  transition: all 0.3s ease-in-out;
+
+  /* Optional: You can add a hover effect to make the window pane more interactive */
+  &:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 0, 0, 0.1),
+      inset 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.side-menu-button {
+  display: flex;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  font-family: arial;
+  font-size: 15px;
+  background-color: rgba(200, 197, 197, 0);
+  transition: ease 0.25s all;
+}
+.side-menu-button2 {
+  display: flex;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.218);
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  font-family: arial;
+  font-size: 15px;
+  background-color: rgba(200, 197, 197, 0);
+  transition: ease 0.25s all;
+}
+.side-menu-button:hover {
+  background-color: #a88aa5b9;
+}
+.side-menu-button2:hover {
+  background-color: #a88aa5b9;
+}
+.fas,
+.fa-plus {
+  padding-right: 1rem;
+}
+
+.chatbox {
+  margin: 0 auto;
+  width: 100%;
+  border-top: 1px rgba(255, 255, 255, 0.204) solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-input-holder {
+  padding: 12px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  margin-right: 0rem;
+}
+.chat-disclaimer {
+  font-size: 11px;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+.spinner {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 5px solid #000000;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.chat-input-textarea {
+  background-color: #c1c0bf;
+  width: 100%;
+  border: 5px;
+  padding: 18px;
+  border-radius: 10px;
+  font-family: "Arial";
+  color: #2f2f2e;
+  font-size: 16px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+  resize: none;
+}
+textarea::placeholder {
+  color: #2f2f2e; /* Replace with your desired color */
+}
+.chat-log {
+  padding: 0px;
+  text-align: left;
+  display: flex;
+  margin-left: 0%;
+  flex-direction: column;
+  flex: 1;
+}
+
+.chat-message {
+  padding: 20px;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 20%;
+
+  background-color: rgba(61, 68, 83, 0.483);
+}
+.chat-message.chatgpt {
+  background-color: rgba(61, 68, 83, 0.783);
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: 20%;
+  width: 100%;
+  border-radius: 0%;
+}
+.avatar {
+  background-color: rgb(49, 162, 168);
+  border-radius: 10%;
+  width: 30px;
+  height: 30px;
+}
+.avatar.chatgpt {
+  background-color: #f9d7d6;
+  background-image: url(/jung-face.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.message {
+  margin-left: 2rem;
+  margin-top: 0rem;
+  font-family: arial;
+  letter-spacing: 0.6px;
+  font-size: 15px;
+  width: 40%;
+  line-height: 2rem;
+}
+.form-container {
+  position: relative;
+}
+
+.chat-input-textarea {
+  padding-right: 80px; /* adjust this value based on your send button size */
+}
+
+.send-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-80%);
+  background-color: #92baa0;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition-duration: 0.25s;
+  border-radius: 10%;
+}
+
+.send-button:hover {
+  background-color: #8e9cba84;
+  color: white;
+}
+
+.header p {
+  align-items: center;
+  font-family: "Strait";
+  color: "whitesmoke";
+  background-color: rgb(38, 38, 38);
+}
+
+.header button {
+  margin-right: 1rem;
+}
+
+.spanclass {
+  color: white;
+}
+
+#flat-earth {
+  align-self: flex-end;
+  font-size: 15px;
+  margin-right: 1.4rem;
+}
+body {
+  background-image: url(/images/logos/jung-background4.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.nightsky-border {
+  border: 1px solid salmon;
+  color: #363d46;
+}
+.black-border {
+  border: 1px solid silver;
+  color: silver;
+}
+.sleek-border {
+  color: white;
+  border: silver 1px solid;
+}
+.lavalamp-border {
+  color: #447ef2;
+  border: #447ef2 1px solid;
+}
+.cat-border {
+  color: white;
+  border: 1px solid salmon;
+}
+.campfire-border {
+  color: #fc847b;
+  border: #4163ad 1px solid;
+}
+
+.dots-border {
+  color: whitesmoke;
+  border: pink 1px solid;
+}
+
+.futurecity-border {
+  border: 1px solid salmon;
+  color: white;
+}
+@media screen and (max-width: 650px) {
+  body {
+    background-image: url(/images/logos/jung-mobile.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .sidemenu {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    /* Gradient background for a glassy effect */
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 50%
+    );
+
+    /* Adding some box shadows for the raised effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+      /* Horizontal and vertical offsets, blur, spread, color */ 0 0 5px
+        rgba(0, 0, 0, 0.1),
+      /* Slight shadow around the pane */ inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow for the depth effect */
+
+    /* Border for a clear frame */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* To round the corners slightly for more aesthetic look */
+    border-radius: 5px;
+
+    /* Transition for smooth interaction feedback */
+    transition: all 0.3s ease-in-out;
+
+    /* Optional: You can add a hover effect to make the window pane more interactive */
+    &:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 0, 0, 0.1),
+        inset 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .sidemenu {
+    position: fixed;
+    top: 0;
+    left: 0px; /* Initially, it's fully off the screen. */
+    height: 100%; /* Make it full height. */
+    width: 250px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/images/dec3.svg);
+    background-blend-mode: luminosity;
+    z-index: 1000; /* Assuming it should be on top of most other elements. Adjust as needed. */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Optional shadow for some depth */
+  }
+
+  .sidemenu.open {
+    color: white;
+    transform: translateX(
+      0px
+    ); /* This moves the menu to the right by its own width, essentially showing it. */
+  }
+  .sidemenu::-webkit-scrollbar {
+    width: 8px; /* Adjust this value to make the scrollbar wider or narrower */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.05
+    ); /* This gives a slight background color to the track of the scrollbar */
+  }
+
+  /* Style the scrollbar thumb (the part you drag) */
+  .sidemenu::-webkit-scrollbar-thumb {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ); /* This is the main color of the scrollbar */
+    border-radius: 4px; /* This makes the scrollbar thumb rounded */
+    border: 2px solid transparent; /* This will create space between the thumb and the track, to simulate some spacing */
+    background-clip: padding-box; /* This is important when using the border on the thumb */
+  }
+
+  /* Style the scrollbar thumb on hover for better feedback */
+  .sidemenu::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.25); /* Darker color on hover */
+  }
+  .side-menu-button {
+    display: flex;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    font-family: arial;
+    font-size: 15px;
+    background-color: rgba(200, 197, 197, 0);
+    transition: ease 0.25s all;
+  }
+  .side-menu-button:hover {
+    background-color: #a88aa5b9;
+  }
+  .fas,
+  .fa-plus {
+    padding-right: 0.8rem;
+  }
+  .chatbox {
+    margin: 0 auto;
+    width: 93%;
+    border-top: 1px rgba(255, 255, 255, 0.204) solid;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .chat-input-holder {
+    padding: 0px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+  .chat-disclaimer {
+    font-size: 9px;
+    text-align: center;
+    padding-bottom: 0.5rem;
+  }
+
+  .chat-input-textarea {
+    position: relative;
+    overflow: hidden;
+    background-color: #c1c0bf;
+    width: 140%;
+    border: 0px;
+    padding: 15px;
+    margin-top: 1.15rem;
+    border-radius: 10px;
+    font-family: "Arial";
+    color: black;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+  }
+  textarea::placeholder {
+    color: #757d8a; /* Replace with your desired color */
+  }
+  .chat-log {
+    padding: 0px;
+    text-align: left;
+    display: flex;
+    margin-left: 0%;
+    flex-direction: column;
+  }
+  .form-container {
+    width: 35vw;
+    margin-bottom: 1rem;
+  }
+  .chat-message {
+    padding: 20px;
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 0.5rem;
+    padding-left: 1%;
+    border-radius: 30px;
+    background-color: rgb(218, 218, 218);
+  }
+  .chat-message.chatgpt {
+    padding: 20px;
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 0.5rem;
+    padding-left: 1%;
+    border-radius: 30px;
+    background-color: rgb(218, 218, 218);
+  }
+  .avatar {
+    background-color: rgb(49, 162, 168);
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+  }
+  .avatar.chatgpt {
+    background-color: #ffe7db;
+    border-radius: 100%;
+  }
+  .message {
+    margin-left: 2rem;
+    margin-top: 0rem;
+    font-family: "Montserrat";
+    letter-spacing: 0.6px;
+    font-size: 14px;
+    width: 80%;
+    line-height: 1.4rem;
+    color: black;
+  }
+
+  .header p {
+    align-items: center;
+    font-family: "Strait";
+    color: "whitesmoke";
+    background-color: rgb(38, 38, 38);
+  }
+
+  .header button {
+    margin-right: 1rem;
+  }
+
+  .spanclass {
+    color: white;
+  }
+
+  #flat-earth {
+    align-self: flex-end;
+    font-size: 15px;
+    margin-right: 1.4rem;
+  }
+  .send-button {
+    position: absolute;
+    top: 41.5%;
+    left: 115%;
+    background-color: #92baa0;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    border-radius: 10%;
+    padding: 6px 26px 6px 15px;
+  }
+  .header {
+    margin: 0 auto;
+    display: flex;
+    font-family: "Strait";
+    color: rgb(199, 199, 204);
+    background-color: rgb(55, 61, 74);
+    background-image: url("/images/dots.svg");
+    margin: 0 auto;
+    width: 100%;
+    min-height: 95vh;
+    transition: background 0.5s ease; /* Change 0.5s to whatever duration you want */
+    -webkit-transition: background 0.5s ease; /* WebKit browsers */
+  }
+  .nightsky-border {
+    border: 1px solid salmon;
+    color: #363d46;
+  }
+  .black-border {
+    border: 1px solid silver;
+    color: gray;
+  }
+  .sleek-border {
+    color: #607e92;
+    border: #607e92 1px solid;
+  }
+  .lavalamp-border {
+    color: #447ef2;
+    border: #447ef2 1px solid;
+  }
+  .cat-border {
+    color: #ff6161;
+    border: 1px solid salmon;
+  }
+  .campfire-border {
+    color: #fc847b;
+    border: #4163ad 1px solid;
+  }
+
+  .dots-border {
+    color: #607e92;
+    border: #607e92 1px solid;
+  }
+  .futurecity-border {
+    border: 1px solid salmon;
+    color: #363d46;
+  }
+  .button-cat {
+    background-color: #ff6161;
+  }
+}
+
+.sidemenu {
+  width: 0;
+  transition: width 0.3s ease;
+  cursor: pointer; /* Optional: Changes the mouse cursor when you hover over the side menu */
+}
+
+.sidemenu.open {
+  width: 250px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #506072;
+  height: 4vh;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 4px;
+  font-size: 9px;
+}
+.footer h3 {
+  text-align: center;
+  color: #ffffff;
+}
+
+.link {
+  color: white;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5em;
+  padding: 20px;
+  text-align: center;
+}
+
+.card {
+  border: 1px solid red;
+  padding: 4rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+.jung-background-2 {
+  background-image: url(/images/logos/jung-background4.svg);
+  background-size: 100%;
+  background-position-y: 110%;
+  background-repeat: no-repeat;
+}
+
+.jung-background-3 {
+  background-image: url(/images/logos/jung-background5.svg);
+  background-size: auto;
+  background-position-y: 70%;
+  background-repeat: no-repeat;
+}
+
+.overlay-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: silver;
+  z-index: 1000;
+}
+
+.Sleek {
+  background-image: url("/images/dots2.svg");
+}
+
+.Dots {
+  background-image: url("/images/dots.svg");
+}
+
+.Nightsky {
+  background-image: url("/images/stars1.svg");
+}
+.Lavalamp {
+  background-image: url("/images/lavalamp.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Cat {
+  background-image: url("/images/cat.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.FutureCity {
+  background-image: url("/images/space.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.CampFire {
+  background-image: url("/images/campfire.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Black {
+  background-image: url("/images/black.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.button-nightsky {
+  background-color: pink;
+}
+
+.button-campfire {
+  background-color: #a07493;
+}
+.button-lavalamp {
+  background-color: #447ef2;
+}
+
+.button-futurecity {
+  background-color: #c55059;
+}
+
+.button-black {
+  background-color: rgb(83, 78, 78);
+  color: whitesmoke;
+}
+.button-cat {
+  background-color: #ff6161;
+}
+.background-selector select {
+  /* Other existing styles ... */
+  transition: all 0.3s ease; /* This will smoothly transition all properties of the select element */
+  -webkit-transition: all 0.3s ease; /* WebKit browsers */
+}
