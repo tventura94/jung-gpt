@@ -7,7 +7,7 @@ export default function useAuth() {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
-  const { user } = useContext(Context);
+  const { user, subscriptionStatus } = useContext(Context);
   const route = routes.find((route) => route.path(params) === pathname);
   const [show, setShow] = useState(false);
 
@@ -30,11 +30,17 @@ export default function useAuth() {
 
     if (pathname === '/audio-recorder') {
       if (
-        user?.uid !== '9ODBIC3Ir5bWiZGb4B2MnatmVMY2' ||
+        user?.uid !== '9ODBIC3Ir5bWiZGb4B2MnatmVMY2' &&
         user?.uid !== 'vg9Y3qcy2VcGiueua2SHzk30Srl2'
       ) {
         router.push('/selector');
         return;
+      }
+    }
+
+    if (pathname === '/dbt') {
+      if (subscriptionStatus !== 'Premium') {
+        router.push('/selector');
       }
     }
 
