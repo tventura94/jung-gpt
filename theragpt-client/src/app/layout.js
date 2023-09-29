@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import Script from 'next/script';
 import Provider from 'store/Provider';
 import { getAuth } from 'libs/firebase-admin';
 import { Box } from '@mui/material';
@@ -25,7 +26,24 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4736749900506771"
+          crossorigin="anonymous"
+        />
+        <Script
+          src="https://kit.fontawesome.com/625c8351aa.js"
+          crossorigin="anonymous"
+        />
+        <Script async src="https://js.stripe.com/v3/pricing-table.js" />
+        <Script
+          src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+          integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+          crossorigin=""
+        />
+        <Script src="https://apis.google.com/js/platform.js" async defer />
+      </head>
       <body>
         <Provider user={user}>
           <Box

@@ -104,7 +104,7 @@ html {
   font-family: "Strait";
   color: rgb(199, 199, 204);
   background-color: rgb(55, 61, 74);
-  background-image: url("/images/dots2.svg");
+  background-image: url(/images/dots2.svg);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
@@ -274,7 +274,7 @@ textarea::placeholder {
 }
 .avatar.chatgpt {
   background-color: #f9d7d6;
-  background-image: url(/jung-face.png);
+  background-image: url(/images/jung-face.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -628,7 +628,7 @@ body {
     font-family: "Strait";
     color: rgb(199, 199, 204);
     background-color: rgb(55, 61, 74);
-    background-image: url("/images/dots.svg");
+    background-image: url(/images/dots.svg);
     margin: 0 auto;
     width: 100%;
     min-height: 95vh;
@@ -768,44 +768,44 @@ body {
 }
 
 .Sleek {
-  background-image: url("/images/dots2.svg");
+  background-image: url(/images/dots2.svg);
 }
 
 .Dots {
-  background-image: url("/images/dots.svg");
+  background-image: url(/images/dots.svg);
 }
 
 .Nightsky {
-  background-image: url("/images/stars1.svg");
+  background-image: url(/images/stars1.svg);
 }
 .Lavalamp {
-  background-image: url("/images/lavalamp.gif");
+  background-image: url(/images/lavalamp.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .Cat {
-  background-image: url("/images/cat.gif");
+  background-image: url(/images/cat.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .FutureCity {
-  background-image: url("/images/space.gif");
+  background-image: url(/images/space.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .CampFire {
-  background-image: url("/images/campfire.gif");
+  background-image: url(/images/campfire.gif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Black {
-  background-image: url("/images/black.svg");
+  background-image: url(/images/black.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

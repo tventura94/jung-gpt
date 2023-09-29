@@ -67,6 +67,10 @@ export default function Upgrade({ user, setUser }) {
   }, []);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       collection(db, 'users', user.uid, 'subscriptions'),
       (snapshot) => {
@@ -144,7 +148,7 @@ export default function Upgrade({ user, setUser }) {
           marginBottom: '2rem',
           flexWrap: 'wrap',
           margin: isMobile ? '1rem' : '',
-          backgroundPositionY: '2.3%',
+          backgroundPositionY: '2.3% !important',
         }}
         className={isMobile ? '' : 'jung-background-3'}
       >
