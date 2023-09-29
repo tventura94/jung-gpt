@@ -11,6 +11,7 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
+import { db } from 'libs/firebase';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -26,7 +27,6 @@ import {
   InputAdornment,
   Grid,
 } from '@mui/material';
-import { db } from 'libs/firebase';
 import MenuPopupState from 'components/MenuPopup';
 
 ReactGA.send({ hitType: 'pageview', page: '/Upgrade', title: 'Upgrade' });
@@ -220,7 +220,7 @@ export default function Upgrade({ user, setUser }) {
                 >
                   <Image
                     priority
-                    src={'/images/PSY.PNG'}
+                    src={'/images/PSY.png'}
                     width={866}
                     height={650}
                     alt=""

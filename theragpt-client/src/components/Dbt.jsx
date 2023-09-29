@@ -12,6 +12,8 @@ import {
 import { serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp function
 import { Timestamp } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
+import { db } from 'libs/firebase';
+import Fire, { getUserData } from 'libs/firebase';
 import {
   Dialog,
   DialogTitle,
@@ -21,10 +23,8 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Button, Typography, useMediaQuery } from '@mui/material';
-import { db } from 'libs/firebase';
 import { BannedWordsModal } from 'components/BannedWordsModal';
 import MenuPopupState from 'components/MenuPopup';
-import Fire, { getUserData } from 'libs/firebase';
 
 ReactGA.send({ hitType: 'pageview', page: '/Dbt', title: 'Dbt' });
 ReactGA.initialize('AW-11340712718');
@@ -237,6 +237,10 @@ export default function Dbt({
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const fetchData = async () => {
       try {
         await getUserData(user.email);
@@ -246,7 +250,7 @@ export default function Dbt({
     };
 
     fetchData();
-  }, [user.email]);
+  }, [user?.email]);
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
@@ -288,6 +292,10 @@ export default function Dbt({
   // Firebase - Check user sub
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       collection(db, 'users', user.uid, 'subscriptions'), // Updated document reference
       (snapshot) => {
@@ -307,7 +315,7 @@ export default function Dbt({
     return () => {
       unsubscribe();
     };
-  }, [user.uid, setSubscriptionStatus]);
+  }, [user?.uid, setSubscriptionStatus]);
 
   function autosize(textarea) {
     textarea.style.height = 'auto';

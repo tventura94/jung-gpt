@@ -6,6 +6,9 @@ import { signOut } from 'firebase/auth';
 import { motion } from 'framer-motion';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
+import { logPageView } from 'libs/firebase';
+import { getUserData, db } from 'libs/firebase';
+import { auth } from 'libs/firebase';
 import {
   Box,
   Typography,
@@ -31,11 +34,8 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import { logPageView } from 'libs/firebase';
 import MenuPopupState from 'components/MenuPopup';
 import Welcome from 'components/Welcome';
-import { getUserData, db } from 'libs/firebase';
-import { auth } from 'libs/firebase';
 import GoogleAd from 'components/googleAd';
 
 ReactGA.send({ hitType: 'pageview', page: '/Selector', title: 'Selector' });
@@ -54,6 +54,10 @@ export default function Selector({ user, setUser }) {
   const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const checkJobCollection = async () => {
       const jobCollectionRef = collection(db, 'users', user.uid, 'job');
       const snapshot = await getDocs(jobCollectionRef);
@@ -71,9 +75,13 @@ export default function Selector({ user, setUser }) {
     };
 
     checkJobCollection();
-  }, [user.uid, db]);
+  }, [user?.uid, db]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const checkCollections = async () => {
       const jobCollection = await collection(
         db,
@@ -100,7 +108,7 @@ export default function Selector({ user, setUser }) {
     };
 
     checkCollections();
-  }, [user.uid]);
+  }, [user?.uid]);
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
@@ -177,6 +185,10 @@ export default function Selector({ user, setUser }) {
   }, []);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       collection(db, 'users', user.uid, 'subscriptions'),
       (snapshot) => {
@@ -204,9 +216,13 @@ export default function Selector({ user, setUser }) {
     return () => {
       unsubscribe();
     };
-  }, [user.uid]);
+  }, [user?.uid]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const fetchData = async () => {
       try {
         await getUserData(user.email);
@@ -214,7 +230,7 @@ export default function Selector({ user, setUser }) {
     };
 
     fetchData();
-  }, [user.email]);
+  }, [user?.email]);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

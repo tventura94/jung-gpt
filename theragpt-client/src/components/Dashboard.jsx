@@ -11,6 +11,7 @@ import {
 import { serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp function
 import { Timestamp } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
+import Fire, { getUserData, db } from 'libs/firebase';
 import {
   Dialog,
   DialogTitle,
@@ -26,7 +27,6 @@ import { useTheme } from '@mui/material/styles';
 // import { logPageView } from 'libs/firebase';
 import { BannedWordsModal } from 'components/BannedWordsModal';
 import MenuPopupState from 'components/MenuPopup';
-import Fire, { getUserData, db } from 'libs/firebase';
 
 ReactGA.send({ hitType: 'pageview', page: '/Dashboard', title: 'Dashboard' });
 ReactGA.initialize('AW-11340712718');
@@ -81,6 +81,10 @@ export default function Dashboard({
   }, []);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const checkCollections = async () => {
       const jobCollectionRef = collection(db, 'users', user.uid, 'job');
       const descriptionCollectionRef = collection(
@@ -126,7 +130,7 @@ export default function Dashboard({
     };
 
     checkCollections();
-  }, [user.uid]);
+  }, [user?.uid]);
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -282,6 +286,10 @@ export default function Dashboard({
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const fetchData = async () => {
       try {
         await getUserData(user.email);
@@ -291,7 +299,7 @@ export default function Dashboard({
     };
 
     fetchData();
-  }, [user.email]);
+  }, [user?.email]);
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
@@ -333,6 +341,10 @@ export default function Dashboard({
   // Firebase - Check user sub
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       collection(db, 'users', user.uid, 'subscriptions'), // Updated document reference
       (snapshot) => {
@@ -352,7 +364,7 @@ export default function Dashboard({
     return () => {
       unsubscribe();
     };
-  }, [user.uid, setSubscriptionStatus]);
+  }, [user?.uid, setSubscriptionStatus]);
 
   function autosize(textarea) {
     textarea.style.height = 'auto';

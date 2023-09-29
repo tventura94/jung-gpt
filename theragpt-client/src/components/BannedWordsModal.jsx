@@ -85,7 +85,10 @@ export function BannedWordsModal(props) {
         </Typography>
         <Link
           href="https://portal.cca.edu/thriving/caps/international-mental-health-support/"
-          className="link"
+          style={{
+            color: 'rgb(25, 118, 210)',
+            textDecoration: 'underline rgba(25, 118, 210, 0.4)',
+          }}
         >
           International Mental Health Support Directory
         </Link>

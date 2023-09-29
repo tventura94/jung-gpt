@@ -1,7 +1,7 @@
-import Provider from 'store/Provider';
-import { Box } from '@mui/material';
 import { cookies } from 'next/headers';
+import Provider from 'store/Provider';
 import { getAuth } from 'libs/firebase-admin';
+import { Box } from '@mui/material';
 import 'styles/globals.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 

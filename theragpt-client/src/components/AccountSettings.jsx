@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { onSnapshot, collection, query, where } from 'firebase/firestore';
+import { db } from 'libs/firebase'; // assuming you've configured firebase in a file named firebase.js
 import { Box, Button, Tab, Tabs, Typography, TextField } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { db } from 'libs/firebase'; // assuming you've configured firebase in a file named firebase.js
 import MenuPopupState from 'components/MenuPopup';
 
 function AccountSettings({ user, setUser }) {
@@ -15,6 +15,10 @@ function AccountSettings({ user, setUser }) {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     const unsubscribe = onSnapshot(
       collection(db, 'users', user.uid, 'subscriptions'),
       (snapshot) => {
@@ -38,7 +42,7 @@ function AccountSettings({ user, setUser }) {
     return () => {
       unsubscribe();
     };
-  }, [user.uid]);
+  }, [user?.uid]);
 
   const [currentTab, setCurrentTab] = useState(0);
   const handleChange = (event, newValue) => {
@@ -46,6 +50,10 @@ function AccountSettings({ user, setUser }) {
   };
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
+
     // Define the first and last day of the current month
     const date = new Date();
     const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -79,7 +87,7 @@ function AccountSettings({ user, setUser }) {
     return () => {
       unsubscribe();
     };
-  }, [user.uid]);
+  }, [user?.uid]);
 
   return (
     <div maxwidth="100%">
@@ -142,11 +150,17 @@ function AccountSettings({ user, setUser }) {
             <Typography variant="h6">Email</Typography>
           </Box>
           <Box marginBottom={5}>
-            <TextField variant="outlined" value={user.email} disabled />
+            <TextField variant="outlined" value={user?.email} disabled />
           </Box>
           <Box marginBottom={4}>
             <Typography variant="body1">
-              <Link href="/terms" className="link">
+              <Link
+                href="/terms"
+                style={{
+                  color: 'rgb(25, 118, 210)',
+                  textDecoration: 'underline rgba(25, 118, 210, 0.4)',
+                }}
+              >
                 Terms of Service
               </Link>
             </Typography>

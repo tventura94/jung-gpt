@@ -2,12 +2,15 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import * as React from 'react';
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from 'libs/firebase';
+import { apiSignIn } from 'utils/api';
 import {
   Avatar,
   Button,
@@ -24,10 +27,7 @@ import {
 } from '@mui/material';
 import { LockOutlined as LockOutlinedIcon } from '@mui/icons-material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
-import { auth } from 'libs/firebase';
 import GoogleAd from 'components/googleAd';
-import { apiSignIn } from 'utils/api';
-import Link from 'next/link';
 
 function Copyright(props) {
   return (
@@ -38,7 +38,13 @@ function Copyright(props) {
       {...props}
     >
       {''}
-      <Link href="#" className="link" />
+      <Link
+        href="#"
+        style={{
+          color: 'rgb(25, 118, 210)',
+          textDecoration: 'underline rgba(25, 118, 210, 0.4)',
+        }}
+      />
     </Typography>
   );
 }
@@ -56,14 +62,14 @@ export default function SignIn({ setUser }) {
     try {
       const result = await signInWithPopup(auth, provider);
       const { user } = result;
-
+      user.getIdToken().then((idToken) => {
+        apiSignIn(token);
+      });
       setUser({
         uid: user.uid,
         email: user.email,
       });
-
-      const token = await result.user.getIdToken();
-      await apiSignIn(token);
+      router.push('/selector');
     } catch (error) {
       // Handle any errors that occur during the sign-in process
     }
@@ -82,6 +88,7 @@ export default function SignIn({ setUser }) {
             uid: user.uid,
             email: user.email,
           });
+          router.push('/selector');
         })
         .catch((err) => {
           if (!email || !password)
@@ -388,6 +395,7 @@ export default function SignIn({ setUser }) {
                     target="_blank"
                   >
                     <Image
+                      priority
                       src="https://media.theresanaiforthat.com/featured3.png"
                       width={300}
                       height={61}

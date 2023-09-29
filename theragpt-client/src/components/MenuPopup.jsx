@@ -1,6 +1,8 @@
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { signOut } from 'firebase/auth';
+import { auth } from 'libs/firebase';
+import { apiSignOut } from 'utils/api';
 import { ManageAccounts as ManageAccountsIcon } from '@mui/icons-material';
 import {
   Button,
@@ -10,8 +12,6 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { auth } from 'libs/firebase';
-import { apiSignOut } from 'utils/api';
 
 export default function MenuPopupState({ user, setUser }) {
   const router = useRouter();
@@ -22,6 +22,7 @@ export default function MenuPopupState({ user, setUser }) {
   function handleSignOut() {
     signOut(auth).then(async () => {
       setUser(null);
+      router.push('/signin');
       apiSignOut();
     });
   }

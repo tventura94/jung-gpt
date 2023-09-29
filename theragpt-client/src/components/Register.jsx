@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'libs/firebase';
+import { apiSignIn } from 'utils/api';
 import {
   Avatar,
   Button,
@@ -18,8 +20,6 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
-import { auth } from 'libs/firebase';
-import { apiSignIn } from 'utils/api';
 
 function Copyright(props) {
   return (
@@ -30,7 +30,14 @@ function Copyright(props) {
       {...props}
     >
       {''}
-      <Link href="#" className="link" /> {'.'}
+      <Link
+        href="#"
+        style={{
+          color: 'rgb(25, 118, 210)',
+          textDecoration: 'underline rgba(25, 118, 210, 0.4)',
+        }}
+      />{' '}
+      {'.'}
     </Typography>
   );
 }

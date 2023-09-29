@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5173",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5173",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,7 +21,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-ga4": "^2.1.0"
+    "react-ga4": "^2.1.0",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
     "encoding": "^0.1.13",

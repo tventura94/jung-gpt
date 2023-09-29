@@ -1,6 +1,6 @@
-import { getAuth } from 'libs/firebase-admin';
 import { cookies, headers } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { getAuth } from 'libs/firebase-admin';
 
 export async function POST() {
   const authorization = headers().get('Authorization');

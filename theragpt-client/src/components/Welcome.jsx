@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { collection, setDoc, doc } from 'firebase/firestore';
+import { db, auth } from 'libs/firebase';
 import { keyframes } from '@mui/system';
 import { Box, Button, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { db, auth } from 'libs/firebase';
 
 const fadeIn = keyframes`
   0% {

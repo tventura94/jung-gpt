@@ -838,8 +838,3 @@ body {
   transition: all 0.3s ease; /* This will smoothly transition all properties of the select element */
   -webkit-transition: all 0.3s ease; /* WebKit browsers */
 }
-
-.link {
-  color: rgb(25, 118, 210);
-  text-decoration: underline rgba(25, 118, 210, 0.4);
-}
