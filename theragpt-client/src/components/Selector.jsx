@@ -6,9 +6,8 @@ import { signOut } from 'firebase/auth';
 import { motion } from 'framer-motion';
 import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
-import { logPageView } from 'libs/firebase';
-import { getUserData, db } from 'libs/firebase';
-import { auth } from 'libs/firebase';
+import { logPageView } from 'libs/analytics';
+import { getUserData, db, auth } from 'libs/firebase';
 import {
   Box,
   Typography,
@@ -181,7 +180,7 @@ export default function Selector({ user, setUser }) {
   };
 
   useEffect(() => {
-    //    logPageView('/Selector');
+    logPageView('/Selector');
   }, []);
 
   useEffect(() => {

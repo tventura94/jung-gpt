@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 export default function TimerExample() {
   const [timeRemaining, setTimeRemaining] = useState(null);
@@ -10,7 +10,7 @@ export default function TimerExample() {
 
       // Retrieve lastTime dynamically from localStorage each time
       const lastTime =
-        parseInt(localStorage.getItem("lastAccessTime"), 10) || currentTime;
+        parseInt(localStorage.getItem('lastAccessTime'), 10) || currentTime;
 
       const timePassed = currentTime - lastTime;
       const remaining = oneDay - timePassed;

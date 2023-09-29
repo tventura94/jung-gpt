@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 const GoogleAd = () => {
   useEffect(() => {
     // Load the adsbygoogle.js script dynamically
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4736749900506771";
+      'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4736749900506771';
     script.async = true;
-    script.crossOrigin = "anonymous";
+    script.crossOrigin = 'anonymous';
     document.body.appendChild(script);
 
     // Check if an ad is already loaded
@@ -28,7 +28,7 @@ const GoogleAd = () => {
     <>
       <ins
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: 'block' }}
         data-ad-client="ca-pub-4736749900506771"
         data-ad-slot="9754369071"
         data-ad-format="auto"

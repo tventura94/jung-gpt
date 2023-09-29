@@ -12,6 +12,7 @@ import { serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp 
 import { Timestamp } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
 import Fire, { getUserData, db } from 'libs/firebase';
+import { logPageView } from 'libs/analytics';
 import {
   Dialog,
   DialogTitle,
@@ -24,7 +25,6 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-// import { logPageView } from 'libs/firebase';
 import { BannedWordsModal } from 'components/BannedWordsModal';
 import MenuPopupState from 'components/MenuPopup';
 
@@ -303,7 +303,7 @@ export default function Dashboard({
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
-    // logPageView('/Dashboard');
+    logPageView('/Dashboard');
   }, []);
 
   useEffect(() => {

@@ -12,8 +12,8 @@ import {
 import { serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp function
 import { Timestamp } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
-import { db } from 'libs/firebase';
-import Fire, { getUserData } from 'libs/firebase';
+import { logPageView } from 'libs/analytics';
+import Fire, { getUserData, db } from 'libs/firebase';
 import {
   Dialog,
   DialogTitle,
@@ -254,7 +254,7 @@ export default function Dbt({
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
-    // logPageView('/Dbt');
+    logPageView('/Dbt');
   }, []);
 
   useEffect(() => {

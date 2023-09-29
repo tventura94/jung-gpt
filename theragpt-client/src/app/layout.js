@@ -29,6 +29,20 @@ export default async function RootLayout({ children }) {
       <head>
         <Script
           async
+          src="https://www.googletagmanager.com/gtag/js?id=G-L8FEQH21J8"
+        />
+        <Script id="gtm-script">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-L8FEQH21J8');
+          `}
+        </Script>
+        <Script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4736749900506771"
           crossorigin="anonymous"
         />

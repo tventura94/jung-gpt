@@ -13,14 +13,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
 export const db = getFirestore();
 
 // Get User Data
-
 export async function getUserData(email) {
   if (!email) {
     return;

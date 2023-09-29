@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import ReactGA from 'react-ga4';
 import { db } from 'libs/firebase';
+import { logPageView } from 'libs/analytics';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import {
@@ -92,7 +93,7 @@ export default function Upgrade({ user, setUser }) {
   }, [user]);
 
   useEffect(() => {
-    // logPageView('/Upgrade');
+    logPageView('/Upgrade');
   }, []);
 
   const handleUpgrade = async (productId) => {
