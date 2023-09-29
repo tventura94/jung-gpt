@@ -188,16 +188,16 @@ export default function Selector({
       (snapshot) => {
         let activeSubs = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter((sub) => ['trialing', 'active'].includes(sub.data().status));
+          .filter((sub) => ['trialing', 'active'].includes(sub.status));
 
-        let newSub = activeSubs[0];
+        const newSub = activeSubs[0];
 
         if (newSub) {
-          if (newSub.data().status === 'active') {
+          if (newSub.status === 'active') {
             setSubscriptionStatus('Premium');
             setLogoSrc('/images/gpt-gold.png');
           } else {
-            setSubscriptionStatus(newSub.data().status);
+            setSubscriptionStatus(newSub.status);
             setLogoSrc('/images/will.png');
           }
         } else {
