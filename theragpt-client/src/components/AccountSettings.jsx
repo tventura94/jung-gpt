@@ -7,8 +7,12 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuPopupState from 'components/MenuPopup';
 
-function AccountSettings({ user, setUser }) {
-  const [subscriptionStatus, setSubscriptionStatus] = useState('Free Plan');
+function AccountSettings({
+  user,
+  setUser,
+  subscriptionStatus,
+  setSubscriptionStatus,
+}) {
   const [totalTokens, setTotalTokens] = useState(0);
 
   const theme = useTheme();
@@ -28,11 +32,7 @@ function AccountSettings({ user, setUser }) {
 
         let newSub = activeSubs[0];
         if (newSub) {
-          if (newSub.status === 'active') {
-            setSubscriptionStatus('Premium');
-          } else {
-            setSubscriptionStatus(newSub.status);
-          }
+          setSubscriptionStatus(newSub.status);
         } else {
           setSubscriptionStatus('Free Plan');
         }
@@ -117,7 +117,11 @@ function AccountSettings({ user, setUser }) {
           </Box>
           <Box marginBottom={2}>
             <Box marginBottom={2}>
-              <Typography variant="body1">{subscriptionStatus}</Typography>
+              <Typography variant="body1">
+                {subscriptionStatus === 'active'
+                  ? 'Premium'
+                  : subscriptionStatus}
+              </Typography>
             </Box>
           </Box>
           <Box marginBottom={2}>
@@ -179,11 +183,11 @@ function AccountSettings({ user, setUser }) {
               }}
               variant="body1"
             >
-              {subscriptionStatus === 'Premium'
+              {subscriptionStatus === 'active'
                 ? 'Unlimited Messaging, Access to JungSMART & First Access to new and improved models'
                 : `Free Plan - Limited Messaging`}
             </Typography>
-            {subscriptionStatus === 'Premium' && (
+            {subscriptionStatus === 'active' && (
               <Box marginBottom={2}>
                 <Typography
                   sx={{

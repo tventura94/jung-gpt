@@ -194,7 +194,7 @@ export default function Selector({
 
         if (newSub) {
           if (newSub.status === 'active') {
-            setSubscriptionStatus('Premium');
+            setSubscriptionStatus(newSub.status);
             setLogoSrc('/images/gpt-gold.png');
           } else {
             setSubscriptionStatus(newSub.status);
@@ -506,7 +506,7 @@ export default function Selector({
                 }}
                 onClick={() => router.push('/dashboard')}
               >
-                <b> Chat Now</b>
+                <b>Chat Now</b>
               </Button>
             </Box>
           </motion.div>
@@ -525,9 +525,7 @@ export default function Selector({
                 style={{
                   position: 'relative',
                   cursor:
-                    subscriptionStatus === 'Premium'
-                      ? 'pointer'
-                      : 'not-allowed',
+                    subscriptionStatus === 'active' ? 'pointer' : 'not-allowed',
                 }}
               >
                 <Tooltip
@@ -536,7 +534,7 @@ export default function Selector({
                   }}
                   title="Sorry, this is only for our Premium Members!"
                   arrow
-                  disableHoverListener={subscriptionStatus === 'Premium'}
+                  disableHoverListener={subscriptionStatus === 'active'}
                   placement="top"
                 >
                   <div>
@@ -546,11 +544,11 @@ export default function Selector({
                         height: '8rem',
                       }}
                       onClick={() => {
-                        if (subscriptionStatus === 'Premium') {
+                        if (subscriptionStatus === 'active') {
                           router.push('/dbt');
                         }
                       }}
-                      disabled={subscriptionStatus !== 'Premium'}
+                      disabled={subscriptionStatus !== 'active'}
                     >
                       <Image
                         src={'/images/jungSmart.png'}
@@ -625,7 +623,7 @@ export default function Selector({
                   width: isMobile ? '50%' : '40%',
                 }}
                 onClick={() => router.push('/dbt')}
-                disabled={subscriptionStatus !== 'Premium'}
+                disabled={subscriptionStatus !== 'active'}
               >
                 <b>Chat Now</b>{' '}
               </Button>

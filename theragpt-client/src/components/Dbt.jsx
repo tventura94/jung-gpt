@@ -306,7 +306,7 @@ export default function Dbt({
         let newSub = activeSubs[0];
 
         if (newSub) {
-          setSubscriptionStatus(newSub.status);
+          if (newSub.status) setSubscriptionStatus(newSub.status);
         } else {
         }
       }

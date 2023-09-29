@@ -39,8 +39,9 @@ export default function useAuth() {
     }
 
     if (pathname === '/dbt') {
-      if (subscriptionStatus !== 'Premium') {
+      if (subscriptionStatus !== 'active') {
         router.push('/selector');
+        return;
       }
     }
 

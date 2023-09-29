@@ -33,11 +33,15 @@ import MenuPopupState from 'components/MenuPopup';
 ReactGA.send({ hitType: 'pageview', page: '/Upgrade', title: 'Upgrade' });
 ReactGA.initialize('AW-11340712718');
 
-export default function Upgrade({ user, setUser }) {
+export default function Upgrade({
+  user,
+  setUser,
+  subscriptionStatus,
+  setSubscriptionStatus,
+}) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [products, setProducts] = useState([]);
-  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [amount, setAmount] = React.useState(0);
