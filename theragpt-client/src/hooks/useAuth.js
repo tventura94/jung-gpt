@@ -45,7 +45,7 @@ export default function useAuth() {
     }
 
     setShow(true);
-  }, [pathname, user]);
+  }, [pathname, user, subscriptionStatus]);
 
   return [show];
 }

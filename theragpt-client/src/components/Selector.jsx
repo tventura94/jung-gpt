@@ -40,9 +40,13 @@ import GoogleAd from 'components/googleAd';
 ReactGA.send({ hitType: 'pageview', page: '/Selector', title: 'Selector' });
 ReactGA.initialize('AW-11340712718');
 
-export default function Selector({ user, setUser }) {
+export default function Selector({
+  user,
+  setUser,
+  subscriptionStatus,
+  setSubscriptionStatus,
+}) {
   const router = useRouter();
-  const [subscriptionStatus, setSubscriptionStatus] = useState('Free Plan');
   const [logoSrc, setLogoSrc] = useState('/images/will.png');
   const [checkedSecond, setCheckedSecond] = React.useState(false);
   const [hasJob, setHasJob] = useState(false);
@@ -82,24 +86,15 @@ export default function Selector({ user, setUser }) {
     }
 
     const checkCollections = async () => {
-      const jobCollection = await collection(
-        db,
-        'users',
-        user.uid,
-        'job'
-      ).get();
-      const descriptionCollection = await collection(
-        db,
-        'users',
-        user.uid,
-        'description'
-      ).get();
-      const nameCollection = await collection(
-        db,
-        'users',
-        user.uid,
-        'name'
-      ).get();
+      const jobCollection = await getDocs(
+        collection(db, 'users', user.uid, 'job')
+      );
+      const descriptionCollection = await getDocs(
+        collection(db, 'users', user.uid, 'description')
+      );
+      const nameCollection = await getDocs(
+        collection(db, 'users', user.uid, 'name')
+      );
 
       setHasJob(!jobCollection.empty);
       setHasDescription(!descriptionCollection.empty);
@@ -193,16 +188,16 @@ export default function Selector({ user, setUser }) {
       (snapshot) => {
         let activeSubs = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter((sub) => ['trialing', 'active'].includes(sub.status));
+          .filter((sub) => ['trialing', 'active'].includes(sub.data().status));
 
         let newSub = activeSubs[0];
 
         if (newSub) {
-          if (newSub.status === 'active') {
+          if (newSub.data().status === 'active') {
             setSubscriptionStatus('Premium');
             setLogoSrc('/images/gpt-gold.png');
           } else {
-            setSubscriptionStatus(newSub.status);
+            setSubscriptionStatus(newSub.data().status);
             setLogoSrc('/images/will.png');
           }
         } else {
