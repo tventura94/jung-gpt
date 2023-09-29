@@ -8,8 +8,14 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 export const metadata = {
   title: 'Jung GPT | Emotional Reflection Feedback Tool | AI Chat Support',
+  description:
+    'JungGPT is an emotional reflection feedback tool that helps users navigate their emotions and bring clarity to their inner lives.',
   icons: {
     icon: '/images/will-3.png',
+  },
+  other: {
+    'google-signin-client_id':
+      '1032806576342-417perrakl4nt74get9p7nhgdq09d4lr.apps.googleusercontent.com.apps.googleusercontent.com',
   },
 };
 
@@ -51,11 +57,6 @@ export default async function RootLayout({ children }) {
           crossorigin="anonymous"
         />
         <Script async src="https://js.stripe.com/v3/pricing-table.js" />
-        <Script
-          src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-          integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-          crossorigin=""
-        />
         <Script src="https://apis.google.com/js/platform.js" async defer />
       </head>
       <body>
