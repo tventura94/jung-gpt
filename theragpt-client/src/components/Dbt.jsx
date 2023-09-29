@@ -21,18 +21,18 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Button, Typography, useMediaQuery } from '@mui/material';
-import { db, logPageView } from 'components/Fire';
+import { db } from 'libs/firebase';
 import { BannedWordsModal } from 'components/BannedWordsModal';
 import MenuPopupState from 'components/MenuPopup';
-import Fire, { getUserData } from 'components/Fire';
+import Fire, { getUserData } from 'libs/firebase';
 
 ReactGA.send({ hitType: 'pageview', page: '/Dbt', title: 'Dbt' });
 ReactGA.initialize('AW-11340712718');
 
 export default function Dbt({
-  setUserEmail,
   user,
   subscriptionStatus,
+  setUser,
   setSubscriptionStatus,
 }) {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function Dbt({
   const [trialLimitReached, setTrialLimitReached] = useState(false);
   const [chatLog, setChatLog] = useState([]);
   const [input, setInput] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDeveloperNotes, setShowDeveloperNotes] = useState(true);
   const [warningPopup, setWarningPopup] = useState(false);
   const [lastMessageTime, setLastMessageTime] = useState(0);
@@ -54,6 +54,10 @@ export default function Dbt({
   const [typedInterest, setTypedInterest] = useState('');
   const [interestsData, setInterestsData] = useState(null);
   const [isOldChat, setIsOldChat] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(window.innerWidth > 768);
+  }, []);
 
   const handleEmotionClick = (emotion) => {
     setSelectedEmotions((prev) => {
@@ -246,7 +250,7 @@ export default function Dbt({
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
-    logPageView('/Dbt');
+    // logPageView('/Dbt');
   }, []);
 
   useEffect(() => {
@@ -539,7 +543,7 @@ export default function Dbt({
   return (
     <div className="dashboard">
       <div className="main">
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <Fire user={user} />
       <div className="junggpt">
@@ -567,11 +571,14 @@ export default function Dbt({
                   >
                     {' '}
                     <Image
-                      fill
+                      priority
                       src="/images/button.png"
+                      width={200}
+                      height={100}
                       alt=""
                       style={{
                         width: '100%',
+                        height: '100%',
                       }}
                     />
                   </div>

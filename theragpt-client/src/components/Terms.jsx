@@ -2,11 +2,11 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import MenuPopupState from 'components/MenuPopup';
 
-function Terms({ setUser, user }) {
+function Terms({ user, setUser }) {
   return (
     <div>
       <div className="main">
-        <MenuPopupState setUser={setUser} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <Typography marginTop="2rem" variant="h4" align="center" gutterBottom>
         Terms of Service

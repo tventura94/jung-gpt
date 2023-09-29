@@ -6,14 +6,14 @@ import Footer from 'components/Footer';
 import Upgrade from 'components/Upgrade';
 
 export default function UpgradePage() {
-  const { user, setSubscriptionStatus, setUserEmail } = useContext(Context);
+  const { user, setUser, setSubscriptionStatus } = useContext(Context);
 
   return (
     <>
       <Upgrade
         user={user}
+        setUser={setUser}
         setSubscriptionStatus={setSubscriptionStatus}
-        setUserEmail={setUserEmail}
       />
       <Footer />
     </>

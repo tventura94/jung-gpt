@@ -4,10 +4,10 @@ import { onSnapshot, collection, query, where } from 'firebase/firestore';
 import { Box, Button, Tab, Tabs, Typography, TextField } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { db } from 'components/Fire'; // assuming you've configured firebase in a file named firebase.js
+import { db } from 'libs/firebase'; // assuming you've configured firebase in a file named firebase.js
 import MenuPopupState from 'components/MenuPopup';
 
-function AccountSettings({ setUserEmail, user }) {
+function AccountSettings({ user, setUser }) {
   const [subscriptionStatus, setSubscriptionStatus] = useState('Free Plan');
   const [totalTokens, setTotalTokens] = useState(0);
 
@@ -82,9 +82,9 @@ function AccountSettings({ setUserEmail, user }) {
   }, [user.uid]);
 
   return (
-    <div maxWidth="100%">
+    <div maxwidth="100%">
       <div className="main">
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
 
       <div style={{ maxWidth: '50%', margin: '0 auto' }}>
@@ -146,7 +146,9 @@ function AccountSettings({ setUserEmail, user }) {
           </Box>
           <Box marginBottom={4}>
             <Typography variant="body1">
-              <Link href="/terms">Terms of Service</Link>
+              <Link href="/terms" className="link">
+                Terms of Service
+              </Link>
             </Typography>
           </Box>
         </TabPanel>

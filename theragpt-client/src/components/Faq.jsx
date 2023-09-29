@@ -11,7 +11,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuPopupState from './MenuPopup';
 
-const Faq = ({ setUserEmail, user }) => {
+const Faq = ({ user, setUser }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -19,19 +19,19 @@ const Faq = ({ setUserEmail, user }) => {
     <div>
       <div className="main">
         <Image
-          fill
           src="/images/gpt-text-1.png"
+          width={48}
+          height={48}
           alt=""
           style={{
             color: 'white',
             right: '5%',
             bottom: '94.2%',
-            width: isMobile ? '3rem' : '3rem',
             marginLeft: isMobile ? '0rem' : '0rem',
             marginRight: isMobile ? '1rem' : '1rem',
           }}
         />
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <div
         style={{
@@ -53,14 +53,17 @@ const Faq = ({ setUserEmail, user }) => {
           }}
         >
           <Image
-            fill
+            priority
             src={'/images/jung-admat-1.png'}
+            width={1080}
+            height={1080}
             alt="admat"
             style={{
               borderRadius: '16px',
               marginBottom: '1rem',
               marginTop: '2rem',
               width: isMobile ? ' 100%' : '50%',
+              height: 'auto',
             }}
           />
           <Typography

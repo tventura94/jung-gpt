@@ -1,16 +1,16 @@
 'use client';
 
-import { useContext } from 'react';
-import { Context } from 'store/Provider';
 import Register from 'components/Register';
 import Footer from 'components/Footer';
+import { useContext } from 'react';
+import { Context } from 'store/Provider';
 
 export default function RegisterPage() {
-  const { setUserEmail } = useContext(Context);
+  const { setUser } = useContext(Context);
 
   return (
     <>
-      <Register setUserEmail={setUserEmail} />
+      <Register setUser={setUser} />
       <Footer />
     </>
   );

@@ -6,11 +6,11 @@ import AccountSettings from 'components/AccountSettings';
 import Footer from 'components/Footer';
 
 export default function AccountSettingsPage() {
-  const { user, setUserEmail } = useContext(Context);
+  const { user, setUser } = useContext(Context);
 
   return (
     <>
-      <AccountSettings user={user} setUserEmail={setUserEmail} />
+      <AccountSettings user={user} setUser={setUser} />
       <Footer />
     </>
   );

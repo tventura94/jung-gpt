@@ -6,7 +6,7 @@ import Dbt from 'components/Dbt';
 import Footer from 'components/Footer';
 
 export default function DbtPage() {
-  const { user, subscriptionStatus, setUserEmail, setSubscriptionStatus } =
+  const { user, subscriptionStatus, setUser, setSubscriptionStatus } =
     useContext(Context);
 
   return (
@@ -14,7 +14,7 @@ export default function DbtPage() {
       <Dbt
         user={user}
         subscriptionStatus={subscriptionStatus}
-        setUserEmail={setUserEmail}
+        setUser={setUser}
         setSubscriptionStatus={setSubscriptionStatus}
       />
       <Footer />

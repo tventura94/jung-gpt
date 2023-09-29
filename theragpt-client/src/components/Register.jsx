@@ -18,7 +18,8 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
-import { auth } from 'components/Fire';
+import { auth } from 'libs/firebase';
+import { apiSignIn } from 'utils/api';
 
 function Copyright(props) {
   return (
@@ -29,12 +30,12 @@ function Copyright(props) {
       {...props}
     >
       {''}
-      <Link href="#" /> {'.'}
+      <Link href="#" className="link" /> {'.'}
     </Typography>
   );
 }
 
-export default function Register({ setUserEmail }) {
+export default function Register({ setUser }) {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -45,8 +46,15 @@ export default function Register({ setUserEmail }) {
     e.preventDefault();
     if (email !== null && password !== null) {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          setUserEmail(email);
+        .then((userCredential) => {
+          const { user } = userCredential;
+          user.getIdToken().then((idToken) => {
+            apiSignIn(idToken);
+          });
+          setUser({
+            uid: user.uid,
+            email: user.email,
+          });
           router.push('/dashboard');
           alert('Account Successfully created!');
         })

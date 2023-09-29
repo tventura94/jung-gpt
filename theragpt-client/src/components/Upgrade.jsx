@@ -26,13 +26,13 @@ import {
   InputAdornment,
   Grid,
 } from '@mui/material';
-import { logPageView, db } from 'components/Fire';
+import { db } from 'libs/firebase';
 import MenuPopupState from 'components/MenuPopup';
 
 ReactGA.send({ hitType: 'pageview', page: '/Upgrade', title: 'Upgrade' });
 ReactGA.initialize('AW-11340712718');
 
-export default function Upgrade({ setUserEmail, user }) {
+export default function Upgrade({ user, setUser }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [products, setProducts] = useState([]);
@@ -86,9 +86,11 @@ export default function Upgrade({ setUserEmail, user }) {
       unsubscribe();
     };
   }, [user]);
+
   useEffect(() => {
-    logPageView('/Upgrade');
+    // logPageView('/Upgrade');
   }, []);
+
   const handleUpgrade = async (productId) => {
     setLoading(true);
     const selectedProduct = products.find(
@@ -132,7 +134,7 @@ export default function Upgrade({ setUserEmail, user }) {
   return (
     <div className="jung-background-2 ">
       <div className="main">
-        <MenuPopupState setUser={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <Box
         sx={{
@@ -177,11 +179,13 @@ export default function Upgrade({ setUserEmail, user }) {
             Awesome! We're so excited for you to join our community!
           </Typography>
           <Image
-            fill
             src={'/images/chooseus.png'}
+            width={866}
+            height={250}
             alt=""
             style={{
               width: isMobile ? '90%' : '40%',
+              height: 'auto',
             }}
           />
           <Grid
@@ -215,11 +219,14 @@ export default function Upgrade({ setUserEmail, user }) {
                   }}
                 >
                   <Image
-                    fill
+                    priority
                     src={'/images/PSY.PNG'}
+                    width={866}
+                    height={650}
                     alt=""
                     style={{
                       width: '40%',
+                      height: 'auto',
                     }}
                   />
                   <Typography
@@ -262,11 +269,13 @@ export default function Upgrade({ setUserEmail, user }) {
                   }}
                 >
                   <Image
-                    fill
                     src={'/images/SAPP.png'}
+                    width={866}
+                    height={650}
                     alt=""
                     style={{
                       width: '50%',
+                      height: 'auto',
                     }}
                   />
                   <Typography
@@ -322,11 +331,14 @@ export default function Upgrade({ setUserEmail, user }) {
               >
                 {' '}
                 <Image
-                  fill
+                  priority
                   src={'/images/Over80.png'}
+                  width={866}
+                  height={650}
                   alt=""
                   style={{
                     width: '100%',
+                    height: 'auto',
                   }}
                 />
               </Box>
@@ -334,11 +346,13 @@ export default function Upgrade({ setUserEmail, user }) {
           </Grid>
           <Divider style={{ margin: '3rem 0' }} />
           <Image
-            fill
             src={'/images/pricing.jpg'}
+            width={866}
+            height={250}
             alt=""
             style={{
               width: isMobile ? '90%' : '25%',
+              height: 'auto',
             }}
           />
           <Typography
@@ -444,11 +458,14 @@ export default function Upgrade({ setUserEmail, user }) {
               <Typography variant="h5" component="div"></Typography>
 
               <Image
-                fill
+                priority
                 src={'/images/gpt-gold.png'}
+                width={500}
+                height={500}
                 alt=""
                 style={{
                   width: '80%',
+                  height: 'auto',
                 }}
               />
               <Divider></Divider>

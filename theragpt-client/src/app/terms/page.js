@@ -6,11 +6,11 @@ import Footer from 'components/Footer';
 import Terms from 'components/Terms';
 
 export default function TermsPage() {
-  const { user, setUserEmail } = useContext(Context);
+  const { user, setUser } = useContext(Context);
 
   return (
     <>
-      <Terms user={user} setUserEmail={setUserEmail} />
+      <Terms user={user} setUser={setUser} />
       <Footer />
     </>
   );

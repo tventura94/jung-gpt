@@ -3,7 +3,7 @@ import { collection, setDoc, doc } from 'firebase/firestore';
 import { keyframes } from '@mui/system';
 import { Box, Button, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { db, auth } from 'components/Fire';
+import { db, auth } from 'libs/firebase';
 
 const fadeIn = keyframes`
   0% {

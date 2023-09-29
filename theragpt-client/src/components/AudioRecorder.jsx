@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import MenuPopupState from './MenuPopup';
 import '@fortawesome/fontawesome-free/css/all.css';
 
-export default function AudioRecorder({ setUserEmail, user }) {
+export default function AudioRecorder({ user, setUser }) {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioChunks, setAudioChunks] = useState([]);
@@ -77,7 +77,7 @@ export default function AudioRecorder({ setUserEmail, user }) {
   return (
     <div>
       <div className="main">
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <Box
         sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}

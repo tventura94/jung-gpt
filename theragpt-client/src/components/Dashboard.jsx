@@ -23,18 +23,18 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { logPageView } from 'components/Fire';
+// import { logPageView } from 'libs/firebase';
 import { BannedWordsModal } from 'components/BannedWordsModal';
 import MenuPopupState from 'components/MenuPopup';
-import Fire, { getUserData, db } from 'components/Fire';
+import Fire, { getUserData, db } from 'libs/firebase';
 
 ReactGA.send({ hitType: 'pageview', page: '/Dashboard', title: 'Dashboard' });
 ReactGA.initialize('AW-11340712718');
 
 export default function Dashboard({
-  setUserEmail,
   user,
   subscriptionStatus,
+  setUser,
   setSubscriptionStatus,
 }) {
   const router = useRouter();
@@ -42,7 +42,7 @@ export default function Dashboard({
   const [trialLimitReached, setTrialLimitReached] = useState(false);
   const [chatLog, setChatLog] = useState([]);
   const [input, setInput] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(window.innerWidth > 768);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showDeveloperNotes, setShowDeveloperNotes] = useState(true);
   const [warningPopup, setWarningPopup] = useState(false);
   const [lastMessageTime, setLastMessageTime] = useState(0);
@@ -75,6 +75,10 @@ export default function Dashboard({
   function handleUpgrade() {
     router.push('/upgrade');
   }
+
+  useEffect(() => {
+    setIsMenuOpen(window.innerWidth > 768);
+  }, []);
 
   useEffect(() => {
     const checkCollections = async () => {
@@ -133,14 +137,17 @@ export default function Dashboard({
       }
     });
   };
+
   const [background, setBackground] = useState('defaultBackground');
+
   useEffect(() => {
     const savedBackground = localStorage.getItem('userBackgroundChoice');
     if (savedBackground) {
       setBackground(savedBackground);
     }
   }, []);
-  async function encryptText(plainText, blackAlpaca) {
+
+  const encryptText = async (plainText, blackAlpaca) => {
     const textEncoder = new TextEncoder();
     const textBuffer = textEncoder.encode(plainText);
     const passwordBuffer = textEncoder.encode(blackAlpaca);
@@ -176,7 +183,7 @@ export default function Dashboard({
     );
 
     return new Uint8Array(encrypted);
-  }
+  };
 
   const sendMessageToFirebase = async (userText, assistantText, tokenData) => {
     // Encryption
@@ -222,7 +229,7 @@ export default function Dashboard({
     }
   };
 
-  async function decryptText(cipherText, blackAlpaca) {
+  const decryptText = async (cipherText, blackAlpaca) => {
     const textDecoder = new TextDecoder();
     const passwordBuffer = new TextEncoder().encode(blackAlpaca);
     const passwordKey = await crypto.subtle.importKey(
@@ -253,7 +260,7 @@ export default function Dashboard({
       cipherText
     );
     return textDecoder.decode(new Uint8Array(decrypted));
-  }
+  };
 
   const getInterestsFromFirebase = async () => {
     const userRef = doc(db, 'users', user.uid); // Document reference
@@ -288,7 +295,7 @@ export default function Dashboard({
 
   // I dont think these two use effects do anything?? but I'm too scared to find out!
   useEffect(() => {
-    logPageView('/Dashboard');
+    // logPageView('/Dashboard');
   }, []);
 
   useEffect(() => {
@@ -522,6 +529,7 @@ export default function Dashboard({
     event.stopPropagation(); // Stop event from bubbling up to parent div
     setIsMenuOpen(!isMenuOpen);
   }
+
   function handleMenuClose(event) {
     setIsMenuOpen(false);
   }
@@ -574,6 +582,7 @@ export default function Dashboard({
     'hunanol', // Welsh
     // Note: Cantonese uses the same written form as Mandarin for "suicide", which is "自杀".
   ];
+
   const [showBannedModal, setShowBannedModal] = useState(false);
 
   function containsBannedKeywords(text) {
@@ -584,10 +593,11 @@ export default function Dashboard({
     }
     return false;
   }
+
   return (
     <div className="dashboard">
       <div className="main">
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       <Fire user={user} />
       <div className="junggpt">
@@ -749,11 +759,14 @@ export default function Dashboard({
           }}
         >
           <Image
-            fill
+            priority
             src={'/images/SubAd.svg'}
+            width={1080}
+            height={1080}
             alt=""
             style={{
               width: '100%',
+              height: 'auto',
             }}
           />
           <DialogActions
@@ -848,10 +861,12 @@ export default function Dashboard({
                     }
                   >
                     <Image
-                      fill
+                      priority
                       src="/images/button.png"
+                      width={200}
+                      height={100}
                       alt=""
-                      style={{ width: '100%' }}
+                      style={{ width: '100%', height: 'auto' }}
                     />
                   </div>
 
@@ -1203,6 +1218,7 @@ export default function Dashboard({
 const ChatMessage = ({ message }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <div
       style={{

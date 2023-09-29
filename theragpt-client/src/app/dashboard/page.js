@@ -5,14 +5,14 @@ import { Context } from 'store/Provider';
 import Dashboard from 'components/Dashboard';
 
 export default function DashboardPage() {
-  const { user, subscriptionStatus, setUserEmail, setSubscriptionStatus } =
+  const { user, subscriptionStatus, setUser, setSubscriptionStatus } =
     useContext(Context);
 
   return (
     <Dashboard
       user={user}
       subscriptionStatus={subscriptionStatus}
-      setUserEmail={setUserEmail}
+      setUser={setUser}
       setSubscriptionStatus={setSubscriptionStatus}
     />
   );

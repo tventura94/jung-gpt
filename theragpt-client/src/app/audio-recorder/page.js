@@ -6,7 +6,7 @@ import AudioRecorder from 'components/AudioRecorder';
 import Footer from 'components/Footer';
 
 export default function AudioRecorderPage() {
-  const { user, subscriptionStatus, setUserEmail, setSubscriptionStatus } =
+  const { user, subscriptionStatus, setUser, setSubscriptionStatus } =
     useContext(Context);
 
   return (
@@ -14,7 +14,7 @@ export default function AudioRecorderPage() {
       <AudioRecorder
         user={user}
         subscriptionStatus={subscriptionStatus}
-        setUserEmail={setUserEmail}
+        setUser={setUser}
         setSubscriptionStatus={setSubscriptionStatus}
       />
       <Footer />

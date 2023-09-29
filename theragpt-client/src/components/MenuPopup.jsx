@@ -10,18 +10,19 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { auth } from 'components/Fire';
+import { auth } from 'libs/firebase';
+import { apiSignOut } from 'utils/api';
 
-export default function MenuPopupState({ setUserEmail, user }) {
+export default function MenuPopupState({ user, setUser }) {
   const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   function handleSignOut() {
-    signOut(auth).then(() => {
-      setUserEmail(null);
-      router.push('/login');
+    signOut(auth).then(async () => {
+      setUser(null);
+      apiSignOut();
     });
   }
 
@@ -72,7 +73,7 @@ export default function MenuPopupState({ setUserEmail, user }) {
             fontFamily={'Montserrat'}
             sx={{ fontSize: isMobile ? '.75rem' : '1rem' }}
           >
-            Logged in as {user.email}
+            Logged in as {user?.email}
           </Typography>
         </MenuItem>
 

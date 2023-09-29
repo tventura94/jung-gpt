@@ -6,15 +6,15 @@ import Footer from 'components/Footer';
 import Selector from 'components/Selector';
 
 export default function SelectrPage() {
-  const { user, subscriptionStatus, setUserEmail, setSubscriptionStatus } =
+  const { user, subscriptionStatus, setUser, setSubscriptionStatus } =
     useContext(Context);
 
   return (
     <>
       <Selector
         user={user}
+        setUser={setUser}
         subscriptionStatus={subscriptionStatus}
-        setUserEmail={setUserEmail}
         setSubscriptionStatus={setSubscriptionStatus}
       />
       <Footer />

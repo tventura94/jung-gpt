@@ -6,14 +6,14 @@ import Faq from 'components/Faq';
 import Footer from 'components/Footer';
 
 export default function FaqPage() {
-  const { user, setUserEmail, setSubscriptionStatus } = useContext(Context);
+  const { user, setUser, setSubscriptionStatus } = useContext(Context);
 
   return (
     <>
       <Faq
         user={user}
+        setUser={setUser}
         setSubscriptionStatus={setSubscriptionStatus}
-        setUserEmail={setUserEmail}
       />
       <Footer />
     </>

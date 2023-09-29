@@ -15,7 +15,6 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
   Grid,
   Box,
   Typography,
@@ -25,8 +24,10 @@ import {
 } from '@mui/material';
 import { LockOutlined as LockOutlinedIcon } from '@mui/icons-material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
-import { auth, getUserData } from 'components/Fire';
+import { auth } from 'libs/firebase';
 import GoogleAd from 'components/googleAd';
+import { apiSignIn } from 'utils/api';
+import Link from 'next/link';
 
 function Copyright(props) {
   return (
@@ -37,12 +38,12 @@ function Copyright(props) {
       {...props}
     >
       {''}
-      <Link color="inherit" href="#"></Link> {''}
+      <Link href="#" className="link" />
     </Typography>
   );
 }
 
-export default function SignIn({ setUserEmail }) {
+export default function SignIn({ setUser }) {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -54,24 +55,33 @@ export default function SignIn({ setUserEmail }) {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const { email } = result.user;
-      getUserData(email); // Pass the UID and email to getUserData
-      setUserEmail(email);
-      router.push('/selector');
+      const { user } = result;
+
+      setUser({
+        uid: user.uid,
+        email: user.email,
+      });
+
+      const token = await result.user.getIdToken();
+      await apiSignIn(token);
     } catch (error) {
       // Handle any errors that occur during the sign-in process
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (email !== null && password !== null) {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          const { email } = userCredential.user;
-          getUserData(email); // Pass the UID and email to getUserData
-          setUserEmail(email);
-          router.push('/selector');
+          const { user } = userCredential;
+          user.getIdToken().then((idToken) => {
+            apiSignIn(idToken);
+          });
+          setUser({
+            uid: user.uid,
+            email: user.email,
+          });
         })
         .catch((err) => {
           if (!email || !password)

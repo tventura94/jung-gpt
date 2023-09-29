@@ -104,7 +104,7 @@ html {
   font-family: "Strait";
   color: rgb(199, 199, 204);
   background-color: rgb(55, 61, 74);
-  background-image: url("/dots2.svg");
+  background-image: url("/images/dots2.svg");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
@@ -837,4 +837,9 @@ body {
   /* Other existing styles ... */
   transition: all 0.3s ease; /* This will smoothly transition all properties of the select element */
   -webkit-transition: all 0.3s ease; /* WebKit browsers */
+}
+
+.link {
+  color: rgb(25, 118, 210);
+  text-decoration: underline rgba(25, 118, 210, 0.4);
 }

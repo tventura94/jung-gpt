@@ -31,17 +31,17 @@ import {
   ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import { logPageView } from 'components/Fire';
+import { logPageView } from 'libs/firebase';
 import MenuPopupState from 'components/MenuPopup';
 import Welcome from 'components/Welcome';
-import { getUserData, db } from 'components/Fire';
-import { auth } from 'components/Fire';
+import { getUserData, db } from 'libs/firebase';
+import { auth } from 'libs/firebase';
 import GoogleAd from 'components/googleAd';
 
 ReactGA.send({ hitType: 'pageview', page: '/Selector', title: 'Selector' });
 ReactGA.initialize('AW-11340712718');
 
-export default function Selector({ setUserEmail, user }) {
+export default function Selector({ user, setUser }) {
   const router = useRouter();
   const [subscriptionStatus, setSubscriptionStatus] = useState('Free Plan');
   const [logoSrc, setLogoSrc] = useState('/images/will.png');
@@ -173,7 +173,7 @@ export default function Selector({ setUserEmail, user }) {
   };
 
   useEffect(() => {
-    logPageView('/Selector');
+    //    logPageView('/Selector');
   }, []);
 
   useEffect(() => {
@@ -284,19 +284,19 @@ export default function Selector({ setUserEmail, user }) {
         }}
       >
         <Image
-          fill
           src={'/images/gpt-text-1.png'}
+          width={48}
+          height={48}
           alt=""
           style={{
             color: 'white',
             right: '5%',
             bottom: '94.2%',
-            width: isMobile ? '3rem' : '3rem',
             marginLeft: isMobile ? '0rem' : '0rem',
             marginRight: isMobile ? '1rem' : '1rem',
           }}
         />
-        <MenuPopupState setUserEmail={setUserEmail} user={user} />
+        <MenuPopupState user={user} setUser={setUser} />
       </div>
       {!loading && !hasJobString && <Welcome />}
       <div
@@ -383,7 +383,6 @@ export default function Selector({ setUserEmail, user }) {
             >
               <Typography>The </Typography>{" "}
               <Image
-                fill
                 src={"/images/will.png"}
                 alt=""
                 style={{
@@ -431,16 +430,13 @@ export default function Selector({ setUserEmail, user }) {
                 onClick={() => router.push('/dashboard')}
               >
                 <Image
-                  fill
                   src={logoSrc} // Use the logoSrc state variable here
+                  width={isMobile ? 256 : 288}
+                  height={isMobile ? 256 : 288}
                   alt=""
-                  style={{
-                    // add this line
-                    width: isMobile ? '16rem' : '18rem',
-                  }}
                 />
               </Button>
-              <p
+              <div
                 style={{
                   wordWrap: 'break-word', // add this line
                   width: isMobile ? '83%' : '80%',
@@ -471,7 +467,7 @@ export default function Selector({ setUserEmail, user }) {
                 personalized, strategic suggestions for emotional navigation and
                 progression. <br />{' '}
                 <b>(Responses vary between 2-8 second wait times)</b>
-              </p>
+              </div>
               <Button
                 sx={{
                   backgroundColor: 'white',
@@ -547,18 +543,16 @@ export default function Selector({ setUserEmail, user }) {
                       disabled={subscriptionStatus !== 'Premium'}
                     >
                       <Image
-                        fill
                         src={'/images/jungSmart.png'}
+                        width={isMobile ? 256 : 288}
+                        height={isMobile ? 256 : 288}
                         alt=""
-                        style={{
-                          width: isMobile ? '16rem' : '18rem',
-                        }}
                       />
                     </Button>
                   </div>
                 </Tooltip>
               </div>
-              <p
+              <div
                 style={{
                   wordWrap: 'break-word', // add this line
                   width: '80%',
@@ -592,7 +586,7 @@ export default function Selector({ setUserEmail, user }) {
                 path to reach your goals faster!
                 <br />
                 <b> (Only Available for Premium users) </b>
-              </p>
+              </div>
 
               <Button
                 sx={{
@@ -678,13 +672,16 @@ export default function Selector({ setUserEmail, user }) {
         </Box>
       </div>
       <Image
-        fill
+        priority
         src={
           isMobile ? '/images/notjustsmart2.png' : '/images/notjustsmart.svg'
         }
+        width={1900}
+        height={1500}
         alt=""
         style={{
           width: '100%',
+          height: 'auto',
           marginTop: '0rem',
           borderTop: '.3rem silver solid',
         }}
@@ -727,11 +724,14 @@ export default function Selector({ setUserEmail, user }) {
               }}
             >
               <Image
-                fill
+                priority
                 src="/images/PSY.png"
+                width={866}
+                height={650}
                 alt=""
                 style={{
                   width: '50%',
+                  height: 'auto',
                 }}
               />
               <Typography
@@ -774,11 +774,14 @@ export default function Selector({ setUserEmail, user }) {
               }}
             >
               <Image
-                fill
+                priority
                 src={'/images/SAPP.png'}
+                width={866}
+                height={650}
                 alt=""
                 style={{
                   width: '50%',
+                  height: 'auto',
                 }}
               />
               <Typography
@@ -829,11 +832,14 @@ export default function Selector({ setUserEmail, user }) {
             }}
           >
             <Image
-              fill
+              priority
               src={'/images/Over80.png'}
+              width={866}
+              height={650}
               alt=""
               style={{
                 width: '100%',
+                height: 'auto',
               }}
             />
           </Box>

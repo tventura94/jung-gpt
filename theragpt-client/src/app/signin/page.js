@@ -6,11 +6,11 @@ import Footer from 'components/Footer';
 import SignIn from 'components/SignIn';
 
 export default function SignInPage() {
-  const { setUserEmail } = useContext(Context);
+  const { setUser } = useContext(Context);
 
   return (
     <>
-      <SignIn setUserEmail={setUserEmail} />
+      <SignIn setUser={setUser} />
       <Footer />
     </>
   );
