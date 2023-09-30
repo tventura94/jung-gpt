@@ -28,10 +28,10 @@ app.use("/jung", apiLimiter);
 app.use("/dbt", apiLimiter);
 
 app.use(bodyParser.json());
-
+const allowedOrigins = ["https://www.jung-gpt.com", "https://jung-gpt.com"];
 app.use(
   cors({
-    origin: "https://www.jung-gpt.com", // LIVE https://jung-gpt.com    DEV http://localhost:5173
+    origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
