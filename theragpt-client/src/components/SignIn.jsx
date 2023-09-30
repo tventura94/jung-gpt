@@ -26,7 +26,7 @@ import {
 } from '@mui/material';
 import { LockOutlined as LockOutlinedIcon } from '@mui/icons-material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
-import GoogleAd from 'components/googleAd';
+import GoogleAd from 'components/GoogleAd';
 
 function Copyright(props) {
   return (

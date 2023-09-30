@@ -35,7 +35,7 @@ import {
 import { useTheme } from '@mui/material/styles';
 import MenuPopupState from 'components/MenuPopup';
 import Welcome from 'components/Welcome';
-import GoogleAd from 'components/googleAd';
+import GoogleAd from 'components/GoogleAd';
 
 ReactGA.send({ hitType: 'pageview', page: '/Selector', title: 'Selector' });
 ReactGA.initialize('AW-11340712718');
