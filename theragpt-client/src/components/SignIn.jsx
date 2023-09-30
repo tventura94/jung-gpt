@@ -10,7 +10,6 @@ import {
 } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from 'libs/firebase';
-import { apiSignIn } from 'utils/api';
 import {
   Avatar,
   Button,
@@ -49,7 +48,7 @@ function Copyright(props) {
   );
 }
 
-export default function SignIn({ setUser }) {
+export default function SignIn() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -61,15 +60,9 @@ export default function SignIn({ setUser }) {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      const { user } = result;
-      user.getIdToken().then((idToken) => {
-        apiSignIn(token);
-      });
-      setUser({
-        uid: user.uid,
-        email: user.email,
-      });
-      router.push('/selector');
+      if (result.status === 200) {
+        router.push('/selector');
+      }
     } catch (error) {
       // Handle any errors that occur during the sign-in process
     }
@@ -79,15 +72,7 @@ export default function SignIn({ setUser }) {
     e.preventDefault();
     if (email !== null && password !== null) {
       signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const { user } = userCredential;
-          user.getIdToken().then((idToken) => {
-            apiSignIn(idToken);
-          });
-          setUser({
-            uid: user.uid,
-            email: user.email,
-          });
+        .then(() => {
           router.push('/selector');
         })
         .catch((err) => {

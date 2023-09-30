@@ -1,7 +1,5 @@
-import { cookies } from 'next/headers';
 import Script from 'next/script';
 import Provider from 'store/Provider';
-import { getAuth } from 'libs/firebase-admin';
 import { Box } from '@mui/material';
 import 'styles/globals.css';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -20,16 +18,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  let user;
-
-  try {
-    const session = cookies().get('session')?.value || '';
-    const decodedClaims = await getAuth().verifySessionCookie(session, true);
-    user = { uid: decodedClaims.uid, email: decodedClaims.email };
-  } catch (error) {
-    user = null;
-  }
-
   return (
     <html lang="en">
       <head>
@@ -60,7 +48,7 @@ export default async function RootLayout({ children }) {
         <Script src="https://apis.google.com/js/platform.js" async defer />
       </head>
       <body>
-        <Provider user={user}>
+        <Provider user={null}>
           <Box
             sx={{
               display: 'flex',

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'libs/firebase';
-import { apiSignIn } from 'utils/api';
 import {
   Avatar,
   Button,
@@ -42,7 +41,7 @@ function Copyright(props) {
   );
 }
 
-export default function Register({ setUser }) {
+export default function Register() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -53,15 +52,7 @@ export default function Register({ setUser }) {
     e.preventDefault();
     if (email !== null && password !== null) {
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const { user } = userCredential;
-          user.getIdToken().then((idToken) => {
-            apiSignIn(idToken);
-          });
-          setUser({
-            uid: user.uid,
-            email: user.email,
-          });
+        .then(() => {
           router.push('/dashboard');
           alert('Account Successfully created!');
         })
