@@ -94,7 +94,7 @@ export default function Upgrade({
     return () => {
       unsubscribe();
     };
-  }, [user]);
+  }, [user?.uid]);
 
   useEffect(() => {
     logPageView('/Upgrade');
@@ -115,8 +115,8 @@ export default function Upgrade({
       collection(db, 'users', user.uid, 'checkout_sessions'),
       {
         price: 'price_1NdN86Gx3uwFHp11LgNZsS1d',
-        success_url: window.location.href,
-        cancel_url: window.location.href,
+        success_url: `${window.location.origin}/selector`,
+        cancel_url: `${window.location.origin}/selector`,
         allow_promotion_codes: true,
       }
     );
