@@ -344,7 +344,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
         },
       ],
       temperature: 1,
-      max_tokens: 16000,
+      max_tokens: 8000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
