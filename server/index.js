@@ -314,20 +314,20 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       });
     }
 
-    // Log received file and its MIME type
-    console.log("Received file:", req.file);
-    console.log("File MIME type:", req.file.mimetype);
+    // // Log received file and its MIME type
+    // console.log("Received file:", req.file);
+    // console.log("File MIME type:", req.file.mimetype);
 
     // Log the path where the file is stored
     const audioPath = req.file.path;
-    console.log("Audio path:", audioPath);
+    // console.log("Audio path:", audioPath);
 
     // Check if the file stream is correct
-    console.log("File stream:", fs.createReadStream(audioPath));
+    // console.log("File stream:", fs.createReadStream(audioPath));
 
     // Attempt to transcribe the audio
     const transcribedText = await transcribeAudio(audioPath);
-    console.log("Transcribed text:", transcribedText);
+    // console.log("Transcribed text:", transcribedText);
 
     const summaryMessage =
       "Please write an article of the following mental health-related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists. Respond in the language of the users input.";
@@ -358,8 +358,8 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       }
     });
 
-    // Log the summary response
-    console.log("Summary response:", summaryResponse);
+    // // Log the summary response
+    // console.log("Summary response:", summaryResponse);
 
     res.json({
       summaryMessage: summaryResponse.choices[0].message.content.trim(),
@@ -376,7 +376,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
 
 async function transcribeAudio(audioPath) {
   // Log the model being used for transcription
-  console.log("Transcribing using model whisper-1");
+  // console.log("Transcribing using model whisper-1");
 
   const transcription = await openai.audio.transcriptions.create({
     file: fs.createReadStream(audioPath),
@@ -384,7 +384,7 @@ async function transcribeAudio(audioPath) {
   });
 
   // Log the transcription
-  console.log("Transcription result:", transcription);
+  // console.log("Transcription result:", transcription);
 
   return transcription.text;
 }
