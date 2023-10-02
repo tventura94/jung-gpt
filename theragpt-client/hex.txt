@@ -1,6 +1,0 @@
-#E8E1DD
-neutral
-
-#607E92 blue
-
- #BABEA9 green
