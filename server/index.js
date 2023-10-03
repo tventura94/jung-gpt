@@ -320,6 +320,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
 
     // Log the path where the file is stored
     const audioPath = req.file.path;
+
     console.log("Audio path:", audioPath);
 
     // Check if the file stream is correct
@@ -330,7 +331,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     console.log("Transcribed text:", transcribedText);
 
     const summaryMessage =
-      "Please summarize the following mental-health related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.";
+      "Please summarize in a verbose manner the following mental-health related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.";
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
