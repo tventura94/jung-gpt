@@ -396,7 +396,13 @@ async function SAPP(lastUserMessage) {
               ? getRandomElement(spousArray)
               : getRandomElement(spousNegativeArray);
           break;
-        case "ex":
+        case "ex boyfriend":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(exArray)
+              : getRandomElement(exNegativeArray);
+          break;
+        case "ex girlfriend":
           thought =
             sentimentScore >= 0
               ? getRandomElement(exArray)
