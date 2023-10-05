@@ -94,10 +94,10 @@ app.post("/jung", async (req, res) => {
       eveningPrompts[Math.floor(Math.random() * eveningPrompts.length)];
   }
 
-  // 20% chance the bot tries to use a metaphor based on the users interest
+  // 5% chance the bot tries to use a metaphor based on the users interest
   let selectedPrompt;
 
-  if (Math.random() < 0.2) {
+  if (Math.random() < 0.05) {
     selectedPrompt = prompts[0]; // 20% chance
   } else {
     selectedPrompt = prompts[1]; // 80% chance
@@ -118,8 +118,8 @@ app.post("/jung", async (req, res) => {
   The users career is ${jobValue}.
   The user would like you to know ${descriptionValue}
   The user is feeling ${emotions}. 
+  I only mention the users interests if I am instructed.
   ${selectedPrompt}.
-  I only mention the users interests if it helps me explain something.
   If the users interests contains an inappropriate or banned word or concept, I explain I cannot talk about that.
   I am JungGPT - I specialize in conversational emotional reflection, I operate to provide a fluent conversation with the user and help them find clarity on the emotions they've reported and how to navigate them.
   I am fluent in every modern world language.
