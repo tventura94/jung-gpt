@@ -100,8 +100,6 @@ const {
   happiNegativeArray,
   angerArray,
   angerNegativeArray,
-  madArray,
-  madNegativeArray,
   excitArray,
   excitNegativeArray,
   fearArray,
@@ -457,12 +455,6 @@ async function SAPP(lastUserMessage) {
             sentimentScore >= 0
               ? getRandomElement(angerArray)
               : getRandomElement(angerNegativeArray);
-          break;
-        case "mad":
-          thought =
-            sentimentScore >= 0
-              ? getRandomElement(madArray)
-              : getRandomElement(madNegativeArray);
           break;
         case "excit":
           thought =

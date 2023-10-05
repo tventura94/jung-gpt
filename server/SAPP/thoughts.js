@@ -914,24 +914,6 @@ exports.angerNegativeArray = [
   "The user's anger is causing them distress. Only if it makes sense, In my next message, how can I discuss whether they've thought about seeking immediate help?",
 ];
 
-// Mad Array
-exports.madArray = [
-  "The user has mentioned feeling mad. Only if it makes sense, In my next message, how can I ask about the specific reasons?",
-  "Being mad is on the user's mind. Only if it makes sense, In my next message, how can I inquire about what they're doing to cool off?",
-  "The user is talking about being mad. Only if it makes sense, In my next message, how can I explore if they've considered speaking to the person they're mad at?",
-  "The user has discussed feeling mad. Only if it makes sense, In my next message, how can I ask if they've thought about the underlying issues?",
-  "The user has talked about being mad. Only if it makes sense, In my next message, how can I discuss their next steps?",
-];
-
-// Mad Negative Array
-exports.madNegativeArray = [
-  "The user has mentioned they're struggling with being mad. Only if it makes sense, In my next message, how can I ask what specific issues they're facing?",
-  "The user is overwhelmed with being mad. Only if it makes sense, In my next message, how can I explore if they've considered taking a break?",
-  "Being mad is a significant concern for the user. Only if it makes sense, In my next message, how can I discuss whether they've thought about counseling?",
-  "The user is not coping well with being mad. Only if it makes sense, In my next message, how can I ask if they've considered mediation?",
-  "The user's being mad is causing them distress. Only if it makes sense, In my next message, how can I discuss whether they've thought about resolving the issue?",
-];
-
 // Excitement Array
 exports.excitArray = [
   "The user has mentioned feeling excited. Only if it makes sense, In my next message, how can I ask what's causing their excitement?",

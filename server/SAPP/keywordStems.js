@@ -48,7 +48,6 @@ exports.keywordStems = [
   "depress",
   "happi",
   "anger",
-  "mad",
   "excit",
   "fear",
   "relief",
