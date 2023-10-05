@@ -68,4 +68,6 @@ exports.keywordStems = [
   "goal",
   "time",
   "futur",
+  "boyfriend",
+  "girlfriend",
 ];

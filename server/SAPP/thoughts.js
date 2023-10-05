@@ -128,6 +128,7 @@ exports.loveArray = [
   "The user is contemplating love. Only if it makes sense, Cue to explore how love can change over time, in both platonic and romantic relationships.",
   "Love is a point of interest. Only if it makes sense, Cue to consider discussing the role of self-love and its importance in a holistic understanding of love.",
   "The user mentions love. Only if it makes sense, Cue to talk about the idea of unconditional love versus conditional love, and their thoughts on it.",
+  "The user has mentioned they're feeling goos about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the educate the user to be a better partner? Do not mention the source.",
 ];
 
 exports.loveNegativeArray = [
@@ -137,6 +138,7 @@ exports.loveNegativeArray = [
   "If The user isn't fond of love.  Only if it makes sense, In my next message, how can I inquire whether they think love is just a social construct?",
   "If Love doesn't appeal to the user. Only if it makes sense, In my next message, how can I ask if they view love as a distraction or an unrealistic expectation?",
   "The user might have mentioned being in love and is having negative feelings about it, if it makes sense to, how can I talk about healing from past relationships",
+  "The user has mentioned they're feeling badly about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the user with their sadness? Do not mention the source.",
 ];
 
 exports.romanceArray = [
@@ -728,6 +730,7 @@ exports.partnerNegativeArray = [
   "The partner is a point of concern for the user. Only if it makes sense, In my next message, how can I discuss whether they've thought about taking a break?",
   "The user isn't happy with their partner. Only if it makes sense, In my next message, how can I ask if they've considered seeking advice from trusted friends?",
   "The relationship is causing the user stress. Only if it makes sense, In my next message, how can I discuss whether they've thought about a serious conversation?",
+  "The user has mentioned they're feeling badly about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the user with their sadness? Do not mention the source.",
 ];
 
 // Spouse Array
@@ -746,6 +749,7 @@ exports.spousNegativeArray = [
   "The spouse is a point of concern for the user. Only if it makes sense, In my next message, how can I discuss whether they've thought about a serious conversation?",
   "The user isn't happy with their spouse. Only if it makes sense, In my next message, how can I ask if they've considered a temporary separation?",
   "The marriage is causing the user stress. Only if it makes sense, In my next message, how can I discuss whether they've thought about seeking outside help?",
+  "The user has mentioned they're feeling badly about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the user with their sadness? Do not mention the source.",
 ];
 
 // Ex Array
@@ -1297,4 +1301,38 @@ exports.depressNegativeArray = [
   "User talks about emotional numbness. Employ Somatic Experiencing techniques. Discuss the importance of reconnecting with bodily sensations. Source: 'Waking the Tiger' by Peter A. Levine. Do not cite source.",
   "User expresses feelings of helplessness. Implement Learned Optimism strategies. Focus on disputing pessimistic thoughts to foster a more optimistic outlook. Source: 'Learned Optimism' by Martin Seligman. Source to remain undisclosed.",
   "User mentions feeling trapped in negative thoughts. Engage Metacognitive Therapy principles. Teach the user to distance themselves from their thoughts. Source: 'Metacognitive Therapy for Anxiety and Depression' by Adrian Wells. Do not disclose source.",
+];
+
+exports.boyfriendArray = [
+  "The user has mentioned they're delighted with their relationship. In my next message, only if it fits, how can I utilize insights from Gary Chapman's 'The 5 Love Languages' to help the user explore more ways to express love and appreciation to their partner?",
+  "The user feels very connected with their partner. In my next message, if it aligns with their feelings, how can I draw upon Brené Brown's 'The Power of Vulnerability' to help the user understand the benefits of maintaining openness and how it strengthens bonds?",
+  "The user is excited about the growth in their relationship. In my next message, if it seems appropriate, how can I reference Harville Hendrix's 'Getting the Love You Want' to provide them with techniques to continue their mutual growth and deeper understanding?",
+  "The user has mentioned they've been having wonderful conversations with their partner. In my next message, if it makes sense, how can I apply ideas from Deborah Tannen's 'You Just Don't Understand: Women and Men in Conversation' to guide them on continuing effective communication and avoiding common pitfalls?",
+  "The user feels a strong sense of trust in their relationship. In my next message, if relevant, how can I employ concepts from John Gottman's 'The Seven Principles for Making Marriage Work' to help them understand the foundation of their bond and ways to further solidify it?",
+  "The user has mentioned they're feeling good about their relationship, in my next message, only if it makes sense, how can I use theories from Erich Fromms 'The Art of Loving' to help the user learn how to be a better partner?",
+];
+
+exports.boyfriendNegativeArray = [
+  "The user is struggling with understanding the behavior of their partner. In my next message, only if appropriate, how can I use knowledge from Robert A. Johnson's 'He: Understanding Masculine Psychology' or 'She: Understanding Feminine Psychology' to shed light on the situation? Do not mention the source.",
+  "The user feels they've lost the passion in their relationship. In my next message, if it fits, how can I employ the ideas from Gary Chapman's 'The 5 Love Languages' to suggest ways they might rekindle their connection? Do not mention the source.",
+  "The user is trying to cope with a recent breakup. In my next message, should it be relevant, how can I utilize insights from Elizabeth Gilbert's 'Eat, Pray, Love' to help the user find healing and self-discovery? Do not mention the source.",
+  "The user feels a lack of trust in their relationship. In my next message, if it aligns with their concern, how can I employ concepts from Brené Brown's 'Daring Greatly' to discuss vulnerability and trust-building? Do not mention the source.",
+  "The user has mentioned they're feeling badly about their boyfriend, in my next message, only if it makes sense, how can I use theories from Erich Fromm's 'The Art of Loving' to help the user with their boyfriend troubles? Do not mention the source.",
+];
+
+exports.girlfriendArray = [
+  "The user has mentioned they're delighted with their relationship. In my next message, only if it fits, how can I utilize insights from Gary Chapman's 'The 5 Love Languages' to help the user explore more ways to express love and appreciation to their partner?",
+  "The user feels very connected with their partner. In my next message, if it aligns with their feelings, how can I draw upon Brené Brown's 'The Power of Vulnerability' to help the user understand the benefits of maintaining openness and how it strengthens bonds?",
+  "The user is excited about the growth in their relationship. In my next message, if it seems appropriate, how can I reference Harville Hendrix's 'Getting the Love You Want' to provide them with techniques to continue their mutual growth and deeper understanding?",
+  "The user has mentioned they've been having wonderful conversations with their partner. In my next message, if it makes sense, how can I apply ideas from Deborah Tannen's 'You Just Don't Understand: Women and Men in Conversation' to guide them on continuing effective communication and avoiding common pitfalls?",
+  "The user feels a strong sense of trust in their relationship. In my next message, if relevant, how can I employ concepts from John Gottman's 'The Seven Principles for Making Marriage Work' to help them understand the foundation of their bond and ways to further solidify it?",
+  "The user has mentioned they're feeling good about their relationship, in my next message, only if it makes sense, how can I use theories from Erich Fromms 'The Art of Loving' to help the user learn how to be a better partner?",
+];
+
+exports.girlfriendNegativeArray = [
+  "The user has expressed confusion about their feelings for their girlfriend. In my next message, only if it's relevant, how can I utilize insights from Robert A. Johnson's 'She: Understanding Feminine Psychology' to clarify their emotions? Do not mention the source.",
+  "The user feels distant from their girlfriend. In my next message, if it aligns with their concern, how can I reference Gary Chapman's 'The 5 Love Languages' to suggest ways they might bridge the gap? Do not mention the source.",
+  "The user is trying to rebuild trust with their girlfriend. In my next message, only if it seems appropriate, how can I employ concepts from Brené Brown's 'Daring Greatly' to discuss rebuilding trust and fostering vulnerability? Do not mention the source.",
+  "The user is contemplating a break-up with their girlfriend. In my next message, only if it makes sense, how can I draw upon Elizabeth Gilbert's 'Eat, Pray, Love' to help the user navigate their feelings and potential paths forward? Do not mention the source.",
+  "The user has mentioned they're feeling badly about their girlfriend, in my next message, only if it makes sense, how can I use theories from Erich Fromm's 'The Art of Loving' to help the user with their girlfriend troubles? Do not mention the source.",
 ];

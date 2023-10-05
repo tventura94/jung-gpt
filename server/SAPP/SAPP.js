@@ -140,6 +140,10 @@ const {
   timeNegativeArray,
   futurArray,
   futurNegativeArray,
+  boyfriendArray,
+  boyfriendNegativeArray,
+  girlfriendArray,
+  girlfriendNegativeArray,
 } = require("./thoughts");
 
 function getRandomElement(arr) {
@@ -573,6 +577,18 @@ async function SAPP(lastUserMessage) {
             sentimentScore >= 0
               ? getRandomElement(futurArray)
               : getRandomElement(futurNegativeArray);
+          break;
+        case "boyfriend":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(boyfriendArray)
+              : getRandomElement(boyfriendNegativeArray);
+          break;
+        case "girlfriend":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(girlfriendArray)
+              : getRandomElement(girlfriendNegativeArray);
           break;
       }
       if (thought) break; // Exit the loop if a thought has been picked
