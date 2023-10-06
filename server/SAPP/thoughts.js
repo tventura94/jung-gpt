@@ -405,8 +405,11 @@ exports.familyArray = [
 ];
 
 exports.familyNegativeArray = [
-  "The user has mentioned that they have issues with their family. Having family issues can be tough and it can be tough to feel like you're ostracized when you just want to be seen. Family dynamics often don't work how we want.",
-  "The user is having issues in their family. I know how hard it can be to deal with family members who refuse to see as who we are. Why are they like this? I dont know man...",
+  "The user has mentioned that they have issues with their family. Only if it makes sense, In my next message, how can I ask what specific challenges they're facing?",
+  "The user doesn't seem to have a positive view of their family. Only if it makes sense, In my next message, how can I explore if they feel misunderstood or unsupported?",
+  "The user has a negative perspective on their family. Only if it makes sense, In my next message, how can I discuss whether they're considering family therapy or counseling?",
+  "Family seems to be a source of stress for the user. Only if it makes sense, In my next message, how can I ask if they've thought about setting boundaries?",
+  "The user finds family dynamics difficult to navigate. Only if it makes sense, In my next message, how can I discuss whether they have any coping mechanisms or support networks?",
 ];
 
 exports.musicArray = [
