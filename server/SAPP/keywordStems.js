@@ -45,6 +45,7 @@ exports.keywordStems = [
   "child",
   "pet",
   "anxiet",
+  "anxious",
   "depress",
   "happi",
   "anger",

@@ -433,6 +433,12 @@ async function SAPP(lastUserMessage) {
               ? getRandomElement(anxietArray)
               : getRandomElement(anxietNegativeArray);
           break;
+        case "anxious":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(anxietArray)
+              : getRandomElement(anxietNegativeArray);
+          break;
         case "depress":
           thought =
             sentimentScore >= 0
