@@ -116,6 +116,7 @@ exports.lonelinessNegativeArray = [
   "The user is bothered by their own solitude. Only if it makes sense, Cue to discuss activities that could make alone time more fulfilling, thereby reducing feelings of loneliness.",
   "Loneliness seems to be a significant issue for the user. Only if it makes sense, Cue to consider mentioning mindfulness techniques that could help them cope in the moment.",
   "The user has brought up loneliness, It's tough to feel isolated. I explain sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
+  "The user has mentioned loneliness. Only if it makes sense, I remind them something similar to that of 'Feeling lonely really sucks and I'm sorry, I hope I can make you feel less lonely'",
 ];
 
 exports.romanceArray = [

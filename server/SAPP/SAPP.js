@@ -14,7 +14,6 @@ const {
   lonelinessArray,
   lonelinessNegativeArray,
   existentialismNegativeArray,
-
   romanceArray,
   romanceNegativeArray,
   jobArray,
@@ -192,8 +191,19 @@ async function SAPP(lastUserMessage) {
               ? getRandomElement(romanceArray)
               : getRandomElement(romanceNegativeArray);
           break;
-        case "lone":
+        case "romant":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(romanceArray)
+              : getRandomElement(romanceNegativeArray);
+          break;
         case "alon":
+          thought =
+            sentimentScore >= 0
+              ? getRandomElement(lonelinessArray)
+              : getRandomElement(lonelinessNegativeArray);
+          break;
+        case "lone":
           thought =
             sentimentScore >= 0
               ? getRandomElement(lonelinessArray)

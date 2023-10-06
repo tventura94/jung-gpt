@@ -2,6 +2,7 @@ exports.keywordStems = [
   "exist",
   "philosoph",
   "romanc",
+  "romant",
   "lone",
   "alon",
   "job",
