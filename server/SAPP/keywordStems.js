@@ -1,7 +1,6 @@
 exports.keywordStems = [
   "exist",
   "philosoph",
-  "love",
   "romanc",
   "lone",
   "alon",
@@ -65,8 +64,6 @@ exports.keywordStems = [
   "cultur",
   "environ",
   "financ",
-  "goal",
-  "time",
   "futur",
   "boyfriend",
   "girlfriend",

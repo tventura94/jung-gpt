@@ -14,8 +14,7 @@ const {
   lonelinessArray,
   lonelinessNegativeArray,
   existentialismNegativeArray,
-  loveArray,
-  loveNegativeArray,
+
   romanceArray,
   romanceNegativeArray,
   jobArray,
@@ -132,10 +131,6 @@ const {
   environNegativeArray,
   financArray,
   financNegativeArray,
-  goalArray,
-  goalNegativeArray,
-  timeArray,
-  timeNegativeArray,
   futurArray,
   futurNegativeArray,
   boyfriendArray,
@@ -190,12 +185,6 @@ async function SAPP(lastUserMessage) {
             sentimentScore >= 0
               ? getRandomElement(philosophArray)
               : getRandomElement(philosophNegativeArray);
-          break;
-        case "love":
-          thought =
-            sentimentScore >= 0
-              ? getRandomElement(loveArray)
-              : getRandomElement(loveNegativeArray);
           break;
         case "romanc":
           thought =
@@ -557,18 +546,6 @@ async function SAPP(lastUserMessage) {
             sentimentScore >= 0
               ? getRandomElement(financArray)
               : getRandomElement(financNegativeArray);
-          break;
-        case "goal":
-          thought =
-            sentimentScore >= 0
-              ? getRandomElement(goalArray)
-              : getRandomElement(goalNegativeArray);
-          break;
-        case "time":
-          thought =
-            sentimentScore >= 0
-              ? getRandomElement(timeArray)
-              : getRandomElement(timeNegativeArray);
           break;
         case "futur":
           thought =

@@ -118,29 +118,6 @@ exports.lonelinessNegativeArray = [
   "The user has brought up loneliness, It's tough to feel isolated. I explain sometimes volunteering can make you feel connected to a larger purpose, which might alleviate some loneliness.",
 ];
 
-exports.loveArray = [
-  "The user has brought up love.  Only if it makes sense, In my next message, how can I discuss the role of love in well-being and happiness?",
-  "Love seems to be on the user's mind. Only if it makes sense, In my next message, how can I ask about their experiences with love and how it has shaped them?",
-  "The user has mentioned love. Only if it makes sense, Cue to explore their perspectives on different kinds of love, such as romantic and platonic.",
-  "The user is thinking about love. Only if it makes sense, Cue to explore their personal experiences with love and its impact on their life.",
-  "Love has been brought up by the user. Only if it makes sense, Cue to explore the concept of 'love languages' and how they understand or prefer to express love.",
-  "The topic is love. Only if it makes sense, Cue to discuss the challenges and obstacles that can sometimes accompany love, and how they might be overcome.",
-  "The user is contemplating love. Only if it makes sense, Cue to explore how love can change over time, in both platonic and romantic relationships.",
-  "Love is a point of interest. Only if it makes sense, Cue to consider discussing the role of self-love and its importance in a holistic understanding of love.",
-  "The user mentions love. Only if it makes sense, Cue to talk about the idea of unconditional love versus conditional love, and their thoughts on it.",
-  "The user has mentioned they're feeling goos about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the educate the user to be a better partner? Do not mention the source.",
-];
-
-exports.loveNegativeArray = [
-  "If The user has mentioned that they don't like the concept of love. Only if it makes sense, In my next message, how can I acknowledge their skepticism about romantic ideals?",
-  "If Love doesn't seem to resonate with  the user.  Only if it makes sense, In my next message, how can I explore their negative experiences or fears related to love?",
-  "If The user has a negative view on love. Only if it makes sense, In my next message, how can I discuss their concerns about love being overly commercialized?",
-  "If The user isn't fond of love.  Only if it makes sense, In my next message, how can I inquire whether they think love is just a social construct?",
-  "If Love doesn't appeal to the user. Only if it makes sense, In my next message, how can I ask if they view love as a distraction or an unrealistic expectation?",
-  "The user might have mentioned being in love and is having negative feelings about it, if it makes sense to, how can I talk about healing from past relationships",
-  "The user has mentioned they're feeling badly about their relationship, in my next message, if it makes sense, how can I use theories from Erich Fromms 'The art of loving' to help the user with their sadness? Do not mention the source.",
-];
-
 exports.romanceArray = [
   "If The user has mentioned romance. Only if it makes sense, In my next message, how can I ask about their favorite romantic movies or books?",
   "If Romance is the topic of discussion. Only if it makes sense, In my next message, how can I inquire about their most memorable romantic gestures?",
@@ -405,11 +382,7 @@ exports.familyArray = [
 ];
 
 exports.familyNegativeArray = [
-  "The user has mentioned that they have issues with their family. Only if it makes sense, In my next message, how can I ask what specific challenges they're facing?",
-  "The user doesn't seem to have a positive view of their family. Only if it makes sense, In my next message, how can I explore if they feel misunderstood or unsupported?",
-  "The user has a negative perspective on their family. Only if it makes sense, In my next message, how can I discuss whether they're considering family therapy or counseling?",
-  "Family seems to be a source of stress for the user. Only if it makes sense, In my next message, how can I ask if they've thought about setting boundaries?",
-  "The user finds family dynamics difficult to navigate. Only if it makes sense, In my next message, how can I discuss whether they have any coping mechanisms or support networks?",
+  "The user has mentioned that they have issues with their family. Having family issues can be tough and it can be tough to feel like you're ostracized when you just want to be seen. Family dynamics often don't work how we want.",
 ];
 
 exports.musicArray = [
@@ -1197,42 +1170,6 @@ exports.financNegativeArray = [
   "The user is not interested in financial topics. Only if it makes sense, In my next message, how can I ask if they've considered its long-term importance?",
   "The user's disinterest in finance is evident. Only if it makes sense, In my next message, how can I discuss whether they've thought about retirement?",
   "The user is indifferent to financial matters. Only if it makes sense, In my next message, how can I explore if they've considered automating their savings?",
-];
-
-// Goal Array
-exports.goalArray = [
-  "The user has mentioned goals. Only if it makes sense, In my next message, how can I ask about their short-term objectives?",
-  "Goals are on the user's mind. Only if it makes sense, In my next message, how can I inquire about their long-term aspirations?",
-  "The user is talking about goals. Only if it makes sense, In my next message, how can I explore their methods for goal-setting?",
-  "The user has discussed goals. Only if it makes sense, In my next message, how can I ask about their milestones for this year?",
-  "The user has talked about goals. Only if it makes sense, In my next message, how can I discuss any obstacles they are facing in achieving them?",
-];
-
-// Goal Negative Array
-exports.goalNegativeArray = [
-  "The user has mentioned they're not interested in setting goals. Only if it makes sense, In my next message, how can I ask what specific reasons they have?",
-  "Goals are not a priority for the user. Only if it makes sense, In my next message, how can I discuss whether they find goal-setting restrictive?",
-  "The user is not interested in goal-related topics. Only if it makes sense, In my next message, how can I ask if they prefer a more spontaneous approach to life?",
-  "The user's disinterest in goals is evident. Only if it makes sense, In my next message, how can I discuss whether they've thought about a vision for their future?",
-  "The user is indifferent to goal setting. Only if it makes sense, In my next message, how can I explore if they've considered the benefits of having a roadmap?",
-];
-
-// Time Array
-exports.timeArray = [
-  "The user has mentioned time. Only if it makes sense, In my next message, how can I ask about their views on time management?",
-  "Time is on the user's mind. Only if it makes sense, In my next message, how can I inquire about their daily routines?",
-  "The user is talking about time. Only if it makes sense, In my next message, how can I discuss the importance of punctuality in their life?",
-  "The user has discussed time. Only if it makes sense, In my next message, how can I ask if they feel like they have enough time in the day?",
-  "The user has talked about time. Only if it makes sense, In my next message, how can I discuss their methods for balancing work and leisure?",
-];
-
-// Time Negative Array
-exports.timeNegativeArray = [
-  "The user has mentioned they don't value time management. Only if it makes sense, In my next message, how can I ask why they feel that way?",
-  "Time is not a priority for the user. Only if it makes sense, In my next message, how can I ask if they find routines restrictive?",
-  "The user is not focused on time. Only if it makes sense, In my next message, how can I discuss whether they prefer to live in the moment?",
-  "The user has no interest in discussing time. Only if it makes sense, In my next message, how can I ask if they've considered the long-term impact?",
-  "The user disregards the concept of time. Only if it makes sense, In my next message, how can I discuss their approach to spontaneity?",
 ];
 
 // Future Array
