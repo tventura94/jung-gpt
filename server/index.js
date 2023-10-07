@@ -371,6 +371,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
+
     const newDate = new Date().toDateString();
     const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.`;
     const assessmentResponse = await openai.chat.completions.create({
@@ -547,7 +548,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
           content: transcribedText,
         },
       ],
-      temperature: 0.8,
+      temperature: 0.1,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
