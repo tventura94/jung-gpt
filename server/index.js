@@ -332,7 +332,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please summarize in a verbose manner the following mental-health related conversation for a mental health professional.
+    const summaryMessage = `Please summarize in one or two paragraphs the following mental-health related conversation for a mental health professional.
     Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of.
     Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe.
     Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.`;
@@ -356,7 +356,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const objectiveMessage =
-      "please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment.";
+      "please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. Please add a break between each category and format as a list.";
     const objectiveResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
