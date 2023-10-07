@@ -332,7 +332,44 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.  Please deliver response in JSON format`;
+    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.  Please deliver response in JSON format {
+      "patient_info": {
+        "name": "",
+        "age": "",
+        "gender": "",
+        "occupation": "",
+        "relationship_status": ""
+      },
+      "chief_complaint": "",
+      "history_of_present_illness": "",
+      "past_medical_history": "",
+      "family_medical_history": "",
+      "social_history": {
+        "occupation": "",
+        "living_arrangements": "",
+        "relationship_status": "",
+        "support_system": "",
+        "stressors": "",
+        "substance_use": ""
+      },
+      "review_of_systems": {
+        "mood": "",
+        "anxiety": "",
+        "panic_attacks": "",
+        "depression": "",
+        "stress": "",
+        "sleep_patterns": "",
+        "appetite_changes": "",
+        "concentration_difficulties": "",
+        "suicidal_thoughts": "",
+        "hallucinations": "",
+        "delusions": "",
+        "memory_issues": ""
+      },
+      "physical_exam": "",
+      "assessment": "",
+      "plan": ""
+    }`;
 
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
