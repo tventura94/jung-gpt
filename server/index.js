@@ -371,7 +371,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-
+    const newDate = new Date().toDateString();
     const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.`;
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
@@ -391,7 +391,149 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       presence_penalty: 0,
     });
 
-    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The Response should be a key : value pair of the metric and the number rated 1 through 10. Please respond in JSON format.`;
+    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The Response should be a key : value pair of the metric and the number rated 1 through 10. Please respond in the following JSON format: {
+      "sessionDetails": {
+          "date": "${newDate}",
+      },
+      "metrics": {
+          "Therapist Empathy": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "activeListening": "",
+                  "validation": "",
+                  "nonVerbalCues": ""
+              }
+          },
+          "Client Resistance to Change": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "defensiveness": "",
+                  "rationalization": "",
+                  "avoidance": ""
+              }
+          },
+          "Client Awareness of Harmful Behavior": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "selfReflection": "",
+                  "acknowledgment": "",
+                  "insight": ""
+              }
+          },
+          "Client Openness to Therapy Process": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "engagement": "",
+                  "feedbackReception": "",
+                  "homeworkCompletion": ""
+              }
+          },
+          "Substance Abuse": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "frequencyOfUse": "",
+                  "amountOfUse": "",
+                  "impactOnDailyLife": ""
+              }
+          },
+          "Depression": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "moodSwings": "",
+                  "sleepPatterns": "",
+                  "appetiteChanges": ""
+              }
+          },
+          "Anxiety": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "restlessness": "",
+                  "worry": "",
+                  "physicalSymptoms": ""
+              }
+          },
+          "Anger": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "frequencyOfOutbursts": "",
+                  "intensity": "",
+                  "triggers": ""
+              }
+          },
+          "Happiness": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "frequencyOfPositiveMoods": "",
+                  "satisfactionWithLife": "",
+                  "optimism": ""
+              }
+          },
+          "Social Skills": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "communicationSkills": "",
+                  "relationshipQuality": "",
+                  "groupInteractions": ""
+              }
+          },
+          "Self-esteem": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "selfWorth": "",
+                  "selfAcceptance": "",
+                  "comparisonWithOthers": ""
+              }
+          },
+          "Trauma": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "flashbacks": "",
+                  "avoidance": "",
+                  "emotionalNumbing": ""
+              }
+          },
+          "Stress": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "workRelated": "",
+                  "relationshipRelated": "",
+                  "healthRelated": ""
+              }
+          },
+          "Coping Mechanisms": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "problemSolving": "",
+                  "seekingSupport": "",
+                  "avoidance": ""
+              }
+          },
+          "Motivation": {
+              "score": "",
+              "description": "",
+              "factors": {
+                  "goalSetting": "",
+                  "persistence": "",
+                  "energyLevels": ""
+              }
+          }
+      }
+  }
+  `;
 
     const quantResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
