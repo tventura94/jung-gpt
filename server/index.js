@@ -332,8 +332,11 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage =
-      "Please summarize in a verbose manner the following mental-health related conversation for a mental health professional. Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of. Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe. Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.";
+    const summaryMessage = `Please summarize in a verbose manner the following mental-health related conversation for a mental health professional.
+    Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of.
+    Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe.
+    Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.`;
+
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
@@ -346,7 +349,47 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
           content: transcribedText,
         },
       ],
-      temperature: 0.5,
+      temperature: 1,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    });
+
+    const objectiveMessage =
+      "please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment.";
+    const objectiveResponse = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo-16k",
+      messages: [
+        {
+          role: "assistant",
+          content: objectiveMessage,
+        },
+        {
+          role: "user",
+          content: transcribedText,
+        },
+      ],
+      temperature: 1,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    });
+
+    const assessmentPlan =
+      "Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review";
+    const assessmentResponse = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo-16k",
+      messages: [
+        {
+          role: "assistant",
+          content: assessmentPlan,
+        },
+        {
+          role: "user",
+          content: transcribedText,
+        },
+      ],
+      temperature: 1,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
@@ -365,6 +408,8 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
 
     res.json({
       summaryMessage: summaryResponse.choices[0].message.content.trim(),
+      objectiveSummary: objectiveResponse.choices[0].message.content.trim(),
+      assessment: assessmentResponse.choices[0].message.content.trim(),
     });
   } catch (error) {
     console.error("Error caught:", error);
