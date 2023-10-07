@@ -332,7 +332,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.  Please deliver response in JSON format.`;
+    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.  Please deliver response in JSON format {"summary" : [summary]",}`;
 
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
@@ -353,7 +353,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const objectiveMessage =
-      "Please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. For each item, give a 2-3 sentence description. Please deliver response in JSON format.";
+      "Please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. For Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment, give a 2-3 sentence description and score 1-10 based on each category. Please deliver response in JSON format.";
     const objectiveResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
@@ -373,7 +373,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const assessmentPlan =
-      "Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.";
+      "Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format {'assesment', 'item1, 'item2', 'item3', 'item 4', 'item5'}";
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
