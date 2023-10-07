@@ -372,7 +372,6 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       presence_penalty: 0,
     });
 
-    const newDate = new Date().toDateString();
     const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.`;
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
@@ -392,6 +391,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       presence_penalty: 0,
     });
 
+    const newDate = new Date().toDateString();
     const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The Response should be a key : value pair of the metric and the number rated 1 through 10. Please respond in the following JSON format: {
       "sessionDetails": {
           "date": "${newDate}",
