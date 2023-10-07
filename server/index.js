@@ -356,7 +356,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const objectiveMessage =
-      "please provide an objective summary of this conversation for a mental health provider in the following format: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. Please deliver response in JSON format. Give a two or three sentence description per each item.";
+      "please provide an objective summary of this conversation for a mental health provider in the following format: Give a two or three sentence description per each item: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. Please deliver response in JSON format.";
     const objectiveResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
