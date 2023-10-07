@@ -335,7 +335,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const summaryMessage = `Please summarize in one or two paragraphs the following mental-health related conversation for a mental health professional.
     Capture the key issues, emotional tone, and any notable concerns that a mental health professional should be aware of.
     Rate the severity of each concern on a scale of 1-5, where 1 is least severe and 5 is most severe.
-    Additionally, suggest potential action items based on the conversation. Do not use numbers when using lists.`;
+    Additionally, suggest potential action items based on the conversation. Deliver response in JSON format.`;
 
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
