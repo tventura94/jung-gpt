@@ -552,7 +552,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
           content: transcribedText,
         },
       ],
-      temperature: 0.1,
+      temperature: 0,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
