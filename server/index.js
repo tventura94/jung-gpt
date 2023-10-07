@@ -391,6 +391,26 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       presence_penalty: 0,
     });
 
+    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The Response should be a key : value pair of the metric and the number rated 1 through 10. Please respond in JSON format.`;
+
+    const quantResponse = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo-16k",
+      messages: [
+        {
+          role: "assistant",
+          content: quantAnalysis,
+        },
+        {
+          role: "user",
+          content: transcribedText,
+        },
+      ],
+      temperature: 0.8,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    });
+
     fs.unlink(audioPath, (err) => {
       if (err) {
         console.error("Failed to delete file:", err);
@@ -406,6 +426,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       summaryMessage: summaryResponse.choices[0].message.content.trim(),
       objectiveSummary: objectiveResponse.choices[0].message.content.trim(),
       assessment: assessmentResponse.choices[0].message.content.trim(),
+      analysis: quantResponse.choices[0].message.content.trim(),
     });
   } catch (error) {
     console.error("Error caught:", error);
