@@ -332,7 +332,9 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.  Please deliver response in JSON format {
+    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction. 
+    Please deliver the response in the following JSON format: 
+    {
       "patient_info": {
         "name": "",
         "age": "",
