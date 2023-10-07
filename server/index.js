@@ -335,7 +335,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.`;
 
     const summaryResponse = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4",
       messages: [
         {
           role: "assistant",
@@ -355,7 +355,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const objectiveMessage =
       "Please provide an objective summary of this conversation for a mental health provider in the following format and provide three sentences about each: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. Please deliver response in JSON format.";
     const objectiveResponse = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4",
       messages: [
         {
           role: "assistant",
@@ -378,7 +378,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       "plan": ""
     }`;
     const assessmentResponse = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4",
       messages: [
         {
           role: "assistant",
@@ -542,7 +542,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
   `;
 
     const quantResponse = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4",
       messages: [
         {
           role: "assistant",
