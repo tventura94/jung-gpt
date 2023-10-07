@@ -542,7 +542,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
   `;
 
     const quantResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
