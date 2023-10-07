@@ -332,7 +332,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an subjective summary of this conversation for a mental health provider. Please deliver response in JSON format.`;
+    const summaryMessage = `Please provide an verbose subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction. Please deliver response in JSON format.`;
 
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
@@ -373,7 +373,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const assessmentPlan =
-      "Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review";
+      "Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.";
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
