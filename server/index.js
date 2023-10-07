@@ -335,7 +335,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.`;
 
     const summaryResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
@@ -548,7 +548,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
           content: transcribedText,
         },
       ],
-      temperature: 0,
+      temperature: 0.1,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
