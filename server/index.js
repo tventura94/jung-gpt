@@ -396,7 +396,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     });
 
     const newDate = new Date().toDateString();
-    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider in the following JSON format: 
+    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The response should be a key : value pair of the metric and the number rated 1 through 10. Please always respond in the following JSON format: 
     {
       "sessionDetails": {
           "date": "${newDate}",
@@ -553,7 +553,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
           content: transcribedText,
         },
       ],
-      temperature: 0.1,
+      temperature: 0,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
@@ -569,6 +569,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
 
     // // Log the summary response
     console.log("Summary response:", summaryResponse);
+    console.log("Quant Response:", quantResponse);
 
     res.json({
       summaryMessage: summaryResponse.choices[0].message.content.trim(),
