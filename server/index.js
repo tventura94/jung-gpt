@@ -372,16 +372,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       presence_penalty: 0,
     });
 
-    const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format. 
-      {
-        "assessment": {
-          "Plan Overview": "",
-          "Action Item 1": "",
-          "Action Item 2": "",
-          "Action Item 3": "",
-          "Action Item 4": "",
-          "Action Item 5": "",
-        },`;
+    const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format.`;
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
       messages: [
