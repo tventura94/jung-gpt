@@ -332,46 +332,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction. 
-    Please deliver the response in the following JSON format: 
-    {
-      "patient_info": {
-        "name": "",
-        "age": "",
-        "gender": "",
-        "occupation": "",
-        "relationship_status": ""
-      },
-      "chief_complaint": "",
-      "history_of_present_illness": "",
-      "past_medical_history": "",
-      "family_medical_history": "",
-      "social_history": {
-        "occupation": "",
-        "living_arrangements": "",
-        "relationship_status": "",
-        "support_system": "",
-        "stressors": "",
-        "substance_use": ""
-      },
-      "review_of_systems": {
-        "mood": "",
-        "anxiety": "",
-        "panic_attacks": "",
-        "depression": "",
-        "stress": "",
-        "sleep_patterns": "",
-        "appetite_changes": "",
-        "concentration_difficulties": "",
-        "suicidal_thoughts": "",
-        "hallucinations": "",
-        "delusions": "",
-        "memory_issues": ""
-      },
-      "physical_exam": "",
-      "assessment": "",
-      "plan": ""
-    }`;
+    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.`;
 
     const summaryResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
@@ -414,11 +375,12 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const assessmentPlan = `Please create an preliminary assessment and plan for the patient based on this conversation for a mental health provider to review. Please deliver response in JSON format. 
       {
         "assessment": {
-          "plan_overview": "",
-          "action_item_1": "",
-          "action_item_2": "",
-          "action_item_3": "",
-          "action_item_4": "",
+          "Plan Overview": "",
+          "Action Item 1": "",
+          "Action Item 2": "",
+          "Action Item 3": "",
+          "Action Item 4": "",
+          "Action Item 5": "",
         },`;
     const assessmentResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
