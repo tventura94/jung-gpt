@@ -402,7 +402,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The response should be a key value pair of each metric rated 1 through 10. Please always respond in the following JSON format: ${jsonResQuant}`;
 
     const quantResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
