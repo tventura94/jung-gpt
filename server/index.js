@@ -399,11 +399,11 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const jsonResQuant = `{"sessionDetails": {"date": "${newDate}"},"metrics": {"Therapist Empathy": {"score": "","description": "","factors": {"activeListening": "","validation": "","nonVerbalCues": ""}},"Client Resistance to Change": {"score": "","description": "","factors": {"defensiveness": "","rationalization": "","avoidance": ""}},"Client Awareness of Harmful Behavior": {"score": "","description": "","factors": {"selfReflection": "","acknowledgment": "","insight": ""}},"Client Openness to Therapy Process": {"score": "","description": "","factors": {"engagement": "","feedbackReception": "","homeworkCompletion": ""}},"Substance Abuse": {"score": "","description": "","factors": {"frequencyOfUse": "","amountOfUse": "","impactOnDailyLife": ""}},"Depression": {"score": "","description": "","factors": {"moodSwings": "","sleepPatterns": "","appetiteChanges": ""}},"Anxiety": {"score": "","description": "","factors": {"restlessness": "","worry": "","physicalSymptoms": ""}},"Anger": {"score": "","description": "","factors": {"frequencyOfOutbursts": "","intensity": "","triggers": ""}},"Happiness": {"score": "","description": "","factors": {"frequencyOfPositiveMoods": "","satisfactionWithLife": "","optimism": ""}},"Social Skills": {"score": "","description": "","factors": {"communicationSkills": "","relationshipQuality": "","groupInteractions": ""}},"Self-esteem": {"score": "","description": "","factors": {"selfWorth": "","selfAcceptance": "","comparisonWithOthers": ""}},"Trauma": {"score": "","description": "","factors": {"flashbacks": "","avoidance": "","emotionalNumbing": ""}},"Stress": {"score": "","description": "","factors": {"workRelated": "","relationshipRelated": "","healthRelated": ""}},"Coping Mechanisms": {"score": "","description": "","factors": {"problemSolving": "","seekingSupport": "","avoidance": ""}},"Motivation": {"score": "","description": "","factors": {"goalSetting": "","persistence": "","energyLevels": ""}}}}
     `;
 
-    const quantAnalysis = `Please provide a quantitative analysis of the following conversation using the criteria below. For each metric and its respective sub-factors, assign a score from 1 to 10. Respond in the following JSON Format: ${jsonResQuant}
+    const quantAnalysis = `Please provide a quantitative analysis of the following conversation using the criteria below. For each metric and its respective sub-factors, assign a score from 1 to 10.
     Therapist Empathy: Score based on mean of Active Listening and Validation scores
-    Active Listening Score based on how much the therapists reflects back to the patient via reframing. Also score based on keywords like “I understand”, and if the client is reflecting signs of feeling heard. 
+    Active Listening: Score based on how much the therapists reflects back to the patient via reframing. Also score based on keywords like “I understand”, and if the client is reflecting signs of feeling heard. 
     Validation: Score based on how many times the therapist positively validated the patient, and if the patient is reflecting signs of feeling heard.
-    Client Resistance to Change: Scored based on mean of blame, rationalization and avoidance scores.
+    Client Resistance to Change: Scored based on mean of defensiveness, rationalization and avoidance scores.
     defensiveness: Score based on the client's expressions or behaviors that deny, justify, or deflect blame. Count how many times the client gets overly defensive at others for their behavior. If the count is over 4, they automatically receive at least a 6 in score.
     rationalization: Evaluate the extent to which the client provides excuses for their behavior. Count how many instances the patient rationalizes their behavior. If they rationalize inappropriate behavior 4 times, that automatically gives them a score of at least 7 on rationalization.
     avoidance: Score when the client avoids or deflects important topics or questions.If they avoid important topics or questions more than 4 times, they receive a score of at least 5.
@@ -456,10 +456,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     avoidance: Assess when the client opts for escapism or neglect over confronting problems.
     Motivation:
     goalSetting: Score based on the client's ability and intent to set objectives for themselves.
-    persistence: Rate the client's drive or determination in pursuing tasks or goals. energyLevels: Evaluate mentions or indications of the client's vigor or lethargy.
-    
-    
-     Please always respond in the following JSON format: ${jsonResQuant}`;
+    persistence: Rate the client's drive or determination in pursuing tasks or goals. energyLevels: Evaluate mentions or indications of the client's vigor or lethargy. Please always respond in the following JSON format: ${jsonResQuant}`;
 
     const quantResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
