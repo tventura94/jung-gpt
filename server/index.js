@@ -335,7 +335,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.`;
 
     const summaryResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
@@ -355,7 +355,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const objectiveMessage =
       "Please provide an objective summary of this conversation for a mental health provider in the following format and provide three sentences about each: Stated Mood, Thought Process, Thought Content, Perception, Patient Insights, Patient Judgment. Please deliver response in JSON format.";
     const objectiveResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
@@ -378,7 +378,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
       "plan": ""
     }`;
     const assessmentResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo-16k",
       messages: [
         {
           role: "assistant",
@@ -399,7 +399,67 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const jsonResQuant = `{"sessionDetails": {"date": "${newDate}"},"metrics": {"Therapist Empathy": {"score": "","description": "","factors": {"activeListening": "","validation": "","nonVerbalCues": ""}},"Client Resistance to Change": {"score": "","description": "","factors": {"defensiveness": "","rationalization": "","avoidance": ""}},"Client Awareness of Harmful Behavior": {"score": "","description": "","factors": {"selfReflection": "","acknowledgment": "","insight": ""}},"Client Openness to Therapy Process": {"score": "","description": "","factors": {"engagement": "","feedbackReception": "","homeworkCompletion": ""}},"Substance Abuse": {"score": "","description": "","factors": {"frequencyOfUse": "","amountOfUse": "","impactOnDailyLife": ""}},"Depression": {"score": "","description": "","factors": {"moodSwings": "","sleepPatterns": "","appetiteChanges": ""}},"Anxiety": {"score": "","description": "","factors": {"restlessness": "","worry": "","physicalSymptoms": ""}},"Anger": {"score": "","description": "","factors": {"frequencyOfOutbursts": "","intensity": "","triggers": ""}},"Happiness": {"score": "","description": "","factors": {"frequencyOfPositiveMoods": "","satisfactionWithLife": "","optimism": ""}},"Social Skills": {"score": "","description": "","factors": {"communicationSkills": "","relationshipQuality": "","groupInteractions": ""}},"Self-esteem": {"score": "","description": "","factors": {"selfWorth": "","selfAcceptance": "","comparisonWithOthers": ""}},"Trauma": {"score": "","description": "","factors": {"flashbacks": "","avoidance": "","emotionalNumbing": ""}},"Stress": {"score": "","description": "","factors": {"workRelated": "","relationshipRelated": "","healthRelated": ""}},"Coping Mechanisms": {"score": "","description": "","factors": {"problemSolving": "","seekingSupport": "","avoidance": ""}},"Motivation": {"score": "","description": "","factors": {"goalSetting": "","persistence": "","energyLevels": ""}}}}
     `;
 
-    const quantAnalysis = `Please provide a quanitifiable analysis for a mental health provider of the following conversation. The response should be a key value pair of each metric rated 1 through 10. Please always respond in the following JSON format: ${jsonResQuant}`;
+    const quantAnalysis = `Please provide a quantitative analysis of the following conversation using the criteria below. For each metric and its respective sub-factors, assign a score from 1 to 10. Respond in the following JSON Format: ${jsonResQuant}
+    Therapist Empathy: Score based on mean of Active Listening and Validation scores
+    Active Listening Score based on how much the therapists reflects back to the patient via reframing. Also score based on keywords like “I understand”, and if the client is reflecting signs of feeling heard. 
+    Validation: Score based on how many times the therapist positively validated the patient, and if the patient is reflecting signs of feeling heard.
+    Client Resistance to Change: Scored based on mean of blame, rationalization and avoidance scores.
+    defensiveness: Score based on the client's expressions or behaviors that deny, justify, or deflect blame. Count how many times the client gets overly defensive at others for their behavior. If the count is over 4, they automatically receive at least a 6 in score.
+    rationalization: Evaluate the extent to which the client provides excuses for their behavior. Count how many instances the patient rationalizes their behavior. If they rationalize inappropriate behavior 4 times, that automatically gives them a score of at least 7 on rationalization.
+    avoidance: Score when the client avoids or deflects important topics or questions.If they avoid important topics or questions more than 4 times, they receive a score of at least 5.
+    Client Awareness of Harmful Behavior: score based on mean of selfReflection, acknowledgement, and insight.
+    selfReflection: Rate based on indications of the client's introspection or self-awareness.
+    acknowledgment: Assess moments when the client accepts responsibility or recognizes problematic behavior.
+    insight: Score based on the depth of the client's understanding of the origins or implications of their behaviors.
+    Client Openness to Therapy Process: Score based on mean of engagement, feedbackReception, and homeworkCompletion
+    engagement: Rate the client's active participation, attentiveness, and interest in the session. More words per minute would translate to a higher score for engagement.
+    feedbackReception: Score the client's openness and receptiveness to the therapist's feedback. 
+    homeworkCompletion: Evaluate mentions or indications of the client completing or neglecting therapeutic assignments.
+    Substance Abuse: Score based on mean of frequencyOfUse, amountOfUse, and impactOnDailyLife
+    frequencyOfUse: Score based on mentions or implications of how often the client uses the substance.
+    amountOfUse: Rate depending on descriptions or indications of the quantity of substance used at a time. If they use alcohol or drugs more than 5 times a week, they should receive a score of at least 8 for substance Abuse
+    impactOnDailyLife: Evaluate how the substance use affects the client's routine, relationships, job, or other daily activities. If the patient mentions that their drug habits or alcohol use impacts over 4 aspects of their lives, the patient should receive at least an 8 score for Substance Abuse.
+    Depression:
+    moodSwings: Score based on mentions or indications of abrupt shifts in mood or temperament. sleepPatterns: Rate descriptions or mentions of the client's sleeping habits, like insomnia or oversleeping.
+    appetiteChanges: Evaluate any changes in the client's eating habits, either increased or decreased appetite.
+    Anxiety:
+    restlessness: Score based on indications or mentions of the client feeling uneasy or constantly on edge.
+    worry: Rate the frequency and intensity of expressed concerns about various topics.
+    physicalSymptoms: Evaluate mentions of symptoms like heart palpitations, sweating, or shaking.
+    Anger:
+    frequencyOfOutbursts: Score based on how often the client has fits of rage or anger.
+    intensity: Rate the severity or ferocity of the anger episodes.
+    triggers: Identify and evaluate what sets off the client's anger.
+    Happiness:
+    frequencyOfPositiveMoods: Score based on how often the client expresses joy or contentment.
+    satisfactionWithLife: Rate overall feelings or statements of life contentment.
+    optimism: Assess the client's hopeful remarks or outlooks.
+    Social Skills:
+    communicationSkills: Score based on the client's ability to express themselves and understand others.
+    relationshipQuality: Rate the health and dynamics of the client's interpersonal relationships.
+    groupInteractions: Evaluate the client's behavior in group settings or social gatherings.
+    Self-esteem:
+    selfWorth: Score based on the client's expressions of their own value or importance.
+    selfAcceptance: Rate the extent to which the client embraces their strengths and weaknesses.
+    comparisonWithOthers: Evaluate how often the client compares themselves unfavorably to others.
+    Trauma:
+    flashbacks: Score based on mentions or implications of reliving traumatic events.
+    avoidance: Rate behaviors or remarks indicating the client avoids reminders of the trauma.
+    emotionalNumbing: Assess the client's emotional detachment or lack of responsiveness.
+    Stress:
+    workRelated: Score based on stressors originating from the client's job or career.
+    relationshipRelated: Rate stressors arising from personal relationships.
+    healthRelated: Evaluate stressors related to the client's physical health or well-being.
+    Coping Mechanisms:
+    problemSolving: Score based on the client's approach to addressing and resolving issues.
+    seekingSupport: Rate how often the client turns to others for help or understanding.
+    avoidance: Assess when the client opts for escapism or neglect over confronting problems.
+    Motivation:
+    goalSetting: Score based on the client's ability and intent to set objectives for themselves.
+    persistence: Rate the client's drive or determination in pursuing tasks or goals. energyLevels: Evaluate mentions or indications of the client's vigor or lethargy.
+    
+    
+     Please always respond in the following JSON format: ${jsonResQuant}`;
 
     const quantResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-16k",
