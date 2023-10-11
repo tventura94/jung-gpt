@@ -401,7 +401,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
 
     const quantAnalysis = `Please provide a quantitative analysis of the following conversation using the criteria below. For each metric and its respective sub-factors, assign a score from 1 to 10.
     Therapist Empathy: Score based on mean of Active Listening and Validation scores
-    Active Listening: Score based on how much the therapists reflects back to the patient via reframing. Also score based on keywords like “I understand”, and if the client is reflecting signs of feeling heard. 
+    Active Listening: Score based on how much the therapist reflects back to the patient via reframing. Also score based on keywords like “I understand”, and if the client is reflecting signs of feeling heard. 
     Validation: Score based on how many times the therapist positively validated the patient, and if the patient is reflecting signs of feeling heard.
     Client Resistance to Change: Scored based on mean of defensiveness, rationalization and avoidance scores.
     defensiveness: Score based on the client's expressions or behaviors that deny, justify, or deflect blame. Count how many times the client gets overly defensive at others for their behavior. If the count is over 4, they automatically receive at least a 6 in score.
@@ -415,14 +415,14 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     engagement: Rate the client's active participation, attentiveness, and interest in the session. More words per minute would translate to a higher score for engagement.
     feedbackReception: Score the client's openness and receptiveness to the therapist's feedback. 
     homeworkCompletion: Evaluate mentions or indications of the client completing or neglecting therapeutic assignments.
-    Substance Abuse: Score based on mean of frequencyOfUse, amountOfUse, and impactOnDailyLife
+    Substance Abuse: Score based on mean of frequencyOfUse, amountOfUse, and impactOnDailyLife. If there is no mention of substance abuse, score 0
     frequencyOfUse: Score based on mentions or implications of how often the client uses the substance.
     amountOfUse: Rate depending on descriptions or indications of the quantity of substance used at a time. If they use alcohol or drugs more than 5 times a week, they should receive a score of at least 8 for substance Abuse
     impactOnDailyLife: Evaluate how the substance use affects the client's routine, relationships, job, or other daily activities. If the patient mentions that their drug habits or alcohol use impacts over 4 aspects of their lives, the patient should receive at least an 8 score for Substance Abuse.
-    Depression:
+    Depression: score based on client sentiment and mean of moodSwings, sleepPatterns, and appetiteChanges.
     moodSwings: Score based on mentions or indications of abrupt shifts in mood or temperament. sleepPatterns: Rate descriptions or mentions of the client's sleeping habits, like insomnia or oversleeping.
     appetiteChanges: Evaluate any changes in the client's eating habits, either increased or decreased appetite.
-    Anxiety:
+    Anxiety: Scored based on mean of restlessness, worry, and physicalSymptoms. If no anxiety is mentioned, score 0.
     restlessness: Score based on indications or mentions of the client feeling uneasy or constantly on edge.
     worry: Rate the frequency and intensity of expressed concerns about various topics.
     physicalSymptoms: Evaluate mentions of symptoms like heart palpitations, sweating, or shaking.
@@ -442,11 +442,11 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     selfWorth: Score based on the client's expressions of their own value or importance.
     selfAcceptance: Rate the extent to which the client embraces their strengths and weaknesses.
     comparisonWithOthers: Evaluate how often the client compares themselves unfavorably to others.
-    Trauma:
+    Trauma: if no trauma is mentioned, score 0
     flashbacks: Score based on mentions or implications of reliving traumatic events.
     avoidance: Rate behaviors or remarks indicating the client avoids reminders of the trauma.
     emotionalNumbing: Assess the client's emotional detachment or lack of responsiveness.
-    Stress:
+    Stress: if no stress is mentioned, score 0.
     workRelated: Score based on stressors originating from the client's job or career.
     relationshipRelated: Rate stressors arising from personal relationships.
     healthRelated: Evaluate stressors related to the client's physical health or well-being.
