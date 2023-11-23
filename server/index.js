@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 const allowedOrigins = ["https://www.jung-gpt.com", "https://jung-gpt.com"];
 app.use(
   cors({
-    origin: "http://localhost:5173", // LIVE https://jung-gpt.com    DEV http://localhost:5173
+    origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
