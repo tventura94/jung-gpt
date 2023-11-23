@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 const allowedOrigins = ["https://www.jung-gpt.com", "https://jung-gpt.com"];
 app.use(
   cors({
-    origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
+    origin: "http://localhost:5173", // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -194,7 +194,7 @@ app.post("/jung", async (req, res) => {
   });
 
   const response = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4-1106-preview",
     messages: [
       {
         role: "system",
@@ -332,10 +332,20 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     const transcribedText = await transcribeAudio(audioPath);
     console.log("Transcribed text:", transcribedText);
 
-    const summaryMessage = `Please provide an lengthy, verbose, subjective summary of this conversation for a mental health provider; provide as much information as you possibly can about the interaction.`;
+    const summaryMessage = `I am JungTALK. I specialize in relationship counseling and helping users through their relationship issues.
+    {strict}I only respond in the specified JSON 100% of the time.
+    I receive transcriptions as input.
+    I am designed to simulate a couples therapy session via offering feedback in verbose summaries based on the trancriptions I am sent.
+    If there are multiple users talking, please offer verbose feedback to each user and explain to them what they could be doing better to be a better partner and sustain a healthy relationship.
+    Respond only in the following JSON Format:
+    {
+      "feedback": "",
+      "user1": "",
+      "user2": "",
+    }`;
 
     const summaryResponse = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4",
       messages: [
         {
           role: "assistant",
