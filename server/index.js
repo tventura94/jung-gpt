@@ -33,7 +33,12 @@ app.use(
   cors({
     origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers that your client might need to send
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "text/event-stream",
+    ], // Add any headers that your client might need to send
     exposedHeaders: ["Cache-Control"], // Expose specific headers to the client
     credentials: true, // This might be necessary if your client needs to send cookies with requests
     optionsSuccessStatus: 200,
