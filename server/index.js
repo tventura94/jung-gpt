@@ -33,7 +33,10 @@ app.use(
   cors({
     origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers that your client might need to send
+    exposedHeaders: ["Cache-Control"], // Expose specific headers to the client
+    credentials: true, // This might be necessary if your client needs to send cookies with requests
+    optionsSuccessStatus: 200,
   })
 );
 
@@ -72,8 +75,30 @@ app.post("/jung", async (req, res) => {
     jobValue,
   } = req.body;
 
-  const lastUserMessage =
-    conversation[conversation.length - 1].message.toLowerCase();
+  let lastUserMessage = "";
+
+  // Check if the conversation array has at least one entry
+  // and that the last entry has a message property
+  if (conversation.length === 0) {
+    // Send an initial message if the conversation is empty
+    const initialMessage = `Welcome to the waiting room! Whenever you're ready, send a message to begin chatting with JungGPT...`;
+    res.write(
+      `data: ${JSON.stringify({
+        message: initialMessage,
+      })}\n\n`
+    );
+    res.write(`data: [DONE]\n\n`);
+    res.end();
+    return;
+  }
+
+  if (
+    conversation.length > 0 &&
+    conversation[conversation.length - 1].message
+  ) {
+    lastUserMessage =
+      conversation[conversation.length - 1].message.toLowerCase();
+  }
 
   const thought = await SAPP(lastUserMessage);
 
@@ -110,7 +135,7 @@ app.post("/jung", async (req, res) => {
 
   let message = `The users name is ${nameValue}. I infrequently refer to the user by their first name to appear more personable.
   If the user included a first and last name, I use the users first name.
-  The first message I send should be something like: "${selectedTime} Hey ${nameValue} I'm JungGPT! You've reported you're feeling ${emotions}."
+  The first message I send should be something like: "${selectedTime} You've mentioned you're feeling ${emotions}" As a therapy chat-bot, its crucial to comment on how the user is feeling.
   If I am instructed, I search sources to find relevant information to help the user.
   I do not recommend the user seek professional help, the user understands I am not professional help.
   The users local time is ${localHour}.
@@ -192,9 +217,8 @@ app.post("/jung", async (req, res) => {
       message += `${msg.message.replace("JungGPT: ", "")}\n`; // <-- Updated line
     }
   });
-
   const response = await openai.chat.completions.create({
-    model: "gpt-4-1106-preview",
+    model: "gpt-4-turbo",
     messages: [
       {
         role: "system",
@@ -205,13 +229,28 @@ app.post("/jung", async (req, res) => {
     top_p: 1,
     frequency_penalty: 0.3,
     presence_penalty: 0.5,
+    stream: true,
   });
 
-  res.json({
-    message: response.choices[0].message.content.trim(),
-    usage: response.usage,
+  try {
+    for await (const chunk of response) {
+      if (chunk.choices[0]?.delta?.content) {
+        res.write(
+          `data: ${JSON.stringify({
+            message: chunk.choices[0].delta.content,
+          })}\n\n`
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error processing stream:", error);
+    res.end;
+  }
+  res.on("close", () => {
+    res.end();
   });
 });
+
 //
 //
 //
