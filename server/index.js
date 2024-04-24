@@ -231,20 +231,25 @@ app.post("/jung", async (req, res) => {
     presence_penalty: 0.5,
     stream: true,
   });
-
+  let accumulatedContent = "";
   try {
     for await (const chunk of response) {
       if (chunk.choices[0]?.delta?.content) {
-        res.write(
-          `data: ${JSON.stringify({
-            message: chunk.choices[0].delta.content,
-          })}\n\n`
-        );
+        accumulatedContent += chunk.choices[0].delta.content;
+        if (accumulatedContent.length >= 100) {
+          res.write(
+            `data: ${JSON.stringify({ message: accumulatedContent })}\n\n`
+          );
+          accumulatedContent = "";
+        }
       }
+    }
+    if (accumulatedContent.length > 0) {
+      res.write(`data: ${JSON.stringify({ message: accumulatedContent })}\n\n`);
     }
   } catch (error) {
     console.error("Error processing stream:", error);
-    res.end;
+    res.end();
   }
   res.on("close", () => {
     res.end();
