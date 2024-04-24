@@ -229,7 +229,7 @@ app.post("/jung", async (req, res) => {
     top_p: 1,
     frequency_penalty: 0.3,
     presence_penalty: 0.5,
-    stream: true,
+    // stream: true,
   });
   res.json({
     message: response.choices[0].message.content.trim(),
