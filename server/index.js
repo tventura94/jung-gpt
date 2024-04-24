@@ -231,23 +231,9 @@ app.post("/jung", async (req, res) => {
     presence_penalty: 0.5,
     stream: true,
   });
-
-  try {
-    for await (const chunk of response) {
-      if (chunk.choices[0]?.delta?.content) {
-        res.write(
-          `data: ${JSON.stringify({
-            message: chunk.choices[0].delta.content,
-          })}\n\n`
-        );
-      }
-    }
-  } catch (error) {
-    console.error("Error processing stream:", error);
-    res.end;
-  }
-  res.on("close", () => {
-    res.end();
+  res.json({
+    message: response.choices[0].message.content.trim(),
+    usage: response.usage,
   });
 });
 
