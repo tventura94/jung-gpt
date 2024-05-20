@@ -218,7 +218,7 @@ app.post("/jung", async (req, res) => {
     }
   });
   const response = await openai.chat.completions.create({
-    model: "gpt-4-turbo",
+    model: "gpt-4o",
     messages: [
       {
         role: "system",
@@ -288,7 +288,7 @@ app.post("/dbt", async (req, res) => {
     }
   });
   const response = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o",
     messages: [
       {
         role: "assistant",
@@ -370,7 +370,7 @@ app.post("/whisper", upload.single("audio"), async (req, res) => {
     }`;
 
     const summaryResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o",
       messages: [
         {
           role: "assistant",
