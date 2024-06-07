@@ -28,7 +28,11 @@ app.use("/jung", apiLimiter);
 app.use("/dbt", apiLimiter);
 
 app.use(bodyParser.json());
-const allowedOrigins = ["https://www.jung-gpt.com", "https://jung-gpt.com"];
+const allowedOrigins = [
+  "https://www.jung-gpt.com",
+  "https://jung-gpt.com",
+  "https://theragpt-client.vercel.app",
+];
 app.use(
   cors({
     origin: allowedOrigins, // LIVE https://jung-gpt.com    DEV http://localhost:5173
