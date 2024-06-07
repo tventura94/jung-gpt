@@ -244,26 +244,8 @@ app.post("/jung", async (req, res) => {
 ///////////////// JUNG SMART
 
 app.post("/dbt", async (req, res) => {
-  const {
-    conversation,
-    emotions,
-    localHour,
-    nameValue,
-    descriptionValue,
-    jobValue,
-  } = req.body;
-  if (conversation.length === 0) {
-    // Send an initial message if the conversation is empty
-    const initialMessage = `Welcome to the waiting room! Whenever you're ready, send a message to begin chatting with JungSMART...`;
-    res.write(
-      `data: ${JSON.stringify({
-        message: initialMessage,
-      })}\n\n`
-    );
-    res.write(`data: [DONE]\n\n`);
-    res.end();
-    return;
-  }
+  const { conversation } = req.body;
+
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
