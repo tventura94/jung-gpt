@@ -241,18 +241,29 @@ app.post("/jung", async (req, res) => {
   });
 });
 
-//
-//
-//
-//
 ///////////////// JUNG SMART
-//
-//
-//
-//
-app.post("/dbt", async (req, res) => {
-  const { conversation } = req.body;
 
+app.post("/dbt", async (req, res) => {
+  const {
+    conversation,
+    emotions,
+    localHour,
+    nameValue,
+    descriptionValue,
+    jobValue,
+  } = req.body;
+  if (conversation.length === 0) {
+    // Send an initial message if the conversation is empty
+    const initialMessage = `Welcome to the waiting room! Whenever you're ready, send a message to begin chatting with JungGPT...`;
+    res.write(
+      `data: ${JSON.stringify({
+        message: initialMessage,
+      })}\n\n`
+    );
+    res.write(`data: [DONE]\n\n`);
+    res.end();
+    return;
+  }
   app.use(express.static(path.join(__dirname, "dist")));
 
   app.get("*", function (req, res) {
@@ -312,15 +323,9 @@ app.post("/dbt", async (req, res) => {
     message: "JungSMART: " + response.choices[0].message.content.trim(),
   });
 });
-//
-//
-//
-//
+
 ////////////////////// WHISPER
-//
-//
-//
-//
+
 app.use(express.urlencoded({ limit: "2gb", extended: true }));
 
 const storage = multer.diskStorage({
