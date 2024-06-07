@@ -281,7 +281,7 @@ app.post("/dbt", async (req, res) => {
     if (msg.role === "user") {
       message += `User: ${msg.message}\n`;
     } else if (msg.role === "assistant") {
-      message += `${msg.message.replace("JungSMART: ", "")}\n`; // <-- Updated line
+      message += `${msg.message.replace("JungSMART:", "")}\n`; // <-- Updated line
     }
   });
   const response = await openai.chat.completions.create({
