@@ -254,7 +254,7 @@ app.post("/dbt", async (req, res) => {
   } = req.body;
   if (conversation.length === 0) {
     // Send an initial message if the conversation is empty
-    const initialMessage = `Welcome to the waiting room! Whenever you're ready, send a message to begin chatting with JungGPT...`;
+    const initialMessage = `Welcome to the waiting room! Whenever you're ready, send a message to begin chatting with JungSMART...`;
     res.write(
       `data: ${JSON.stringify({
         message: initialMessage,
